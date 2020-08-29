@@ -1,0 +1,63 @@
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url(./Simple\ Backgrounds\ Pictures\ -\ Wallpaper\ Cave.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    display: grid;
+    grid-template-rows: 1fr 2fr 2fr 1fr;
+    grid-template-columns: 1fr 2fr 2fr 1fr;
+    grid-template-areas: 
+    ". . . ."
+    ". container container ."
+    ". container container ."
+    ". . . ."
+    ;
+    justify-items: center;
+    align-items: center;
+}
+
+#container{
+    display: grid;
+    grid-area: container;
+    grid-template-rows: 0.5fr 1fr 0.5fr ;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    grid-template-areas: 
+    ". . header header . ."
+    ". . number number . ."
+    ". btn1 . . btn2 ."
+    ;
+    border: 2px solid black;
+}
+
+#header {
+    grid-area: header;
+    color: rgb(36, 36, 163);    
+}
+
+#number {
+    grid-area: number;
+    font-size: 7rem;
+    font-weight: 900;
+}
+
+#btn1 {
+    grid-area: btn1;
+}
+
+#btn2 {
+    grid-area: btn2;
+}
+
+.buttons {
+    background-color: rgb(36, 36, 163);
+    color: whitesmoke;
+    width: 150%;
+    height: 25%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}

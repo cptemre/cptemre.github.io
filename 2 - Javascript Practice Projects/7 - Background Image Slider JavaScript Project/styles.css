@@ -1,0 +1,74 @@
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: antiquewhite;
+    display: grid;
+    grid-template-rows: 1fr 5fr 1fr;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-areas: 
+    ". . ."
+    ". container ."
+    ". . ."
+    ;
+    justify-items: center;
+    align-items: center;
+}
+
+#container {
+    display: grid;
+    grid-area: container;
+    border: 5px solid black;
+    width: 100%;
+    height: 100%;
+    grid-template-rows: repeat(3,1fr);
+    grid-template-areas: 
+    ". . ."
+    "thirdContainer . secondContainer"
+    ". . ."
+    ;
+    align-items: center;
+    background-image: url(./Images/0.JPG);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+#secondContainer {
+    display: grid;
+    grid-area: secondContainer;
+    justify-items: flex-end;
+    position: relative;
+}
+
+#thirdContainer {
+    display: grid;
+    grid-area: thirdContainer;
+    justify-items: flex-start;
+    position: relative;
+}
+
+#right {
+    transform: translate(50px);
+    background-color: black;
+    color: white;
+    border: none;
+    height: 1.8rem;
+    width: 2rem;
+    border-radius: 10%;
+    position: absolute;
+}
+
+
+#left {
+    transform: translate(-50px);
+    background-color: black;
+    color: white;
+    border: none;
+    height: 1.8rem;
+    width: 2rem;
+    border-radius: 10%;
+    position: absolute;
+}
+

@@ -1,0 +1,52 @@
+left.addEventListener("click", function () {
+    if (count <= 0 && count > (avatars.length+1) * -1) {
+        img1.src = avatars[avatars.length+count];
+        heading3.innerHTML = names[names.length+count];
+        heading4.innerHTML = comments[comments.length+count];
+        count--;
+    } 
+    else if (count == (avatars.length+1) * -1) {
+        count = -1;
+        img1.src = avatars[avatars.length+count];
+        heading3.innerHTML = names[names.length+count];
+        heading4.innerHTML = comments[comments.length+count];
+        count--;
+    }
+    else if (count > 0 && count < avatars.length+1) {
+        img1.src = avatars[count];
+        heading3.innerHTML = names[count];
+        heading4.innerHTML = comments[count];
+        count--;
+    }
+    else {
+        alert("error");
+    }
+    console.log(count);
+})
+
+right.addEventListener("click", function () {
+    if (count == -1) {
+        count = 1
+        img1.src = avatars[count];
+        heading3.innerHTML = names[count];
+        heading4.innerHTML = comments[count];
+        count++; 
+    }
+    else if (count >= 0 && count < avatars.length) {
+        img1.src = avatars[count];
+        heading3.innerHTML = names[count];
+        heading4.innerHTML = comments[count];
+        count++; 
+    }
+    else if (count == avatars.length) {
+        count = 0;
+        img1.src = avatars[count];
+        heading3.innerHTML = names[count];
+        heading4.innerHTML = comments[count];
+        count++; 
+    }
+    else {
+        alert("error");
+    }
+    console.log(count);
+})

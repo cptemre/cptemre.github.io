@@ -1,0 +1,247 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-rows: 0.3fr 2fr 3fr 0.5fr;
+    grid-template-columns: 1fr 3fr 1fr;
+    justify-items: center;
+    align-items: center;
+    grid-template-areas: 
+    ". . ."
+    ". container0 ."
+    ". container0 ."
+    ". . ."
+    ;
+    overflow-x: hidden;
+    background: linear-gradient(rgba(0, 0, 0, 0.479), rgba(102, 99, 99, 0.527)), url(./Restaurant_Wallpaper.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    position: relative;
+}
+
+#container0 {
+    display: grid;
+    grid-area: container0;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    grid-template-rows: 1fr 3fr;
+    grid-template-areas: 
+    "container1 container1 container1"
+    "container2 container2 container2"
+    ;
+    position: absolute;
+}
+
+#container1 {
+    display: grid;
+    grid-area: container1;
+    justify-content: center;
+    align-items: center;
+    grid-template-rows: 1fr 1fr 0.5fr;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: 
+    ". heading1 ."
+    ". heading2 ."
+    ". img1 ."
+    ;
+    width: 100%;
+    height: 100%;
+}
+
+#heading1 {
+    grid-area: heading1;
+    font-size: 1.5rem;
+    display: grid;
+    justify-items: center;
+    align-items: flex-end;
+    height: 100%;
+    color: white;
+    font-weight: bold;
+}
+
+#heading2 {
+    grid-area: heading2;
+    font-size: 2.6rem;
+    text-align: center;
+    color: wheat;
+}
+
+#img1 {
+    grid-area: img1;
+    width: 100%;
+    display: grid;
+    justify-items: center;
+    align-items: flex-end;
+    height: 200%;
+    position: relative;
+}
+
+#img1-1 {
+    width: 40%;
+    height: 100%;
+    z-index: 5;
+    position: absolute;
+    border-radius: 50%;
+    transform: translateY(1rem);
+    transition: 0.5s linear;
+}
+
+#img1-1:hover {
+    width: 45%;
+    height: 110%;
+}
+
+#container2 {
+    display: grid;
+    grid-area: container2;
+    justify-content: center;
+    align-items: center;
+    grid-template-rows: 1fr 2fr 1fr;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-areas: 
+    ". heading3 ."
+    "button1 heading4 button2"
+    ". . ."
+    ;
+    width: 100;
+    height: 100%;
+    border: 5px solid black;
+    background: linear-gradient(rgba(221, 189, 118, 0.479), rgba(255, 69, 0, 0.479));
+}
+
+#heading3 {
+    grid-area: heading3;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+}
+
+#img2 {
+    grid-area: img2;
+}
+
+#button1 {
+    grid-area: button1;
+    display: grid;
+    position: relative;
+    align-items: center;
+    transform: translateX(-4rem);
+    height: 100%;
+}
+
+#left {
+    position: absolute;
+    border-radius: 50%;
+    animation: animation2 1s linear alternate infinite;
+}
+
+#button2 {
+    grid-area: button2;
+    display: grid;
+    position: relative;
+    align-items: center;
+    justify-items: flex-end;
+    transform: translateX(4rem);
+    height: 100%;
+}
+
+#right {
+    position: absolute;
+    border-radius: 50%;
+    animation: animation1 1s linear alternate infinite;
+}
+
+.buttons {
+    background-color: transparent;
+    color: white;
+    border: 2px solid rgb(255, 69, 0.6);
+    width: 25%;
+    height: 25%;
+    outline: none; /* when clicked outline border is not visible */
+}
+
+.buttons:hover {
+    background: linear-gradient(rgba(221, 189, 118, 0.479), rgba(255, 69, 0, 0.479));
+    color: black;
+}
+
+.buttons:active {
+    color: orangered;
+}
+
+@keyframes animation1 {
+    0% {
+        width: 26%;
+        height: 26%;
+        transform: translateX(0.1rem);
+    }
+    25% {
+        width: 27%;
+        height: 27%;
+        transform: translateX(0.2rem);
+        border: 2.3px solid rgb(235, 30, 14);
+    }
+    50% {
+        width: 28%;
+        height: 28%;
+        transform: translateX(0.3rem);
+        border: 2.6px solid rgb(235, 58, 14);
+    }
+    75% {
+        width: 29%;
+        height: 29%;
+        transform: translateX(0.4rem);
+        border: 2.9px solid rgb(235, 40, 14);
+    }
+    100% {
+        width: 30%;
+        height: 30%;
+        transform: translateX(0.5rem);
+        border: 3.2px solid rgb(235, 14, 14);
+    }
+}
+
+@keyframes animation2 {
+    0% {
+        width: 26%;
+        height: 26%;
+        transform: translateX(-0.1rem);
+    }
+    25% {
+        width: 27%;
+        height: 27%;
+        transform: translateX(-0.2rem);
+        border: 2.3px solid rgb(235, 30, 14);
+    }
+    50% {
+        width: 28%;
+        height: 28%;
+        transform: translateX(-0.3rem);
+        border: 2.6px solid rgb(235, 58, 14);
+    }
+    75% {
+        width: 29%;
+        height: 29%;
+        transform: translateX(-0.4rem);
+        border: 2.9px solid rgb(235, 40, 14);
+    }
+    100% {
+        width: 30%;
+        height: 30%;
+        transform: translateX(-0.5rem);
+        border: 3.2px solid rgb(235, 14, 14);
+    }
+}
+
+#heading4 {
+    grid-area: heading4;
+    font-size: 1.5rem;
+    text-align: center;
+    min-width: 100%;
+}
