@@ -1,0 +1,2 @@
+
+.icon-anchor { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf13d;&nbsp;'); }

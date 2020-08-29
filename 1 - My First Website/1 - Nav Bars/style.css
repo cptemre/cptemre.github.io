@@ -1,0 +1,1618 @@
+/*  
+    Border box ile alan sınırları kesinleştirildi.
+    Tüm alanlarda margin ve padding 0 başlamakta.
+    Google'dan aldığım Raleway font family kullanılmakta.
+ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Raleway', sans-serif;
+}
+
+
+/*  Body'de linear gradient ile beyazdan açık maviye gitmekte. Aynı zamanda fotoğraf ekli.
+    Fotoğraf fixed yani hep arka planda sabit.
+    X eksenindeki artıklar gizlendi.
+*/
+body {
+    background: linear-gradient(rgba(255, 255, 255, 0.863),rgba(142, 192, 204, 0.3)), url(../Images/homeBackgroundTwo.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    word-wrap: break-word;
+    overflow-x: hidden;
+}
+/*  Header'da açık maviden beyaz renge doğru giden bir linear gradient var. 
+    Text rengi siyah.
+    Transition ile font büyümekte ve renk siyahtan koyu maviye dönmekte.
+    Yazı boyutu ve padding responsive ayarlandı.
+    */
+.header {
+    background: linear-gradient(rgba(79, 197, 218, 0.5), rgba(209, 231, 235, 0.863));
+    color: rgb(187, 87, 96);
+    text-align: center;
+    font-size: 8.29vh;
+    padding-top: 4vh;
+    padding-bottom: 5.08vw;
+    transition: font-size 1.5s, color 1s;
+    font-family: 'Dancing Script', cursive;
+}
+
+.header:hover {
+    font-size: 9.80vh;
+    font-weight: bold;
+    color: rgb(165, 14, 77);
+}
+
+/*  Nav Bar ile header'daki kaldığımız renkten beyaza linear gradient var.
+    Display grid olarak ayarlandı ve linkler sıralandı.
+    Genişlik 100% ayarlandı.
+    Gridler arasında 50px'lik boşuk bırakıldı.
+    Yazılar ve boşluklar responsive.
+    Yazılar ortalandı.
+*/
+
+
+
+.navbar {
+    display: grid;
+    background: linear-gradient(rgba(209, 231, 235, 0.863), rgba(254, 255, 255, 0.0)) ;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-areas: 'Home About Contact What'
+    ;
+    font-size: 4vh;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+}
+/*  Navbar içindeki linkler tanımlandı. 
+ */
+.navbar1 {grid-area: Home;}
+.navbar2 {grid-area: About;}
+.navbar3 {grid-area: Contact;}
+.navbar4 {grid-area: What;}
+
+/*   
+    Yazılar horizontal olarak center'landı.
+    Genişlik Navbar ile aynı 90%.
+    Transition ile font size, arkaplan rengi ve genişlik değişmekte.
+    Border radius ayarlandı.
+
+ */
+
+ul {
+    list-style-type:none;
+    display: none;
+    background-image: url(../Images/RealCloud.png);
+    background-size: 100% 100%;
+    background-position: top;
+    width: 100%;
+    height: 100px;
+}
+
+li {
+    width: 100%;
+    height: 100px;
+    position:relative;
+    margin: 0em;
+    padding: 0;
+}
+
+.navbar {
+    z-index: 1001;
+}
+
+.navbar a {
+    padding-left: 2vh;
+    text-align: center;
+    transition: font-size 1s, background-size 1s, color 1s, padding 1s, background-image 1s;
+    text-decoration: none;
+    width: 100%;
+    height: 30%;
+    border-radius: 2.8vh;
+    margin-bottom: 4.8vh;
+    margin-left: -2vh;
+    font-family: 'Dancing Script', cursive;
+}
+
+/*  Navbarların hepsine Cloud resmi eklendi. Boyutu tam yapıldı ve pozisyonu x-y koordinatında ayarlandı. 
+ */
+
+.navbar a:link {
+    color: black;
+    border-bottom: none;
+    background-image: url(../Images/RealCloud.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    font-size: 4.5vh;
+    background-size: 80% 80%;
+    color: rgb(39, 193, 253);
+    width: 100%;
+    display: inline-block;
+    padding-top: 1.5vh;    
+    height: 11vh;  
+}
+
+.navbar a:visited {
+    color: black;
+}
+
+.navbar a:hover {
+    border-bottom: none;
+    background-image: url(../Images/RealCloud.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    font-size: 6vh;
+    background-size: 100% 120%;
+    color: rgb(39, 193, 253);
+    padding-top: 1vh;    
+
+}
+
+.navbar a:active {
+    color: rgb(252, 52, 52);
+    border-bottom: none;
+    background-image: url(../Images/RealCloud.png);
+    font-size: 6vh;
+    background-size: 100% 120%;
+    padding-top: 1vh;    
+}
+
+/*  Aktif navbar ayarlaması yapıldı. 
+ */
+
+#current1, #current2, #current3, #current4{
+    border-bottom: none;
+    background-image: url(../Images/RealCloud.png);
+    font-size: 6vh;
+    background-size: 100% 120%;
+    color: rgb(39, 193, 253);
+    padding-top: 0vh;    
+}
+
+
+.navbar-2-list {
+    z-index: 1500;
+    transition: all 1s linear;
+}
+
+.navbar-2-list:hoveer .drop-list-1 {
+    display: inline-block;
+    animation: faade-in 1s linear;
+    animation-fill-mode: forwards;
+    opacity: 1;
+}
+
+
+
+.navbar-2-list:not(:hoveer) .drop-list-1 {
+    display: inline-block;
+    animation: fade-out 1s linear;
+    animation-fill-mode: forwards;
+}
+
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.drop-list-1 {
+    opacity: 0;
+    transition: all 1s linear;
+}
+
+.drop-list-1 li{
+    height: 100%;
+}
+
+.drop-list-1 a {
+    font-size: 3vh !important;
+}
+
+.career-list:hover ul{
+    display: inline-block;
+    position: absolute;
+    background-size: 20% 20%;
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: fade-in 1s linear;
+}
+
+.career-list:not(:hover) ul{
+    display: inline-block;
+    position: absolute;
+    background-size: 20% 20%;
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: fade-out 1s linear;
+    animation-fill-mode: forwards;
+}
+
+
+/* Checkboxların kutuları görünmeyecek */
+.toggle, [id^=drop] {
+    display: none;
+}
+
+#main-toggle {
+    cursor: pointer;
+    float: right;
+    padding: 1vh;
+    position: relative;
+    user-select: none;
+}
+
+.nav-icon {
+    background-color: red;
+    display: block;
+    height: 0.5vh;
+    width: 3vh;
+    position: relative;
+}
+
+.nav-icon:before, .nav-icon:after {
+    background: red;
+    content: "";
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+.nav-icon:before{
+    top: 1vh;
+}
+
+.nav-icon:after{
+    top: -1vh;
+}
+
+@media (max-width: 1000px) {
+    .navbar {
+        grid-template-columns: 50% 50%;
+        grid-template-areas: 'Home Contact '
+                            'About What'
+        ;
+        font-size: 4vh;
+        width: 100%;
+        grid-gap: 2vh;
+        align-items: center;
+        text-align: center;
+        margin-bottom: 7rem;    
+    }
+        
+    .career-list:hover ul{
+        right: 20rem;
+        bottom: 0.6rem;
+    }
+
+    
+}
+
+@media (max-width: 700px) {
+    .navbar {
+        grid-template-columns: 100%;
+        grid-template-areas: 'Home'
+                            'About'
+                            'Contact'
+                            'What'
+        ;
+        font-size: 4vh;
+        width: 100%;
+        align-items: center;
+        text-align: center;
+        margin-bottom: 7rem;    
+        z-index: 3000;
+    }
+    .career-list:hover ul{
+        top: 6rem;
+        right: 0;
+        z-index: 4000;
+    }
+    .drop-list-1 {
+        position: relative;
+    }
+
+    .navbar-2-list:hover .drop-list-1{
+        top: .7rem;
+        z-index: 4000;
+    }
+}
+
+/*  Nav bölümü tamamen sticky yapıldı. Sayfada aşağı inince yapışmakta. 
+ */
+
+/* nav {
+    position: sticky;
+    top: 0;
+} */
+.main {
+    display: flex;
+    justify-content: center;
+}
+
+.main-container {
+    color: rgb(187, 87, 96);
+    font-size: 4.20vh;
+    z-index: 1000;
+    width: 90%;
+    height: 100%;
+    border: 0.7vh solid rgb(0, 0, 0);
+    border-radius: 2%;
+    padding: 10vh;
+    background-color: rgba(114, 178, 221, 0.644);
+    box-shadow: 0.2vh 0.2vh 5px 5px rgba(24, 41, 49, 0.589);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 4rem 0;
+}
+
+/*  Ana sayfadaki paragrafa gelince yazı boyutu ve kalınlığı artmakta.
+
+ */
+
+.main p {
+    transition: font-size 0.70s, font-weight 0.7s;
+    border: 0.5vh solid rgb(0, 0, 0);
+    background-color: rgba(255, 255, 255, 0.521); 
+    box-shadow: 0.2vh 0.2vh 5px 5px rgba(11, 73, 102, 0.589);
+    padding: 3vh;
+    border-radius: 2%;
+    font-size: 2.5vh;
+    width: 100%;
+    height: 100%;
+}
+
+.main-container:hover p
+    {
+        font-size: 4vh;
+        font-weight: bold;
+}
+
+
+/*  Ana sayfa paragrafının ilk harfinin büyük olmasını ve soldan marjını ayarlar.
+
+ */
+
+.main p::first-letter {
+    font-size: 10.5vh;
+    margin-left: 9.8vh;
+}
+
+/*  Ana sayfa paragrafının ilk cümlesinin soldan marjını ayarlar.
+
+ */
+
+.main p::first-line {
+    margin-left: 10.1vw;
+}
+
+@media (max-width: 1000px) {
+    .main p::first-letter {
+        font-size: 5rem;
+        margin-left: 1.2rem;
+    }
+}
+
+
+@media (max-width: 700px) {
+    .main {
+        margin-top: 20rem;
+    }
+    .main-container:hover p
+    {
+        font-size: 2.5vh;
+        font-weight: bold;
+}
+} 
+
+
+/*  About me sekmesinde link, yazı ve resimleri kapsayan konteyner.
+    Grid formunda.
+    Boşluk kalmayacak şekilde ayarlı.
+
+
+*/
+
+footer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 2000;
+    cursor: default;
+}
+
+footer div {
+    margin: 2vh;
+    font-size: 2vh;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-auto-rows: 6vh 12vh;
+    grid-auto-flow: dense;
+    grid-gap: 3.5vh;
+    margin: 3.5vh;
+    margin-top: 3.5vh;
+    grid-template-areas: 
+        "personal personal education education education education education"
+        "personal personal education education education education education"
+        "career career     career    career    career    now       now"
+        "career   career   career    career    career    now       now"
+    ;
+}
+
+/*
+    Link konteynerı. 
+    Resimi ve texti kapsar.
+    Üzerine gelindiğinde boyutu büyür ve z ekseninde öne çıkar.
+    Kenarlardan 30px kıvrıldı. Aynısı Image konteynarında da var.
+ */
+
+.container > .gallery-items {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    transition: 0.4s linear;
+    border-radius: 4.20vh;
+    margin-top: 6vh;
+}
+
+.container > .gallery-items:hover  {
+    transform: scale(1.1);
+    z-index: 4;
+}
+
+/* 
+    Resmi kapsayan konteyner.
+    Taşmalar engellenir.
+*/
+
+.container > .gallery-items > .image {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 4.20vh;
+}
+
+/* 
+    Resimi içeren img elementi.
+    Merkeze odaklanan bir kod içerir.
+*/
+
+.container > .gallery-items > .image > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 
+    Texti içeren div elementi.
+    Yazı link konteynerı olan gallery-items'a göre absolute olarak ortalanmış
+    Üzerine gelindiğinde görünür olmakta ve aşağı doğru kayan bir animasyonla ortaya gelmektedir.
+    Filtreler ile arka plana bulanıklık kazandırılmış ayrıca arka plan rengi ayarlanmıştır.
+*/
+
+.container > .gallery-items > .text {
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: 0.4s ease-in-out;
+    backdrop-filter: blur(5px) saturate(1.8);
+    width: 100%;
+    text-align: center;
+    background-color: rgba(15, 14, 14, 0.651);
+    font-size: 5vh;
+    
+}
+
+.container > .gallery-items:hover .text {
+    opacity: 1;
+    animation: move-down 0.4s linear;
+}
+
+@keyframes move-down {
+    0% {
+        top: 0%;
+    }
+    25% {
+        top: 12.5%;
+    }
+    50% {
+        top: 25%;
+    }
+    75% {
+        top: 37.5%;
+    }
+    100% {
+        top: 50%;
+    }
+}
+
+@media (max-width: 700px) {
+    .container {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 40vh 20vh;
+        grid-auto-flow: dense;
+        grid-gap: 3.5vh;
+        margin: 3.5vh;
+        margin-top: 20rem;
+        grid-template-areas: 
+            "personal" 
+            "education"
+            "career"
+            "now"
+        ;
+    }
+}
+
+/*  3 resmi ve yazıları içinde bulunduran konteyner.
+    Grid görünümünde ve 3 eşit bölgeye ayrıldı. İsim - Ülke - İş
+    Satırların uzunlukları otomatik olarak ayarlandı. Tüm ölçüler responsive.
+    Yazılar yatay ve dikey olarak ortalandı.
+    Font büyüklüğü ve margin ayarlandı.
+ */
+
+.table-container {
+    display: grid;
+    grid-template-columns: 33.33% 33.33% 33.33%;
+    grid-auto-rows: 13.83vh;
+    grid-gap: 1.95vw;
+    grid-template-areas: 
+        "name nationality profession"
+    ;
+    text-align: center;
+    align-items: center;
+    font-size: 4.84vh;
+    margin-top: 20vh;
+    width: 100%;
+}
+
+
+
+/*  3 bölgesel konteyner oluşturularak her konu için bir resim ve bir yazı eklendi.
+Pozisyonları responsive olarak oluşturuldu. 
+ */
+
+.name {
+    grid-area: name;
+    position: relative;
+}
+
+.nationality {
+    grid-area: nationality;
+    position: relative;
+}
+
+.profession {
+    grid-area: profession;
+    position: relative;
+}
+
+/*  Tüm yazı içeren konteynerlar gizlendi. 
+ */
+
+.table-container  .hidden {
+    visibility: hidden;
+}
+
+/*  Görünmeyen yazının üstüne gelindiğinde görünür olmakta ve cursor ok işaretini korumakta. 
+    Üzerine gelindiğinde genişlik artmakta.
+    Yazının üzerine geldiğinde resim eski haline gelmekte çünkü siktiğimin css'inde önceki sibling seçilemiyor. Ardından yazı genişliği ayarlanıyor.
+ */
+
+.hidden:hover {
+    visibility: visible;
+    opacity: 1;
+    cursor: default;
+    width: 16.5vw;
+}
+
+.isim:hover {
+    width: 50%;
+}
+
+/*  Resimleri içeren klastır. 
+    Resimlerin hoverlandığında bulurlanmasını gerçekleştiren transitionı içerir.
+ */
+
+.resim {
+    transition: 1.5s ease-out;
+}
+
+/*  Resim hoverlandığında yazılar görünür olur.
+ */
+
+.resim:hover ~ .sibling {
+    visibility: visible;
+    opacity: 1;
+    width: 65%;
+}
+
+/*  Resim hoverlandığında bulanıklaşır.
+    Boyutu büyür.
+ */
+
+.resim:hover {
+    visibility: visible;
+    filter: blur(1.5px);
+    transform: scale(1.1);
+}
+
+/*  Konteynerdaki tüm resimler responsive olarak ayarlandı ve orta noktasına odaklandı.
+    Kenar kıvrımları ayarlandı.
+ */
+
+.table-container img {
+    position: relative;
+    width: 20vw;
+    height: 40vh;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/*  Yazılar ortalandı. Yazı boyutu ayarlandı. 
+    Arka plan rengi ve yazı rengi ayarlandı.
+    Görünürlük ve opacity hover transitionlarını 0.5s'lik gecikme ile gösterir. 1 sn'de gelir.
+ */
+
+.sibling {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(209, 231, 235, 0.863);
+    color: black;
+    border-radius: 0.97vw;
+    opacity: 0;
+    transition: visibility 0.5s linear 0.5s, opacity 0.5s linear 0.5s, width 1s linear;
+    font-size: 1vw;
+    width: 40%;
+    pointer-events: none;
+    padding: 1.5rem;
+    font-weight: bold;
+}
+
+@media (max-width: 1000px) {
+    .table-container {
+        margin-top: 13rem;
+    }
+    .sibling {
+        font-size: 1rem;
+        font-weight: bold;
+    }
+    .table-container img {
+        width: 20vw;
+    }
+}
+
+@media (max-width: 700px) {
+    .table-container {
+        grid-template-columns: 100%;
+        grid-auto-rows: 13.83vh;
+        grid-gap: 15rem;
+        grid-template-areas: 
+            "name" 
+            "nationality"
+            "profession"
+        ;
+        text-align: center;
+        align-items: center;
+        font-size: 4.84vh;
+        margin-top: 30rem;
+        width: 100%;
+    }
+    .table-container img {
+        width: 45vw;
+    }
+}
+
+/*  Ktü ve Banü tüm elementleri kapsar.
+    Grid yapısında ikiye bölünmüş durumda.
+ */
+
+.university-container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-auto-rows: 13.83vh;
+    grid-gap: 1.95vw;
+    grid-template-areas: 
+        "ktü banü"
+    ;
+    text-align: center;
+    align-items: center;
+    font-size: 4.84vh;
+    margin-top: 20vh;
+    width: 100%;
+}
+
+/*  Resmi ve yazıyı kapsayan konteynerlar relative pozisyonda. 
+ */
+
+.ktü {
+    grid-area: ktü;
+    position: relative;
+}
+
+.banü {
+    grid-area: banü;
+    position: relative;
+}
+
+/*  Resimlerin orta noktasına odaklanılmış ve 50% kıvrım eklenmiş. 
+ */
+
+.university-container img {
+    position: relative;
+    width: 20vw;
+    height: 40vh;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/*  Yazı klasları ayarlandı ve transition eklendi animasyon için. 
+ */
+
+.karadeniz, .bandirma {
+    font-size: 1.1vw;
+    width: 20vw;
+    transition: 1s linear;
+    background-color: rgba(209, 231, 235, 0.863);
+    color: black;
+    pointer-events: none;
+}
+
+/*  Yazı genişliği uyum sağlar 
+ */
+
+.resim:hover ~ .karadeniz {
+    width: 22vw;
+}
+
+.resim:hover ~ .bandirma {
+    width: 22vw;
+}
+
+/*  Yazı genişliği uyum sağlar 
+ */
+
+.karadeniz:hover {
+    animation: degree infinite 8s;
+    animation-play-state: running;
+    width: 20vw;
+}
+
+/*  Text boşluk bırakılarak animasyon eklendi ve bu şekilde zaman aralıklarında yazılar dönecek. 
+ */
+
+.karadeniz:before {
+    content: "";
+    animation: degree infinite 8s;
+    animation-timing-function: linear;
+}
+
+@keyframes degree {
+    0% {
+        content: "Karadeniz Technical University";
+    }
+    50% {
+        content: "Bachelor's Degree";
+    }
+    80% {
+        content: "2013-2017";
+    }
+    100% {
+        content: "Graduated";
+    }
+}
+
+/*  Aynı kurallar bir önceki üniversite için olduğu gibi burada da geçerli.
+    Yazı genişliği uyum sağlar.
+ */
+
+.bandirma:hover {
+    animation: master infinite 8s;
+    animation-play-state: running;
+    width: 20vw;
+}
+
+
+.bandirma:before {
+    content: "";
+    animation: master infinite 8s;
+    animation-timing-function: linear;
+}
+
+@keyframes master {
+    0% {
+        content: "Bandırma Onyedi Eylül University";
+    }
+    50% {
+        content: "Master Degree";
+    }
+    80% {
+        content: "2020";
+    }
+    100% {
+        content: "Left";
+    }
+}
+
+@media (max-width: 1000px) {
+    .university-container {
+        margin-top: 6rem;
+    }
+    .karadeniz, .bandirma {
+        font-size: 1rem;
+    }
+    .university-container img{
+        width: 20vw;
+    }
+}
+
+@media (max-width: 700px) {
+    .university-container {
+        grid-template-columns: 100%;
+        grid-auto-rows: 13.83vh;
+        grid-gap: 15rem;
+        grid-template-areas: 
+            "ktü" 
+            "banü"
+        ;
+        text-align: center;
+        align-items: center;
+        font-size: 4.84vh;
+        margin-top: 8rem;
+        width: 100%;
+    }
+    .university-container img {
+        width: 45vw;
+    }
+    .resim:hover ~ .karadeniz {
+        width: 51%;
+    }
+    
+    .resim:hover ~ .bandirma {
+        width: 51%;
+    }
+}
+
+/*  Career kısmında da tüm elementleri kapsayan university-container kullanıldı. 
+    Ayrıca unversity-container img için kullanılan kurallar burada da geçerli.
+ */
+
+
+.university-container .career-link {
+    text-decoration: none;
+    width: 40% !important;
+    font-size: 2vw;
+    padding: 2.8vh;
+    background-color: rgba(209, 231, 235, 0.863);
+    color: black;
+    transition: visibility 0.5s !important, linear 0.5s !important, opacity 0.5s !important, font-size 0.5s !important color 0.5s !important;
+}
+
+.career-link a {
+    display: inline-block;
+    font-size: 3vh !important;
+    transition: color 0.5s !important, font-size 0.5s !important;
+}
+
+.career-link a:link {
+    width: 100% !important;
+    text-decoration: none;
+    color: black;
+    transition:  color 0.5s !important ;
+}
+
+.career-link a:visited {
+    color: black;
+}
+
+.career-link a:active {
+    color: rgb(252, 52, 52);
+    font-size: 1rem !important;
+}
+
+.resim:hover ~ .career-link {
+    width: 44% !important;
+}
+
+#career {
+    cursor: pointer;
+}
+/*  Resimin üzerine geldiğinde yazı genişliği ayarlanır. 
+ */
+
+.resim:hover ~ .career-link {
+    width: 44%;
+}
+
+@media (max-width: 700px) {
+    .resim:hover ~ .career-link {
+        width: 51% !important;
+    }
+    .career-link {
+        font-size: 1rem !important;
+    }
+}
+
+/* Marine bölümü başlıyor 
+ */
+
+.marine-container {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-auto-rows: 13.83vh;
+    grid-auto-flow: dense;
+    grid-template-areas: 
+    "alkin hicri lambert hicrikaan northville"
+    ;
+    
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    grid-gap: 1.5rem;
+    margin: 0 auto;
+    margin-top: 25vh;
+    
+}
+
+
+.alkin {
+    grid-area: alkin;
+    position: relative;
+}
+
+.hicri {
+    grid-area: hicri;
+    position: relative;
+}
+
+.lambert {
+    grid-area: lambert;
+    position: relative;
+}
+
+.hicrikaan {
+    grid-area: hicrikaan;
+    position: relative;
+}
+
+.northville {
+    grid-area: northville;
+    position: relative;
+}
+
+
+.marine-container  .hidden {
+    visibility: hidden;
+}
+
+/*  Image'ların eni boyu tanımlandı. 
+    Kıvrım verildi ve orta noktasına odaklanıldı.
+ */
+
+.marine-container img {
+    position: relative;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.marine-container:hover {
+    z-index: 1500;
+}
+
+.marine-container img:hover ~ .gemitext {
+    width: 110%;
+    z-index: 1500;
+} 
+
+/*  Resimlerin textleri daha önce olduğu gibi orta noktaya tanımlandı.
+    Transition için gecikme yazıldı.
+ */
+
+.gemitext {
+    position: absolute;
+    top: 50% !important;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(46, 44, 44);
+    color: black;
+    border-radius: 0.97vw;
+    opacity: 0;
+    transition: visibility 0.5s linear 0.5s, opacity 0.5s linear 0.5s, width 1s linear;
+    font-size: 1vw;
+    padding: 2.2vh;
+    text-align: center;
+    background-color: rgba(59, 162, 180, 0.863);
+    width: 100%;
+}
+
+/*  Text üzerine gelindiğinde görünür olur ve genişliği artar. 
+ */
+
+.gemitext:hover {
+    visibility: visible;
+    opacity: 1;
+    width: 20vh;
+}
+
+/*  Tüm gemilere before elementi eklenerek zaman bazlı text animasyonu eklendi. 
+ */
+
+.ship1:before {
+    content: "";
+    animation-timing-function: linear;
+    animation: ship1 infinite 12s;
+}
+
+@keyframes ship1 {
+    0% {
+        content: "M/V Alkın Kalkavan";
+    }
+    50% {
+        content: "Container";
+    }
+    70% {
+        content: "Deck Cadet";
+    }
+    100% {
+        content: "2014";
+    }
+}
+
+.ship2:before {
+    content: "";
+    animation-timing-function: linear;
+    animation: ship2 infinite 12s;
+}
+
+@keyframes ship2 {
+    0% {
+        content: "M/T Hicri Kaan";
+    }
+    50% {
+        content: "Chemical Tanker";
+    }
+    70% {
+        content: "Deck Cadet";
+    }
+    100% {
+        content: "2015";
+    }
+}
+
+.ship3:before {
+    content: "";
+    animation-timing-function: linear;
+    animation: ship3 infinite 12s;
+}
+
+@keyframes ship3 {
+    0% {
+        content: "M/V Cape Lambert";
+    }
+    50% {
+        content: "Bulk";
+    }
+    70% {
+        content: "Deck Cadet";
+    }
+    100% {
+        content: "2016";
+    }
+}
+
+.ship4:before {
+    content: "";
+    animation-timing-function: linear;
+    animation: ship4 infinite 12s;
+}
+
+@keyframes ship4 {
+    0% {
+        content: "M/T Hicri Kaan";
+    }
+    50% {
+        content: "Chemical Tanker";
+    }
+    70% {
+        content: "Deck Cadet";
+    }
+    100% {
+        content: "2017";
+    }
+}
+
+.ship5:before {
+    content: "";
+    animation-timing-function: linear;
+    animation: ship5 infinite 12s;
+}
+
+@keyframes ship5 {
+    0% {
+        content: "M/V Cape Northville";
+    }
+    50% {
+        content: "Bulk";
+    }
+    70% {
+        content: "Third Officer";
+    }
+    100% {
+        content: "2018";
+    }
+}
+
+@media (max-width: 1000px) {
+    .marine-container {
+        display: grid;
+        grid-template-columns: 33.3% 33.3% 33.3%;
+        grid-auto-rows: 10rem;
+        grid-auto-flow: row;
+        grid-template-areas: 
+        "alkin . lambert"
+        ". hicri . "
+        "hicrikaan . northville"
+        ;
+        grid-gap: 2rem;
+        text-align: center;
+    }
+    .gemitext{
+        top: 50% !important;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 1rem;
+    }
+    .marine-container img:hover ~ .gemitext {
+        width: 110%;
+    } 
+}
+
+@media (max-width:700px) {
+    .marine-container{
+        grid-template-columns: 100%;
+        grid-auto-rows: 10rem;
+        grid-auto-flow: row;
+        grid-template-areas: 
+        "alkin"
+        "lambert"
+        "hicri"
+        "hicrikaan"
+        "northville"
+        ;
+        grid-gap: 15rem;
+        width: 50%;
+        margin-top: 26rem;
+    }
+    .marine-container img {
+        width: 45vw;
+    }
+}
+
+/*  Marine kısmı bitti, Contact kısmı başladı. 
+ */
+
+.coding {
+    pointer-events: none;
+}
+
+
+/*  3 ana sütun tanımlandı.   
+*/
+
+.form-container {
+    display: grid;
+    grid-template-columns: 28.3% 40% 28.3% ;
+    grid-auto-rows: 55vh;
+    grid-auto-flow: dense;
+    grid-template-areas: 
+    "social form location"
+    "social form location"
+    ;
+    grid-gap: 3.5vh;
+    margin: 6.5vh;
+    margin-top: 8.5vh;
+}
+
+/*  Main içindeki tüm formların genel tanımlaması yapıldı. 
+ */
+
+.form form {
+    width: 100%;
+    height: 100%;
+    border: 0.7vh solid rgb(0, 0, 0);
+    border-radius: 2%;
+    padding: 10vh;
+    background-color: rgba(114, 178, 221, 0.644);
+    box-shadow: 0.2vh 0.2vh 5px 5px rgba(24, 41, 49, 0.589);
+    position: relative;
+    grid-area: form;
+} 
+
+/*  Main içindeki tüm fieldsetlerin genel tanımlaması yapıldı. 
+ */
+
+.form fieldset {
+    border: 0.5vh solid rgb(0, 0, 0);
+    background-color: rgba(255, 255, 255, 0.521); 
+    box-shadow: 0.2vh 0.2vh 5px 5px rgba(11, 73, 102, 0.589);
+    padding: 3vh;
+    border-radius: 2%;
+    text-align: center;
+    font-size: 2.5vh;
+    width: 100%;
+    height: 100%;
+} 
+
+/*  Main içindeki tüm legendların genel tanımlaması yapıldı.
+    Hover animasyonu eklendi.
+ */
+
+.form legend {
+    background-color: rgb(98, 167, 231);
+    width: 70%;
+    height: 8%;
+    padding: 1.3vh;
+    font-size: 3.5vh;
+    font-weight: bold;
+    transition: linear 0.3s;
+    font-family: 'Dancing Script', cursive;
+}
+
+.form legend:hover {
+    background-color: rgba(87, 188, 255);
+    width: 90%;
+    color: white;
+    font-size: 3.8vh;
+    padding: 1vh;
+}
+
+/*  Main içindeki tüm inputların genel tanımlaması yapıldı. 
+    Sayfa yüklendiğinde html kodu sayesinde ilk input otomatik olarak focuslanmakta.
+ */
+
+.form input {
+    font-size: 2.5vh;
+    width: 50%;
+    background-color: rgba(166, 204, 221, 0.5);
+    border: 0.1em solid black;
+    transition: linear 0.3s;
+}
+
+/*  Seçildiğinde ne olduğunu belirler. 
+ */
+
+.form input:focus {
+    background-color: rgba(87, 188, 255);
+    opacity: 0.5;
+    color: white;
+    width: 60%;
+}
+
+/*  Main içindeki tüm selectlerin genel tanımlaması yapıldı. 
+ */
+
+.form select {
+    font-size: 2.5vh;
+    width: 45%;
+    background-color: rgba(166, 204, 221, 0.5);
+    border: 0.1em solid black;
+    transition: linear 0.3s;
+}
+
+/*  Seçildiğinde ne olduğunu belirler. 
+ */
+
+.form select:focus {
+    background-color: rgba(87, 188, 255);
+    opacity: 0.5;
+    color: white;
+    width: 60%;
+}
+
+/*  Seçildiğinde ne olduğunu belirler. 
+ */
+
+.form textarea:focus {
+    background-color: rgba(87, 188, 255);
+    opacity: 0.5;
+    color: white;
+    width: 100%;
+}
+
+/*  Main içindeki tüm textarea'ların genel tanımlaması yapıldı. 
+ */
+
+.form textarea {
+    font-size: 2.5vh;
+    resize: none;
+    width: 80%;
+    overflow: auto;
+    background-color: rgba(166, 204, 221, 0.5);
+    border: 0.1em solid black;
+    transition: linear 0.3s;
+}
+
+/*  Gönder butonu, animastonu ve aktif olduğundaki animasyonu tanımlandı. 
+ */
+
+#submit {
+    background-color: rgba(87, 188, 255, 0.5);
+    color: black;
+    border: none;
+    height: 5vh;
+    width: 35%;
+    transition: linear 0.3s;
+    font-family: 'Dancing Script', cursive;
+    font-size: 4vh;
+}
+
+#submit:hover, #submit:focus {
+    background-color: rgba(87, 188, 255);
+    opacity: 0.5;
+    color: white;
+    width: 82%;
+}
+
+#submit:active {
+    background-color: rgb(0, 0, 0);
+    opacity: 0.5;
+}
+
+/*  Aynı işlemlerin sol taraftaki social media için olanı. 
+ */
+
+.social-media-container {
+    width: 100%;
+    height: 100%;
+    border: 0.7vh solid rgb(0, 0, 0);
+    border-radius: 2%;
+    padding: 10vh;
+    background-color: rgba(114, 178, 221, 0.644);
+    box-shadow: 0.2vh 0.2vh 5px 5px rgba(24, 41, 49, 0.589);
+    position: relative;
+    grid-area: social;
+    transition: linear 0.3s;
+}
+
+.social-media-container fieldset {
+    width: 100%;
+    height: 100%;
+}
+
+.social-media-container a {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 2.5vh;
+    width: 45%;
+    height: 5%;
+    padding: 1vh;
+    transition: linear 0.3s;
+    text-align: center;
+    position: relative;
+}
+
+.social-media-container a:link {
+    color: black;
+    background-color: transparent;
+    width: 50%;
+    height: 25%;
+}
+
+.social-media-container a:visited {
+    color: black;
+    background-color: transparent;
+}
+
+.social-media-container a:hover, a:focus {
+    background-color: transparent;
+    font-size: 4vh;
+    transform: translateX(5vh);
+    opacity: 1;
+    border-radius: 25%;
+}
+
+/*  Tüm iconlara kendine has renkleri ve aynı animasyon sağlandı. 
+ */
+
+#facebook:hover, #facebook:focus {
+    color: white;
+    background-color: #3b5998;
+}
+
+#instagram:hover, #instagram:focus{
+    background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+    color: white;
+}
+
+#twitter:hover, #twitter:focus{
+    color: white;
+    background-color:  rgb(29, 161, 242);
+}
+
+#youtube:hover, #youtube:focus{
+    color: red;
+    background-color:  white;
+}
+
+#gmail:hover, #gmail:focus{
+    color: white;
+    background-color:  red;
+}
+
+/*  Sağ taraftaki location bölümünün genel çerçevesini çizer. 
+ */
+
+.location-container {
+    width: 100%;
+    height: 100%;
+    border: 0.7vh solid rgb(0, 0, 0);
+    border-radius: 2%;
+    padding: 10vh;
+    background-color: rgba(114, 178, 221, 0.644);
+    box-shadow: 0.2vh 0.2vh 5px 5px rgba(24, 41, 49, 0.589);
+    position: relative;
+    grid-area: location;
+}
+
+.location-container fieldset {
+    width: 100%;
+    height: 100%;
+}
+
+/*  Resimin boyutlandırılması ve tümünün odaklanılmasını ayrıca sınırlarının belirlenmesini içerir. 
+ */
+
+.location-container img {
+    width: 100%;
+    height: 10%;
+    object-fit: contain;
+    border: 0.3em solid black ;
+}
+
+/*  Resim aynı zamanda linkin içindedir resme yönelen.
+    Bunun tanımlaması burada yapıldı. Transition eklendi.
+ */
+
+.location-container a {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 2.5vh;
+    width: 100%;
+    height: 50%;
+    padding: 1vh;
+    transition: linear 0.3s;
+    text-align: center;
+    position: relative;
+    transition: linear 0.3s;
+    
+}
+
+.location a:link {
+    background-color: transparent;
+    opacity: 1;
+}
+.location a:hover, a:focus {
+    transform: scale(1.25);
+}
+
+.location a:active {
+    background-color: rgb(0, 0, 0);
+    opacity: 0.5;
+}
+
+
+/* Contact kısmı bitti */
+
+@media (max-width: 1535px){
+    .form-container {
+        grid-template-columns: 100% 100% 100% ;
+        grid-auto-rows: auto;
+        grid-template-areas: 
+        "form"
+        "form"
+        "social"
+        "social"
+        "location"
+        "location"
+        "location"
+        ;
+        width: 98%;
+        margin-top: 3.5vh;
+        
+        margin: 0 auto;
+    }
+
+    .form {
+        width: 100%;
+    }
+    .form-container fieldset {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+
+    .social-media-container a {
+        display: inline-block;
+        text-decoration: none;
+        font-size: 2.5vh;
+        width: 5rem;
+        height: 5rem;
+        padding: 1vh;
+        transition: linear 0.3s;
+        text-align: center;
+        position: relative;
+    }
+
+    .social-media-container a:link {
+        color: black;
+        background-color: transparent;
+        width: 5rem;
+        height: 5rem;
+    }
+    
+    .social-media-container a:hover {
+        width: 7rem !important;
+        height: 6.5rem !important;
+    }
+    iframe {
+        width: 100%;
+        height: 100%;
+    }
+    #submit:hover {
+        width: 82%;
+    }
+    
+}
+
+@media (max-width: 700px){
+    .form-container {
+        grid-template-columns: 100%;
+        grid-auto-rows: auto;
+        grid-template-areas: 
+        "form  "
+        "form  "
+        "social  "
+        "social  "
+        "location  "
+        "location  "
+        "location  "
+        ;
+        width: 98%;
+        margin-top: 22.5rem;
+    }
+    .form {
+        width: 100%;
+    }
+    .form-container fieldset {
+        width: 100%;
+        margin: 0 auto;
+        
+    }
+    #submit:hover {
+        width: 82%;
+    }
+}
+

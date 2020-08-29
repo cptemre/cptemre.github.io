@@ -1,0 +1,47 @@
+<div class="container">
+
+            <div class="gallery-container w-3 h-2">
+                <div class="gallery-item">
+                    <div class="image">
+                        <img src="./Images/2 - About Me/1 - Personal Information.jpg" alt="Personal Information">
+                    </div>
+                    <div class="text">
+                        Personal Information
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-container w-2 h-2">
+                <div class="gallery-item">
+                    <div class="image">
+                        <img src="./Images/2 - About Me/2 - Education.jpg" alt="Education">
+                    </div>
+                    <div class="text">
+                        Education
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-container w-1 h-2">
+                <div class="gallery-item">
+                    <div class="image">
+                        <img src="./Images/2 - About Me/3 - Career.jpg" alt="Career">
+                    </div>
+                    <div class="text">
+                        Career
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-container w-3 h-2">
+                <div class="gallery-item">
+                    <div class="image">
+                        <img src="./Images/2 - About Me/4 - Now.jpg" alt="Now">
+                    </div>
+                    <div class="text">
+                        Now
+                    </div>
+                </div>
+            </div>
+
+        </div>

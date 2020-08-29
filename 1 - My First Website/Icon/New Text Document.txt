@@ -1,0 +1,9 @@
+You should put it into head
+
+<link rel="icon" href="images/favicon.ico"/>
+
+Only this
+
+And saved the favicon in file with images
+
+It will take you only 1 minutes - max. It is why i sent now
