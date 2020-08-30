@@ -121,7 +121,7 @@ p {
     font-style: italic;
     text-align: center;
     line-height: 3rem;
-    display: none; /* Bunu none yap */
+    display: none;
     width: 100%;
     height: 50%;
     background-color: dodgerblue;

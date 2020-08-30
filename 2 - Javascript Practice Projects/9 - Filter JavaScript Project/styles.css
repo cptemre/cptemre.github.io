@@ -2,9 +2,9 @@ body {
     margin: 0;
     padding: 0;
     display: grid;
-    grid-template-rows: 10vh 90vh 80vh auto;
+    grid-template-rows: 10vh 90vh 100vh 80vh;
     overflow-x: hidden;
-    grid-template-areas: 
+    grid-template-areas:
     "container1"
     "container2"
     "container3"
@@ -12,6 +12,7 @@ body {
     ;
     width: 100%;
     height: 100%;
+    font-family: 'Dancing Script', cursive;
 }
 
 a,h1,button,p,i {
@@ -38,7 +39,7 @@ a:active {
     font-size: 2.1rem;
     font-weight: bold;
 }
-
+/* #region Start of container1*/
 #container1 {
     grid-area: container1;
     background-color: white;
@@ -49,7 +50,7 @@ a:active {
     justify-items: center;
     align-items: center;
     grid-template-columns: 1fr 2fr 1fr 1fr;
-    grid-template-areas: 
+    grid-template-areas:
     "icon1 links phone basket"
     ;
 }
@@ -143,9 +144,9 @@ a:active {
     justify-items: flex-start;
     align-items: center;
 }
-/* End of first container */
+/* #endregion End of first container */
 
-/* Start of second container */
+/* #region Start of container2 */
 
 #container2 {
     grid-area: container2;
@@ -216,10 +217,184 @@ a:active {
     justify-items: center;
 }
 
+/* #endregion Start of second container */
+
+/* #region Start of container3*/
+
 #container3 {
-    grid-area: container3;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: 
+    "aboutLeft aboutRight"
+    ;
 }
 
-#container4 {
-    grid-area: container4;
+#aboutLeft {
+    display: grid;
+    grid-area: aboutLeft;
+    grid-template-rows: 1.5fr 1fr 3fr;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: 
+    ". headerSpan2 ."
+    ". pSpan1 pSpan1"
+    ". aSpan2 ."
+    ;
 }
+
+#headerSpan2 {
+    display: grid;
+    grid-area: headerSpan2;
+    align-items: flex-end;
+    font-size: 2rem;
+}
+
+#us {
+    color: crimson;
+}
+
+#pSpan1 {
+    display: grid;
+    grid-area: pSpan1;
+    justify-items: flex-start;
+    align-items: flex-start;
+    font-size: 1.2rem;
+}
+
+#aSpan2 {
+    display: grid;
+    grid-area: aSpan2;
+    justify-items: flex-start;
+    align-items: flex-start;
+}
+
+#a2 {
+    display: grid;
+    background-color: rgb(255, 68, 0);
+    border: 1px solid black;
+    color: black;
+    outline: none;
+    border-radius: 10px;
+    width: 70%;
+    height: 10%;
+    align-items: center;
+    justify-items: center;
+}
+
+
+#aboutRight {
+    display: grid;
+    grid-area: aboutRight;
+    grid-template-columns: 1.8fr 1fr;
+    grid-template-rows: 0.35fr 0.8fr 1fr;
+    grid-template-areas: 
+    ". . "
+    "imgSpan1 ."
+    ". ."
+    ;
+}
+
+#imgSpan1 {
+    grid-area: imgSpan1;
+    margin-left: 3vw;
+}
+
+#imgBorder {
+    width: 100%;
+    height: 100%;
+    border: 7px solid rgb(255, 68, 0);
+}
+
+#img1 {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    transform: translate(3rem, 3rem);
+    transition: 1s;
+}
+
+#img1:hover {
+    transform: none;
+}
+
+/* #endregion End of container3*/
+
+
+/* #region Start of container4 */
+
+#container4 {
+    display: grid;
+    grid-area: container4;
+    background-color: blue;
+    grid-template-rows: 1fr 2fr;
+    grid-template-areas: 
+    "ourStore"
+    "productPics"
+    ;
+    justify-items: center;
+}
+
+#ourStore {
+    display: grid;
+    grid-area: ourStore;
+    background-color: blueviolet;
+    width: 100%;
+    height: 100%;
+    justify-items: center;
+    grid-template-rows: 2fr 1fr 2fr;
+    grid-template-areas: 
+    "headerSpan3"
+    "allButtons"
+    "inputSpan1"
+    ;
+}
+
+#headerSpan3 {
+    display: grid;
+    grid-area: headerSpan3;
+    align-items: flex-end;
+}
+
+#allButtons {
+    display: grid;
+    grid-area: allButtons;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
+    grid-template-areas: 
+    "a3Span a4Span a5Span a6Span"
+    ;
+    grid-gap: 2vw;
+    justify-items: center;
+    align-items: flex-start;
+    height: 100%;
+}
+
+#a3Span {
+    grid-area: a3Span;
+}
+#a4Span {
+    grid-area: a4Span;
+}
+#a5Span {
+    grid-area: a5Span;
+}
+#a6Span {
+    grid-area: a6Span;
+}
+
+#inputSpan1 {
+    margin-top: 2vh;
+    display: grid;
+    grid-area: inputSpan1;
+    justify-items: center;
+    align-items: flex-start;
+    outline: none;
+}
+
+
+#productPics {
+    display: grid;
+    grid-area: productPics;
+    background-color: chartreuse;
+    width: 100%;
+}
+/* #endregion Start of container4 */
