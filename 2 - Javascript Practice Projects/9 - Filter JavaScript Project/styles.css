@@ -23,6 +23,7 @@ a {
     color: coral;
     text-decoration: none;
     font-size: 2rem;
+    transition: 0.5s;
 }
 
 a:visited {
@@ -32,12 +33,22 @@ a:visited {
 a:hover {
     color: crimson;
     font-size: 2.1rem;
+    transition: 0.5s;
+
 }
 
-a:active {
+a:active, a:focus {
     color: rgb(255, 0, 51);
-    font-size: 2.1rem;
-    font-weight: bold;
+    font-size: 2.3rem;
+}
+
+input:focus,
+button:focus,
+input:hover,
+button:hover,
+input {
+    outline: none;
+    border: none;
 }
 /* #region Start of container1*/
 #container1 {
@@ -111,7 +122,6 @@ a:active {
 
 #basket {
     width: 60%;
-    height: 80%;
     display: grid;
     justify-items: center;
     align-items: center;
@@ -120,6 +130,315 @@ a:active {
     border: 1.5px solid black;
     border-radius: 10px;
     grid-gap: 1vw;
+    z-index: 1;
+    background-color: white;
+    cursor: pointer;
+}
+
+@keyframes basketAnimation {
+    0% {
+        bottom: 100%;
+    }
+    1% {
+        bottom: 99%;
+    }
+    2% {
+        bottom: 98%;
+    }
+    3% {
+        bottom: 97%;
+    }
+    4% {
+        bottom: 96%;
+    }
+    5% {
+        bottom: 95%;
+    }
+    6% {
+        bottom: 94%;
+    }
+    7% {
+        bottom: 93%;
+    }
+    8% {
+        bottom: 92%;
+    }
+    9% {
+        bottom: 91%;
+    }
+    10% {
+        bottom: 90%;
+    }
+    11% {
+        bottom: 89%;
+    }
+    12% {
+        bottom: 88%;
+    }
+    13% {
+        bottom: 87%;
+    }
+    14% {
+        bottom: 86%;
+    }
+    15% {
+        bottom: 85%;
+    }
+    16% {
+        bottom: 84%;
+    }
+    17% {
+        bottom: 83%;
+    }
+    18% {
+        bottom: 82%;
+    }
+    19% {
+        bottom: 81%;
+    }
+    20% {
+        bottom: 80%;
+    }
+    21% {
+        bottom: 79%;
+    }
+    22% {
+        bottom: 78%;
+    }
+    23% {
+        bottom: 77%;
+    }
+    24% {
+        bottom: 76%;
+    }
+    25% {
+        bottom: 75%;
+    }
+    26% {
+        bottom: 74%;
+    }
+    27% {
+        bottom: 73%;
+    }
+    28% {
+        bottom: 72%;
+    }
+    29% {
+        bottom: 71%;
+    }
+    30% {
+        bottom: 70%;
+    }
+    31% {
+        bottom: 69%;
+    }
+    32% {
+        bottom: 68%;
+    }
+    33% {
+        bottom: 67%;
+    }
+    34% {
+        bottom: 66%;
+    }
+    35% {
+        bottom: 65%;
+    }
+    36% {
+        bottom: 64%;
+    }
+    37% {
+        bottom: 63%;
+    }
+    38% {
+        bottom: 62%;
+    }
+    39% {
+        bottom: 61%;
+    }
+    40% {
+        bottom: 60%;
+    }
+    41% {
+        bottom: 59%;
+    }
+    42% {
+        bottom: 58%;
+    }
+    43% {
+        bottom: 57%;
+    }
+    44% {
+        bottom: 56%;
+    }
+    45% {
+        bottom: 55%;
+    }
+    46% {
+        bottom: 54%;
+    }
+    47% {
+        bottom: 53%;
+    }
+    48% {
+        bottom: 52%;
+    }
+    49% {
+        bottom: 51%;
+    }
+    50% {
+        bottom: 50%;
+    }
+    51% {
+        bottom: 49%;
+    }
+    52% {
+        bottom: 48%;
+    }
+    53% {
+        bottom: 47%;
+    }
+    54% {
+        bottom: 46%;
+    }
+    55% {
+        bottom: 45%;
+    }
+    56% {
+        bottom: 44%;
+    }
+    57% {
+        bottom: 43%;
+    }
+    58% {
+        bottom: 42%;
+    }
+    59% {
+        bottom: 41%;
+    }
+    60% {
+        bottom: 40%;
+    }
+    61% {
+        bottom: 39%;
+    }
+    62% {
+        bottom: 38%;
+    }
+    63% {
+        bottom: 37%;
+    }
+    64% {
+        bottom: 36%;
+    }
+    65% {
+        bottom: 35%;
+    }
+    66% {
+        bottom: 34%;
+    }
+    67% {
+        bottom: 33%;
+    }
+    68% {
+        bottom: 32%;
+    }
+    69% {
+        bottom: 31%;
+    }
+    70% {
+        bottom: 30%;
+    }
+    71% {
+        bottom: 29%;
+    }
+    72% {
+        bottom: 28%;
+    }
+    73% {
+        bottom: 27%;
+    }
+    74% {
+        bottom: 26%;
+    }
+    75% {
+        bottom: 25%;
+    }
+    76% {
+        bottom: 24%;
+    }
+    77% {
+        bottom: 23%;
+    }
+    78% {
+        bottom: 22%;
+    }
+    79% {
+        bottom: 21%;
+    }
+    80% {
+        bottom: 20%;
+    }
+    81% {
+        bottom: 19%;
+    }
+    82% {
+        bottom: 18%;
+    }
+    83% {
+        bottom: 17%;
+    }
+    84% {
+        bottom: 16%;
+    }
+    85% {
+        bottom: 15%;
+    }
+    86% {
+        bottom: 14%;
+    }
+    87% {
+        bottom: 13%;
+    }
+    88% {
+        bottom: 12%;
+    }
+    89% {
+        bottom: 11%;
+    }
+    90% {
+        bottom: 10%;
+    }
+    91% {
+        bottom: 9%;
+    }
+    92% {
+        bottom: 8%;
+    }
+    93% {
+        bottom: 7%;
+    }
+    94% {
+        bottom: 6%;
+    }
+    95% {
+        bottom: 5%;
+    }
+    96% {
+        bottom: 4%;
+    }
+    97% {
+        bottom: 3%;
+    }
+    98% {
+        bottom: 2%;
+    }
+    99% {
+        bottom: 2%;
+    }
+    100% {
+        bottom: 2%;
+    }
 }
 
 #icon3 {
@@ -170,7 +489,7 @@ a:active {
 }
 
 #headerSpan1 {
-    color: rgb(255, 0, 0);
+    color: white;
     display: grid;
     align-items: flex-end;
     justify-items: center;
@@ -183,7 +502,7 @@ a:active {
 }
 
 #turkish {
-    color: white;
+    color: rgb(255, 0, 0);
 }
 
 #explore {
@@ -222,7 +541,7 @@ a:active {
 #container3 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-areas: 
+    grid-template-areas:
     "aboutLeft aboutRight"
     ;
 }
@@ -232,7 +551,7 @@ a:active {
     grid-area: aboutLeft;
     grid-template-rows: 1.5fr 1fr 3fr;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-areas: 
+    grid-template-areas:
     ". headerSpan2 headerSpan2"
     ". pSpan1 pSpan1"
     ". aSpan2 ."
@@ -247,7 +566,8 @@ a:active {
 }
 
 #us {
-    color: crimson;
+    color: coral;
+    font-size: 8rem;
 }
 
 #pSpan1 {
@@ -279,11 +599,12 @@ a:active {
 }
 
 
+
 #aboutRight {
     display: grid;
     grid-area: aboutRight;
     grid-template-rows: 0.7fr 1.6fr 2fr;
-    grid-template-areas: 
+    grid-template-areas:
     ". . "
     "imgSpan1 ."
     ". ."
@@ -323,7 +644,7 @@ a:active {
     grid-area: container4;
     background-color: rgb(201, 192, 192);
     grid-template-rows: 0.15fr 1fr;
-    grid-template-areas: 
+    grid-template-areas:
     "ourStore"
     "productPics"
     ;
@@ -338,7 +659,7 @@ a:active {
     height: 100%;
     justify-items: center;
     grid-template-rows: 0.25fr 0.3fr;
-    grid-template-areas: 
+    grid-template-areas:
     "headerSpan3"
     "allButtons"
     ;
@@ -349,14 +670,20 @@ a:active {
     grid-area: headerSpan3;
     align-items: flex-end;
     height: 100%;
+    font-size: 1.5rem;
+}
+
+#store2 {
+    color: coral;
+    font-size: 6rem;
 }
 
 #allButtons {
     display: grid;
     grid-area: allButtons;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 0.25fr 0.1fr;
-    grid-template-areas: 
+    grid-template-rows: 0.25fr 0.25fr;
+    grid-template-areas:
     "a3Span a4Span a5Span a6Span"
     ". inputSpan1 inputSpan1 ."
     ;
@@ -426,26 +753,39 @@ a:active {
     outline: none;
     width: 100%;
     height: 100%;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+    "iconSpan1 input1 input1 input1"
+    ;
 }
 
 #input1 {
     border: 1px solid black;
 }
 
-input:focus,
-button:focus,
-input:hover,
-button:hover,
-input {
-    outline: none;
-    border: none;
-}
-
 #input1 {
-    width: 50%;
+    width: 100%;
     height: 100%;
+    grid-area: input1;
 }
 
+#iconSpan1 {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    justify-items: flex-end;
+    align-items: center;
+    grid-area: iconSpan1;
+}
+
+#iconSearch {
+    display: grid;
+    width: 40%;
+    height: 100%;
+    background-color: coral;
+    justify-items: center;
+    align-items: center;
+}
 
 #productPics {
     display: grid;
@@ -461,21 +801,94 @@ input {
     width: 100%;
     display: grid;
     grid-template-rows: 4fr 1fr;
-    grid-template-areas: 
+    grid-template-areas:
     "imgProduct"
     "itemNames"
     ;
+    transition: 1s;
+    position: relative;
 }
 
 .imgProduct {
     grid-area: imgProduct;
 }
 
+#shopIconSpan {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    width: 10%;
+    height: 15%;
+    position: absolute;
+    bottom: 7.1%;
+    right: -11%;
+    background-color: coral;
+    border-top-left-radius: 10px;
+    animation: shopAnimation 0.9s;
+    color: whitesmoke;
+}
+
+#shopIcon {
+    font-size: 120%;
+}
+
+@keyframes shopAnimation {
+    0% {
+        bottom: 7.1%;
+        right: -11%;
+    }
+    10% {
+        bottom: 7.7%;
+        right: -10%;
+    }
+    20% {
+        bottom: 9.3%;
+        right: -9%;
+    }
+    30% {
+        bottom: 10.9%;
+        right: -8%;
+    }
+    0% {
+        bottom: 12.5%;
+        right: -7%;
+    }
+    40% {
+        bottom: 14.1%;
+        right: -6%;
+    }
+    50% {
+        bottom: 15.7%;
+        right: -5%;
+    }
+    60% {
+        bottom: 17.3%;
+        right: -4%;
+    }
+    70% {
+        bottom: 18.9%;
+        right: -3%;
+    }
+    80% {
+        bottom: 20.5%;
+        right: -2%;
+    }
+    90% {
+        bottom: 21.1%;
+        right: -1%;
+    }
+    100% {
+        bottom: 21.7%;
+        right: 0%;
+    }
+    
+}
+
 .itemNames {
     grid-area: itemNames;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-areas: 
+    grid-template-areas:
     "nameSpan priceSpan"
     ;
     align-items: center;
@@ -497,11 +910,13 @@ input {
     margin-right: 2vh;
 }
 
-
-
 #productPics img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.product:hover {
+    transform: scale(1.3);
 }
 /* #endregion Start of container4 */

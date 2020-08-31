@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body id="body">
     <div id="container1">
         <div id="icon1">
             <i class="fa fa-ice-cream fa-3x"></i>
@@ -89,7 +89,7 @@
         <div id="ourStore">
             <div id="headerSpan3">
                 <h1 id="header3">
-                    Our Store
+                    Our <span id="store2">Store</span>
                 </h1>
             </div>
             <div id="allButtons">
@@ -122,8 +122,10 @@
                     </span>
                 </div>
                 <div id="inputSpan1">
-                    <!-- Buraya arama ikonu koy  -->
-                    <input id="input1" type="search" name="" id="">
+                    <span id="iconSpan1">
+                        <i id="iconSearch" class="fas fa-search"></i>
+                    </span>
+                    <input id="input1" type="search" name="" id="" placeholder="Search a Dessert">
                 </div>
             </div>
             
@@ -175,6 +177,9 @@
             <div class="product" id="product4">
                 <div class="imgProduct">
                     <img src="./Images/MainBackground.jpg" alt="" id="img2" class="productImages">
+                    <span id="shopIconSpan">
+                        <i id="shopIcon" class="fa fa-shopping-cart fa-2x"></i>
+                    </span>
                 </div>
                 <div class="itemNames">
                     <div class="nameSpan">
