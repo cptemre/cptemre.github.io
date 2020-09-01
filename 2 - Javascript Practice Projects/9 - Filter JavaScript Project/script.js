@@ -9,14 +9,17 @@ window.addEventListener("scroll", function () {
     basket.style.bottom = "2%";
     basket.style.right = "3.5%";
     basket.style.width = "13%";
-    basket.style.animation = "basketAnimation 3s ease-out";
+    basket.style.animation = "basketAnimation 1s ease-out";
 })
 
-// var i;
-// for (i = 0; i < product.length; i++) {
-//     var x =document.getElementById(product + i);
-//     x.addEventListener("mouseover", function () {  
-//         x.style.zIndex = 4;
-//     })
-// }
-// console.log(product + i);
+var shopIconSpan = document.getElementById("shopIconSpan");
+
+var scale = document.getElementById("scale");
+
+scale.addEventListener("mouseover", function () {  
+    shopIconSpan.style.animation = "shopAnimation1 0.5s forwards";
+})
+
+scale.addEventListener("mouseout", function () {  
+    shopIconSpan.style.animation = "shopAnimation2 0.5s forwards";
+})

@@ -811,6 +811,34 @@ input {
 
 .imgProduct {
     grid-area: imgProduct;
+    overflow: hidden;
+}
+
+#scale {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    animation: scaleAnimation2 0.5s forwards;
+}
+#scale:hover{
+    animation: scaleAnimation1 0.5s forwards;
+}
+
+@keyframes scaleAnimation1 {
+    from {
+        transform: scale(1.0);
+    }
+    to {
+        transform: scale(1.2);
+    }
+}
+@keyframes scaleAnimation2 {
+    from {
+        transform: scale(1.2);
+    }
+    to {
+        transform: scale(1.0);
+    }
 }
 
 #shopIconSpan {
@@ -818,13 +846,12 @@ input {
     justify-items: center;
     align-items: center;
     width: 10%;
-    height: 15%;
+    height: 18%;
     position: absolute;
-    bottom: 7.1%;
-    right: -11%;
+    bottom: -10%;
+    right: -10%;
     background-color: coral;
     border-top-left-radius: 10px;
-    animation: shopAnimation 0.9s;
     color: whitesmoke;
 }
 
@@ -832,56 +859,26 @@ input {
     font-size: 120%;
 }
 
-@keyframes shopAnimation {
-    0% {
-        bottom: 7.1%;
-        right: -11%;
-    }
-    10% {
-        bottom: 7.7%;
+@keyframes shopAnimation1 {
+    from {
+        bottom: -10%;
         right: -10%;
     }
-    20% {
-        bottom: 9.3%;
-        right: -9%;
+    to {
+        bottom: 8%;
+        right: 8%;
     }
-    30% {
-        bottom: 10.9%;
-        right: -8%;
+}
+
+@keyframes shopAnimation2 {
+    from {
+        bottom: 8%;
+        right: 8%;
     }
-    0% {
-        bottom: 12.5%;
-        right: -7%;
+    to {
+        bottom: -10%;
+        right: -10%;
     }
-    40% {
-        bottom: 14.1%;
-        right: -6%;
-    }
-    50% {
-        bottom: 15.7%;
-        right: -5%;
-    }
-    60% {
-        bottom: 17.3%;
-        right: -4%;
-    }
-    70% {
-        bottom: 18.9%;
-        right: -3%;
-    }
-    80% {
-        bottom: 20.5%;
-        right: -2%;
-    }
-    90% {
-        bottom: 21.1%;
-        right: -1%;
-    }
-    100% {
-        bottom: 21.7%;
-        right: 0%;
-    }
-    
 }
 
 .itemNames {
@@ -916,7 +913,4 @@ input {
     object-fit: cover;
 }
 
-.product:hover {
-    transform: scale(1.3);
-}
 /* #endregion Start of container4 */
