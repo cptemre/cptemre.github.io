@@ -13,6 +13,7 @@ body {
     width: 100%;
     height: 100%;
     font-family: 'Dancing Script', cursive;
+    background-color: gray;
 }
 
 a,h1,button,p,i {
@@ -42,14 +43,7 @@ a:active, a:focus {
     font-size: 2.3rem;
 }
 
-input:focus,
-button:focus,
-input:hover,
-button:hover,
-input {
-    outline: none;
-    border: none;
-}
+
 /* #region Start of container1*/
 #container1 {
     grid-area: container1;
@@ -544,6 +538,7 @@ input {
     grid-template-areas:
     "aboutLeft aboutRight"
     ;
+    background-color: rgb(247, 247, 247);
 }
 
 #aboutLeft {
@@ -650,6 +645,7 @@ input {
     ;
     justify-items: center;
     grid-gap: 5vh;
+    margin-bottom: 5vh;
 }
 
 #ourStore {
@@ -722,14 +718,14 @@ input {
 }
 
 .btnLast:hover {
-    background-color: black;
-    color: pink;
+    background-color: black !important;
+    color: pink !important;
 }
 
-.btnLast:active, .btnLast1:focus {
+/* .btnLast:active, .btnLast:focus{
     background-color: black;
     color: red;
-}
+} */
 
 #a3Span {
     grid-area: a3Span;
@@ -814,13 +810,13 @@ input {
     overflow: hidden;
 }
 
-#scale {
+.scale {
     width: 100%;
     height: 100%;
     position: relative;
     animation: scaleAnimation2 0.5s forwards;
 }
-#scale:hover{
+.scale:hover{
     animation: scaleAnimation1 0.5s forwards;
 }
 
@@ -841,7 +837,7 @@ input {
     }
 }
 
-#shopIconSpan {
+.shopIconSpan {
     display: grid;
     justify-items: center;
     align-items: center;
@@ -853,10 +849,7 @@ input {
     background-color: coral;
     border-top-left-radius: 10px;
     color: whitesmoke;
-}
-
-#shopIcon {
-    font-size: 120%;
+    font-size: 100%;
 }
 
 @keyframes shopAnimation1 {
