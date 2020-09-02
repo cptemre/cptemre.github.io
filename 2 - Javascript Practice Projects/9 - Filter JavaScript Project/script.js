@@ -20,6 +20,8 @@ var itemNumber = document.getElementById("itemNumber");
 
 var dollar = document.getElementById("dollar");
 
+var price = document.getElementsByClassName("price");
+
 // #region Basket icon animation when scroll down
 
 window.addEventListener("scroll", function () {  
@@ -134,19 +136,32 @@ for (let i = 0; i < btnLast.length; i++) {
     })
 }
 // #endregion Our store buttons' colors
-for (let i = 0; i < shopIconSpan.length; i++) {
-    
-    
-    shopIconSpan[i].addEventListener("click", function () {
-        var name = document.getElementsByClassName("name");  
-        item.innerHTML = " " + name[i].innerHTML;
-    })
-}
+// Bunu isim eklemek için kullan
+// for (let i = 0; i < shopIconSpan.length; i++) {
+//     shopIconSpan[i].addEventListener("click", function () {
+//         var name = document.getElementsByClassName("name");  
+//         item.innerHTML = " " + name[i].innerHTML;
+//     })
+// }
 
 for (let i = 0; i < shopIconSpan.length; i++) {
     shopIconSpan[i].addEventListener("click", function () {
         itemNumber.innerHTML++;
-
     })
-    
+}
+var x = Number(dollar.innerHTML);
+alert(typeof(x));
+for (let i = 0; i < shopIconSpan.length; i++) {
+    shopIconSpan[i].addEventListener("click", function () {
+        var name = document.getElementsByClassName("name");  
+        var p = Number(price[i].innerHTML);
+
+        x += p;
+        function round(value, decimals) {
+            return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+        }
+        x = round(x,2);
+        dollar.innerHTML = x;
+    })
+
 }
