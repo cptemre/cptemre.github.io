@@ -14,6 +14,8 @@ body {
     height: 100%;
     font-family: 'Dancing Script', cursive;
     background-color: gray;
+    justify-items: center;
+    align-items: center;
 }
 
 a,h1,button,p,i {
@@ -42,7 +44,6 @@ a:active, a:focus {
     color: rgb(255, 0, 51);
     font-size: 2.3rem;
 }
-
 
 /* #region Start of container1*/
 #container1 {
@@ -442,7 +443,12 @@ a:active, a:focus {
     align-items: center;
     justify-items: flex-end;
 }
-
+.lastNames {
+    display: none;
+}
+.lastNumbers {
+    display: none;
+}
 #icon3Transform {
     display: grid;
     align-items: center;
@@ -891,6 +897,11 @@ a:active, a:focus {
     grid-area: nameSpan;
     justify-items: flex-start;
     margin-left: 2vh;
+}
+
+.lastItems {
+    display: none;
+    width: 100%;
 }
 
 .priceSpan {
