@@ -459,7 +459,7 @@ a:active, a:focus {
     width: 100%;
     height: 100%;
     display: grid;
-    justify-items: flex-start;
+    justify-items: center;
     align-items: center;
 }
 /* #endregion End of first container */
@@ -651,7 +651,7 @@ a:active, a:focus {
     ;
     justify-items: center;
     grid-gap: 5vh;
-    margin-bottom: 5vh;
+    margin-bottom: 17vh;
 }
 
 #ourStore {
@@ -902,8 +902,24 @@ a:active, a:focus {
 .lastItems {
     display: none;
     width: 100%;
+    height: 100%;
 }
 
+#lastIcons {
+    display: none;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    align-items: flex-end;
+    width: 100%;
+    height: 100%;
+}
+
+#check {
+    color: green;
+}
+#cancel {
+    color: red;
+}
 .priceSpan {
     display: grid;
     grid-area: priceSpan;

@@ -30,6 +30,11 @@ window.addEventListener("scroll", function () {
     basket.style.right = "3.5%";
     basket.style.width = "13%";
     basket.style.animation = "basketAnimation 1s ease-out";
+    basket.style.gridTemplateColumns = "1fr";
+    lastIcons.style.display = "grid";
+    icon3.style.display = "grid";
+    icon3.style.justifyItems = "center";
+
 })
 // #endregion Basket icon animation when scroll down
 
@@ -140,6 +145,7 @@ for (let i = 0; i < btnLast.length; i++) {
 
 var lastNames = document.getElementsByClassName("lastNames");
 //Bunu isim eklemek için kullan
+
 for (let i = 0; i < shopIconSpan.length; i++) {
     var count = 0
     var name = document.getElementsByClassName("name"); 
@@ -148,17 +154,17 @@ for (let i = 0; i < shopIconSpan.length; i++) {
     shopIconSpan[i].addEventListener("click", function () {
         var name = document.getElementsByClassName("name"); 
         var allNames = name[i].innerHTML;
+
         lastNames[count].innerHTML = allNames;
         lastNames[count].style.display = "block";
         lastNumbers[count].style.display = "block";
-
-        lastItems[count].style.display = "grid";
+        
+        lastItems[count].style.display = "none";
         lastItems[count].style.gridTemplateColumns = "1fr 1fr";
         lastItems[count].style.alignItems = "center";
         lastItems[count].style.justifyItems = "center";
 
         basket.style.gridTemplateColumns = "1fr";
-        icon3.remove();
         items.style.alignItems = "flex-start";
         items.style.justifyItems = "center";
         count++;
@@ -199,17 +205,45 @@ for (let i = 0; i < shopIconSpan.length; i++) {
 var items = document.getElementById("items");
 var icon3 = document.getElementById("icon3");
 var icon3Transform = document.getElementById("icon3Transform");
-basket.addEventListener("click", function () {  
-    
-    basket.style.height = "80%";
-    basket.style.width = "20%";
+var lastIcons = document.getElementById("lastIcons");
+var mainItem = document.getElementById("mainItem");
+basket.addEventListener("click", function () {          
+    basket.style.height = "95%";
+    basket.style.width = "13%";
     basket.style.gridTemplateColumns = "1fr";
-    
+
     basket.style.gridTemplateRows = "auto";
     icon3.remove();
     items.style.alignItems = "flex-start";
     items.style.justifyItems = "center";
+    basket.style.alignItems = "flex-start";
+
+    lastIcons.style.display = "grid";
+    for (let i = 0; i < lastItems.length; i++) {
+        lastItems[i].style.display = "grid";
+    }
 })
+
+var containers = document.getElementsByClassName("containers");
+
+for (let i = 0; i < containers.length; i++) {
+    containers[i].addEventListener("click", function () {
+        basket.style.height = "21.4%";
+        lastIcons.style.display = "grid";
+    })
+}
+
+var check = document.getElementById("check");
+var cancel = document.getElementById("cancel");
+cancel.addEventListener("click", function () {  
+    for (let i = 0; i < lastItems.length; i++) {
+        lastItems[i].remove();
+        item.innerHTML = " Item";
+        itemNumber.innerHTML = 0;
+        dollar.innerHTML = 0;
+    }
+})
+
 // for break line
 // var br = document.createElement("br");
 //     basket.appendChild(br);
