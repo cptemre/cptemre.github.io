@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     display: grid;
-    grid-template-rows: 10vh 90vh 120vh auto;
+    grid-template-rows: 10vh 90vh 120vh auto 15vh;
     overflow-x: hidden;
     grid-template-areas:
     "container1"
@@ -13,8 +13,6 @@ body {
     width: 100%;
     height: 100%;
     font-family: 'Dancing Script', cursive;
-    background-color: gray;
-    justify-items: center;
     align-items: center;
 }
 
@@ -68,6 +66,7 @@ a:active, a:focus {
     margin-left: 5vw;
     color: coral;
 }
+
 
 #links {
     width: 70%;
@@ -131,308 +130,11 @@ a:active, a:focus {
 }
 
 @keyframes basketAnimation {
-    0% {
-        bottom: 100%;
-    }
-    1% {
-        bottom: 99%;
-    }
-    2% {
-        bottom: 98%;
-    }
-    3% {
-        bottom: 97%;
-    }
-    4% {
-        bottom: 96%;
-    }
-    5% {
-        bottom: 95%;
-    }
-    6% {
-        bottom: 94%;
-    }
-    7% {
-        bottom: 93%;
-    }
-    8% {
-        bottom: 92%;
-    }
-    9% {
-        bottom: 91%;
-    }
-    10% {
-        bottom: 90%;
-    }
-    11% {
-        bottom: 89%;
-    }
-    12% {
-        bottom: 88%;
-    }
-    13% {
-        bottom: 87%;
-    }
-    14% {
-        bottom: 86%;
-    }
-    15% {
-        bottom: 85%;
-    }
-    16% {
-        bottom: 84%;
-    }
-    17% {
-        bottom: 83%;
-    }
-    18% {
-        bottom: 82%;
-    }
-    19% {
-        bottom: 81%;
-    }
-    20% {
-        bottom: 80%;
-    }
-    21% {
-        bottom: 79%;
-    }
-    22% {
-        bottom: 78%;
-    }
-    23% {
-        bottom: 77%;
-    }
-    24% {
-        bottom: 76%;
-    }
-    25% {
-        bottom: 75%;
-    }
-    26% {
-        bottom: 74%;
-    }
-    27% {
-        bottom: 73%;
-    }
-    28% {
-        bottom: 72%;
-    }
-    29% {
-        bottom: 71%;
-    }
-    30% {
+    from {
         bottom: 70%;
     }
-    31% {
-        bottom: 69%;
-    }
-    32% {
-        bottom: 68%;
-    }
-    33% {
-        bottom: 67%;
-    }
-    34% {
-        bottom: 66%;
-    }
-    35% {
-        bottom: 65%;
-    }
-    36% {
-        bottom: 64%;
-    }
-    37% {
-        bottom: 63%;
-    }
-    38% {
-        bottom: 62%;
-    }
-    39% {
-        bottom: 61%;
-    }
-    40% {
-        bottom: 60%;
-    }
-    41% {
-        bottom: 59%;
-    }
-    42% {
-        bottom: 58%;
-    }
-    43% {
-        bottom: 57%;
-    }
-    44% {
-        bottom: 56%;
-    }
-    45% {
-        bottom: 55%;
-    }
-    46% {
-        bottom: 54%;
-    }
-    47% {
-        bottom: 53%;
-    }
-    48% {
-        bottom: 52%;
-    }
-    49% {
-        bottom: 51%;
-    }
-    50% {
-        bottom: 50%;
-    }
-    51% {
-        bottom: 49%;
-    }
-    52% {
-        bottom: 48%;
-    }
-    53% {
-        bottom: 47%;
-    }
-    54% {
-        bottom: 46%;
-    }
-    55% {
-        bottom: 45%;
-    }
-    56% {
-        bottom: 44%;
-    }
-    57% {
-        bottom: 43%;
-    }
-    58% {
-        bottom: 42%;
-    }
-    59% {
-        bottom: 41%;
-    }
-    60% {
-        bottom: 40%;
-    }
-    61% {
-        bottom: 39%;
-    }
-    62% {
-        bottom: 38%;
-    }
-    63% {
-        bottom: 37%;
-    }
-    64% {
-        bottom: 36%;
-    }
-    65% {
-        bottom: 35%;
-    }
-    66% {
-        bottom: 34%;
-    }
-    67% {
-        bottom: 33%;
-    }
-    68% {
-        bottom: 32%;
-    }
-    69% {
-        bottom: 31%;
-    }
-    70% {
-        bottom: 30%;
-    }
-    71% {
-        bottom: 29%;
-    }
-    72% {
-        bottom: 28%;
-    }
-    73% {
-        bottom: 27%;
-    }
-    74% {
-        bottom: 26%;
-    }
-    75% {
-        bottom: 25%;
-    }
-    76% {
-        bottom: 24%;
-    }
-    77% {
-        bottom: 23%;
-    }
-    78% {
-        bottom: 22%;
-    }
-    79% {
-        bottom: 21%;
-    }
-    80% {
-        bottom: 20%;
-    }
-    81% {
-        bottom: 19%;
-    }
-    82% {
-        bottom: 18%;
-    }
-    83% {
-        bottom: 17%;
-    }
-    84% {
-        bottom: 16%;
-    }
-    85% {
-        bottom: 15%;
-    }
-    86% {
-        bottom: 14%;
-    }
-    87% {
-        bottom: 13%;
-    }
-    88% {
-        bottom: 12%;
-    }
-    89% {
-        bottom: 11%;
-    }
-    90% {
-        bottom: 10%;
-    }
-    91% {
-        bottom: 9%;
-    }
-    92% {
-        bottom: 8%;
-    }
-    93% {
-        bottom: 7%;
-    }
-    94% {
-        bottom: 6%;
-    }
-    95% {
-        bottom: 5%;
-    }
-    96% {
-        bottom: 4%;
-    }
-    97% {
+    to {
         bottom: 3%;
-    }
-    98% {
-        bottom: 2%;
-    }
-    99% {
-        bottom: 2%;
-    }
-    100% {
-        bottom: 2%;
     }
 }
 
@@ -468,7 +170,7 @@ a:active, a:focus {
 
 #container2 {
     grid-area: container2;
-    background: linear-gradient(rgba(49, 49, 49, 0.5), rgba(102, 100, 100, 0.5)), url(./Images/MainBackground.jpg);
+    background: linear-gradient(rgba(49, 49, 49, 0.5), rgba(102, 100, 100, 0.5)), url(./Images/About_Us.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -651,7 +353,6 @@ a:active, a:focus {
     ;
     justify-items: center;
     grid-gap: 5vh;
-    margin-bottom: 17vh;
 }
 
 #ourStore {
@@ -762,13 +463,25 @@ a:active, a:focus {
 }
 
 #input1 {
-    border: 1px solid black;
-}
-
-#input1 {
     width: 100%;
     height: 100%;
     grid-area: input1;
+    border: 1px solid black;
+    text-transform: uppercase;
+    padding-left: 1vw;
+    font-family: 'Dancing Script', cursive;
+    border: 1px solid coral;
+    outline: none;
+
+}
+
+#input1::placeholder {
+    font-family: 'Dancing Script', cursive;
+    padding-left: 1vw;
+}
+
+#input1:active, #input1:focus {
+    border: 2px solid coral;
 }
 
 #iconSpan1 {
@@ -787,6 +500,16 @@ a:active, a:focus {
     background-color: coral;
     justify-items: center;
     align-items: center;
+    transition: 0.5s;
+}
+
+#iconSearch:hover {
+    background: orangered;
+    color: white;
+}
+
+#iconSearch:active, #iconSearch:focus {
+    font-size: 120%;
 }
 
 #productPics {
@@ -796,6 +519,7 @@ a:active, a:focus {
     height: 50%;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 4vh;
+    margin-bottom: 5.7vh;
 }
 
 .product {
@@ -897,6 +621,7 @@ a:active, a:focus {
     grid-area: nameSpan;
     justify-items: flex-start;
     margin-left: 2vh;
+    font-size: 1.5rem;
 }
 
 .lastItems {
@@ -907,7 +632,7 @@ a:active, a:focus {
 
 #lastIcons {
     display: none;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     justify-items: center;
     align-items: flex-end;
     width: 100%;
@@ -915,11 +640,9 @@ a:active, a:focus {
 }
 
 #check {
-    color: green;
+    color: rgb(0, 128, 0);
 }
-#cancel {
-    color: red;
-}
+
 .priceSpan {
     display: grid;
     grid-area: priceSpan;
@@ -933,4 +656,18 @@ a:active, a:focus {
     object-fit: cover;
 }
 
-/* #endregion Start of container4 */
+/* #endregion End of container4 */
+
+/* #region Start of container5 */
+#container5 {
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgb(192, 185, 176), rgb(201, 95, 68));
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: flex-end;
+}
+#container5 p {
+    margin: 1.5vh;
+}
+/* #endregion Start of container5 */

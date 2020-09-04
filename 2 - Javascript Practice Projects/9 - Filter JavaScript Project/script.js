@@ -52,10 +52,11 @@ for (let i = 0; i < scale.length; i++) {
 }
 // #endregion Shop icon iteration for all images in last container
 
-
 // #region Our store buttons' colors
 for (let i = 0; i < btnLast.length; i++) {
     btnLast[i].addEventListener("click", function () {
+        itemNames[i].style.display = "grid";
+
         switch (i) {
             case 0:
                 btnLast[i].style.background = "white";
@@ -111,6 +112,7 @@ for (let i = 0; i < btnLast.length; i++) {
                     sherbet[i].style.display = "none";
                     ice[i].style.display = "grid";
                     milky[i].style.display = "none";
+                    itemNames[i].style.display = "grid";
                 }
 
                 break;
@@ -131,6 +133,7 @@ for (let i = 0; i < btnLast.length; i++) {
                     sherbet[i].style.display = "none";
                     ice[i].style.display = "none";
                     milky[i].style.display = "grid";
+                    itemNames[i].style.display = "grid";
                 }
 
                 break;
@@ -141,6 +144,7 @@ for (let i = 0; i < btnLast.length; i++) {
     })
 }
 // #endregion Our store buttons' colors
+
 
 
 var lastNames = document.getElementsByClassName("lastNames");
@@ -167,6 +171,7 @@ for (let i = 0; i < shopIconSpan.length; i++) {
         basket.style.gridTemplateColumns = "1fr";
         items.style.alignItems = "flex-start";
         items.style.justifyItems = "center";
+
         count++;
 
     })
@@ -230,33 +235,86 @@ for (let i = 0; i < containers.length; i++) {
     containers[i].addEventListener("click", function () {
         basket.style.height = "21.4%";
         lastIcons.style.display = "grid";
+        for (let i = 0; i < lastItems.length; i++) {
+            lastItems[i].style.display = "none";
+        }
     })
 }
 
 var check = document.getElementById("check");
-var cancel = document.getElementById("cancel");
-cancel.addEventListener("click", function () {  
-    for (let i = 0; i < lastItems.length; i++) {
-        lastItems[i].remove();
-        item.innerHTML = " Item";
-        itemNumber.innerHTML = 0;
-        dollar.innerHTML = 0;
+check.addEventListener("click",function () {
+    var txt;
+    var name = prompt("Please enter your name");
+    var address = prompt("Please enter your address");
+    
+    if (name == null || name == "") {
+        alert("Please enter a valid name");
+    } else if (address == null || address == "") {
+        alert("Please enter a valid address");
+    }
+    else {
+        alert("Your order has taken");
     }
 })
 
-// for break line
-// var br = document.createElement("br");
-//     basket.appendChild(br);
+// Search autocomplete JQuery
 
-// var items = document.getElementById("items");
-// var icon3 = document.getElementById("icon3");
-// basket.addEventListener("click", function () {  
-//     var newP1 = document.createElement("p");
-//     var node1 = document.createTextNode("New para");
-//     newP1.appendChild(node1);
-    
-//     basket.insertBefore(newP1, items);
-//     basket.style.height = "80%";
-//     items.style.display = "inline-block";
-//     icon3.style.display = "none";
-// })
+$("#input1").click(function () {
+    var name = document.getElementsByClassName("name");  
+    var availableTags = [];
+    for (let i = 0; i < name.length; i++) {
+        availableTags.push(name[i].innerHTML);
+        
+    }
+    $( "#input1" ).autocomplete({
+        source: availableTags
+    });
+} );
+
+var input1 = document.getElementById("input1");
+var itemNames = document.getElementsByClassName("itemNames");
+input1.addEventListener("keyup", function (event)
+{
+
+    var name = document.getElementsByClassName("name");  
+    var availableTags = [];
+    var itemNamesNew = [];
+    var newProduct = [];
+    for (let i = 0; i < name.length; i++) {
+        availableTags.push(name[i].innerHTML);
+        itemNamesNew.push(itemNames[i]);
+        newProduct.push(product[i]);
+        if (event.keyCode === 13) {
+            newProduct[i].style.display = "none";
+            if (input1.value == availableTags[i]) {
+                itemNamesNew[i].style.display = "grid";
+                newProduct[i].style.display = "grid";
+                
+            }
+        }
+        
+    }
+})
+
+var iconSearch = document.getElementById("iconSearch");
+
+iconSearch.addEventListener("click",function () {  
+    var name = document.getElementsByClassName("name");  
+    var availableTags = [];
+    var itemNamesNew = [];
+    var newProduct = [];
+    for (let i = 0; i < name.length; i++) {
+        availableTags.push(name[i].innerHTML);
+        itemNamesNew.push(itemNames[i]);
+        newProduct.push(product[i]);
+        
+        newProduct[i].style.display = "none";
+            if (input1.value == availableTags[i]) {
+                itemNamesNew[i].style.display = "grid";
+                newProduct[i].style.display = "grid";
+                
+            }
+        }
+        
+    }
+)

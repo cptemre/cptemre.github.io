@@ -1,14 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Filter JavaScript Project</title>
     <link rel="stylesheet" href="./styles.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
         integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./jquery-ui/jquery-ui.structure.css">
+    <link rel="stylesheet" href="./jquery-ui/jquery-ui.theme.css">
+    <link rel="stylesheet" href="./jquery-ui/jquery-ui.css">
 </head>
 
 <body id="body">
@@ -18,13 +22,13 @@
         </div>
         <div id="links">
             <div id="home">
-                <a href="">Home</a>
+                <a href="#container2">Home</a>
             </div>
             <div id="about">
-                <a href="">About</a>
+                <a href="#container3">About</a>
             </div>
             <div id="store">
-                <a href="">Store</a>
+                <a href="#container4">Store</a>
             </div>
         </div>
         <div id="phone">
@@ -88,7 +92,7 @@
 
                 <div id="lastIcons">
                     <i id="check" class="far fa-check-square fa-3x"></i>
-                    <i id="cancel" class="far fa-window-close fa-3x"></i>
+                    
                 </div>
             </div>
         </div>
@@ -103,7 +107,7 @@
             </div>
             <div id="explore">
                 <div id="aSpan1">
-                    <a id="a1" href="">Discover</a>
+                    <a id="a1" href="#input1">Discover</a>
                 </div>
             </div>
         </div>
@@ -121,7 +125,7 @@
                     eveniet adipisci a in tenetur! Ducimus, tempore ullam quam error aliquid deleniti.</p>
             </div>
             <div id="aSpan2">
-                <a id="a2" href="">Discover</a>
+                <a id="a2" href="#input1">Discover</a>
             </div>
         </div>
         <div id="aboutRight">
@@ -174,7 +178,7 @@
                     <span id="iconSpan1">
                         <i id="iconSearch" class="fas fa-search"></i>
                     </span>
-                    <input id="input1" type="search" name="" id="" placeholder="Search a Dessert">
+                    <input id="input1" type="search" name="" placeholder="Search a Dessert">
                 </div>
             </div>
             
@@ -410,6 +414,11 @@
             </div>
         </div>
     </div>
+    <div class="containers" id="container5">
+        <p>All rights reserved <span>&#169;</span></p>
+    </div>
+    <script src="./jquery.js"></script>
+    <script src="./jquery-ui/jquery-ui.js"></script>
     <script src="./script.js"></script>
 </body>
 
