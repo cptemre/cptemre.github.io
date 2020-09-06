@@ -22,19 +22,63 @@ var dollar = document.getElementById("dollar");
 
 var price = document.getElementsByClassName("price");
 
+var mediaQuery1200 = window.matchMedia("(max-width: 1200px)");
+var mediaQuery950 = window.matchMedia("(max-width: 950px)")
+
+var items = document.getElementById("items");
+var icon3 = document.getElementById("icon3");
+var icon3Transform = document.getElementById("icon3Transform");
+var lastIcons = document.getElementById("lastIcons");
+var mainItem = document.getElementById("mainItem");
+
+
 // #region Basket icon animation when scroll down
 
-window.addEventListener("scroll", function () {  
-    basket.style.position = "fixed";
-    basket.style.bottom = "2%";
-    basket.style.right = "3.5%";
-    basket.style.width = "13%";
-    basket.style.animation = "basketAnimation 1s ease-out";
-    basket.style.gridTemplateColumns = "1fr";
-    lastIcons.style.display = "grid";
-    icon3.style.display = "grid";
-    icon3.style.justifyItems = "center";
-
+window.addEventListener("scroll", function () {
+        
+    if (mediaQuery950.matches) {
+        basket.style.cssText = "right: 3% !important; transform: translateX(0%) !important; width: 20% !important";
+        basket.style.position = "fixed";
+        basket.style.animation = "basketAnimation 1s ease-out forwards";
+        basket.style.gridTemplateColumns = "1fr";
+        lastIcons.style.display = "grid";
+        icon3.style.display = "grid";
+        icon3.style.justifyItems = "center";
+    } 
+    else if (mediaQuery1200.matches) {
+        basket.style.cssText = "right: 3%; transform: translateX(0%) !important; width: 15% !important";
+        basket.style.position = "fixed";
+        basket.style.animation = "basketAnimation 1s ease-out forwards";
+        basket.style.gridTemplateColumns = "1fr";
+        lastIcons.style.display = "grid";
+        icon3.style.display = "grid";
+        icon3.style.justifyItems = "center";
+    }
+    else {
+        basket.style.cssText = "right: 3%; transform: translateX(0%) !important; width: 15% !important";
+        basket.style.position = "fixed";
+        basket.style.animation = "basketAnimation 1s ease-out forwards";
+        basket.style.gridTemplateColumns = "1fr";
+        lastIcons.style.display = "grid";
+        icon3.style.display = "grid";
+        icon3.style.justifyItems = "center";
+    }
+    basket.addEventListener("click", function () {          
+        basket.style.height = "95%";
+        basket.style.width = "13%";
+        basket.style.gridTemplateColumns = "1fr";
+    
+        basket.style.gridTemplateRows = "auto";
+        icon3.remove();
+        items.style.alignItems = "flex-start";
+        items.style.justifyItems = "center";
+        basket.style.alignItems = "flex-start";
+    
+        lastIcons.style.display = "grid";
+        for (let i = 0; i < lastItems.length; i++) {
+            lastItems[i].style.display = "grid";
+        }
+    })
 })
 // #endregion Basket icon animation when scroll down
 
@@ -148,7 +192,7 @@ for (let i = 0; i < btnLast.length; i++) {
 
 
 var lastNames = document.getElementsByClassName("lastNames");
-//Bunu isim eklemek için kullan
+// To add name
 
 for (let i = 0; i < shopIconSpan.length; i++) {
     var count = 0
@@ -207,27 +251,6 @@ for (let i = 0; i < shopIconSpan.length; i++) {
         dollar.innerHTML = " " + x;
     })
 }
-var items = document.getElementById("items");
-var icon3 = document.getElementById("icon3");
-var icon3Transform = document.getElementById("icon3Transform");
-var lastIcons = document.getElementById("lastIcons");
-var mainItem = document.getElementById("mainItem");
-basket.addEventListener("click", function () {          
-    basket.style.height = "95%";
-    basket.style.width = "13%";
-    basket.style.gridTemplateColumns = "1fr";
-
-    basket.style.gridTemplateRows = "auto";
-    icon3.remove();
-    items.style.alignItems = "flex-start";
-    items.style.justifyItems = "center";
-    basket.style.alignItems = "flex-start";
-
-    lastIcons.style.display = "grid";
-    for (let i = 0; i < lastItems.length; i++) {
-        lastItems[i].style.display = "grid";
-    }
-})
 
 var containers = document.getElementsByClassName("containers");
 
@@ -312,9 +335,36 @@ iconSearch.addEventListener("click",function () {
             if (input1.value == availableTags[i]) {
                 itemNamesNew[i].style.display = "grid";
                 newProduct[i].style.display = "grid";
-                
             }
         }
-        
     }
 )
+var body = document.getElementById("body");
+var links = document.getElementById("links");
+var menu = document.getElementById("menu");
+var phone = document.getElementById("phone");
+var clicks = 0
+
+$("#menu").click(function () { 
+
+    if (clicks == 0) {
+        $("#links").fadeIn(1500);
+        $("#phone").fadeIn(1500);
+        links.style.cssText = "display: grid !important";
+        body.style.gridTemplateRows = "40vh 90vh 120vh auto 15vh";
+        phone.style.cssText = "display: grid !important";
+        console.log(clicks);
+        clicks++;
+    } else {
+        $("#links").fadeOut();
+        $("#phone").fadeOut();
+        links.style.cssText = "display: none !important";
+        body.style.gridTemplateRows = "10vh 90vh 120vh auto 15vh";
+        phone.style.cssText = "display: none !important";
+        console.log(clicks);
+        clicks--;
+    }    
+});
+    
+    
+
