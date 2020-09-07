@@ -61,3 +61,39 @@ body {
     height: 25%;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+
+@media (max-width: 400px) {
+    body {
+        grid-template-rows: 1fr 2fr 2fr 1fr;
+        grid-template-columns: 0.5fr 4fr 4fr 0.5fr;
+        grid-template-areas: 
+        ". . . ."
+        ". container container ."
+        ". container container ."
+        ". . . ."
+        ;
+    }
+}
+@media (max-width: 290px) {
+    body {
+        grid-template-columns: 0.1fr 4fr 4fr 0.1fr;
+        overflow-x: hidden;
+    }
+    #header {
+        font-size: 1.3rem;   
+    }
+    .buttons {
+        width: 80%;
+        height: 50%;
+        text-align: center;
+        padding: 0;
+    }
+    #btn1 {
+        width: 100%;
+        font-size: 0.7rem;
+    }
+    #btn2 {
+        width: 100%;
+        font-size: 0.7rem;
+    }
+}

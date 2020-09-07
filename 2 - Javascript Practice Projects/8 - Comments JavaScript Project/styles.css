@@ -18,6 +18,7 @@ body {
     background: linear-gradient(rgba(0, 0, 0, 0.479), rgba(102, 99, 99, 0.527)), url(./Restaurant_Wallpaper.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
+    background-position: center;
     background-size: cover;
     position: relative;
 }
@@ -244,4 +245,77 @@ body {
     font-size: 1.5rem;
     text-align: center;
     min-width: 100%;
+}
+
+@media (max-width: 940px) {
+    .buttons {
+        width: 50% !important;
+    }
+}
+@media (max-width: 590px) {
+    body {
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        grid-template-rows: 0.3fr 2fr 3fr 0.5fr;
+        grid-template-columns: 1fr 3fr 1fr;
+        justify-items: center;
+        align-items: center;
+        grid-template-areas: 
+        ". . ."
+        "container0 container0 container0"
+        "container0 container0 container0"
+        ". . ."
+        ;
+    }
+    #container0 {
+        width: 100%;
+    }
+    #container2 {
+        display: grid;
+        grid-area: container2;
+        justify-content: center;
+        align-items: center;
+        grid-template-rows: 1fr 2fr 1fr;
+        grid-template-columns: 1fr 2fr 2fr 1fr;
+        grid-template-areas: 
+        ". heading3 heading3 ."
+        ". heading4 heading4 ."
+        ". button1 button2 ."
+        ;
+        width: 100%;
+        height: 100%;
+        border: 5px solid black;
+        background: linear-gradient(rgba(221, 189, 118, 0.479), rgba(255, 69, 0, 0.479));
+    }
+    #button2 {
+        align-items: flex-end;
+        transform: translateX(5rem);
+        transform: translateY(2rem);
+        height: 150%;
+    }
+    #button1 {
+        align-items: flex-end;
+        transform: translateX(5rem);
+        transform: translateY(2rem);
+        height: 150%;
+    }
+}
+@media (max-width: 280px) {
+    #button2 {
+        align-items: flex-end;
+        justify-items: center !important;
+        transform: translateX(10rem) !important;
+        transform: translateY(2rem) !important;
+        height: 150%;
+    }
+    #button1 {
+        align-items: flex-end;
+        justify-items: flex-start !important;
+        transform: translateX(0rem) !important;
+        transform: translateY(2rem) !important;
+        height: 150%;
+    }
 }

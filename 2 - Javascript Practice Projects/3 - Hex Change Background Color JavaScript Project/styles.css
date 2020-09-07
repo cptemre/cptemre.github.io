@@ -30,3 +30,8 @@ body {
     background-color: black;
     color: white;
 }
+@media (max-width: 1040px) {
+    #btn1 {
+        width: 100%;
+    }
+}

@@ -84,3 +84,62 @@ body {
     display: grid;
     grid-area: lotr;
 }
+
+@media (max-width: 1040px) {
+    body {
+        grid-template-columns: repeat(6,1fr);
+        margin-bottom: 5vh !important;
+        grid-template-areas: 
+        ". lotr lotr lotr lotr ."
+        ". firstContainer firstContainer firstContainer firstContainer ."
+        ". firstContainer firstContainer firstContainer firstContainer ."
+        ". firstContainer firstContainer firstContainer firstContainer ."
+        ". firstContainer firstContainer firstContainer firstContainer ."
+        ". firstContainer firstContainer firstContainer firstContainer ."
+        ;
+    }
+}
+
+@media (max-width: 610px) {
+    body {
+        overflow-x: hidden;
+        grid-template-areas: 
+        "lotr lotr lotr lotr lotr lotr"
+        "firstContainer firstContainer firstContainer firstContainer firstContainer firstContainer"
+        "firstContainer firstContainer firstContainer firstContainer firstContainer firstContainer"
+        "firstContainer firstContainer firstContainer firstContainer firstContainer firstContainer"
+        "firstContainer firstContainer firstContainer firstContainer firstContainer firstContainer"
+        "firstContainer firstContainer firstContainer firstContainer firstContainer firstContainer"
+        ;
+    }
+    #firstContainer {
+        grid-area: firstContainer;
+        width: 90%;
+        margin-right: 3vh;
+    }
+    #secondContainer {
+        width: 90%;
+    }
+    #btn1 {
+        font-size: 1rem;
+    }
+}
+@media (max-width: 610px) {
+    body {
+        height: 160vh;
+    }
+    #btn1 {
+        width: 150%;
+    }
+    #secondContainer {
+        display: grid;
+        grid-template-rows: repeat(4,1fr);
+        grid-template-columns: repeat(4,1fr);
+        grid-template-areas: 
+        ". btn1 btn1 ."
+        "quote quote quote quote"
+        "quote quote quote quote"
+        "author author author author"
+        ;
+    }
+}

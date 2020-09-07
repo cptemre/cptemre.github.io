@@ -34,3 +34,8 @@ div {
     border: 2px solid black;
     border-radius: 5%;
 }
+@media (max-width: 715px) {
+    #btn1 {
+        width: 100%;
+    }
+}

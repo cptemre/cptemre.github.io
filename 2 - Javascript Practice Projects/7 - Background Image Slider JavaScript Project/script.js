@@ -4,8 +4,8 @@ var img0 = "url('./Images/0.JPG')";
 var img1 = "url('./Images/1.jpg')";
 var img2 = "url('./Images/2.jpg')";
 var img3 = "url('./Images/3.JPG')";
-var img4 = "url('./Images/4.JPG')";
-var img5 = "url('./Images/5.JPG')";
+var img4 = "url('./Images/4.jpg')";
+var img5 = "url('./Images/5.png')";
 
 var images = [img0,img1,img2,img3,img4,img5];
 // All images are set and listed in an array

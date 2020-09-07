@@ -32,6 +32,7 @@ body {
     background-image: url(./Images/0.JPG);
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
 }
 
 
@@ -58,8 +59,8 @@ body {
     width: 2rem;
     border-radius: 10%;
     position: absolute;
+    transition: all 0.5s;
 }
-
 
 #left {
     transform: translate(-50px);
@@ -70,5 +71,44 @@ body {
     width: 2rem;
     border-radius: 10%;
     position: absolute;
+    transition: all 0.5s;
 }
 
+#left:hover, #right:hover {
+    color: black;
+    background-color: whitesmoke;
+    border: 1px solid black;
+}
+
+@media (max-width: 280px) {
+    #container {
+        display: grid;
+        grid-area: container;
+        border: 5px solid black;
+        width: 120%;
+        height: 100%;
+        grid-template-rows: repeat(2,1fr);
+        grid-template-areas: 
+        ". . ."
+        ". . ."
+        ". . ."
+        ". . ."
+        ". . ."
+        "thirdContainer . secondContainer"
+        ;
+        align-items: center;
+        background-image: url(./Images/0.JPG);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    #right {
+        transform: translateX(-4.4vh);
+        transform: translateY(4.4vh);
+    }
+    
+    #left {
+        transform: translateX(4.4vh);
+        transform: translateY(4.4vh);
+    }
+}

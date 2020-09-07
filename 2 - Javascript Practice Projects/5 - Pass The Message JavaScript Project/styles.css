@@ -150,4 +150,64 @@ p {
     font-size: 1rem;
 }
 
-
+@media (max-width: 1060px) {
+    body {
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-areas: 
+        ". firstContainer firstContainer firstContainer ."
+        ". firstContainer firstContainer firstContainer ."
+        ". firstContainer firstContainer firstContainer ."
+        ". firstContainer firstContainer firstContainer ."
+        ;
+    }
+    #firstContainer {
+        width: 100%;;
+    }
+}
+@media (max-width: 675px) {
+    body {
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-areas: 
+        "firstContainer firstContainer firstContainer firstContainer firstContainer"
+        "firstContainer firstContainer firstContainer firstContainer firstContainer"
+        "firstContainer firstContainer firstContainer firstContainer firstContainer"
+        "firstContainer firstContainer firstContainer firstContainer firstContainer"
+        ;
+    }
+    #firstContainer {
+        width: 80%;;
+    }
+}
+@media (max-width: 500px) {
+    #firstContainer {
+        width: 100%;;
+    }
+    #secondContainer {
+        width: 90%;
+    }
+    #btn1 {
+        width: 60%;
+        font-size: 1rem;
+    }
+    #input1 {
+        width: 90%;
+    }
+}
+@media (max-width: 250px) {
+    #input1 {
+        width: 90%;
+        font-size: 1rem !important;
+    }
+    ::placeholder {
+        font-weight: bold;
+        font-size: 0.75rem;
+    }
+    #btn1:hover {
+        width: 60%;
+        font-size: 1.1rem;
+        height: 45%;
+    }
+    p {
+        font-size: 1rem;
+    }
+}
