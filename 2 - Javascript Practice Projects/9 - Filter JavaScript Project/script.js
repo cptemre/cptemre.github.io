@@ -365,6 +365,137 @@ $("#menu").click(function () {
         clicks--;
     }    
 });
-    
-    
+var container4 = document.getElementById("container4");
+
+for (let i = 0; i < product.length; i++) {
+    product[i].addEventListener("click", function () { 
+        var productImages = document.getElementsByClassName("productImages");
+        var newImg = document.createElement("DIV");
+        document.body.appendChild(newImg);
+        newImg.id = "newDiv";
+        var newDiv = document.getElementById("newDiv");
+        newDiv.style.width = "80%";
+        newDiv.style.height = "80%";
+        newDiv.style.background = "url("+productImages[i].src+")";
+        newDiv.style.backgroundRepeat = "no-repeat";
+        newDiv.style.backgroundSize = "100%";
+        newDiv.style.backgroundPosition = "center";
+        newDiv.style.position = "fixed";
+        newDiv.style.bottom = "10%";
+        newDiv.style.left = "10%";
+        newDiv.style.zIndex = 5;
+        newDiv.style.display = "grid";
+        newDiv.style.border = "2px solid black";
+
+        container5.style.cssText = "filter: blur(10px)";
+        container4.style.cssText = "filter: blur(10px)";
+        container3.style.cssText = "filter: blur(10px)";
+        container2.style.cssText = "filter: blur(10px)";
+        container1.style.cssText = "filter: blur(10px)";
+
+        var newSpan = document.createElement("span");
+        newSpan.id = "newSpan1";
+        document.getElementById("newSpan1");
+        document.body.appendChild(newSpan);
+        newSpan1.innerHTML ='<i id = "rightArrow" class="fas fa-arrow-alt-circle-right fa-3x"></i>';
+        newSpan1.style.width = "50%";
+        newSpan1.style.height = "20%";
+        newSpan1.style.position = "fixed";
+        newSpan1.style.bottom = "29%";
+        newSpan1.style.right = "-42%";
+        newSpan1.style.zIndex = 50;
+
+        var right = document.getElementById("rightArrow");
+        right.style.width = "100%";
+        right.style.height = "32%";
+        right.style.cursor = "pointer"
+        right.style.color = "rgb(174, 71, 98)";
+        right.style.borderRadius = "50%";
+        right.style.transition = "all 0.5s";
+        right.addEventListener("mouseover", function () {  
+            right.style.color = "coral";
+        })
+        right.addEventListener("mouseout", function () {  
+            right.style.color = "rgb(174, 71, 98)";
+        })
+
+        var newSpanTwo = document.createElement("span");
+        newSpanTwo.id = "newSpan2";
+        document.getElementById("newSpan2");
+        document.body.appendChild(newSpanTwo);
+        newSpan2.innerHTML ='<i id = "leftArrow" class="fas fa-arrow-alt-circle-left fa-3x"></i>';
+        newSpan2.style.width = "50%";
+        newSpan2.style.height = "20%";
+        newSpan2.style.position = "fixed";
+        newSpan2.style.bottom = "29%";
+        newSpan2.style.right = "46%";
+        newSpan2.style.zIndex = 50;
+
+        var left = document.getElementById("leftArrow");
+        left.style.width = "100%%";
+        left.style.height = "32%";
+        left.style.cursor = "pointer";
+        left.style.color = "rgb(174, 71, 98)";
+        left.style.borderRadius = "50%";
+        left.style.transition = "all 0.5s";
+        left.addEventListener("mouseover", function () {  
+            left.style.color = "coral";
+        })
+        left.addEventListener("mouseout", function () {  
+            left.style.color = "rgb(174, 71, 98)";
+        })
+
+        var cancelSpan = document.createElement("span");
+        cancelSpan.id = "cancel";
+        document.getElementById("cancel");
+        document.body.appendChild(cancelSpan);
+        cancel.innerHTML ='<i id = "cancelI" class="fas fa-window-close fa-3x"></i>';
+        cancel.style.width = "1%";
+        cancel.style.height = "20%";
+        cancel.style.position = "fixed";
+        cancel.style.bottom = "76.7%";
+        cancel.style.right = "12.7%";
+        cancel.style.zIndex = 50;
+        cancel.style.color = "rgb(131, 52, 73)";
+
+        var cancelVar = document.getElementById("cancelI");
+        cancelVar.style.width = "100%";
+        cancelVar.style.height = "32%";
+        cancelVar.style.cursor = "pointer";
+        cancelVar.style.transition = "all 0.5s";
+        cancelVar.addEventListener("mouseover", function () {  
+            cancelVar.style.color = "coral";
+        })
+        cancelVar.addEventListener("mouseout", function () {  
+            cancelVar.style.color = "rgb(174, 71, 98)";
+        })
+    })
+}
+
+var container3 = document.getElementById("container3");
+var container2 = document.getElementById("container2");
+var container1 = document.getElementById("container1");
+var container5 = document.getElementById("container5");
+$("#container4").click(function () { 
+
+    if (clicks == 0) {
+        $("#newDiv").fadeIn(1000);
+        $("#newSpan1").fadeIn(1000);
+        $("#newSpan2").fadeIn(1000);
+        $("#cancel").fadeIn(1000);
+        
+        clicks++;
+    } else {
+        $("#newDiv").fadeOut(1000);
+        $("#newSpan1").fadeOut(1000);
+        $("#newSpan2").fadeOut(1000);
+        $("#cancel").fadeOut(1000);
+        clicks--;
+        container5.style.cssText = "filter: blur(0px)";
+        container4.style.cssText = "filter: blur(0px)";
+        container3.style.cssText = "filter: blur(0px)";
+        container2.style.cssText = "filter: blur(0px)";
+        container1.style.cssText = "filter: blur(0px)";
+    }    
+});
 

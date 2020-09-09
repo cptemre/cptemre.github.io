@@ -15,6 +15,7 @@ body {
     height: 100%;
     font-family: 'Dancing Script', cursive;
     align-items: center;
+    justify-items: center;
 }
 @media (max-width: 1200px) {
     body {
