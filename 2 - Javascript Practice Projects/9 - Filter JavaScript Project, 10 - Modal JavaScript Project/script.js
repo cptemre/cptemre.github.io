@@ -34,7 +34,7 @@ var mainItem = document.getElementById("mainItem");
 
 // #region Basket icon animation when scroll down
 
-window.addEventListener("scroll", function () {
+window.addEventListener("load", function () {
         
     if (mediaQuery950.matches) {
         basket.style.cssText = "right: 3% !important; transform: translateX(0%) !important; width: 20% !important";
@@ -312,10 +312,8 @@ input1.addEventListener("keyup", function (event)
             if (input1.value == availableTags[i]) {
                 itemNamesNew[i].style.display = "grid";
                 newProduct[i].style.display = "grid";
-                
             }
         }
-        
     }
 })
 
@@ -366,46 +364,63 @@ $("#menu").click(function () {
     }    
 });
 var container4 = document.getElementById("container4");
+var productImages = document.getElementsByClassName("productImages");
+        $(body).append("<div id='newDiv'></div>");
+        var newDiv = document.getElementById("newDiv");
+        newDiv.style.display = "none";
+
+        $(body).append('<span id= "newSpan1"></span>');
+        var newSpan1 = document.getElementById("newSpan1");
+        newSpan1.style.display = "none";
+        newSpan1.innerHTML ='<i id = "rightArrow" class="fas fa-arrow-alt-circle-right fa-3x"></i>';
+
+        var right = document.getElementById("rightArrow");
+
+        $(body).append('<span id= "newSpan2"></span>');
+        var newSpan2 = document.getElementById("newSpan2");
+        newSpan2.style.display = "none";
+        newSpan2.innerHTML ='<i id = "leftArrow" class="fas fa-arrow-alt-circle-left fa-3x"></i>';
+
+        var left = document.getElementById("leftArrow");
+
+        $("#newDiv").append('<span id= "cancel"></span>');
+        var cancel = document.getElementById("cancel");
+        cancel.style.display = "none";
+        cancel.innerHTML ='<i id = "cancelI" class="fas fa-window-close fa-3x"></i>';
+
+        var cancelVar = document.getElementById("cancelI");
+        var newProductImages = [];
 
 for (let i = 0; i < product.length; i++) {
-    product[i].addEventListener("click", function () { 
-        var productImages = document.getElementsByClassName("productImages");
-        var newImg = document.createElement("DIV");
-        document.body.appendChild(newImg);
-        newImg.id = "newDiv";
-        var newDiv = document.getElementById("newDiv");
+    newProductImages.push(productImages[i].src);
+    product[i].addEventListener("click", function () {
+        $("#newDiv").fadeIn(1000);
         newDiv.style.width = "80%";
         newDiv.style.height = "80%";
-        newDiv.style.background = "url("+productImages[i].src+")";
+        var image = "url("+productImages[i].src+")";
+        newDiv.style.background = image;
         newDiv.style.backgroundRepeat = "no-repeat";
         newDiv.style.backgroundSize = "100%";
         newDiv.style.backgroundPosition = "center";
         newDiv.style.position = "fixed";
         newDiv.style.bottom = "10%";
-        newDiv.style.left = "10%";
+        newDiv.style.left = "9.4%";
         newDiv.style.zIndex = 5;
         newDiv.style.display = "grid";
-        newDiv.style.border = "2px solid black";
-
+        
         container5.style.cssText = "filter: blur(10px)";
         container4.style.cssText = "filter: blur(10px)";
         container3.style.cssText = "filter: blur(10px)";
         container2.style.cssText = "filter: blur(10px)";
-        container1.style.cssText = "filter: blur(10px)";
+        // container1.style.cssText = "filter: blur(10px)";
+        
+        
+        $("#newSpan1").fadeIn(1000);
+        
+        newSpan1.style.cssText = "position: fixed; width: 1%; height: 20%; bottom: -10%; right: 42%; transform: translate(-50%);";
+        newSpan1.style.zIndex = 10;
 
-        var newSpan = document.createElement("span");
-        newSpan.id = "newSpan1";
-        document.getElementById("newSpan1");
-        document.body.appendChild(newSpan);
-        newSpan1.innerHTML ='<i id = "rightArrow" class="fas fa-arrow-alt-circle-right fa-3x"></i>';
-        newSpan1.style.width = "50%";
-        newSpan1.style.height = "20%";
-        newSpan1.style.position = "fixed";
-        newSpan1.style.bottom = "29%";
-        newSpan1.style.right = "-42%";
-        newSpan1.style.zIndex = 50;
-
-        var right = document.getElementById("rightArrow");
+        
         right.style.width = "100%";
         right.style.height = "32%";
         right.style.cursor = "pointer"
@@ -418,21 +433,19 @@ for (let i = 0; i < product.length; i++) {
         right.addEventListener("mouseout", function () {  
             right.style.color = "rgb(174, 71, 98)";
         })
+        right.addEventListener("mousedown", function () {  
+            right.style.color = "crimson";
+        })
+        right.addEventListener("mouseup", function () {  
+            right.style.color = "coral";
+        })
 
-        var newSpanTwo = document.createElement("span");
-        newSpanTwo.id = "newSpan2";
-        document.getElementById("newSpan2");
-        document.body.appendChild(newSpanTwo);
-        newSpan2.innerHTML ='<i id = "leftArrow" class="fas fa-arrow-alt-circle-left fa-3x"></i>';
-        newSpan2.style.width = "50%";
-        newSpan2.style.height = "20%";
-        newSpan2.style.position = "fixed";
-        newSpan2.style.bottom = "29%";
-        newSpan2.style.right = "46%";
-        newSpan2.style.zIndex = 50;
+        
+        $("#newSpan2").fadeIn(1000);
+        newSpan2.style.cssText = "position: fixed; width: 1%; height: 20%; bottom: -10%; left: 42%; transform: translate(-50%);";
+        newSpan2.style.zIndex = 10;
 
-        var left = document.getElementById("leftArrow");
-        left.style.width = "100%%";
+        left.style.width = "100%";
         left.style.height = "32%";
         left.style.cursor = "pointer";
         left.style.color = "rgb(174, 71, 98)";
@@ -444,21 +457,22 @@ for (let i = 0; i < product.length; i++) {
         left.addEventListener("mouseout", function () {  
             left.style.color = "rgb(174, 71, 98)";
         })
+        left.addEventListener("mousedown", function () {  
+            left.style.color = "crimson";
+        })
+        left.addEventListener("mouseup", function () {  
+            left.style.color = "coral";
+        })
 
-        var cancelSpan = document.createElement("span");
-        cancelSpan.id = "cancel";
-        document.getElementById("cancel");
-        document.body.appendChild(cancelSpan);
-        cancel.innerHTML ='<i id = "cancelI" class="fas fa-window-close fa-3x"></i>';
+        $("#cancel").fadeIn(1000);
         cancel.style.width = "1%";
         cancel.style.height = "20%";
         cancel.style.position = "fixed";
         cancel.style.bottom = "76.7%";
-        cancel.style.right = "12.7%";
-        cancel.style.zIndex = 50;
-        cancel.style.color = "rgb(131, 52, 73)";
+        cancel.style.right = "9%";
+        cancel.style.zIndex = 10;
+        cancel.style.color = "crimson";
 
-        var cancelVar = document.getElementById("cancelI");
         cancelVar.style.width = "100%";
         cancelVar.style.height = "32%";
         cancelVar.style.cursor = "pointer";
@@ -467,25 +481,125 @@ for (let i = 0; i < product.length; i++) {
             cancelVar.style.color = "coral";
         })
         cancelVar.addEventListener("mouseout", function () {  
-            cancelVar.style.color = "rgb(174, 71, 98)";
+            cancelVar.style.color = "crimson";
+        })
+        cancelVar.addEventListener("mousedown", function () {  
+            cancelVar.style.color = "crimson";
+        })
+        cancelVar.addEventListener("mouseup", function () {  
+            cancelVar.style.color = "coral";
+            $("#newDiv").fadeOut(1000);
+            container5.style.cssText = "filter: blur(0px)";
+            container4.style.cssText = "filter: blur(0px)";
+            container3.style.cssText = "filter: blur(0px)";
+            container2.style.cssText = "filter: blur(0px)";
+            // container1.style.cssText = "filter: blur(0px)";
+            $("#newSpan1").fadeOut(1000);
+            $("#newSpan2").fadeOut(1000);
+        })
+        body.addEventListener("keydown", function (e) {  
+            if (e.keyCode === 39) {
+                right.style.color = "coral";
+            }
+            else if (e.keyCode === 37) {
+                left.style.color = "coral";
+            }
+            else if (e.keyCode === 27) {
+                cancelVar.style.color = "red";
+            }
+            else {
+                console.log("Wrong key");
+            }
+        })
+
+        body.addEventListener("keyup", function (e) {  
+            if (e.keyCode === 39) {
+                console.log(imageCounter);
+                imageCounter++;
+                if (imageCounter >= newProductImages.length){
+                imageCounter = 0;
+            }
+                newDiv.style.backgroundImage = `url(${newProductImages[imageCounter]})`;
+                setTimeout(function () {  
+                    right.style.color = "coral";
+                }, 0);
+                setTimeout(function () {  
+                    right.style.color = "rgb(174, 71, 98)";
+                }, 100);
+                clicks = 0;
+            }
+            else if (e.keyCode === 37) {
+                console.log(imageCounter);
+                imageCounter--;
+                if (imageCounter < 0){
+                imageCounter = newProductImages.length-1;
+            }
+                newDiv.style.backgroundImage = `url(${newProductImages[imageCounter]})`;
+                setTimeout(function () {  
+                    left.style.color = "coral";
+                }, 0);
+                setTimeout(function () {  
+                    left.style.color = "rgb(174, 71, 98)";
+                }, 100);
+                clicks = 0;
+            }
+            else if (e.keyCode === 27) {
+                $("#newDiv").fadeOut(1000);
+                container5.style.cssText = "filter: blur(0px)";
+                container4.style.cssText = "filter: blur(0px)";
+                container3.style.cssText = "filter: blur(0px)";
+                container2.style.cssText = "filter: blur(0px)";
+                // container1.style.cssText = "filter: blur(0px)";
+                clicks = 0;
+                setTimeout(function () {  
+                    cancelVar.style.color = "coral";
+                }, 0);
+                setTimeout(function () {  
+                    cancelVar.style.color = "rgb(174, 71, 98)";
+                }, 100);
+                $("#newSpan1").fadeOut(1000);
+                $("#newSpan2").fadeOut(1000);
+                clicks = 0;
+            }
+            else {
+                console.log("Wrong key");
+            }
+        })
+        imageCounter = i;
+
+        left.addEventListener("click", function () {  
+            console.log(imageCounter);
+            imageCounter--;
+            if (imageCounter < 0){
+            imageCounter = newProductImages.length-1;
+        }
+            newDiv.style.backgroundImage = `url(${newProductImages[imageCounter]})`;
+            clicks = 0;
+        })
+
+        right.addEventListener("click", function () {  
+            console.log(imageCounter);
+            imageCounter++;
+            if (imageCounter >= newProductImages.length){
+            imageCounter = 0;
+        }
+            newDiv.style.backgroundImage = `url(${newProductImages[imageCounter]})`;
+            clicks = 0;
         })
     })
 }
-
 var container3 = document.getElementById("container3");
 var container2 = document.getElementById("container2");
 var container1 = document.getElementById("container1");
 var container5 = document.getElementById("container5");
-$("#container4").click(function () { 
+$("#container1").click(function () { 
 
     if (clicks == 0) {
-        $("#newDiv").fadeIn(1000);
-        $("#newSpan1").fadeIn(1000);
-        $("#newSpan2").fadeIn(1000);
-        $("#cancel").fadeIn(1000);
-        
-        clicks++;
-    } else {
+        if (newDiv.style.display == "grid") {
+            clicks++;
+        }
+    }
+    else {
         $("#newDiv").fadeOut(1000);
         $("#newSpan1").fadeOut(1000);
         $("#newSpan2").fadeOut(1000);
@@ -495,7 +609,88 @@ $("#container4").click(function () {
         container4.style.cssText = "filter: blur(0px)";
         container3.style.cssText = "filter: blur(0px)";
         container2.style.cssText = "filter: blur(0px)";
-        container1.style.cssText = "filter: blur(0px)";
+        // container1.style.cssText = "filter: blur(0px)";
     }    
 });
+$("#container2").click(function () { 
 
+    if (clicks == 0) {
+        if (newDiv.style.display == "grid") {
+            clicks++;
+        }
+    }
+    else {
+        $("#newDiv").fadeOut(1000);
+        $("#newSpan1").fadeOut(1000);
+        $("#newSpan2").fadeOut(1000);
+        $("#cancel").fadeOut(1000);
+        clicks--;
+        container5.style.cssText = "filter: blur(0px)";
+        container4.style.cssText = "filter: blur(0px)";
+        container3.style.cssText = "filter: blur(0px)";
+        container2.style.cssText = "filter: blur(0px)";
+        // container1.style.cssText = "filter: blur(0px)";
+    }    
+});
+$("#container3").click(function () { 
+    if (clicks == 0) {
+        if (newDiv.style.display == "grid") {
+            clicks++;
+        }
+    }
+    else {
+        $("#newDiv").fadeOut(1000);
+        $("#newSpan1").fadeOut(1000);
+        $("#newSpan2").fadeOut(1000);
+        $("#cancel").fadeOut(1000);
+        clicks--;
+        container5.style.cssText = "filter: blur(0px)";
+        container4.style.cssText = "filter: blur(0px)";
+        container3.style.cssText = "filter: blur(0px)";
+        container2.style.cssText = "filter: blur(0px)";
+        // container1.style.cssText = "filter: blur(0px)";
+        
+    }    
+});
+$("#container4").click(function () { 
+
+    if (clicks == 0) {
+        if (newDiv.style.display == "grid") {
+            clicks++;
+        }
+        if (newDiv.style.display == "none") {
+            
+        }
+    }else {
+        $("#newDiv").fadeOut(1000);
+        $("#newSpan1").fadeOut(1000);
+        $("#newSpan2").fadeOut(1000);
+        $("#cancel").fadeOut(1000);
+        clicks--;
+        container5.style.cssText = "filter: blur(0px)";
+        container4.style.cssText = "filter: blur(0px)";
+        container3.style.cssText = "filter: blur(0px)";
+        container2.style.cssText = "filter: blur(0px)";
+        // container1.style.cssText = "filter: blur(0px)";
+    }    
+});
+$("#container5").click(function () { 
+
+    if (clicks == 0) {
+        if (newDiv.style.display == "grid") {
+            clicks++;
+        }
+    }
+    else {
+        $("#newDiv").fadeOut(1000);
+        $("#newSpan1").fadeOut(1000);
+        $("#newSpan2").fadeOut(1000);
+        $("#cancel").fadeOut(1000);
+        clicks--;
+        container5.style.cssText = "filter: blur(0px)";
+        container4.style.cssText = "filter: blur(0px)";
+        container3.style.cssText = "filter: blur(0px)";
+        container2.style.cssText = "filter: blur(0px)";
+        // container1.style.cssText = "filter: blur(0px)";
+    }    
+});
