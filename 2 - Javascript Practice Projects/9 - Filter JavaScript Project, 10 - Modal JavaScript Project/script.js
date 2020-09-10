@@ -31,7 +31,9 @@ var icon3Transform = document.getElementById("icon3Transform");
 var lastIcons = document.getElementById("lastIcons");
 var mainItem = document.getElementById("mainItem");
 
-
+for (let i = 0; i < product.length; i++) {
+    product[i].style.cursor = "pointer";
+}
 // #region Basket icon animation when scroll down
 
 window.addEventListener("load", function () {
