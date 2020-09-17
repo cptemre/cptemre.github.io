@@ -1,0 +1,145 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: 
+    "container0 container0 container0"
+    "container0 container0 container0"
+    "container0 container0 container0"
+    ;
+    justify-items: center;
+    align-items: center;
+    position: absolute;
+    overflow-x: hidden;
+}
+
+#container0 {
+    margin: 0;
+    padding: 0;
+    grid-area: container0;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    width: 90%;
+    height: 80%;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-areas: 
+    "input1 input1 input1 input1"
+    "multiply divide plus minus"
+    "dot nine eight seven"
+    "six five four three"
+    "two one zero equal"
+    "clear clear clear clear"
+    ;
+    position: relative;
+}
+
+button {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    background-color: rgb(197, 204, 231);
+    border: 5px solid black;
+    font-size: 2rem;
+}
+.action {
+    background-color: rgb(255, 200, 87);
+}
+.action:hover {
+    background-color: rgb(255, 173, 10);
+}
+.numbers:hover {
+    background-color: rgb(97, 115, 189);
+}
+#equal {
+    background-color: rgb(10, 255, 194);
+}
+#equal:hover {
+    background-color: rgb(0, 224, 168);
+}
+#clear {
+    background-color: rgb(235, 13, 14);
+}
+#clear:hover {
+    background-color: rgb(213, 11, 11);
+}
+#input1 {
+    grid-area: input1;
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: 3px solid black;
+    background-color: black;
+    color: rgb(243, 229, 209);
+    font-size: 3rem;
+}
+
+/* 
+This is for if the input is set to numbers and you want to disappear sidebars.
+
+input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+} */
+
+#multiply {
+    grid-area: multiply;
+}
+#divide {
+    grid-area: divide;
+}
+#plus {
+    grid-area: plus;
+}
+#minus {
+    grid-area: minus;
+}
+#dot {
+    grid-area: dot;
+}
+#nine {
+    grid-area: nine;
+}
+#eight {
+    grid-area: eight;
+}
+#seven {
+    grid-area: seven;
+}
+#six {
+    grid-area: six;
+}
+#five {
+    grid-area: five;
+}
+#four {
+    grid-area: four;
+}
+#three {
+    grid-area: three;
+}
+#two {
+    grid-area: two;
+}
+#one {
+    grid-area: one;
+}
+#zero {
+    grid-area: zero;
+}
+#equal {
+    grid-area: equal;
+}
+#clear {
+    grid-area: clear;
+}
