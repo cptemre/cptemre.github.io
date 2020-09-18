@@ -78,6 +78,7 @@ button {
     background-color: black;
     color: rgb(243, 229, 209);
     font-size: 3rem;
+    text-align: end;
 }
 
 /* 
