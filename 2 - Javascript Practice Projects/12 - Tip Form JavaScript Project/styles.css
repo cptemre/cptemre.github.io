@@ -54,9 +54,6 @@ button {
     letter-spacing: 0.1rem;
     transition: all 0.7s;
 }
-option {
-    transition: all 0.7s;
-}
 #container0 {
     border-radius: 0.7rem;
     position: relative;
@@ -200,7 +197,7 @@ p {
     grid-template-areas: 
     "iconDiv2 inputDiv2"
     ;
-    width: 90%;
+    width: 92%;
     height: 80%;
     margin: 0 auto;
     font-size: 0.6rem;
@@ -214,7 +211,7 @@ p {
     grid-template-areas: 
     "iconDiv3 inputDiv3"
     ;
-    width: 90%;
+    width: 92%;
     height: 80%;
     margin: 0 auto;
     font-size: 0.6rem;
@@ -321,4 +318,131 @@ p {
     width: 20%;
     height: 120%;
     text-align: center;
+    display: grid;
+    justify-items: flex-start;
+}
+#button1 {
+    display: inline-block;
+    width: 100%;
+    
+}
+@media (max-width: 800px) {
+    #iconInputDiv1 {
+        width: 70%;
+    }
+    #iconInputDiv2 {
+        width: 70%;
+    }
+    #iconInputDiv3 {
+        width: 70%;
+    }
+    #iconSpan1 {
+        width: 2rem;
+    }
+    #iconSpan2 {
+        width: 2rem;
+    }
+    #iconSpan3 {
+        width: 2rem;
+    }
+    #header0 {
+        font-size: 1.5rem;
+    }
+    #header1 {
+        font-size: 1.2rem;
+    }
+    #header2 {
+        font-size: 1.2rem;
+    }
+    #header3 {
+        font-size: 1.2rem;
+    }
+    #button1Div {
+        width: 100%;
+        font-size: 1rem;
+    }
+    #button1 {
+        width: 100%;
+    }
+}@media (max-width: 600px) {
+    #container0 {
+        width: 150%;
+    }
+    #iconInputDiv1 {
+        width: 90%;
+    }
+    #iconInputDiv2 {
+        width: 90%;
+    }
+    #iconInputDiv3 {
+        width: 90%;
+    }
+    #button1Div {
+        width: 5rem;
+        font-size: 1rem;
+    }
+    #button1 {
+        width: 100%;
+    }
+}@media (max-width: 350px) {
+    #iconInputDiv1 {
+        width: 100%;
+    }
+    #iconInputDiv2 {
+        width: 100%;
+    }
+    #iconInputDiv3 {
+        width: 100%;
+    }
+    #button1Div {
+        width: 5rem;
+        font-size: 1rem;
+    }
+    #button1 {
+        width: 100%;
+        transform: translateX(-1rem) !important;
+    }
+}@media (max-width: 300px) {
+    #header0 {
+        font-size: 1rem;
+    }
+    #iconInputDiv1 {
+        width: 100%;
+    }
+    #iconInputDiv2 {
+        width: 100%;
+    }
+    #iconInputDiv3 {
+        width: 100%;
+    }
+    #button1Div {
+        width: 5rem;
+        font-size: 1rem;
+    }
+    #button1 {
+        width: 100%;
+        transform: translateX(-1.5rem) !important;
+    }
+}
+@media (max-width: 200px) {
+    #header0 {
+        font-size: 0.9rem;
+    }
+    #iconInputDiv1 {
+        width: 100%;
+    }
+    #iconInputDiv2 {
+        width: 100%;
+    }
+    #iconInputDiv3 {
+        width: 100%;
+    }
+    #button1Div {
+        width: 5rem;
+        font-size: 1rem;
+    }
+    #button1 {
+        width: 100%;
+        transform: translateX(-2.1rem) !important;
+    }
 }

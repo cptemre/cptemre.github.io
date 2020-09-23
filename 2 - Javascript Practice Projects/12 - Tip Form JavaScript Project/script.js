@@ -60,6 +60,7 @@ let per = 0;
 let total = 0;
 let tax = 0;
 let count = 0;
+
 let round = function round(value, decimals) {
     return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
 }
