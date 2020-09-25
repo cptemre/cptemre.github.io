@@ -1,10 +1,32 @@
+html {
+    height: 100%;
+}
 body {
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100%;
+    height: auto;
     position: absolute;
     overflow-x: hidden;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: 0.1fr 0.9fr 0.1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: 
+    ". . ."
+    ". container0 ."
+    ". container0 ."
+    ;
+    justify-items: center;
+    align-items: center;
+}
+#container0 {
+    grid-area: container0;
+    width: 100%;
+    height: 200%;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: hidden;
     display: grid;
     grid-template-columns: 0.1fr 0.9fr 0.1fr;
     grid-template-rows: 0.1fr 0.1fr 0.1fr;
@@ -16,9 +38,6 @@ body {
     justify-items: center;
     align-items: center;
 }
-
-
-
 #header0Div {
     grid-area: header0Div;
     width: 100%;
@@ -52,7 +71,6 @@ body {
     align-items: center;
     overflow: hidden;
     padding-left: 2%;
-
 }
 #input0 {
     width: 100%;
@@ -100,9 +118,8 @@ body {
     font-size: 1rem;
 }
 .toDo {
-    grid-area: toDo;
     width: 100%;
-    height: 100%;
+    height: 80%;
     display: none;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
@@ -122,6 +139,7 @@ body {
     height: 100%;
     display: grid;
     align-items: center;
+    padding-left: 0.5%;
 }
 .icons {
     width: 100%;
