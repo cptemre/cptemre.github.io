@@ -156,3 +156,6 @@ body {
 .cancel {
     color: rgb(150, 31, 31);
 }
+i {
+    cursor: pointer;
+}
