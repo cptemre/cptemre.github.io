@@ -33,14 +33,14 @@ $("#button0").click(function () {
     let classes = document.getElementsByClassName("toDo");
     let check = document.getElementsByClassName("check");
     let cancel = document.getElementsByClassName("cancel");    
-    for (let i = 0; i < 1; i++) {
-        classes[i].id = i
-    }
     classes[newCount].style.display = "grid";
     container0.style.gridTemplateRows += " 1fr";
     container0.style.gridTemplateAreas += `
     ". toDo${newCount} ."
     `;
+    for (let i = 0; i < classes.length; i++) {
+        classes[i].id = "toDo"+i;
+    }
     classes[newCount].style.gridArea = `toDo${newCount}`;
     classes[newCount].style.gridRow =  row;
     classes[newCount].style.gridColumn =  column;
@@ -58,8 +58,17 @@ $("#button0").click(function () {
     }
     for (let i = 0; i < cancel.length; i++) {
         cancel[i].addEventListener("click", function () { 
-            classes[i].style.display = "none";
-            
+            let id = `toDo${i}`
+            $(`#${id}`).remove();
+            for (let x = 0; x < cancel.length; x++) {
+                classes[x].style.gridArea = `${x+3} / 2 / auto / auto`;
+                clearDiv.style.gridArea = `${cancel.length+3} / 2 / auto / auto`;
+                
+                i++;                
+            }
+            if ($('.toDo').length == 0) {
+                clearDiv.style.gridArea = `3 / 2 / auto / auto`;
+            }
         })
     }
     row++;
