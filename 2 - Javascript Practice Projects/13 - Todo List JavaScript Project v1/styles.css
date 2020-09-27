@@ -19,6 +19,7 @@ body {
     ;
     justify-items: center;
     align-items: center;
+    background-color: rgb(230, 222, 222);
 }
 #container0 {
     grid-area: container0;
@@ -52,7 +53,7 @@ body {
     height: 50%;
     grid-area: add;
     overflow: hidden;
-    background-color: rgb(156, 223, 130);
+    background-color: transparent;
     display: grid;
     grid-template-columns: 0.8fr 0.2fr;
     grid-template-rows: 1fr;
@@ -71,20 +72,25 @@ body {
     align-items: center;
     overflow: hidden;
     padding-left: 2%;
+    background-color: transparent;
 }
 #input0 {
     width: 100%;
     height: 100%;
     outline: none;
     border: none;
+    background-color: transparent;
 }
-
+#input0:focus, #input0:active {
+    background-color: rgb(204, 197, 197);
+}
 #button0Div {
     width: 100%;
     height: 100%;
     display: grid;
     justify-items: flex-start;
     align-items: center;
+    background-color: transparent;
 }
 #button0 {
     width: 100%;
@@ -92,6 +98,7 @@ body {
     outline: none;
     border: none;
     border-left: 3px solid rgb(51, 51, 161);
+    background-color: transparent;
 }
 #clearDiv {
     width: 100%;
@@ -158,4 +165,10 @@ body {
 }
 i {
     cursor: pointer;
+}
+.text {
+    text-decoration: line-through;
+}
+.textnone {
+    text-decoration: none;
 }

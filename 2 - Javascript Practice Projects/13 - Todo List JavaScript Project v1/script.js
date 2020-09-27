@@ -27,50 +27,68 @@ let clearDiv = document.getElementById("clearDiv");
 let newCount  = 0;
 let input = document.getElementById("input0");
 let task = document.getElementsByClassName("task");
-
+let checkCount = 0;
 $("#button0").click(function () {
     $("#container0").append(toDo0);
     let classes = document.getElementsByClassName("toDo");
     let check = document.getElementsByClassName("check");
-    let cancel = document.getElementsByClassName("cancel");    
-    classes[newCount].style.display = "grid";
-    container0.style.gridTemplateRows += " 1fr";
-    container0.style.gridTemplateAreas += `
-    ". toDo${newCount} ."
-    `;
-    for (let i = 0; i < classes.length; i++) {
-        classes[i].id = "toDo"+i;
-    }
-    classes[newCount].style.gridArea = `toDo${newCount}`;
-    classes[newCount].style.gridRow =  row;
-    classes[newCount].style.gridColumn =  column;
-    task[newCount].innerHTML = input.value;
-    clearDiv.style.gridRow = row+1;
+    let cancel = document.getElementsByClassName("cancel"); 
+    let edit = document.getElementsByClassName("edit");
+    let clear = document.getElementById("clear");
+
     for (let i = 0; i < check.length; i++) {
-        check[i].addEventListener("click", function () { 
-            if (task[i].style.cssText == `text-decoration: line-through; opacity: 0.7;`) {
-                task[i].style.cssText = `text-decoration: none; opacity: 1;`
-            } else {
-                task[i].style.cssText = `text-decoration: line-through; opacity: 0.7;`
-            } 
-            ;
-        })
+        $(".check").click(function () { 
+            let x = this.parentElement.parentElement.parentElement.parentElement.id;
+            let y = document.getElementById(x).getElementsByTagName("div")[0].getElementsByTagName("div")[0];
+            if (y.style.textDecoration == "") {
+                y.style.textDecoration = "line-through";
+                console.log(x)
+                console.log(y)
+            }
+        });
+        $(".edit").click(function () { 
+            let x = this.parentElement.parentElement.parentElement.parentElement.id;
+            let y = document.getElementById(x).getElementsByTagName("div")[0].getElementsByTagName("div")[0];
+            if (y.style.textDecoration == "line-through") {
+                y.style.textDecoration = "";
+                console.log(x)
+                console.log(y)
+            }
+        });
     }
-    for (let i = 0; i < cancel.length; i++) {
-        cancel[i].addEventListener("click", function () { 
-            let id = `toDo${i}`
+    $(clear).click(function () { 
+        for (let i = 0; i < cancel.length; i++) {
+            $(`.toDo`).remove();
+            clearDiv.style.gridArea = `3 / 2 / auto / auto`;
+        }
+        row = 3;
+        newCount = 0;
+    });
+    container0.style.gridTemplateRows += " 1fr";
+    for (let a = 0; a < cancel.length; a++) {
+        cancel[a].addEventListener("click", function () { 
+            console.log(a)
+            let id = `toDo${a}`
             $(`#${id}`).remove();
             for (let x = 0; x < cancel.length; x++) {
                 classes[x].style.gridArea = `${x+3} / 2 / auto / auto`;
-                clearDiv.style.gridArea = `${cancel.length+3} / 2 / auto / auto`;
-                
-                i++;                
+                clearDiv.style.gridArea = `${classes.length+3} / 2 / auto / auto`;
             }
             if ($('.toDo').length == 0) {
                 clearDiv.style.gridArea = `3 / 2 / auto / auto`;
             }
+            newCount =0;
         })
     }
+    for (let i = 0; i < classes.length; i++) {
+        classes[i].id = "toDo"+i;
+        classes[i].style.display = "grid";
+        classes[i].style.gridArea = `${i+3} / 2 / auto / auto`;
+    }
+        classes[newCount].style.display = "grid";
+        classes[newCount].style.gridArea = `${newCount+3} / 2 / auto / auto`;
+        clearDiv.style.gridRow = classes.length+3;
+        task[classes.length-1].innerHTML = input.value;
     row++;
     newCount++;
 });
