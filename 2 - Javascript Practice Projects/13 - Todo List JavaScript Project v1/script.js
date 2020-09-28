@@ -28,31 +28,35 @@ let newCount  = 0;
 let input = document.getElementById("input0");
 let task = document.getElementsByClassName("task");
 let checkCount = 0;
-$("#button0").click(function () {
+let clear = document.getElementById("clear");
+
+let allFunctions = function allFunctions() {
     $("#container0").append(toDo0);
+    
     let classes = document.getElementsByClassName("toDo");
     let check = document.getElementsByClassName("check");
     let cancel = document.getElementsByClassName("cancel"); 
     let edit = document.getElementsByClassName("edit");
-    let clear = document.getElementById("clear");
 
     for (let i = 0; i < check.length; i++) {
         $(".check").click(function () { 
             let x = this.parentElement.parentElement.parentElement.parentElement.id;
             let y = document.getElementById(x).getElementsByTagName("div")[0].getElementsByTagName("div")[0];
+            let z = document.getElementById(x).getElementsByTagName("div")[0];
             if (y.style.textDecoration == "") {
                 y.style.textDecoration = "line-through";
-                console.log(x)
-                console.log(y)
+                y.style.opacity = 0.7;
+                z.style.border = "2px solid rgb(95, 212, 95)"
             }
         });
         $(".edit").click(function () { 
             let x = this.parentElement.parentElement.parentElement.parentElement.id;
             let y = document.getElementById(x).getElementsByTagName("div")[0].getElementsByTagName("div")[0];
+            let z = document.getElementById(x).getElementsByTagName("div")[0];
             if (y.style.textDecoration == "line-through") {
                 y.style.textDecoration = "";
-                console.log(x)
-                console.log(y)
+                y.style.opacity = 1;
+                z.style.border = "2px solid red"
             }
         });
     }
@@ -91,4 +95,31 @@ $("#button0").click(function () {
         task[classes.length-1].innerHTML = input.value;
     row++;
     newCount++;
+}
+$("#button0").click(function () {  
+    allFunctions();
 });
+document.body.addEventListener("keydown", function (e) {  
+    if (e.keyCode === 13) {
+        button0.style.backgroundColor = "whitesmoke";
+        
+    }
+})
+document.body.addEventListener("keyup", function (e) {  
+    if (e.keyCode === 13) {
+        button0.style.backgroundColor = "transparent";
+        allFunctions();
+    }
+})
+button0.addEventListener("mousedown", function () {  
+    button0.style.backgroundColor = "whitesmoke";
+})
+button0.addEventListener("mouseup", function () {  
+    button0.style.backgroundColor = "transparent";
+})
+clear.addEventListener("mousedown", function () {  
+    clear.style.backgroundColor = "whitesmoke";
+})
+clear.addEventListener("mouseup", function () {  
+    clear.style.backgroundColor = "transparent";
+})
