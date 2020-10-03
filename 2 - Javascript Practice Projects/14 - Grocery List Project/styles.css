@@ -14,7 +14,7 @@ body {
     ;
     justify-items: center;
     align-items: center;
-    background-color: rgb(39, 199, 186);
+    background-color: rgb(51, 94, 185);
 }
 
 #container0 {
@@ -93,7 +93,7 @@ body {
     display: grid;
     justify-items: center;
     align-items: center;
-    grid-template-columns: 0.4fr 0.2fr 0.2fr;
+    grid-template-columns: 0.5fr 0.3fr 0.2fr;
     grid-template-rows: 1fr;
     grid-template-areas: 
     "inputDiv iconDiv buttonDiv"
