@@ -25,6 +25,7 @@ body {
     display: flexbox;
     justify-items: center;
     align-items: center;
+
 }
 
 .items {
@@ -178,4 +179,19 @@ body {
     border: 2px solid  rgb(131, 43, 34);
     background-color: white;
     color:  rgb(131, 43, 34);
+}
+
+@media (max-width: 460px) {
+    #add {
+        grid-template-columns: 0.8fr 0.2fr;
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas: 
+        "inputDiv iconDiv "
+        "buttonDiv buttonDiv"
+        ;
+    }
+    #buttonDiv {
+        justify-content: center;
+        margin-top: 1rem;
+    }
 }
