@@ -65,6 +65,7 @@ body {
     font-weight: bold;
     text-decoration: underline;
     letter-spacing: 0.08rem;
+    color: rgb(44, 22, 80);
 }
 #header2Div {
     grid-area: header2Div;
@@ -77,6 +78,7 @@ body {
     font-weight: bold;
     text-decoration: underline;
     letter-spacing: 0.08rem;
+    color: rgb(44, 22, 80);
 }
 #input1Div {
     grid-area: input1Div;
@@ -200,11 +202,14 @@ body {
     display: grid;
     justify-items: center;
     align-items: center;
-    grid-template-columns: 0.8fr 0.2fr;
+    grid-template-columns: 0.99fr 0.01fr;
     grid-template-rows: 1fr;
     border: 2px solid rgb(36, 31, 31);
-    margin-top: 1rem;
+    border-radius: 2rem;
+    margin-top: 2rem;
     transition: all 0.5s;
+    font-size: 1.3rem;
+    background-color: white;
 }
 .item {
     display: grid;
@@ -213,19 +218,32 @@ body {
     justify-items: flex-start;
     align-items: center;
     padding-left: 1rem;
-    font-size: 1.2rem;
 }
-.delete {
+.deleteIcon {
     display: grid;
-    width: 100%;
-    height: 100%;
-    justify-items: flex-end;
+    width: 9%;
+    height: 80%;
+    justify-items: center;
     padding-right: 1rem;
     align-items: center;
     color: rgb(190, 32, 32);
-    font-size: 1.2rem;
     transition: all 0.3s;
 }
-.delete:hover {
-    font-size: 1.3rem;
+@media (max-width: 300px) {
+    #header1Div, #header2Div {
+        font-size: 1.2rem;
+    }
+    #button1, #button2 {
+        font-size: 1rem;
+    }
+    @keyframes button1Animation1 {
+        from {
+            font-size: 0.8rem;
+        }
+        to {
+            width: 70%;
+            height: 40%;
+            font-size: 1rem;
+        }
+    }
 }
