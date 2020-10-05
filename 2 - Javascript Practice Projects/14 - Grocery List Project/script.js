@@ -1,15 +1,5 @@
 $(document).ready(function () {
-    
-let items = `<div class="items">
-<div class="newItems">
-    <div class="item">
-        First Item
-    </div>
-    <div class="delete">
-        <i class="fas fa-trash-alt deleteIcon"></i>
-    </div>
-</div>
-</div>`
+
 let container0 = document.getElementById("container0"); 
 let input = document.getElementById("input");
 let count = 0;
