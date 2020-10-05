@@ -21,6 +21,7 @@ function deleteItem() {
             $(this).parent().parent().css("background-color", "white");
         },
         click: function () {  
+            console.log(localStorage.getItem(localStorage.length))
             $(this).parent().parent().remove();
             let x = $(this).parent().parent().children(0).html();
             let i = localStorage.length;
@@ -29,21 +30,29 @@ function deleteItem() {
             if (localStorage.getItem(key) === x) {
                 localStorage.removeItem(key);
                 while (Number(key) <= localStorage.length) {
-                    if (Number(key) == localStorage.length) {
-                        localStorage.setItem(key, localStorage.getItem(Number(key)+1))
-                        localStorage.removeItem(localStorage.length);
-                    } else {
-                        localStorage.setItem(key, localStorage.getItem(Number(key)+1))
-                        localStorage.removeItem(localStorage.length);
-                    }
+                    localStorage.setItem(key, localStorage.getItem(Number(key)+1))
                     key++
                 }
+                let y = $(".deleteIcon").length
+                localStorage.removeItem(localStorage.length);
+
             }
         }
         }
     });
 }
-
+function addItem() {
+    
+        if ($("#input").val().length == 0) {
+            alert("Please write a valid item.")
+        } else {
+            count = $(".newItems").length;
+        let item = document.getElementsByClassName("item");
+        $(".items").append(newItems);
+            localStorage.setItem(item.length, $("#input").val());
+        $(`.item:eq(${count})`).html(localStorage.getItem(item.length));
+        }
+}
 $(localStorage).each(function (index) {
     $(".items").append(newItems);
     $(`.item:eq(${index})`).html(localStorage.getItem(index+1));
@@ -53,12 +62,13 @@ $("#button2").click(function () {
     localStorage.clear();
     $(".newItems").remove();
 });
+$("body").keyup(function (e) { 
+    if (e.keyCode === 13) {
+        addItem();
+    }
+});
 $("#button1").click(function () { 
-    count = $(".newItems").length;
-        let item = document.getElementsByClassName("item");
-        $(".items").append(newItems);
-        localStorage.setItem(item.length, $("#input").val());
-        $(`.item:eq(${count})`).html(localStorage.getItem(item.length));
+        addItem();
         deleteItem();
     });
 });

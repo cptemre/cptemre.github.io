@@ -65,7 +65,7 @@ body {
     font-weight: bold;
     text-decoration: underline;
     letter-spacing: 0.08rem;
-    color: rgb(44, 22, 80);
+    color: black;
 }
 #header2Div {
     grid-area: header2Div;
@@ -78,7 +78,7 @@ body {
     font-weight: bold;
     text-decoration: underline;
     letter-spacing: 0.08rem;
-    color: rgb(44, 22, 80);
+    color: black;
 }
 #input1Div {
     grid-area: input1Div;
