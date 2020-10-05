@@ -25,7 +25,7 @@ $(function () {
     $(localStorage).each(function (index) {
         $(".items").append(newItems);
         $(`.item:eq(${index})`).html(localStorage.getItem(index+1));
-        deleteFunc();
+        deleteFunc()
     });
 
     function deleteFunc() {
@@ -39,23 +39,19 @@ $(function () {
                 $(this).parent().parent().css("background-color", "white");
             },
             click: function () {
-                console.log(localStorage.getItem(localStorage.length))
                 $(this).parent().parent().remove();
                 let x = $(this).parent().parent().children(0).html();
                 let i = localStorage.length;
                 while (i-- > 0) {
                     let key = localStorage.key(i);
                     if (localStorage.getItem(key) === x) {
-                        
-                        while (Number(key) <= localStorage.length) {
-                            if (Number(key) < localStorage.length) {
-                                localStorage.setItem(key, localStorage.getItem(Number(key) + 1))
-                            key++
-                            localStorage.removeItem(key);
-                            }
-                            
-                            if (Number(key) == localStorage.length) {
-                                localStorage.removeItem(key);
+                        if (Number(key) == localStorage.length) {
+                            localStorage.removeItem(Number(key));
+                        } else {
+                            while (Number(key) <= localStorage.length) {
+                                localStorage.setItem(key, localStorage.getItem(Number(key)+1))
+                                key++
+                                localStorage.removeItem(localStorage.length);
                             }
                         }
                     }
