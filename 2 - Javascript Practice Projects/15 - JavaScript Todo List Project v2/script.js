@@ -24,7 +24,7 @@ $(function () {
     }
     $(localStorage).each(function (index) {
         $(".items").append(newItems);
-        $(`.item:eq(${index})`).html(localStorage.getItem(index + 1));
+        $(`.item:eq(${index})`).html(localStorage.getItem(index+1));
         deleteFunc();
     });
 
@@ -46,14 +46,17 @@ $(function () {
                 while (i-- > 0) {
                     let key = localStorage.key(i);
                     if (localStorage.getItem(key) === x) {
-                        if (Number(key) == localStorage.length) {
-                            localStorage.setItem(key, localStorage.getItem(Number(key) + 1))
-                            localStorage.removeItem(localStorage.length);
-                        }
-                        while (Number(key) < localStorage.length) {
-                            localStorage.setItem(key, localStorage.getItem(Number(key) + 1))
+                        
+                        while (Number(key) <= localStorage.length) {
+                            if (Number(key) < localStorage.length) {
+                                localStorage.setItem(key, localStorage.getItem(Number(key) + 1))
                             key++
                             localStorage.removeItem(key);
+                            }
+                            
+                            if (Number(key) == localStorage.length) {
+                                localStorage.removeItem(key);
+                            }
                         }
                     }
                 }
