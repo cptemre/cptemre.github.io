@@ -10,7 +10,7 @@ $(function () {
 </div>
 `;
     let count = 0;
-
+    
     function addItem() {
         if ($("#input").val().length == 0) {
             alert("Please write a valid item.")
@@ -68,10 +68,12 @@ $(function () {
         if (e.keyCode === 13) {
             addItem();
             deleteFunc();
+            $("#input").val("");
         }
     });
     $("#button1").click(function () {
         addItem();
         deleteFunc();
+        $("#input").val("");
     });
 });
