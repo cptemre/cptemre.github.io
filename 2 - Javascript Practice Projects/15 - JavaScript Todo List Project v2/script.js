@@ -55,7 +55,6 @@ $(function () {
                             key++
                             localStorage.removeItem(key);
                         }
-
                     }
                 }
             }
