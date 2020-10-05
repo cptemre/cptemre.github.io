@@ -29,10 +29,15 @@ function deleteItem() {
             if (localStorage.getItem(key) === x) {
                 localStorage.removeItem(key);
                 while (Number(key) <= localStorage.length) {
-                    localStorage.setItem(key, localStorage.getItem(Number(key)+1))
+                    if (Number(key) == localStorage.length) {
+                        localStorage.setItem(key, localStorage.getItem(Number(key)+1))
+                        localStorage.removeItem(localStorage.length);
+                    } else {
+                        localStorage.setItem(key, localStorage.getItem(Number(key)+1))
+                        localStorage.removeItem(localStorage.length);
+                    }
                     key++
                 }
-                localStorage.removeItem(localStorage.length);
             }
         }
         }
