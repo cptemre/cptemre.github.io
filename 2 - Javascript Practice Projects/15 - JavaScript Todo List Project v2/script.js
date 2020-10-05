@@ -51,7 +51,7 @@ $(function () {
                             while (Number(key) <= localStorage.length) {
                                 localStorage.setItem(key, localStorage.getItem(Number(key)+1))
                                 key++
-                                localStorage.removeItem(localStorage.length);
+                                localStorage.removeItem(Number(key));
                             }
                         }
                     }
