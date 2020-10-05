@@ -10,7 +10,6 @@ $(function () {
 </div>
 `;
     let count = 0;
-    
     function addItem() {
         if ($("#input").val().length == 0) {
             alert("Please write a valid item.")
@@ -64,12 +63,58 @@ $(function () {
         localStorage.clear();
         $(".newItems").remove();
     });
+    $("body").keydown(function (e) {
+        if (e.keyCode === 13) {
+            $("#button1").css("color", "white");
+            $("#button1").css("animation", "button1Animation1 1s infinite alternate");
+            $("#button1").css("background-color", "black");
+        }
+    });
     $("body").keyup(function (e) {
         if (e.keyCode === 13) {
             addItem();
             deleteFunc();
+            $("#button1").css("color", "black");
+            $("#button1").css("background-color", "transparent");
+            $("#button1").css("animation", "none");
             $("#input").val("");
         }
+    });
+    $("#button1").mouseenter(function () { 
+        $("#button1").css("color", "black");
+            $("#button1").css("animation", "button1Animation1 1s infinite alternate");
+            $("#button1").css("background-color", "transparent");
+    });
+    $("#button1").mouseleave(function () { 
+        $("#button1").css("color", "black");
+            $("#button1").css("background-color", "transparent");
+            $("#button1").css("animation", "none");
+    });
+    $("#button2").mouseenter(function () { 
+        $("#button2").css("color", "black");
+            $("#button2").css("animation", "button1Animation1 1s infinite alternate");
+            $("#button2").css("background-color", "transparent");
+    });
+    $("#button2").mouseleave(function () { 
+        $("#button2").css("color", "black");
+            $("#button2").css("background-color", "transparent");
+            $("#button2").css("animation", "none");
+    });
+    $("#button2").mousedown(function () { 
+        $("#button2").css("color", "white");
+            $("#button2").css("background-color", "black");
+    });
+    $("#button2").mouseup(function () { 
+        $("#button2").css("color", "black");
+        $("#button2").css("background-color", "transparent");
+    });
+    $("#button1").mousedown(function () { 
+        $("#button1").css("color", "white");
+            $("#button1").css("background-color", "black");
+    });
+    $("#button1").mouseup(function () { 
+        $("#button1").css("color", "black");
+        $("#button1").css("background-color", "transparent");
     });
     $("#button1").click(function () {
         addItem();
