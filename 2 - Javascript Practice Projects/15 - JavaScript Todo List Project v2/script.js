@@ -5,7 +5,7 @@ $(function () {
         First Item
     </div>
     <div class="delete">
-        <i class="fas fa-trash-alt deleteIcon"></i>
+        <i class="fas fa-trash deleteIcon"></i>
     </div>
 </div>
 `;
