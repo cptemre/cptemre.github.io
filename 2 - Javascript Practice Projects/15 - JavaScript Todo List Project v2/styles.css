@@ -142,13 +142,7 @@ body {
     align-items: center;
     transition: all 1s;
 }
-#button1:hover, #button1:focus {
-    animation: button1Animation1 1s infinite alternate;
-}
-#button1:active {
-    color: white;
-    background-color: black;
-}
+
 #button2 {
     font-size: 1.3rem;
     font-weight: 500;
@@ -166,12 +160,7 @@ body {
     align-items: center;
     transition: all 1s;
 }
-#button2:hover {
-    animation: button1Animation1 1s infinite alternate;
-}
-#button2:active {
-    color: black;
-}
+
 @keyframes button1Animation1 {
     from {
         width: 60%;
@@ -232,7 +221,26 @@ body {
     color: rgb(190, 32, 32);
     transition: all 0.3s;
 }
+@media (max-width: 720px) {
+    body {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+    "container1"
+    "container2"
+    ;
+    }
+    #container1, #container2 {
+        width: 90%;
+    }
+}
 @media (max-width: 300px) {
+    body {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+    "container1"
+    "container2"
+    ;
+    }
     #header1Div, #header2Div {
         font-size: 1.2rem;
     }

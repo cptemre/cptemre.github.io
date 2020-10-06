@@ -10,6 +10,13 @@ $(function () {
 </div>
 `;
     let count = 0;
+    // If there is stored info this code add them on load
+    $(localStorage).each(function (index) {
+        $(".items").append(newItems);
+        $(`.item:eq(${index})`).html(localStorage.getItem(index + 1));
+        deleteFunc()
+    });
+
     function addItem() {
         if ($("#input").val().length == 0) {
             alert("Please write a valid item.")
@@ -21,11 +28,6 @@ $(function () {
             $(`.item:eq(${count})`).html(localStorage.getItem(item.length));
         }
     }
-    $(localStorage).each(function (index) {
-        $(".items").append(newItems);
-        $(`.item:eq(${index})`).html(localStorage.getItem(index+1));
-        deleteFunc()
-    });
 
     function deleteFunc() {
         $(".deleteIcon").on({
@@ -48,7 +50,7 @@ $(function () {
                             localStorage.removeItem(Number(key));
                         } else {
                             while (Number(key) <= localStorage.length) {
-                                localStorage.setItem(key, localStorage.getItem(Number(key)+1))
+                                localStorage.setItem(key, localStorage.getItem(Number(key) + 1))
                                 key++
                                 localStorage.removeItem(Number(key));
                             }
@@ -59,66 +61,75 @@ $(function () {
         });
     };
 
-    $("#button2").click(function () {
-        localStorage.clear();
-        $(".newItems").remove();
-    });
-    $("body").keydown(function (e) {
-        if (e.keyCode === 13) {
-            $("#button1").css("color", "white");
-            $("#button1").css("animation", "button1Animation1 1s infinite alternate");
-            $("#button1").css("background-color", "black");
+    $("body").on({
+        keydown: function (e) {
+            if (e.keyCode === 13) {
+                $("#button1").css("color", "white");
+                $("#button1").css("animation", "button1Animation1 1s infinite alternate");
+                $("#button1").css("background-color", "black");
+            }
+        },
+        keyup: function (e) {
+            if (e.keyCode === 13) {
+                addItem();
+                deleteFunc();
+                $("#button1").css("color", "black");
+                $("#button1").css("background-color", "transparent");
+                $("#button1").css("animation", "none");
+                $("#input").val("");
+            }
         }
     });
-    $("body").keyup(function (e) {
-        if (e.keyCode === 13) {
+
+    $("#button1").on({
+        click: function () {
             addItem();
             deleteFunc();
+            $("#input").val("");
+        },
+        mouseenter: function () {
+            $("#button1").css("color", "black");
+            $("#button1").css("animation", "button1Animation1 1s infinite alternate");
+            $("#button1").css("background-color", "transparent");
+        },
+        mouseleave: function () {
             $("#button1").css("color", "black");
             $("#button1").css("background-color", "transparent");
             $("#button1").css("animation", "none");
-            $("#input").val("");
+        },
+        mousedown: function () {
+            $("#button1").css("color", "white");
+            $("#button1").css("background-color", "black");
+        },
+        mouseup: function () {
+            $("#button1").css("color", "black");
+            $("#button1").css("background-color", "transparent");
         }
     });
-    $("#button1").mouseenter(function () { 
-        $("#button1").css("color", "black");
-            $("#button1").css("animation", "button1Animation1 1s infinite alternate");
-            $("#button1").css("background-color", "transparent");
-    });
-    $("#button1").mouseleave(function () { 
-        $("#button1").css("color", "black");
-            $("#button1").css("background-color", "transparent");
-            $("#button1").css("animation", "none");
-    });
-    $("#button2").mouseenter(function () { 
-        $("#button2").css("color", "black");
+
+
+    $("#button2").on({
+        click: function () {
+            localStorage.clear();
+            $(".newItems").remove();
+        },
+        mouseenter: function () {
+            $("#button2").css("color", "black");
             $("#button2").css("animation", "button1Animation1 1s infinite alternate");
             $("#button2").css("background-color", "transparent");
-    });
-    $("#button2").mouseleave(function () { 
-        $("#button2").css("color", "black");
+        },
+        mouseleave: function () {
+            $("#button2").css("color", "black");
             $("#button2").css("background-color", "transparent");
             $("#button2").css("animation", "none");
-    });
-    $("#button2").mousedown(function () { 
-        $("#button2").css("color", "white");
+        },
+        mousedown: function () {
+            $("#button2").css("color", "white");
             $("#button2").css("background-color", "black");
-    });
-    $("#button2").mouseup(function () { 
-        $("#button2").css("color", "black");
-        $("#button2").css("background-color", "transparent");
-    });
-    $("#button1").mousedown(function () { 
-        $("#button1").css("color", "white");
-            $("#button1").css("background-color", "black");
-    });
-    $("#button1").mouseup(function () { 
-        $("#button1").css("color", "black");
-        $("#button1").css("background-color", "transparent");
-    });
-    $("#button1").click(function () {
-        addItem();
-        deleteFunc();
-        $("#input").val("");
+        },
+        mouseup: function () {
+            $("#button2").css("color", "black");
+            $("#button2").css("background-color", "transparent");
+        }
     });
 });
