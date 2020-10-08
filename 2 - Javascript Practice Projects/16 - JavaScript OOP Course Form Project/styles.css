@@ -112,3 +112,14 @@ body {
     transition: 0.5s;
     grid-area: buttonDiv;
 }
+
+.newRequest {
+    grid-area: newRequest;
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin-top: 5rem;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
