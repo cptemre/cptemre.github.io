@@ -1,0 +1,114 @@
+body {
+    padding: 0;
+    margin: 0;
+    height: auto;
+    width: 100vw;
+    overflow-x: hidden;
+    position: absolute;
+    display: grid;
+    grid-template-columns: 0.15fr 0.7fr 0.15fr;
+    grid-template-areas: 
+    ". container0 ."
+    ;
+    justify-items: center;
+    align-items: center;
+    background-color: rgb(222, 228, 233);
+}
+
+#container0 {
+    grid-area: container0;
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin-top: 5rem;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+#header0 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: rgb(6, 8, 10);
+}
+
+#inputDiv0 {
+    height: 20rem;
+    width: 100%;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-rows: 0.1fr 0.033fr 0.1fr 0.033fr 0.1fr 0.033fr 0.1fr;
+    grid-template-areas: 
+    "addDiv1"
+    "."
+    "addDiv2"
+    "."
+    "addDiv3"
+    "."
+    "buttonDiv"
+    ;
+}
+#addDiv1 {
+    grid-area: addDiv1;
+}
+#addDiv2 {
+    grid-area: addDiv2;
+}
+#addDiv3 {
+    grid-area: addDiv3;
+}
+
+.add {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 0.1fr 0.9fr;
+    align-items: center;
+}
+.iconsDiv {
+    text-align: center;
+    vertical-align: middle;
+    border: 4px solid rgb(126, 120, 123);
+    box-sizing: border-box;
+    transition: all 1s;
+}
+
+.icons {
+    box-sizing: border-box;
+    font-size: 200%;
+    display: inline-block;
+    color: rgb(77, 65, 65);
+    background-color: transparent;
+    transition: all 1s;
+}
+
+.inputsDiv {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+.inputs {
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: 4px solid rgb(126, 120, 123);
+    background-color: whitesmoke;
+}
+
+#buttonDiv  {
+    box-sizing: border-box;
+    border: 4px solid gray;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    font-size: 2rem;
+    opacity: 0.3;
+    transition: 0.5s;
+    grid-area: buttonDiv;
+}

@@ -107,7 +107,6 @@ $(function () {
         }
     });
 
-
     $("#button2").on({
         click: function () {
             localStorage.clear();
