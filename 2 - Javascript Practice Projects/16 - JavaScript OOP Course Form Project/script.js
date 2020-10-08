@@ -25,6 +25,26 @@ $(function () {
         </div>
     </div>
 </div>`;
+    
+$("body").keyup(function (e) { 
+    if (e.which === 13) {
+        if ($("#input1").val() != "" && $("#input2").val() != "" && $("#input3").val() != "" && $("#input1").val().trim().length >= 5 && $("#input2").val().trim().length >= 5 && $("#input3").val().trim().length >= 5) {
+            myObject = {"name": $("#input1").val(), "course": $("#input2").val(), "hour": $("#input3").val()}
+            console.log(myObject)
+
+            $("body").css({
+                "grid-template-areas": `". container0 ." ". newRequest ."`
+            });
+            $("#newRequest").append(objects);
+            var objectsLength = $(".objects").length;
+            console.log(objectsLength)
+            $(`.value1:eq(${objectsLength-1})`).html($("#input1").val());
+            $(`.value2:eq(${objectsLength-1})`).html($("#input2").val());
+            $(`.value3:eq(${objectsLength-1})`).html($("#input3").val());
+        }
+    }
+});
+
     $("#buttonDiv").on({
         mouseup: function () {
             if ($("#input1").val() != "" && $("#input2").val() != "" && $("#input3").val() != "" && $("#input1").val().trim().length >= 5 && $("#input2").val().trim().length >= 5 && $("#input3").val().trim().length >= 5) {
