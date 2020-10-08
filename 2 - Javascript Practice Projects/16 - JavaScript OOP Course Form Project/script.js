@@ -1,5 +1,30 @@
 $(function () {
-    var myObject ={};
+    var objects = `<div class="objects">
+    <div class="objectDiv">
+        <div class="objectHeader header1">
+            Name:
+        </div>
+        <div class="objectValue value1">
+            Real Name
+        </div>
+    </div>
+    <div class="objectDiv">
+        <div class="objectHeader header2">
+            Course:
+        </div>
+        <div class="objectValue value2">
+            Real Course
+        </div>
+    </div>
+    <div class="objectDiv">
+        <div class="objectHeader header3">
+            Hour:
+        </div>
+        <div class="objectValue value3">
+            Real Hour
+        </div>
+    </div>
+</div>`;
     $("#buttonDiv").on({
         mouseup: function () {
             if ($("#input1").val() != "" && $("#input2").val() != "" && $("#input3").val() != "" && $("#input1").val().trim().length >= 5 && $("#input2").val().trim().length >= 5 && $("#input3").val().trim().length >= 5) {
@@ -9,6 +34,12 @@ $(function () {
                 $("body").css({
                     "grid-template-areas": `". container0 ." ". newRequest ."`
                 });
+                $("#newRequest").append(objects);
+                var objectsLength = $(".objects").length;
+                console.log(objectsLength)
+                $(`.value1:eq(${objectsLength-1})`).html($("#input1").val());
+                $(`.value2:eq(${objectsLength-1})`).html($("#input2").val());
+                $(`.value3:eq(${objectsLength-1})`).html($("#input3").val());
             }
         }
     });
