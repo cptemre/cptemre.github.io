@@ -48,16 +48,19 @@ $(function () {
         keyup: function (e) { 
             if ($(this).val().trim().length == 0) {
                 $(this).css({
-                    "border-color": "red"
+                    "border-color": "rgb(144, 73, 39)",
+                    "outline": "5px solid rgba(225, 55, 144, 0.5)"
                 });
             } else {
                 if ($(this).val().trim().length >= 5) {
                     $(this).css({
-                        "border-color": "green"
+                        "border-color": "rgb(73, 144, 39)",
+                        "outline": "5px solid rgba(169, 225, 144, 0.5)"
                     });
                 } else {
                     $(this).css({
-                        "border-color": "red"
+                        "border-color": "rgb(144, 73, 39)",
+                        "outline": "5px solid rgba(225, 55, 144, 0.5)"
                     });
                 }
             }
@@ -66,7 +69,7 @@ $(function () {
                     "border-color": "black",
                     "opacity": "0.5",
                     "background-color": "white",
-                    "cursor": "pointer"
+                    "cursor": "pointer",
                 });
                 $("#buttonDiv").on({
                     mouseenter: function () {  
@@ -151,7 +154,7 @@ $(function () {
         },
         focus: function () {
             $(this).css({
-                "background-color": "rgb(249, 245, 245)"
+                "background-color": "rgb(237, 233, 237)"
             });
             $(this).parent().parent().children().eq(0).children().eq(0).css({
                 "color": "white"
@@ -164,7 +167,8 @@ $(function () {
             this.value = $.trim(this.value)
             if ($(this).val().trim().length == 0) {
                 $(this).css({
-                    "border-color": "red"
+                    "border-color": "rgb(144, 73, 39)",
+                    "outline": "5px solid rgba(225, 55, 144, 0.5)"
                 });
             }
             $(this).css({
