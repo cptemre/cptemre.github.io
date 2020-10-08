@@ -25,13 +25,26 @@ $(function () {
         </div>
     </div>
 </div>`;
-    
-$("body").keyup(function (e) { 
-    if (e.which === 13) {
+    function inputValue() {
         if ($("#input1").val() != "" && $("#input2").val() != "" && $("#input3").val() != "" && $("#input1").val().trim().length >= 5 && $("#input2").val().trim().length >= 5 && $("#input3").val().trim().length >= 5) {
-            myObject = {"name": $("#input1").val(), "course": $("#input2").val(), "hour": $("#input3").val()}
-            console.log(myObject)
-
+            return true;
+        } else {
+            return false;
+        }
+    }
+    function bodyKeydown () {
+        $("#buttonDiv").css({
+            "border-color": "rgb(126, 120, 123)",
+            "opacity": "1",
+            "background-color": "black",
+            "color": "white",
+            "letter-spacing": "1rem"
+        });
+        $("#buttonDiv").html("Submitting");
+    };
+    function bodyKeyup () {
+        // myObject = {"name": $("#input1").val(), "course": $("#input2").val(), "hour": $("#input3").val()}
+            // console.log(myObject)
             $("body").css({
                 "grid-template-areas": `". container0 ." ". newRequest ."`
             });
@@ -41,26 +54,45 @@ $("body").keyup(function (e) {
             $(`.value1:eq(${objectsLength-1})`).html($("#input1").val());
             $(`.value2:eq(${objectsLength-1})`).html($("#input2").val());
             $(`.value3:eq(${objectsLength-1})`).html($("#input3").val());
+            $("#buttonDiv").css({
+                "border-color": "rgb(126, 120, 123)",
+                "opacity": "0.5",
+                "background-color": "white",
+                "color": "black",
+                "letter-spacing": "0"
+            });
+            $("#buttonDiv").html("Submit");
+    }
+    $("body").on({
+        keydown: function (e) {  
+            if (e.which === 13) {
+                if (inputValue()) {
+                    bodyKeydown();
+                }
+            }
+        },
+        keyup: function (e) {  
+            if (e.which === 13) {
+                if (inputValue()) {
+                    bodyKeyup();
+                }
+            }
+        }
+    });
+    function  buttonDivMouseup() {
+        if (inputValue()) {
+            // myObject = {"name": $("#input1").val(), "course": $("#input2").val(), "hour": $("#input3").val()}
+            // console.log(myObject)
+            $("#newRequest").append(objects);
+            var objectsLength = $(".objects").length;
+            $(`.value1:eq(${objectsLength-1})`).html($("#input1").val());
+            $(`.value2:eq(${objectsLength-1})`).html($("#input2").val());
+            $(`.value3:eq(${objectsLength-1})`).html($("#input3").val());
         }
     }
-});
-
     $("#buttonDiv").on({
         mouseup: function () {
-            if ($("#input1").val() != "" && $("#input2").val() != "" && $("#input3").val() != "" && $("#input1").val().trim().length >= 5 && $("#input2").val().trim().length >= 5 && $("#input3").val().trim().length >= 5) {
-                myObject = {"name": $("#input1").val(), "course": $("#input2").val(), "hour": $("#input3").val()}
-                console.log(myObject)
-
-                $("body").css({
-                    "grid-template-areas": `". container0 ." ". newRequest ."`
-                });
-                $("#newRequest").append(objects);
-                var objectsLength = $(".objects").length;
-                console.log(objectsLength)
-                $(`.value1:eq(${objectsLength-1})`).html($("#input1").val());
-                $(`.value2:eq(${objectsLength-1})`).html($("#input2").val());
-                $(`.value3:eq(${objectsLength-1})`).html($("#input3").val());
-            }
+            buttonDivMouseup()
         }
     });
 
@@ -84,7 +116,7 @@ $("body").keyup(function (e) {
                     });
                 }
             }
-            if ($("#input1").val() != "" && $("#input2").val() != "" && $("#input3").val() != "" && $("#input1").val().trim().length >= 5 && $("#input2").val().trim().length >= 5 && $("#input3").val().trim().length >= 5) {
+            if (inputValue()) {
                 $("#buttonDiv").css({
                     "border-color": "black",
                     "opacity": "0.5",
