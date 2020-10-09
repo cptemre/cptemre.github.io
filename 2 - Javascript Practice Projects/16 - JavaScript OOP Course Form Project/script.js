@@ -1,5 +1,8 @@
 $(function () {
     var objects = `<div class="objects">
+    <div class="objectCancel">
+        <i class="fas fa-window-close close"></i>
+    </div>
     <div class="objectDiv">
         <div class="objectHeader header1">
             Name:
@@ -50,10 +53,12 @@ $(function () {
             });
             $("#newRequest").append(objects);
             var objectsLength = $(".objects").length;
-            console.log(objectsLength)
             $(`.value1:eq(${objectsLength-1})`).html($("#input1").val());
             $(`.value2:eq(${objectsLength-1})`).html($("#input2").val());
             $(`.value3:eq(${objectsLength-1})`).html($("#input3").val());
+            localStorage.setItem(`name${objectsLength-1}`, $("#input1").val());
+            localStorage.setItem(`course${objectsLength-1}`, $("#input2").val());
+            localStorage.setItem(`hour${objectsLength-1}`, $("#input3").val());
             $("#buttonDiv").css({
                 "border-color": "rgb(126, 120, 123)",
                 "opacity": "0.5",
@@ -75,6 +80,8 @@ $(function () {
             if (e.which === 13) {
                 if (inputValue()) {
                     bodyKeyup();
+                    closeFunction()
+                    inputEach();
                 }
             }
         }
@@ -90,9 +97,81 @@ $(function () {
             $(`.value3:eq(${objectsLength-1})`).html($("#input3").val());
         }
     }
+    function closeFunction() {  
+        $(".close").on({
+            mouseenter: function () {  
+                $(this).css("color", "red");
+            },
+            mouseleave: function () {  
+                $(this).css("color", "black");
+            },
+            mousedown: function () {  
+                $(this).parent().parent().css("opacity", "0.5");
+                $("body").mouseup(function () { 
+                    $(".close").parent().parent().css("opacity", "1");
+                });
+            },
+            mouseup: function () {  
+                $(this).parent().parent().css("display", "none");
+            }
+        });
+    };
+    function inputEach() {  
+        $(".inputs").each(function () {
+            $(this).val("");
+            $(this).css({
+                "border-color": "rgb(144, 73, 39)",
+                "outline": "5px solid rgba(225, 55, 144, 0.5)"
+            });
+            $("#buttonDiv").css({
+                "border-color": "black",
+                "opacity": "0.3",
+                "background-color": "transparent",
+                "cursor": "default"
+            });
+            $("#buttonDiv").on({
+                mouseenter: function () {  
+                    $(this).css({
+                        "border-color": "black",
+                        "opacity": "0.4",
+                        "background-color": "rgb(191, 182, 187)"
+                    });
+                },
+                mouseleave: function () {  
+                    $(this).css({
+                        "border-color": "rgb(126, 120, 123)",
+                        "opacity": "0.3",
+                        "background-color": "transparent"
+                    });
+                },
+                mousedown: function () {  
+                    $(this).css({
+                        "border-color": "black",
+                        "opacity": "0.4",
+                        "background-color": "rgb(191, 182, 187)",
+                        "color": "black",
+                        "letter-spacing": "0"
+                    });
+                    $(this).html("Submit");
+                },
+                mouseup: function () {  
+                    $(this).css({
+                        "border-color": "rgb(126, 120, 123)",
+                        "opacity": "0.3",
+                        "background-color": "transparent",
+                        "color": "black",
+                        "letter-spacing": "0"
+                    });
+                    $(this).html("Submit");
+                }
+            });
+        });
+    }
     $("#buttonDiv").on({
         mouseup: function () {
-            buttonDivMouseup()
+            buttonDivMouseup();
+            closeFunction();
+            inputEach();
         }
     });
 
