@@ -1,0 +1,68 @@
+body {
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    height: auto;
+    overflow-x: hidden;
+    display: grid;
+    grid-template-columns: 0.15fr 0.7fr 0.15fr;
+    grid-template-areas: 
+    ". addFlashDiv ."
+    ;
+    justify-items: flex-start;
+    align-items: flex-start;
+    background-color: black;
+}
+
+#addFlashDiv {
+    width: 100%;
+    height: auto;
+    grid-area: addFlashDiv;
+    margin-top: 2rem;
+}
+
+#addFlashButton {
+    position: relative;
+    height: 3rem;
+    width: 8rem;
+    border: none;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    font-weight: bolder;
+    border-radius: 2rem;
+    outline: none;
+}
+#addFlashButton::before {    
+    z-index: -1;
+}
+#addFlashButton::after {
+    z-index: -1;
+    filter: blur(20px);
+    transform: scale(1.05);
+}
+#addFlashButton::before, #addFlashButton::after {
+    content: "";
+
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(35deg, rgb(127, 156, 93), rgb(199, 236, 228), #00bcd4);
+    border-radius: 2rem;
+}
+
+
+/* #addFlashButton::before, #addFlashButton::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(45deg, rgb(50, 197, 99), rgb(29, 46, 143), rgb(143, 107, 29), rgb(169, 178, 226));
+    width: 100%;
+    height: 100%;
+    transform: scale(1.1);
+    z-index: -1;
+    border-radius: 2rem;
+    filter: blur(5px);
+} */
