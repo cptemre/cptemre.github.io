@@ -5,12 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JavaScript FlashCard OOP Project</title>
     <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 </head>
 <body>
     <div id="addFlashDiv">
-        <button id="addFlashButton">
-            Add a Flash Card
-        </button>
+        <div id="mainButtons">
+            <button id="addFlashButton">
+                Add a Flash Card
+            </button>
+            <button id="selectFlashButton">
+                Select a Flash Card
+            </button>
+        </div>
+        
+        <div id="newCard">
+            <div id="questionDiv">
+                <h3 id="questionHeader">
+                    Question
+                </h3>
+                <textarea id="questionTextArea"></textarea>
+                <div id="typeDiv">
+                    <input placeholder="Input a Type" type="text" id="type">
+                </div>
+            </div>
+            <div id="answerDiv">
+                <h3 id="answerHeader">
+                    Answer
+                </h3>
+                <textarea id="answerTextArea" cols="30" rows="5"></textarea>
+                <div id="saveDiv">
+                    <button id="saveButton">
+                        Save
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
+    <script src="./jquery.js"></script>
+    <script src="./script.js"></script>
 </body>
 </html>
