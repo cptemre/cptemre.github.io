@@ -1,3 +1,11 @@
+:root {
+    --degree: 35deg;
+    --linearColor1: rgb(127, 156, 93);
+    --linearColor2: rgb(199, 236, 228);
+    --linearColor3: rgb(0, 188, 212);
+    --background: linear-gradient(var(--degree), var(--linearColor1), var(--linearColor2), var(--linearColor3));
+}
+
 body {
     padding: 0;
     margin: 0;
@@ -22,7 +30,6 @@ body {
     display: grid;
     justify-items: center;
     align-items: center;
-    grid-template-rows: 0.1fr 0.9fr;
 }
 #mainButtons {
     width: 100%;
@@ -32,7 +39,8 @@ body {
     justify-items: center;
     align-items: center;
 }
-#addFlashButton, #selectFlashButton {
+
+.mainButtons, #hide, .delete {
     display: grid;
     justify-items: center;
     align-items: center;
@@ -46,40 +54,98 @@ body {
     border-radius: 2rem;
     outline: none;
     cursor: pointer;
+    transition: all 1s;
 }
-#addFlashButton::before, #selectFlashButton::before {    
+.mainButtons::before, #hide::before, .card0Question::before, .card0Answer::before, .delete::before {    
     z-index: -1;
 }
-#addFlashButton::after, #selectFlashButton::after {
+.mainButtons::after, #hide::after, .card0Question::after, .card0Answer::after,.delete::after {
     z-index: -1;
     filter: blur(20px);
     transform: scale(1.05);
 }
-#addFlashButton::before, #addFlashButton::after, #selectFlashButton::before, #selectFlashButton::after {
+.mainButtons::before, .mainButtons::after, #hide::before, #hide::after, .card0Question::before, .card0Question::after, .card0Answer::before, .card0Answer::after, .delete::before, .delete::after{
     content: "";
     position: absolute;
     top: -3px;
     left: -3px;
     right: -3px;
     bottom: -3px;
-    background: linear-gradient(35deg, rgb(127, 156, 93), rgb(199, 236, 228), #00bcd4);
+    background: var(--background);
     border-radius: 2rem;
+    transition: all 0.3s;
+}
+.mouseOver::after {
+    transform: scale(1.2);
+}
+.mouseOver::before, .mouseOver::after{
+    background: rgb(207, 118, 35);
+}
+.mouseDown::after {
+    transform: scale(1.2);
+    filter: blur(30px);
+}
+.mouseDown::before, .mouseDown::after{
+    background: rgb(163, 29, 19);
+}
+.selected::after {
+    transform: scale(1.2);
+}
+.selected::before, .selected::after{
+    background: rgb(95, 177, 95);
+}
+.noneSelected::before, .noneSelected::after {
+    background: gray;
+}
+#hide::before, #hide::after, .delete::before, .delete::after {
+    background: red; 
+}
+.card0Question::before, .card0Question::after, .card0Answer::before, .card0Answer::after {
+    background: rgb(97, 14, 14);
+}
+#cardTypes {
+    width: 100%;
+    height: auto;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    margin-top: 3rem;
+}
+
+/* Sıralama bu şekilde olacak */
+.types:nth-child(1) {
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 1;
+}
+.types:nth-child(2) {
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 1;
+}.types:nth-child(3) {
+    grid-column: 3 / span 1;
+    grid-row: 1 / span 1;
+}
+.types:nth-child(4) {
+    grid-column: 1 / span 2;
+    grid-row: 2 / span 1;
+}
+.types:nth-child(5) {
+    grid-column: 2 / span 2;
+    grid-row: 2 / span 1;
 }
 
 #newCard {
     width: 100%;
-    height: 25rem;
+    height: auto;
     display: grid;
-    grid-template-columns: 0.5fr 0.5fr;
+    grid-template-columns: 0.4fr 0.2fr 0.4fr;
     grid-template-rows: 1fr;
     grid-template-areas: 
-    "questionDiv answerDiv"
+    "questionDiv hide answerDiv"
     ;
     justify-items: center;
     align-items: center;
     margin-top: 4rem;
 }
-
 #questionDiv {
     grid-area: questionDiv;
     grid-template-areas: 
@@ -103,7 +169,7 @@ body {
     left: -3px;
     right: -3px;
     bottom: -3px;
-    background: linear-gradient(35deg, rgb(127, 156, 93), rgb(199, 236, 228), #00bcd4);
+    background: rgb(7, 33, 150);
     border-radius: 50%;
 }
 
@@ -153,8 +219,7 @@ body {
 #questionTextArea, #answerTextArea {
     width: 90%;
     height: 100%;
-    display: grid;
-    justify-items: center;
+    text-align: center;
     align-items: center;
     background-color: transparent;
     color: white;
@@ -164,7 +229,8 @@ body {
     border-top: 5px solid gray;
     border-bottom: 5px solid gray;
     border-radius: 50%;
-    padding: 5rem 1rem;
+    padding: 10rem 1rem;
+    overflow: hidden;
 }
 #typeDiv {
     grid-area: typeDiv;
@@ -183,22 +249,24 @@ body {
     border-bottom-left-radius: 5rem;
     border-bottom-right-radius: 5rem;
 }
-#type {
+#type, .show, .hide {
     text-align: center;
     vertical-align: middle;
     position: relative;
     height: 3rem;
     width: 8rem;
     border: none;
-    background: linear-gradient(35deg, rgb(127, 156, 93), rgb(199, 236, 228), #00bcd4);
-    color: black;
-    font-weight: bolder;
+    background: rgb(58, 56, 56);
+    color: white;
+    font-weight: bold;
     border-radius: 2rem;
     outline: none;
-    border: 5px solid rgb(80, 79, 79);
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
 }
+
 #type::placeholder {
-    color: black;
+    color: white;
 }
 #saveDiv {
     grid-area: saveDiv;
@@ -211,11 +279,86 @@ body {
     height: 3rem;
     width: 8rem;
     border: none;
-    background: linear-gradient(35deg, rgb(127, 156, 93), rgb(199, 236, 228), #00bcd4);
+    background: var(--background);
     color: black;
     font-weight: bolder;
     border-radius: 2rem;
     outline: none;
     cursor: pointer;
-    border: 5px solid rgb(80, 79, 79);
+    border-top: 3.5px solid gray;
+    border-bottom: 3.5px solid gray;
+}
+
+#hide {
+    grid-area: hide;
+}
+
+#flashCards, .card0Div {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    margin-top: 3rem;
+}
+.card0Div {
+    grid-template-columns: 0.4fr 0.2fr 0.4fr;
+    grid-template-rows: 1fr;
+}
+
+.card0Question, .card0Answer {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    position: relative;
+    height: 20rem;
+    width: 20rem;
+    border: none;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    font-weight: bolder;
+    border-radius: 2rem;
+    outline: none;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.7fr 0.3fr;
+}
+.card0Question {
+    left: 75%;
+    animation: cardAnimation0 2s forwards;
+}
+@keyframes cardAnimation0 {
+    from {
+        left: 75%;
+    }
+    to {
+        left: 0%;
+    }
+}
+.card0Answer {
+    left: -75%;
+    animation: cardAnimation1 2s forwards;
+}
+@keyframes cardAnimation1 {
+    from {
+        left: -75%;
+    }
+    to {
+        left: 0%;
+    }
+}
+.showHideDiv {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    grid-template-columns: 0.5fr 0.5fr;
+}
+.deleteCard {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    z-index: -1;
 }

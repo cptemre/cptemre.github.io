@@ -10,14 +10,30 @@
 <body>
     <div id="addFlashDiv">
         <div id="mainButtons">
-            <button id="addFlashButton">
+            <button id="addFlashCard" class="mainButtons">
                 Add a Flash Card
             </button>
-            <button id="selectFlashButton">
+            <button id="selectFlashCard" class="mainButtons">
                 Select a Flash Card
             </button>
         </div>
-        
+        <div id="cardTypes">
+            <button class="mainButtons types">
+                0
+            </button>
+            <button class="mainButtons types">
+                1
+            </button>
+            <button class="mainButtons types">
+                2
+            </button>
+            <button class="mainButtons types">
+                3
+            </button>
+            <button class="mainButtons types">
+                4
+            </button>
+        </div>
         <div id="newCard">
             <div id="questionDiv">
                 <h3 id="questionHeader">
@@ -37,6 +53,40 @@
                     <button id="saveButton">
                         Save
                     </button>
+                </div>
+            </div>
+            <button id="hide">
+                Hide
+            </button>
+        </div>
+        <div id="flashCards">
+            <div class="card0Div">
+                <div class="card0Question">
+                    <p class="questionInner">My Question</p>
+                    <div class="showHideDiv">
+                        <button class="show">
+                            Show
+                        </button>
+                        <button class="hide">
+                            Hide
+                        </button>
+                    </div>
+                </div>
+                <div class="deleteCard">
+                    <button class="delete">
+                        Delete
+                    </button>
+                </div>
+                <div class="card0Answer">
+                    <p class="questionInner">My answer</p>
+                    <div class="showHideDiv">
+                        <button class="show">
+                            Show
+                        </button>
+                        <button class="hide">
+                            Hide
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
