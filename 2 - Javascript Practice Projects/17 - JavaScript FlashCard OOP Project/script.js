@@ -1,5 +1,6 @@
 $(function () {
-
+    let count = 0;
+    let rowCount = 0;
     let objects = {};
     //#region -- Action of main buttons and type buttons
     $(".mainButtons").on({
@@ -113,17 +114,48 @@ $(function () {
     //#endregion -- Types Action for Input Value
 
     //#region -- Save Button Actions
-
+    let allArrays = {}; //all input types will go inside this array. "inputValue: questionValue,answerValue". This is the format of array.
     $("#saveButton").on( {
         mousedown: function () {  
             $(this).css("border-color", "violet");
         },
         mouseup: function () {  
             $(this).css("border-color", "white");
-            if ($("questionTextArea").val() != "" && $("answerTextArea").val() != "" && $("#type").val() != "") {
-                let zero = {}
-                console.log(a)
-                console.log(`$("questionTextArea").val()`)
+            if ($("#questionTextArea").val() != "" && $("#answerTextArea").val() != "" && $("#type").val() != "") {
+                //#region -- Creating "inputValue: questionValue,answerValue"
+                let questionValue = $("#questionTextArea").val();
+                let answerValue = $("#answerTextArea").val();
+                let inputValue = $("#type").val();
+                let newArray = {};
+                newArray[inputValue] = [questionValue,answerValue];
+                $.extend(allArrays, newArray);
+                //#endregion -- Creating "inputValue: questionValue,answerValue"
+                
+                $("#cardTypes").append(`<button class="mainButtons types">${inputValue}</button>`);
+                $(`.types:nth-child(${count+1})`).css({
+                    "grid-column": "1 / span 1",
+                    "grid-row": `${rowCount+1} / span 1`
+                });
+                $(`.types:nth-child(${count+2})`).css({
+                    "grid-column": "2 / span 1",
+                    "grid-row": `${rowCount+1} / span 1`
+                });
+                $(`.types:nth-child(${count+3})`).css({
+                    "grid-column": "3 / span 1",
+                    "grid-row": `${rowCount+1} / span 1`
+                });
+                $(`.types:nth-child(${count+4})`).css({
+                    "grid-column": "1 / span 2",
+                    "grid-row": `${rowCount+2} / span 1`
+                });
+                $(`.types:nth-child(${count+5})`).css({
+                    "grid-column": "2 / span 2",
+                    "grid-row": `${rowCount+2} / span 1`
+                });
+                if ($(`.types`).length % 5 == 0) {
+                    count += 5;
+                    rowCount +=2;
+                }
             } else {
                 alert("Please Fill Question, Answer and Type Areas.")
             }
