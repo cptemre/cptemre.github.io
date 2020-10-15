@@ -126,8 +126,8 @@ body {
     display: none;
     justify-items: center;
     align-items: center;
-    margin-top: 3rem;
     grid-row-gap: 2rem;
+    padding-top: 3rem;
 }
 
 /* Sıralama bu şekilde olacak */
@@ -152,7 +152,7 @@ body {
 }
 
 #newCard {
-    width: 100%;
+    width: 85%;
     height: auto;
     display: none;
     grid-template-columns: 0.4fr 0.2fr 0.4fr;
@@ -199,8 +199,8 @@ body {
     ;
 }
 #questionDiv,#answerDiv {
-    width: 90%;
-    height: 37rem;
+    width: 100%;
+    height: 35rem;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 0.2fr 0.6fr 0.2fr;
@@ -226,6 +226,8 @@ body {
     display: grid;
     justify-items: center;
     align-items: center;
+    font-size: 2rem;
+    font-weight: 500;
 }
 #questionTextArea {
     grid-area: questionTextArea;
@@ -246,8 +248,9 @@ body {
     border-top: 5px solid gray;
     border-bottom: 5px solid gray;
     border-radius: 50%;
-    padding: 10rem 1rem;
+    padding: 9.5rem 1rem;
     overflow: hidden;
+    transition: all 0.3s;
 }
 #typeDiv {
     grid-area: typeDiv;
@@ -296,14 +299,15 @@ body {
     height: 3rem;
     width: 8rem;
     border: none;
-    background: var(--background);
-    color: black;
+    background: rgb(58, 56, 56);
+    color: white;
     font-weight: bolder;
     border-radius: 2rem;
     outline: none;
     cursor: pointer;
-    border-top: 3.5px solid gray;
-    border-bottom: 3.5px solid gray;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    transition: all 0.3s;
 }
 
 #hide {
