@@ -30,17 +30,19 @@ body {
     display: grid;
     justify-items: center;
     align-items: center;
+    grid-row-gap: 2rem;
 }
 #mainButtons {
     width: 100%;
-    height: 100%;
+    height: auto;
     display: grid;
     grid-template-columns: 0.5fr 0.5fr;
     justify-items: center;
     align-items: center;
+    z-index: 2;
 }
 
-.mainButtons, #hide, .delete {
+.mainButtons, .hideQuestionAnswer, .delete {
     display: grid;
     justify-items: center;
     align-items: center;
@@ -56,15 +58,15 @@ body {
     cursor: pointer;
     transition: all 1s;
 }
-.mainButtons::before, #hide::before, .card0Question::before, .card0Answer::before, .delete::before {    
+.mainButtons::before, .hideQuestionAnswer::before, .card0Question::before, .card0Answer::before, .delete::before {    
     z-index: -1;
 }
-.mainButtons::after, #hide::after, .card0Question::after, .card0Answer::after,.delete::after {
+.mainButtons::after, .hideQuestionAnswer::after, .card0Question::after, .card0Answer::after,.delete::after {
     z-index: -1;
     filter: blur(20px);
     transform: scale(1.05);
 }
-.mainButtons::before, .mainButtons::after, #hide::before, #hide::after, .card0Question::before, .card0Question::after, .card0Answer::before, .card0Answer::after, .delete::before, .delete::after{
+.mainButtons::before, .mainButtons::after, .hideQuestionAnswer::before, .hideQuestionAnswer::after, .card0Question::before, .card0Question::after, .card0Answer::before, .card0Answer::after, .delete::before, .delete::after{
     content: "";
     position: absolute;
     top: -3px;
@@ -80,6 +82,7 @@ body {
 }
 .mouseOver::before, .mouseOver::after{
     background: rgb(207, 118, 35);
+    transition: all 0.3s;
 }
 .mouseDown::after {
     transform: scale(1.2);
@@ -87,29 +90,44 @@ body {
 }
 .mouseDown::before, .mouseDown::after{
     background: rgb(163, 29, 19);
+    transition: all 0.3s;
 }
 .selected::after {
     transform: scale(1.2);
 }
 .selected::before, .selected::after{
     background: rgb(95, 177, 95);
+    transition: all 0.3s;
 }
 .noneSelected::before, .noneSelected::after {
     background: gray;
+    transition: all 0.3s;
 }
-#hide::before, #hide::after, .delete::before, .delete::after {
+
+.hideQuestionAnswer::before, .hideQuestionAnswer::after, .delete::before, .delete::after {
+    background: violet; 
+    transition: all 0.3s;
+}
+.hideQuestionAnswerMouseEnter::before, .hideQuestionAnswerMouseEnter::after, .deleteMouseEnter::before, .deleteMouseEnter::after {
     background: red; 
+    transition: all 0.3s;
+}
+.hideQuestionAnswerMouseDown::before, .hideQuestionAnswerMouseDown::after, .deleteMouseDown::before, .deleteMouseDown::after {
+    background: rgb(97, 14, 14); 
+    transition: all 0.3s;
 }
 .card0Question::before, .card0Question::after, .card0Answer::before, .card0Answer::after {
     background: rgb(97, 14, 14);
+    transition: all 0.3s;
 }
 #cardTypes {
     width: 100%;
     height: auto;
-    display: grid;
+    display: none;
     justify-items: center;
     align-items: center;
     margin-top: 3rem;
+    grid-row-gap: 2rem;
 }
 
 /* Sıralama bu şekilde olacak */
@@ -136,15 +154,14 @@ body {
 #newCard {
     width: 100%;
     height: auto;
-    display: grid;
+    display: none;
     grid-template-columns: 0.4fr 0.2fr 0.4fr;
-    grid-template-rows: 1fr;
     grid-template-areas: 
     "questionDiv hide answerDiv"
     ;
     justify-items: center;
     align-items: center;
-    margin-top: 4rem;
+    padding-top: 3rem;
 }
 #questionDiv {
     grid-area: questionDiv;
@@ -296,7 +313,7 @@ body {
 #flashCards, .card0Div {
     width: 100%;
     height: 100%;
-    display: grid;
+    display: none;
     justify-items: center;
     align-items: center;
     margin-top: 3rem;
