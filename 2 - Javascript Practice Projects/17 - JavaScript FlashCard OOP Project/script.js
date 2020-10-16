@@ -1,46 +1,95 @@
 $(function () {
     let count = 0;
     let rowCount = 0;
-    let objects = {};
-    //#region -- Action of main buttons and type buttons
-    $(".mainButtons").on({
-        mouseenter: function () {  
-            $(this).addClass("mouseOver");
-            $(this).removeClass("selected");
-            $(this).removeClass("noneSelected");
-        },
-        mouseleave: function () {  
-            if ($(this).siblings().hasClass("noneSelected")) {
+    let card0DivInner = `<div class="card0Question">
+    <p class="questionInner">My Question</p>
+    <div class="showHideDiv">
+        <button class="show">
+            Show
+        </button>
+        <button class="hide">
+            Hide
+        </button>
+    </div>
+</div>
+<div class="deleteCard">
+    <button class="delete">
+        Delete
+    </button>
+</div>
+<div class="card0Answer">
+    <p class="answerInner">My answer</p>
+    <div class="showHideDiv">
+        <button class="show">
+            Show
+        </button>
+        <button class="hide">
+            Hide
+        </button>
+    </div>
+</div>`; 
+    function mainButtonFunctions() {  
+        $(".mainButtons").on({
+            mouseenter: function () {  
+                $(this).addClass("mouseOver");
+                $(this).removeClass("selected");
+                $(this).removeClass("noneSelected");
+            },
+            mouseleave: function () {  
+                if ($(this).siblings().hasClass("noneSelected")) {
+                    $(this).removeClass("mouseDown");
+                    $(this).removeClass("mouseOver");
+                    $(this).addClass("selected");
+                } else {
+                    $(this).removeClass("mouseOver");
+                }
+                
+                if ($(this).siblings().hasClass("selected")) {
+                    $(this).removeClass("mouseDown");
+                    $(this).removeClass("mouseOver");
+                    $(this).addClass("noneSelected");
+                } else {
+                    $(this).removeClass("mouseOver");
+                }
+            },
+            mousedown: function () { 
+                $(this).addClass("mouseDown");
+                $(this).removeClass("noneSelected");
+                $(this).removeClass("mouseOver");
+    
+                $(this).siblings().addClass("noneSelected");
+                $(this).siblings().removeClass("selected");
+            },
+            mouseup: function () {  
+                $(this).addClass("selected");
                 $(this).removeClass("mouseDown");
                 $(this).removeClass("mouseOver");
-                $(this).addClass("selected");
-            } else {
-                $(this).removeClass("mouseOver");
+                $(this).removeClass("noneSelected");
+            }
+        });
+    }
+    function typesMouseupFunction() {
+        $(".types").mouseup(function () { 
+            $("#newCard").css('display','grid').hide().slideDown(1000);
+            let typesInner = $(this).html().trim();
+            $("#type").val(typesInner);
+            $("#type").prop("disabled", true);
+            $("#flashCards, .card0Div").css('display','grid').slideDown(1000);
+            $(".card0Div").empty();
+            for (let i = 0; i < allArrays[[$(`.types`).html()]].length; i++) {
+                $(".card0Div").append(`${card0DivInner}`);
+                let flashCardCount = $(".answerInner").length-1;
+                $(`.questionInner`).eq(i).html(`${allArrays[$(`.types`).html()][0]}`);
+                $(".answerInner").eq(i).html(`${allArrays[$(`.types`).html()][1]}`); 
+                console.log(i)  
+                console.log(allArrays[[$(`.types`).html()]])              
             }
             
-            if ($(this).siblings().hasClass("selected")) {
-                $(this).removeClass("mouseDown");
-                $(this).removeClass("mouseOver");
-                $(this).addClass("noneSelected");
-            } else {
-                $(this).removeClass("mouseOver");
-            }
-        },
-        mousedown: function () { 
-            $(this).addClass("mouseDown");
-            $(this).removeClass("noneSelected");
-            $(this).removeClass("mouseOver");
-
-            $(this).siblings().addClass("noneSelected");
-            $(this).siblings().removeClass("selected");
-        },
-        mouseup: function () {  
-            $(this).addClass("selected");
-            $(this).removeClass("mouseDown");
-            $(this).removeClass("mouseOver");
-            $(this).removeClass("noneSelected");
-        }
-    });
+        
+        });
+    }
+    //#region -- Action of main buttons and type buttons
+    mainButtonFunctions();
     //#endregion -- Action of main buttons and type buttons
 
     $(".hideQuestionAnswer").on({
@@ -105,22 +154,23 @@ $(function () {
     //#endregion -- Type Focus and Out Action
 
     //#region -- Types Action for Input Value
-    $(".types").mouseup(function () { 
-        $("#newCard").css('display','grid').hide().slideDown(1000);
-        let typesInner = $(this).html().trim();
-        $("#type").val(typesInner);
-        $("#type").prop("disabled", true);
-    });
+    typesMouseupFunction();
     //#endregion -- Types Action for Input Value
 
     //#region -- Save Button Actions
     let allArrays = {}; //all input types will go inside this array. "inputValue: questionValue,answerValue". This is the format of array.
     $("#saveButton").on( {
         mousedown: function () {  
-            $(this).css("border-color", "violet");
+            $(this).css({
+                "border-color": "violet",
+                "background-color": "rgb(7, 33, 150)",
+            });
         },
         mouseup: function () {  
-            $(this).css("border-color", "white");
+            $(this).css({
+                "border-color": "white",
+                "background-color": " rgb(58, 56, 56)",
+            });            
             if ($("#questionTextArea").val() != "" && $("#answerTextArea").val() != "" && $("#type").val() != "") {
                 //#region -- Creating "inputValue: questionValue,answerValue"
                 let questionValue = $("#questionTextArea").val();
@@ -156,6 +206,10 @@ $(function () {
                     count += 5;
                     rowCount +=2;
                 }
+
+                
+                mainButtonFunctions();
+                typesMouseupFunction();
             } else {
                 alert("Please Fill Question, Answer and Type Areas.")
             }
