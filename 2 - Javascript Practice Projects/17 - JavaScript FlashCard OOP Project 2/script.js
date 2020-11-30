@@ -5,7 +5,7 @@ $(function () {
         <h3 class="cardsHeading">1</h3>
     </div>
     <div class="showHideDiv">
-        <h3 class="showHide">Show/Hide Answer</h3>
+        <h3 class="showHide"><span class="show">Show</span> / <span class="hide">Hide</span> Answer</h3>
     </div>
     <div class="cardsAnswerDiv">
         <h3 class="cardsAnswer">Answer</h3>
@@ -28,6 +28,12 @@ $(function () {
                 $("#mainQuestionDiv").slideUp(1000);
                 count = 0;
             }
+            $("#cancelButton").on({
+                mouseup: function () {  
+                    $("#mainQuestionDiv").slideUp(1000);
+                    count = 0;
+                }
+            });
         }
     });
     $("#saveButton").on({
@@ -36,9 +42,26 @@ $(function () {
             console.log()
             $(".cardsHeading").last().html($("#textarea1").val());
             $(".cardsAnswer").last().html($("#textarea2").val());
-            $(".showHide").on({
+
+            $(".show").on({
                 mouseup: function () {  
-                    $(this).parent().siblings(".cardsAnswerDiv").css("display", "grid");
+                    $(this).parent().parent().siblings(".cardsAnswerDiv").css("display", "grid").hide().fadeIn(1000);
+                }
+            });
+            $(".hide").on({
+                mouseup: function () {  
+                    $(this).parent().parent().siblings(".cardsAnswerDiv").fadeOut(1000);
+                }
+            });
+            $(".edit").on({
+                mouseup: function () { 
+                    $("#textarea1").val($(this).parent().siblings(".cardsHeadingDiv").children(".cardsHeading").html());
+                    $("#textarea2").val($(this).parent().siblings(".cardsAnswerDiv").children(".cardsAnswer").html());
+                }
+            });
+            $(".delete").on({
+                mouseup: function () {  
+                    $(this).parent().parent().remove();
                 }
             });
         }
