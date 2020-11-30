@@ -75,17 +75,11 @@ $(function () {
             $("#type").val(typesInner);
             $("#type").prop("disabled", true);
             $("#flashCards, .card0Div").css('display','grid').slideDown(1000);
-            $(".card0Div").empty();
-            for (let i = 0; i < allArrays[[$(`.types`).html()]].length; i++) {
-                $(".card0Div").append(`${card0DivInner}`);
-                let flashCardCount = $(".answerInner").length-1;
-                $(`.questionInner`).eq(i).html(`${allArrays[$(`.types`).html()][0]}`);
-                $(".answerInner").eq(i).html(`${allArrays[$(`.types`).html()][1]}`); 
-                console.log(i)  
-                console.log(allArrays[[$(`.types`).html()]])              
-            }
             
-        
+            let flashCardCount = $(".answerInner").length-1;
+
+                $(`.questionInner`).eq(`${flashCardCount}`).html(`${allArrays[$(`.types`).html()][0]}`);
+                $(".answerInner").eq(`${flashCardCount}`).html(`${allArrays[$(`.types`).html()][1]}`);
         });
     }
     //#region -- Action of main buttons and type buttons
@@ -207,6 +201,7 @@ $(function () {
                     rowCount +=2;
                 }
 
+                $(".card0Div").append(`${card0DivInner}`);
                 
                 mainButtonFunctions();
                 typesMouseupFunction();

@@ -1,0 +1,159 @@
+body, #mainContainer {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: auto;
+    overflow-x: hidden;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+#mainContainer {
+    display: grid;
+    grid-template-areas: 
+    "heading0Div"
+    "button0Div"
+    "mainQuestionDiv"
+    "cardsDiv"
+    ;
+    width: 100%;
+}
+
+#heading0Div {
+    grid-area: heading0Div;
+}
+#button0Div {
+    grid-area: button0Div;
+}
+#mainQuestionDiv {
+    grid-area: mainQuestionDiv;
+    width: 50%;
+    height: 100%;
+    margin-top: 3rem;
+    display: none;
+    background-color: rgb(107, 128, 167);
+    grid-template-areas: 
+    "questionDiv cancelButtonDiv"
+    "answerDiv ."
+    "saveButtonDiv saveButtonDiv"
+    ;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+#cardsDiv {
+    grid-area: cardsDiv;
+    height: auto;
+}
+
+#flashcards {
+    font-size: 1.5rem;
+    text-decoration: underline;
+}
+#addQuestion, #saveButton, .edit, .delete {
+    background-color: red;
+    border: 1px solid black;
+    outline: none;
+    height: 2rem;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+#saveButton {
+    background-color: orange;
+    width: 5rem;
+}
+
+#questionDiv {
+    grid-area: questionDiv;
+    width: 25rem;
+}
+#cancelButtonDiv {
+    grid-area: cancelButtonDiv;
+    position: relative;
+    top: -22%;
+    color: red;
+    cursor: pointer;
+    font-size: 2rem;
+}
+#answerDiv {
+    grid-area: answerDiv;
+    width: 25rem;
+}
+#saveButtonDiv {
+    grid-area: saveButtonDiv;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+#question, #answer {
+    text-align: center;
+    vertical-align: middle;
+}
+
+#textarea1, #textarea2 {
+    resize: none;
+    width: 100%;
+    padding: 0;
+}
+
+.cards {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-areas: 
+    "cardsHeadingDiv"
+    "showHideDiv"
+    "cardsAnswerDiv"
+    "editDeleteDiv"
+    ;
+    margin-top: 5rem;
+    background-color: tomato;
+    width: 20rem;
+    border-radius: 1rem;
+}
+
+.cardsHeadingDiv {
+    grid-area: cardsHeadingDiv;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    width: 20rem;
+}
+.showHideDiv {
+    grid-area: showHideDiv;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    width: 20rem;
+    color: red;
+}
+.cardsAnswerDiv {
+    grid-area: cardsAnswerDiv;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 20rem;
+}
+.editDeleteDiv {
+    grid-area: editDeleteDiv;
+    display: grid;
+    grid-template-areas: 
+    "edit delete"
+    ;
+    justify-items: center;
+    align-items: center;
+    width: 20rem;
+    margin-bottom: 0.5rem;
+}
+
+.edit {
+    grid-area: edit;
+    width: 50%;
+
+}
+.delete {
+    grid-area: delete;
+    width: 50%;
+}
