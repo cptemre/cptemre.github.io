@@ -1,6 +1,9 @@
 $(function () {
     let count = 0;
     let rowCount = 0;
+    let questionValue;
+    let answerValue;
+    let inputValue;
     let card0DivInner = `<div class="card0Question">
     <p class="questionInner">My Question</p>
     <div class="showHideDiv">
@@ -75,11 +78,20 @@ $(function () {
             $("#type").val(typesInner);
             $("#type").prop("disabled", true);
             $("#flashCards, .card0Div").css('display','grid').slideDown(1000);
-            
-            let flashCardCount = $(".answerInner").length-1;
-
-                $(`.questionInner`).eq(`${flashCardCount}`).html(`${allArrays[$(`.types`).html()][0]}`);
-                $(".answerInner").eq(`${flashCardCount}`).html(`${allArrays[$(`.types`).html()][1]}`);
+            $.each($(".types"), function () {
+                $(".card0Div").append(`${card0DivInner}`);
+                $(`.questionInner`).last().html(`${myObj[$(`.types`).html()][0]}`);
+            $(".answerInner").last().html(`${myObj[$(`.types`).html()][1]}`);
+            });
+            $("#saveButton").on({
+                mouseup: function () { 
+                    $.each($(".types"), function () {
+                        $(".card0Div").append(`${card0DivInner}`);
+                        $(`.questionInner`).last().html(`${myObj[$(`.types`).html()][0]}`);
+                    $(".answerInner").last().html(`${myObj[$(`.types`).html()][1]}`);
+                    });
+                }
+            })
         });
     }
     //#region -- Action of main buttons and type buttons
@@ -112,6 +124,7 @@ $(function () {
         $("#type").attr("placeholder", "Input a Type").val("");
         $("#type").prop("disabled", false);
         $("#cardTypes").slideUp(1000);
+        $(".card0Div").empty();
     });
     $("#selectFlashCard").mouseup(function () { 
         $("#newCard").slideUp(1000);
@@ -152,7 +165,7 @@ $(function () {
     //#endregion -- Types Action for Input Value
 
     //#region -- Save Button Actions
-    let allArrays = {}; //all input types will go inside this array. "inputValue: questionValue,answerValue". This is the format of array.
+    let myObj = {}; //all input types will go inside this array. "inputValue: questionValue,answerValue". This is the format of array.
     $("#saveButton").on( {
         mousedown: function () {  
             $(this).css({
@@ -167,15 +180,18 @@ $(function () {
             });            
             if ($("#questionTextArea").val() != "" && $("#answerTextArea").val() != "" && $("#type").val() != "") {
                 //#region -- Creating "inputValue: questionValue,answerValue"
-                let questionValue = $("#questionTextArea").val();
-                let answerValue = $("#answerTextArea").val();
-                let inputValue = $("#type").val();
-                let newArray = {};
-                newArray[inputValue] = [questionValue,answerValue];
-                $.extend(allArrays, newArray);
+                questionValue = $("#questionTextArea").val();
+                answerValue = $("#answerTextArea").val();
+                inputValue = $("#type").val();
+                if (inputValue in myObj) {
+                    console.log("Do nothing");
+                } else {
+                    $("#cardTypes").append(`<button class="mainButtons types">${inputValue}</button>`);
+                }
+                myObj[inputValue] = [questionValue,answerValue];
+                console.log(myObj[`${inputValue}`]);
                 //#endregion -- Creating "inputValue: questionValue,answerValue"
                 
-                $("#cardTypes").append(`<button class="mainButtons types">${inputValue}</button>`);
                 $(`.types:nth-child(${count+1})`).css({
                     "grid-column": "1 / span 1",
                     "grid-row": `${rowCount+1} / span 1`
@@ -200,8 +216,6 @@ $(function () {
                     count += 5;
                     rowCount +=2;
                 }
-
-                $(".card0Div").append(`${card0DivInner}`);
                 
                 mainButtonFunctions();
                 typesMouseupFunction();
