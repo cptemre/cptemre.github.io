@@ -1,5 +1,8 @@
 $(function () {
     var count = 0;
+    var textarea1 = $("#textarea1").val().trim();
+    var textarea2 = $("#textarea2").val().trim();
+    var myObj = {};
     var cards = `<div class="cards">
     <div class="cardsHeadingDiv">
         <h3 class="cardsHeading">1</h3>
@@ -19,6 +22,18 @@ $(function () {
         </button>
     </div>
 </div>`;
+    if (localStorage.length == 0) {
+        var myObj = {};
+    } else {
+        var myObj = JSON.parse(localStorage.getItem("myObj"));
+        $.each(myObj, function (key, val) {
+            $("#cardsDiv").append(cards);
+            $(".cardsHeading").last().html(key);
+            $(".cardsAnswer").last().html(val);
+        });
+    }
+    console.log(myObj);
+    
     $("#addQuestion").on({
         mouseup: function () {  
             if (count == 0) {
@@ -39,10 +54,13 @@ $(function () {
     $("#saveButton").on({
         mouseup: function () {  
             $("#cardsDiv").append(cards);
-            console.log()
-            $(".cardsHeading").last().html($("#textarea1").val());
-            $(".cardsAnswer").last().html($("#textarea2").val());
-
+            $(".cardsHeading").last().html(textarea1);
+            $(".cardsAnswer").last().html(textarea2);
+            var newObj = {};
+            myObj[textarea1] = textarea2;
+            console.log(myObj);
+            localStorage.setItem('myObj', JSON.stringify(myObj));
+            console.log(JSON.parse(localStorage.getItem("myObj")));
             $(".show").on({
                 mouseup: function () {  
                     $(this).parent().parent().siblings(".cardsAnswerDiv").css("display", "grid").hide().fadeIn(1000);
