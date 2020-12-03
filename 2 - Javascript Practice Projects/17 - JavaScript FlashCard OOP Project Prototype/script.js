@@ -4,6 +4,8 @@ $(function () {
     let questionValue;
     let answerValue;
     let inputValue;
+    let typeVal = {};
+    let tempObj = [];
     let card0DivInner = `<div class="card0Question">
     <p class="questionInner">My Question</p>
     <div class="showHideDiv">
@@ -72,24 +74,30 @@ $(function () {
         });
     }
     function typesMouseupFunction() {
-        $(".types").mouseup(function () { 
+        $(".types").mouseup(function () {
+            var typesHtml = $(this).html();
             $("#newCard").css('display','grid').hide().slideDown(1000);
             let typesInner = $(this).html().trim();
             $("#type").val(typesInner);
             $("#type").prop("disabled", true);
             $("#flashCards, .card0Div").css('display','grid').slideDown(1000);
-            $.each($(".types"), function () {
-                $(".card0Div").append(`${card0DivInner}`);
-                $(`.questionInner`).last().html(`${myObj[$(`.types`).html()][0]}`);
-            $(".answerInner").last().html(`${myObj[$(`.types`).html()][1]}`);
-            });
+            $(".card0Div").append(`${card0DivInner}`);
+            $(`.questionInner`).last().html(`${myObj[typesHtml][0]}`);
+            $(".answerInner").last().html(`${myObj[typesHtml][1]}`);
             $("#saveButton").on({
                 mouseup: function () { 
-                    $.each($(".types"), function () {
-                        $(".card0Div").append(`${card0DivInner}`);
-                        $(`.questionInner`).last().html(`${myObj[$(`.types`).html()][0]}`);
-                    $(".answerInner").last().html(`${myObj[$(`.types`).html()][1]}`);
-                    });
+                    $(".card0Div").append(`${card0DivInner}`);
+                        $(`.questionInner`).last().html(`${myObj[typesHtml][0]}`);
+                        $(".answerInner").last().html(`${myObj[typesHtml][1]}`);
+                    for (var member in myObj) delete myObj[member]
+                    let i = 0;
+                        while (i < $(`.questionInner`).length) {
+                            console.log($(`.questionInner`).eq(i).html());
+                            typeVal = {[$("#type").val()]: {[$(`.questionInner`).eq(i).html()]: $(`.answerInner`).eq(i).html()}};
+                            tempObj.push(JSON.stringify(typeVal));
+                            console.log(tempObj);
+                            i++;
+                        }
                 }
             })
         });
@@ -125,10 +133,26 @@ $(function () {
         $("#type").prop("disabled", false);
         $("#cardTypes").slideUp(1000);
         $(".card0Div").empty();
+        console.log(tempObj);
+        console.log(JSON.parse(tempObj[0]))
+        let i = 0;
+        while (i < tempObj.length) {
+            console.log(JSON.parse(tempObj[i]))
+            for ( var key in JSON.parse(tempObj[i]) ) {
+                if (key == 2 /*Buraya type gelecek*/) {
+                    console.log("yes")
+                    console.log(Object.values(key));
+                } else {
+                    console.log("no")
+                }
+            }
+            i++;
+        }
     });
     $("#selectFlashCard").mouseup(function () { 
         $("#newCard").slideUp(1000);
         $("#cardTypes").css('display','grid').hide().slideDown(1000);
+        $(".card0Div").empty();
     });
     //#endregion -- Add and Select Flash Card Functions
 
