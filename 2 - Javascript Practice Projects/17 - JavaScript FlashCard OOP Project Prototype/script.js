@@ -4,7 +4,7 @@ $(function () {
     let questionValue;
     let answerValue;
     let inputValue;
-    let typeVal = {};
+    let typeVal = [];
     let tempObj = [];
     let card0DivInner = `<div class="card0Question">
     <p class="questionInner">My Question</p>
@@ -93,8 +93,8 @@ $(function () {
                     let i = 0;
                         while (i < $(`.questionInner`).length) {
                             console.log($(`.questionInner`).eq(i).html());
-                            typeVal = {[$("#type").val()]: {[$(`.questionInner`).eq(i).html()]: $(`.answerInner`).eq(i).html()}};
-                            tempObj.push(JSON.stringify(typeVal));
+                            typeVal = [$("#type").val(), $(`.questionInner`).eq(i).html(), $(`.answerInner`).eq(i).html()];
+                            tempObj.push(typeVal);
                             console.log(tempObj);
                             i++;
                         }
@@ -134,17 +134,14 @@ $(function () {
         $("#cardTypes").slideUp(1000);
         $(".card0Div").empty();
         console.log(tempObj);
-        console.log(JSON.parse(tempObj[0]))
         let i = 0;
         while (i < tempObj.length) {
-            console.log(JSON.parse(tempObj[i]))
-            for ( var key in JSON.parse(tempObj[i]) ) {
-                if (key == 2 /*Buraya type gelecek*/) {
-                    console.log("yes")
-                    console.log(Object.values(key));
-                } else {
-                    console.log("no")
-                }
+            if (tempObj[i][0] == 2) {
+                $(".card0Div").append(`${card0DivInner}`);
+                $(`.questionInner`).last().html(`${tempObj[i][1]}`);
+                $(".answerInner").last().html(`${tempObj[i][2]}`);
+            } else {
+                
             }
             i++;
         }
