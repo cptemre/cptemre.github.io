@@ -6,6 +6,9 @@ $(function () {
     let inputValue;
     let typeVal = [];
     let tempObj = [];
+    let stringfy;
+    let parse;
+    let i = 0;
     let card0DivInner = `<div class="card0Question">
     <p class="questionInner">My Question</p>
     <div class="showHideDiv">
@@ -82,12 +85,14 @@ $(function () {
             $("#type").prop("disabled", true);
             $("#flashCards, .card0Div").css('display','grid').slideDown(1000);
             console.log(tempObj);
-            let i = 0;
-            var parse = JSON.parse(tempObj[i])
-            console.log(parse[0])
+            parse = JSON.parse(tempObj[i])
+            console.log(parse[0]);
+            $(".card0Div").empty();
             while (i < tempObj.length) {
+                parse = JSON.parse(tempObj[i])
                 if (parse[0] == 2) {
                     console.log("hi")
+                    console.log(typesHtml);
                     $(".card0Div").append(`${card0DivInner}`);
                     $(`.questionInner`).last().html(`${parse[1]}`);
                     $(".answerInner").last().html(`${parse[2]}`);
@@ -95,23 +100,32 @@ $(function () {
                 }
                 i++;
             }
+            i = 0
             $("#saveButton").on({
                 mouseup: function () { 
-                    console.log("hi")
-                    $(".card0Div").append(`${card0DivInner}`);
-                    $(`.questionInner`).last().html($(`#questionTextArea`).val());
-                    $(".answerInner").last().html($(`#answerTextArea`).val());
-                    let i = 0;
-                        while (i < $(`.questionInner`).length) {
-                            console.log($(`.questionInner`).eq(i).html());
-                            typeVal = [$("#type").val(), $(`.questionInner`).eq(i).html(), $(`.answerInner`).eq(i).html()];
-                            var typeString = JSON.stringify(typeVal)
-                            tempObj.push(typeString);
-                            tempObj = $.unique(tempObj.sort());
-                            console.log(tempObj);
-                            i++;
+                    questionValue = $("#questionTextArea").val();
+                    answerValue = $("#answerTextArea").val();
+                    inputValue = $("#type").val();
+                    myObj = [inputValue,questionValue,answerValue];
+                    stringfy = JSON.stringify(myObj);
+                    tempObj.push(stringfy);
+                    tempObj = $.unique(tempObj.sort());
+                    console.log(myObj)
+                    console.log(tempObj);
+                    let x = 0
+                    $(".card0Div").empty();
+                    while (x < tempObj.length) {
+                        parse = JSON.parse(tempObj[x])
+                        if (parse[0] == 2) {
+                            console.log("hi")
+                            console.log(typesHtml);
+                            $(".card0Div").append(`${card0DivInner}`);
+                            $(`.questionInner`).last().html(`${parse[1]}`);
+                            $(".answerInner").last().html(`${parse[2]}`);
+                        } else {
                         }
-                    
+                        x++;
+                    }
                 }
             })
         });
@@ -212,7 +226,7 @@ $(function () {
                     $("#cardTypes").append(`<button class="mainButtons types">${inputValue}</button>`);
                 }
                 myObj = [inputValue,questionValue,answerValue];
-                var stringfy = JSON.stringify(myObj);
+                stringfy = JSON.stringify(myObj);
                 tempObj.push(stringfy);
                 console.log(tempObj);
                 console.log(JSON.parse(tempObj[0]))
