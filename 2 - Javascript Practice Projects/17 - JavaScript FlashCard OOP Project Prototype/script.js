@@ -81,23 +81,37 @@ $(function () {
             $("#type").val(typesInner);
             $("#type").prop("disabled", true);
             $("#flashCards, .card0Div").css('display','grid').slideDown(1000);
-            $(".card0Div").append(`${card0DivInner}`);
-            $(`.questionInner`).last().html(`${myObj[typesHtml][0]}`);
-            $(".answerInner").last().html(`${myObj[typesHtml][1]}`);
+            console.log(tempObj);
+            let i = 0;
+            var parse = JSON.parse(tempObj[i])
+            console.log(parse[0])
+            while (i < tempObj.length) {
+                if (parse[0] == 2) {
+                    console.log("hi")
+                    $(".card0Div").append(`${card0DivInner}`);
+                    $(`.questionInner`).last().html(`${parse[1]}`);
+                    $(".answerInner").last().html(`${parse[2]}`);
+                } else {
+                }
+                i++;
+            }
             $("#saveButton").on({
                 mouseup: function () { 
+                    console.log("hi")
                     $(".card0Div").append(`${card0DivInner}`);
-                        $(`.questionInner`).last().html(`${myObj[typesHtml][0]}`);
-                        $(".answerInner").last().html(`${myObj[typesHtml][1]}`);
-                    for (var member in myObj) delete myObj[member]
+                    $(`.questionInner`).last().html($(`#questionTextArea`).val());
+                    $(".answerInner").last().html($(`#answerTextArea`).val());
                     let i = 0;
                         while (i < $(`.questionInner`).length) {
                             console.log($(`.questionInner`).eq(i).html());
                             typeVal = [$("#type").val(), $(`.questionInner`).eq(i).html(), $(`.answerInner`).eq(i).html()];
-                            tempObj.push(typeVal);
+                            var typeString = JSON.stringify(typeVal)
+                            tempObj.push(typeString);
+                            tempObj = $.unique(tempObj.sort());
                             console.log(tempObj);
                             i++;
                         }
+                    
                 }
             })
         });
@@ -133,18 +147,6 @@ $(function () {
         $("#type").prop("disabled", false);
         $("#cardTypes").slideUp(1000);
         $(".card0Div").empty();
-        console.log(tempObj);
-        let i = 0;
-        while (i < tempObj.length) {
-            if (tempObj[i][0] == 2) {
-                $(".card0Div").append(`${card0DivInner}`);
-                $(`.questionInner`).last().html(`${tempObj[i][1]}`);
-                $(".answerInner").last().html(`${tempObj[i][2]}`);
-            } else {
-                
-            }
-            i++;
-        }
     });
     $("#selectFlashCard").mouseup(function () { 
         $("#newCard").slideUp(1000);
@@ -209,8 +211,12 @@ $(function () {
                 } else {
                     $("#cardTypes").append(`<button class="mainButtons types">${inputValue}</button>`);
                 }
-                myObj[inputValue] = [questionValue,answerValue];
-                console.log(myObj[`${inputValue}`]);
+                myObj = [inputValue,questionValue,answerValue];
+                var stringfy = JSON.stringify(myObj);
+                tempObj.push(stringfy);
+                console.log(tempObj);
+                console.log(JSON.parse(tempObj[0]))
+                
                 //#endregion -- Creating "inputValue: questionValue,answerValue"
                 
                 $(`.types:nth-child(${count+1})`).css({
