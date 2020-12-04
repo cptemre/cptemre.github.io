@@ -9,6 +9,7 @@ $(function () {
     let stringfy;
     let parse;
     let i = 0;
+    let typesArray = [];
     let card0DivInner = `<div class="card0Question">
     <p class="questionInner">My Question</p>
     <div class="showHideDiv">
@@ -90,7 +91,7 @@ $(function () {
             $(".card0Div").empty();
             while (i < tempObj.length) {
                 parse = JSON.parse(tempObj[i])
-                if (parse[0] == 2) {
+                if (parse[0] == typesHtml) {
                     console.log("hi")
                     console.log(typesHtml);
                     $(".card0Div").append(`${card0DivInner}`);
@@ -100,7 +101,7 @@ $(function () {
                 }
                 i++;
             }
-            i = 0
+            i = 0;
             $("#saveButton").on({
                 mouseup: function () { 
                     questionValue = $("#questionTextArea").val();
@@ -220,7 +221,13 @@ $(function () {
                 questionValue = $("#questionTextArea").val();
                 answerValue = $("#answerTextArea").val();
                 inputValue = $("#type").val();
-                if (inputValue in myObj) {
+                while (i < $(".types").length) {
+                    typesArray.push($(".types").eq(i).html())
+                    i++;
+                }
+                console.log(typesArray)
+                i = 0;
+                if (typesArray.includes(inputValue)) {
                     console.log("Do nothing");
                 } else {
                     $("#cardTypes").append(`<button class="mainButtons types">${inputValue}</button>`);
@@ -228,6 +235,7 @@ $(function () {
                 myObj = [inputValue,questionValue,answerValue];
                 stringfy = JSON.stringify(myObj);
                 tempObj.push(stringfy);
+                tempObj = $.unique(tempObj.sort());
                 console.log(tempObj);
                 console.log(JSON.parse(tempObj[0]))
                 
