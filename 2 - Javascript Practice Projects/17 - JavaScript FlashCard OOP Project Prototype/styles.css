@@ -299,7 +299,6 @@ body {
     display: none;
     justify-items: center;
     align-items: center;
-    grid-row-gap: 5rem;
 }
 .mainCardContainer {
     display: grid;
