@@ -136,11 +136,26 @@ body {
     display: none;
     grid-template-columns: 0.4fr 0.2fr 0.4fr;
     grid-template-areas: 
-    "questionDiv hide answerDiv"
+    "questionDiv hideDeleteContainer answerDiv"
     ;
     justify-items: center;
     align-items: center;
     padding-top: 3rem;
+}
+.hideDeleteContainer {
+    grid-area: hideDeleteContainer;
+    display: grid;
+    grid-template-areas: 
+    "hide"
+    "delete"
+    ;
+    grid-row-gap: 1rem;
+}
+#hide {
+    grid-area: hide;
+}
+#delete {
+    grid-area: delete;
 }
 #questionDiv {
     grid-area: questionDiv;

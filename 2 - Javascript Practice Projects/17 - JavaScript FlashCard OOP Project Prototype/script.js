@@ -84,6 +84,10 @@ $(function () {
     function typesMouseupFunction() {
         $(".types").mouseup(function () {
             var typesHtml = $(this).html();
+            var typesBlock = $(this);
+            $(".hideDeleteContainer").css("grid-template-areas", "hideButton");
+            $("#delete").css("display", "block");
+            $("#delete").html(`Delete: "${typesHtml}" Type`);
             $("#newCard").css('display', 'grid').hide().slideDown(1000);
             let typesInner = $(this).html().trim();
             $("#type").val(typesInner);
@@ -167,8 +171,78 @@ $(function () {
                     setTimeout(() => {
                         $(this).parent().parent().siblings().css("animation", "mainCardContainerAnimation00 0s forwards")                        
                     }, 2000);
+                    $("#saveButton").on({
+                        mouseup: function () {
+                            questionValue = $("#questionTextArea").val();
+                            answerValue = $("#answerTextArea").val();
+                            inputValue = $("#type").val();
+                            myObj = [inputValue, questionValue, answerValue];
+                            stringfy = JSON.stringify(myObj);
+                            tempObj.push(stringfy);
+                            tempObj = $.unique(tempObj.sort());
+                            console.log(myObj)
+                            console.log(tempObj);
+                            let x = 0
+                            $(".card0Div").empty();
+                            while (x < tempObj.length) {
+                                parse = JSON.parse(tempObj[x])
+                                if (parse[0] == 2) {
+                                    console.log("hi")
+                                    console.log(typesHtml);
+                                    $(".card0Div").append(`${card0DivInner}`);
+                                    $(`.questionInner`).last().html(`${parse[1]}`);
+                                    $(".answerInner").last().html(`${parse[2]}`);
+                                } else {}
+                                x++;
+                            }
+                            $(".delete").on({
+                                mouseup: function () {
+                                    let questionInner = $(this).parent().siblings(".card0Question").children(".questionInner").html();
+                            let answerInner = $(this).parent().siblings(".card0Answer").children(".answerInner").html();
+                            myObj = [inputValue, questionInner, answerInner];
+                            stringfy = JSON.stringify(myObj);
+                            tempObj = tempObj.filter(e => e !== stringfy);
+                            console.log(tempObj);
+                            $(this).parent().siblings(".card0Question").css("animation", "cardAnimation00 2s  forwards").fadeOut(2000);
+                            $(this).parent().siblings(".card0Answer").css("animation", "cardAnimation11 2s forwards").fadeOut(2000);
+                            $(this).parent().fadeOut(2000);
+                            
+                            $(this).parent().parent().siblings().css("animation", "mainCardContainerAnimation0 2s forwards");
+                            setTimeout(() => {
+                                $(this).parent().parent().siblings().css("animation", "mainCardContainerAnimation00 0s forwards")                        
+                            }, 2000);
+                                }
+                            });
+                        }
+                    })
                 }
             });
+            $("#delete").on({
+                mouseup: function () {
+                    console.log(tempObj)
+                    let y = 0;
+                    $(this).parent().parent().slideUp(1000);
+                    $(typesBlock).fadeOut();                       
+                    typesArray= typesArray.filter(function(e) { return e !== typesBlock.html() })
+                    console.log(typesArray)
+                    while (y < tempObj.length) {
+                        parse = JSON.parse(tempObj[y])
+                        if (parse[0] == typesHtml) {
+                            console.log("hi")
+                            stringify = JSON.stringify(parse);
+                            tempObj = tempObj.filter(e => e !== stringify);
+                            $(".card0Div").fadeOut(2000);
+                            setTimeout(() => {
+                                $(".card0Div").empty();
+                                $(typesBlock).remove();                       
+                            }, 2000);
+                            console.log(tempObj)
+                        }
+                        y++;
+                    }
+                    y = 0;
+                }
+            })
         });
     }
     //#region -- Action of main buttons and type buttons
@@ -190,11 +264,15 @@ $(function () {
         },
         mouseup: function () {
             $(this).removeClass("hideQuestionAnswerMouseDown");
-            $(this).parent().slideUp(1000);
             $("#addFlashCard").removeClass("selected");
             $("#selectFlashCard").removeClass("noneSelected");
         }
     });
+    $("#hide").on({
+        mouseup: function () {
+            $(this).parent().parent().slideUp(1000);
+        }
+    })
     //#region -- Add and Select Flash Card Functions
     $("#addFlashCard").mouseup(function () {
         $("#newCard").css('display', 'grid').hide().slideDown(1000);
@@ -202,6 +280,8 @@ $(function () {
         $("#type").prop("disabled", false);
         $("#cardTypes").slideUp(1000);
         $(".card0Div").empty();
+        $(".hideDeleteContainer").css("grid-template-areas", "hideButton");
+        $("#delete").css("display", "none");
     });
     $("#selectFlashCard").mouseup(function () {
         $("#newCard").slideUp(1000);
@@ -262,7 +342,9 @@ $(function () {
                 answerValue = $("#answerTextArea").val();
                 inputValue = $("#type").val();
                 while (i < $(".types").length) {
-                    typesArray.push($(".types").eq(i).html())
+                    typesArray.push($(".types").eq(i).html());
+                    typesArray = $.unique(typesArray.sort());
+                    console.log(typesArray)
                     i++;
                 }
                 console.log(typesArray)
