@@ -301,11 +301,35 @@ body {
     align-items: center;
     margin-top: 3rem;
 }
-.card0Div {
+.mainCardContainer {
+    display: grid;
+    justify-items: center;
+    align-items: center;
     grid-template-columns: 0.4fr 0.2fr 0.4fr;
-    grid-row-gap: 5rem;
+    width: 100%;
+    height: auto;
+    grid-template-areas: 
+    "card0Question deleteCard card0Answer"
+    ;
+    z-index: 1;
+    position: relative;
 }
-
+@keyframes mainCardContainerAnimation0 {
+    from {
+        top: 0;
+    }
+    to {
+        top: -50%;
+    }
+}
+@keyframes mainCardContainerAnimation00 {
+    from {
+        top: -100%;
+    }
+    to {
+        top: 0%;
+    }
+}
 .card0Question, .card0Answer {
     display: grid;
     justify-items: center;
@@ -325,6 +349,7 @@ body {
 .card0Question {
     left: 75%;
     animation: cardAnimation0 2s forwards;
+    grid-area: card0Question;
 }
 @keyframes cardAnimation0 {
     from {
@@ -334,9 +359,18 @@ body {
         left: 0%;
     }
 }
+@keyframes cardAnimation00 {
+    from {
+        left: 0%;
+    }
+    to {
+        left: 75%;
+    }
+}
 .card0Answer {
     left: -75%;
     animation: cardAnimation1 2s forwards;
+    grid-area: card0Answer;
 }
 @keyframes cardAnimation1 {
     from {
@@ -344,6 +378,14 @@ body {
     }
     to {
         left: 0%;
+    }
+}
+@keyframes cardAnimation11 {
+    from {
+        left: 0%;
+    }
+    to {
+        left: -75%;
     }
 }
 .showHideDiv {
@@ -361,4 +403,5 @@ body {
     justify-items: center;
     align-items: center;
     z-index: -1;
+    grid-area: deleteCard;
 }
