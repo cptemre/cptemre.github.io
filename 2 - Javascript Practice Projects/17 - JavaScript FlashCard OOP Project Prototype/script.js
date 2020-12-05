@@ -23,7 +23,7 @@ $(function () {
         </div>
     </div>
     <div class="deleteCard">
-        <button class="delete">
+        <button class="hideQuestionAnswer delete">
             Delete
         </button>
     </div>
@@ -103,8 +103,12 @@ $(function () {
                     console.log("hi")
                     console.log(typesHtml);
                     $(".card0Div").append(`${card0DivInner}`);
-                    $(`.questionInner`).last().html(`${parse[1]}`);
-                    $(".answerInner").last().html(`${parse[2]}`);
+                    $(`.questionInner`).last().css("visibility", "visible").html(`${parse[1]}`);
+                    $(".answerInner").last().fadeOut(0).html(`${parse[2]}`);
+                    $(".answerInner").siblings(".showHideDiv").children(".hide").css("background-color", `rgba(146, 31, 31, 0.5)`);
+                    $(".questionInner").siblings(".showHideDiv").children(".show").css("background-color", `rgba(56, 128, 56, 0.5)`);
+                    $(".questionInner").parent().css("grid-template-areas", `"questionInner""showHideDiv"`);
+                    $(".answerInner").parent().css("grid-template-areas", `".""showHideDiv"`);
                 }
                 i++;
             }
@@ -126,15 +130,34 @@ $(function () {
                     $(".card0Div").empty();
                     while (x < tempObj.length) {
                         parse = JSON.parse(tempObj[x])
-                        if (parse[0] == 2) {
+                        if (parse[0] == typesHtml) {
                             console.log("hi")
                             console.log(typesHtml);
                             $(".card0Div").append(`${card0DivInner}`);
-                            $(`.questionInner`).last().html(`${parse[1]}`);
-                            $(".answerInner").last().html(`${parse[2]}`);
+                            $(`.questionInner`).last().css("visibility", "visible").html(`${parse[1]}`);
+                            $(".answerInner").last().fadeOut(0).html(`${parse[2]}`);
+                            $(".answerInner").siblings(".showHideDiv").children(".hide").css("background-color", `rgba(146, 31, 31, 0.5)`);
+                            $(".questionInner").siblings(".showHideDiv").children(".show").css("background-color", `rgba(56, 128, 56, 0.5)`);
+                            $(".questionInner").parent().css("grid-template-areas", `"questionInner""showHideDiv"`);
+                            $(".answerInner").parent().css("grid-template-areas", `".""showHideDiv"`);
                         } else {}
                         x++;
                     }
+                    $(".show").on({
+                        mouseup: function () {
+                            $(this).parent().siblings().fadeIn(500);
+                            $(this).css("background-color", `rgba(56, 128, 56, 0.5)`);
+                            $(this).siblings().css("background-color", `rgb(58, 56, 56)`);
+                        }
+                    });
+                    $(".hide").on({
+                        mouseup: function () {
+                            $(this).parent().siblings().fadeOut(500);
+                            $(this).css("background-color", `rgba(146, 31, 31, 0.5)`);
+                            $(this).siblings().css("background-color", `rgb(58, 56, 56)`);
+                        }
+                    });
+                    x = 0;
                     $(".delete").on({
                         mouseup: function () {
                             let questionInner = $(this).parent().siblings(".card0Question").children(".questionInner").html();
@@ -146,8 +169,8 @@ $(function () {
                     $(this).parent().siblings(".card0Question").css("animation", "cardAnimation00 2s  forwards").fadeOut(2000);
                     $(this).parent().siblings(".card0Answer").css("animation", "cardAnimation11 2s forwards").fadeOut(2000);
                     $(this).parent().fadeOut(2000);
-                    
                     $(this).parent().parent().siblings().css("animation", "mainCardContainerAnimation0 2s forwards");
+                    $(this).parent().parent().siblings().first().css("animation", "mainCardContainerAnimation00 0s forwards");
                     setTimeout(() => {
                         $(this).parent().parent().siblings().css("animation", "mainCardContainerAnimation00 0s forwards")                        
                     }, 2000);
@@ -168,6 +191,7 @@ $(function () {
                     $(this).parent().fadeOut(2000);
                     
                     $(this).parent().parent().siblings().css("animation", "mainCardContainerAnimation0 2s forwards");
+                    $(this).parent().parent().siblings().first().css("animation", "mainCardContainerAnimation00 0s forwards");
                     setTimeout(() => {
                         $(this).parent().parent().siblings().css("animation", "mainCardContainerAnimation00 0s forwards")                        
                     }, 2000);
@@ -190,8 +214,12 @@ $(function () {
                                     console.log("hi")
                                     console.log(typesHtml);
                                     $(".card0Div").append(`${card0DivInner}`);
-                                    $(`.questionInner`).last().html(`${parse[1]}`);
-                                    $(".answerInner").last().html(`${parse[2]}`);
+                                    $(`.questionInner`).last().css("visibility", "visible").html(`${parse[1]}`);
+                                    $(".answerInner").last().fadeOut(0).html(`${parse[2]}`);
+                                    $(".answerInner").siblings(".showHideDiv").children(".hide").css("background-color", `rgba(146, 31, 31, 0.5)`);
+                                    $(".questionInner").siblings(".showHideDiv").children(".show").css("background-color", `rgba(56, 128, 56, 0.5)`);
+                                    $(".questionInner").parent().css("grid-template-areas", `"questionInner""showHideDiv"`);
+                                    $(".answerInner").parent().css("grid-template-areas", `".""showHideDiv"`);
                                 } else {}
                                 x++;
                             }
@@ -243,6 +271,39 @@ $(function () {
                     y = 0;
                 }
             })
+            $(".show").on({
+                mouseup: function () {
+                    $(this).parent().siblings().fadeIn(500);
+                    $(this).css("background-color", `rgba(56, 128, 56, 0.5)`);
+                    $(this).siblings().css("background-color", `rgb(58, 56, 56)`);
+                }
+            });
+            $(".hide").on({
+                mouseup: function () {
+                    $(this).parent().siblings().fadeOut(500);
+                    $(this).css("background-color", `rgba(146, 31, 31, 0.5)`);
+                    $(this).siblings().css("background-color", `rgb(58, 56, 56)`);
+                }
+            });
+            $(".hideQuestionAnswer").on({
+                mouseenter: function () {
+                    $(this).addClass("hideQuestionAnswerMouseEnter");
+        
+                },
+                mouseleave: function () {
+                    $(this).addClass("hideQuestionAnswer");
+                    $(this).removeClass("hideQuestionAnswerMouseEnter");
+                },
+                mousedown: function () {
+                    $(this).removeClass("hideQuestionAnswerMouseEnter");
+                    $(this).addClass("hideQuestionAnswerMouseDown");
+                },
+                mouseup: function () {
+                    $(this).removeClass("hideQuestionAnswerMouseDown");
+                    $("#addFlashCard").removeClass("selected");
+                    $("#selectFlashCard").removeClass("noneSelected");
+                }
+            });
         });
     }
     //#region -- Action of main buttons and type buttons

@@ -277,8 +277,13 @@ body {
     outline: none;
     border-top: 1px solid white;
     border-bottom: 1px solid white;
+    cursor: pointer;
+    transition: all 0.3s;
+    cursor: pointer;
 }
-
+#type{
+    cursor: initial;
+}
 #type::placeholder {
     color: white;
 }
@@ -402,6 +407,9 @@ body {
         left: -75%;
     }
 }
+.questionInner{
+    grid-area: questionInner;
+}
 .showHideDiv {
     display: grid;
     justify-items: center;
@@ -409,6 +417,7 @@ body {
     height: 100%;
     width: 100%;
     grid-template-columns: 0.5fr 0.5fr;
+    grid-area: showHideDiv;
 }
 .deleteCard {
     width: 100%;
