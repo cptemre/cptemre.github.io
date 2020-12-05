@@ -165,7 +165,7 @@ $(function () {
                     
                     $(this).parent().parent().siblings().css("animation", "mainCardContainerAnimation0 2s forwards");
                     setTimeout(() => {
-                        $(this).parent().parent().siblings().css("top", "mainCardContainerAnimation00 0s forwards")                        
+                        $(this).parent().parent().siblings().css("animation", "mainCardContainerAnimation00 0s forwards")                        
                     }, 2000);
                 }
             });
