@@ -6,6 +6,7 @@ $(function () {
     let inputValue;
     let typeVal = [];
     let tempObj = [];
+    let typesBlock;
     console.log(tempObj)
     console.log(localStorage)
     if (localStorage.length == 0) {
@@ -29,6 +30,8 @@ $(function () {
             console.log()
             b++;
         }
+        count = 0;
+        rowCount = 0;
         $(`.types:nth-child(${count+1})`).css({
             "grid-column": "1 / span 1",
             "grid-row": `${rowCount+1} / span 1`
@@ -256,10 +259,99 @@ $(function () {
             }
         })
     }
+    function deleteID() {
+        $("#delete").on({
+            mouseup: function () {
+                let y = 0;
+                $(this).parent().parent().slideUp(1000);
+                typesArray= typesArray.filter(function(e) { return e !== typesBlock.html() })
+                while (y < tempObj.length) {
+                    parse = JSON.parse(tempObj[y])
+                    if (parse[0] == typesHtml) {
+                        stringify = JSON.stringify(parse);
+                        tempObj = tempObj.filter(e => e !== stringify);
+                        console.log(tempObj)
+                        let x = 0;
+                        if (tempObj.length == 0) {
+                            localStorage.clear();
+                        } else if (localStorage.length >= tempObj.length) {
+                            localStorage.clear();
+                            while (x < tempObj.length) {
+                                localStorage.setItem(x, tempObj[x])
+                                x++;
+                            }
+                        } else {
+                            while (x < tempObj.length) {
+                                localStorage.setItem(x, tempObj[x])
+                                x++;
+                            }
+                        }
+                        x = 0
+                        console.log(tempObj)
+                        console.log(localStorage)
+                        $(".card0Div").fadeOut(2000);
+                        $(this).parent().parent().siblings("#cardTypes").fadeOut(2000);
+                        console.log(typesArray)
+                        setTimeout(() => {
+                            $(".card0Div").empty();
+                            $(this).parent().parent().siblings("#cardTypes").remove();
+                        }, 2000);
+                        setTimeout(() => {
+                            $(`<div id="cardTypes"></div>`).insertBefore("#newCard");
+                            $("#cardTypes").css("display", "grid"); 
+                            let b = 0;
+                            let typesHeaders = [];
+                            while (b < tempObj.length) {
+                                let parse = JSON.parse(tempObj[b])
+                                typesHeaders.push(parse[0]);
+                                typesHeaders = $.unique(typesHeaders.sort());
+                                console.log(typesHeaders)
+                                if (typesHeaders[b] !== undefined) {
+                                    $("#cardTypes").append(`<button class="mainButtons types">${typesHeaders[b]}</button>`);
+                                    count = 0;
+                                    rowCount = 0;
+                                    $(`.types:nth-child(${count+1})`).css({
+                                        "grid-column": "1 / span 1",
+                                        "grid-row": `${rowCount+1} / span 1`
+                                    });
+                                    $(`.types:nth-child(${count+2})`).css({
+                                        "grid-column": "2 / span 1",
+                                        "grid-row": `${rowCount+1} / span 1`
+                                    });
+                                    $(`.types:nth-child(${count+3})`).css({
+                                        "grid-column": "3 / span 1",
+                                        "grid-row": `${rowCount+1} / span 1`
+                                    });
+                                    $(`.types:nth-child(${count+4})`).css({
+                                        "grid-column": "1 / span 2",
+                                        "grid-row": `${rowCount+2} / span 1`
+                                    });
+                                    $(`.types:nth-child(${count+5})`).css({
+                                        "grid-column": "2 / span 2",
+                                        "grid-row": `${rowCount+2} / span 1`
+                                    });
+                                    if ($(`.types`).length % 5 == 0) {
+                                        count += 5;
+                                        rowCount += 2;
+                                    }
+                                }
+                                mainButtonFunctions(); 
+                                typesMouseupFunction();
+                                b++;
+                            }
+                            
+                        }, 2001);
+                    }
+                    y++;
+                }
+                y = 0;
+            }
+        })
+    }
     function typesMouseupFunction() {
         $(".types").mouseup(function () {
             typesHtml = $(this).html();
-            var typesBlock = $(this);
+            typesBlock = $(this);
             $(".hideDeleteContainer").css("grid-template-areas", "hideButton");
             $("#delete").css("display", "block");
             $("#delete").html(`Delete: "${typesHtml}" Type`);
@@ -276,46 +368,7 @@ $(function () {
             $(".card0Answer").css("animation", "cardAnimation1 2s forwards");
             saveButton();
             deleteClass(saveButton());
-            $("#delete").on({
-                mouseup: function () {
-                    let y = 0;
-                    $(this).parent().parent().slideUp(1000);
-                    $(typesBlock).fadeOut();                       
-                    typesArray= typesArray.filter(function(e) { return e !== typesBlock.html() })
-                    while (y < tempObj.length) {
-                        parse = JSON.parse(tempObj[y])
-                        if (parse[0] == typesHtml) {
-                            stringify = JSON.stringify(parse);
-                            tempObj = tempObj.filter(e => e !== stringify);
-                            let x = 0;
-                            if (tempObj.length == 0) {
-                                localStorage.clear();
-                            } else if (localStorage.length >= tempObj.length) {
-                                localStorage.clear();
-                                while (x < tempObj.length) {
-                                    localStorage.setItem(x, tempObj[x])
-                                    x++;
-                                }
-                            } else {
-                                while (x < tempObj.length) {
-                                    localStorage.setItem(x, tempObj[x])
-                                    x++;
-                                }
-                            }
-                            x = 0
-                            console.log(tempObj)
-                            console.log(localStorage)
-                            $(".card0Div").fadeOut(2000);
-                            setTimeout(() => {
-                                $(".card0Div").empty();
-                                $(typesBlock).remove();                       
-                            }, 2000);
-                        }
-                        y++;
-                    }
-                    y = 0;
-                }
-            })
+            deleteID()
             showHide();
             hideQuestionAnswer();
         });
@@ -419,7 +472,8 @@ $(function () {
                 x = 0
                 console.log(localStorage)
                 //#endregion -- Creating "inputValue: questionValue,answerValue"
-
+                count = 0;
+                rowCount = 0;
                 $(`.types:nth-child(${count+1})`).css({
                     "grid-column": "1 / span 1",
                     "grid-row": `${rowCount+1} / span 1`
