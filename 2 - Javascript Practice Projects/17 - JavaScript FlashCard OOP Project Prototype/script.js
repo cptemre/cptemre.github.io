@@ -116,7 +116,6 @@ $(function () {
                 if ($(this).siblings().hasClass("selected")) {
                     $(this).removeClass("mouseDown");
                     $(this).removeClass("mouseOver");
-                    $(this).addClass("noneSelected");
                 } else {
                     $(this).removeClass("mouseOver");
                 }
@@ -436,7 +435,7 @@ $(function () {
         });
     }
     function language() {
-        if ($("#selectMenu").val() == "TR") {
+        if ($("#selectMenu").val() == "EN") {
             $("#addFlashCard").html("Add a Flash Card");
             $("#selectFlashCard").html("Select a Flash Card");
             $("#questionHeader").html("Question");
@@ -464,6 +463,20 @@ $(function () {
             $(".show").html("Göster");
             $(".hide").html("Gizle");
         };
+        if ($("#selectMenu").val() == "PL") {
+            $("#addFlashCard").html("Dodaj Fiszkę");
+            $("#selectFlashCard").html("Wybierz Fiszkę");
+            $("#questionHeader").html("Pytanie");
+            $("#answerHeader").html("Odpowiedź");
+            $("#type").attr("placeholder", "Wprowadź Typ");
+            $("#hide").html("Ukryj");
+            $("#saveButton").html("Zapisz");
+            $("#delete").html(`Usuń Typ "${typesHtml}"`);
+            $("#deleteAll").html("Usuń Wszystkie Typy");
+            $(".delete").html("Usuń");
+            $(".show").html("Pokaż");
+            $(".hide").html("Ukryj");
+        };
     }
     $("#selectMenu").on({
         mouseenter: function () {
@@ -474,30 +487,11 @@ $(function () {
             }
         },
         mouseleave: function () {
-            if (selectCount == 0) {
-                if (!$(this).css("border-color", "var(--myGreen)")) {
-                    $(this).css("border-color", "var(--linearColor3)");
-                } else if ($(this).css("border-color", "var(--linearColor3)")){
-                    $(this).css("border-color", "var(--linearColor3)");
-                }
-                else {
-                    $(this).css("border-color", "var(--linearColor3")
-                }
-            } else {
-                $(this).css("border-color", "var(--myGreen)");
-            }
+            $(this).css("border-color", "var(--linearColor3)");
+            selectCount = 0
         },
         mousedown: function () {
             $(this).css("border-color", "var(--myRed)");
-        },
-        mouseout: function () {
-            $("body").on({
-                mouseup: function () {
-                    if (selectCount == 0) {
-                        $("#selectMenu").css("border-color", "var(--myGreen)");
-                    }
-                }
-            })
         },
         mouseup: function () {
             if (selectCount == 0) {
@@ -507,6 +501,10 @@ $(function () {
                 $(this).css("border-color", "var(--linearColor3)");
                 selectCount = 0;
             }
+            $("#selectMenu").on({
+                focusout: function () {
+                    $(this).css("border-color", "var(--linearColor3)");
+                }})
             language();
         },
         focus: function () {  
@@ -517,30 +515,28 @@ $(function () {
             }
         },
         focusout: function () {
-            if (selectCount == 0) {
-                if (!$(this).css("border-color", "var(--myGreen)")) {
-                    $(this).css("border-color", "var(--linearColor3)");
-                } else if ($(this).css("border-color", "var(--linearColor3)")){
-                    $(this).css("border-color", "var(--linearColor3)");
-                }
-                else {
-                    $(this).css("border-color", "var(--linearColor3")
-                }
-            } else {
-                $(this).css("border-color", "var(--myGreen)");
-            }
-            $("body").on({
-                mouseup: function () {
-                    $("#selectMenu").css("border-color", "var(--linearColor3)");
-                    selectCount = 0;
-                }
-            })
+            $(this).css("border-color", "var(--linearColor3")
         }
     })
-    
+    function themeSwitch() {
+        if (switchCounter % 2 == 0) {
+            $("body").css("background-color", "rgb(158, 155, 155)")
+        } else {
+            $("body").css("background-color", "black")
+        }
+        console.log(switchCounter)
+    }
+    let switchCounter = 0;
+    $(".switch").on({
+        mouseup: function () {
+            themeSwitch();
+            switchCounter++;
+        }
+    })
     $("body").on({
         mouseup: function () {
             selectCount = 0;
+            $(this).css("border-color", "var(--linearColor3")
         }
     })
     //#region -- Action of main buttons and type buttons
