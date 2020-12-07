@@ -6,6 +6,9 @@
     --background: linear-gradient(var(--degree), var(--linearColor1), var(--linearColor2), var(--linearColor3));
     --typeColor: rgba(56, 128, 56, 0.5);
     --emptyColor: rgba(199, 56, 21, 0.5);
+    --myOrange: rgb(207, 118, 35);
+    --myRed: rgb(163, 29, 19);
+    --myGreen: rgb(95, 177, 95);
 }
 
 body {
@@ -43,16 +46,7 @@ body {
     align-items: center;
     z-index: 2;
 }
-#selectMenu {
-    text-align: center;
-    background-color: rgba(255, 255, 255, 0.151);
-    width: 12%;
-    border: 2px solid aqua;
-}
-.option {
-    background-color: black;
-}
-.mainButtons, .hideQuestionAnswer, .delete {
+.mainButtons, .hideQuestionAnswer, .delete, #selectMenu {
     display: grid;
     justify-items: center;
     align-items: center;
@@ -67,6 +61,16 @@ body {
     outline: none;
     cursor: pointer;
     transition: all 1s;
+}
+#selectMenu {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.151);
+    width: 12%;
+    border: 2px solid var(--linearColor3);
+    transition: all 0.3s;
+}
+.option {
+    background-color: black;
 }
 .mainButtons::before, .hideQuestionAnswer::before, .card0Question::before, .card0Answer::before, .delete::before {    
     z-index: -1;
@@ -91,7 +95,7 @@ body {
     transform: scale(1.2);
 }
 .mouseOver::before, .mouseOver::after{
-    background: rgb(207, 118, 35);
+    background: var(--myOrange);
     transition: all 0.3s;
 }
 .mouseDown::after {
@@ -99,14 +103,14 @@ body {
     filter: blur(30px);
 }
 .mouseDown::before, .mouseDown::after{
-    background: rgb(163, 29, 19);
+    background: var(--myRed);
     transition: all 0.3s;
 }
 .selected::after {
     transform: scale(1.2);
 }
 .selected::before, .selected::after{
-    background: rgb(95, 177, 95);
+    background: var(--myGreen);
     transition: all 0.3s;
 }
 .noneSelected::before, .noneSelected::after {

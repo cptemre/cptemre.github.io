@@ -7,6 +7,7 @@ $(function () {
     let typeVal = [];
     let tempObj = [];
     let typesBlock;
+    let selectCount = 0;
     console.log(tempObj)
     console.log(localStorage)
     if (localStorage.length == 0) {
@@ -427,10 +428,73 @@ $(function () {
         };
     }
     $("#selectMenu").on({
+        mouseenter: function () {
+            if (selectCount == 0) {
+                $(this).css("border-color", "var(--myOrange)");
+            } else {
+                $(this).css("border-color", "var(--myGreen)");
+            }
+            console.log(selectCount)
+        },
+        mouseleave: function () {
+            if (selectCount == 0) {
+                if (!$(this).css("border-color", "var(--myGreen)")) {
+                    $(this).css("border-color", "var(--linearColor3)");
+                } else if ($(this).css("border-color", "var(--linearColor3)")){
+                    $(this).css("border-color", "var(--linearColor3)");
+                }
+                else {
+                    $(this).css("border-color", "var(--linearColor3")
+                }
+            } else {
+                $(this).css("border-color", "var(--myGreen)");
+            }
+            console.log(selectCount)
+        },
+        mousedown: function () {
+            $(this).css("border-color", "var(--myRed)");
+            console.log(selectCount)
+
+        },
+        mouseout: function () {
+            $("body").on({
+                mouseup: function () {
+                    if (selectCount == 0) {
+                        $("#selectMenu").css("border-color", "var(--myGreen)");
+                    }
+                }
+            })
+            console.log(selectCount)
+
+        },
         mouseup: function () {
+            if (selectCount == 0) {
+                $(this).css("border-color", "var(--myGreen)");
+                selectCount = 1;
+            } else {
+                $(this).css("border-color", "var(--linearColor3)");
+                selectCount = 0;
+            }
+            console.log(selectCount)
             language();
+        },
+        focusout: function () {
+            $("body").on({
+                mouseup: function () {
+                    $("#selectMenu").css("border-color", "var(--linearColor3)");
+                    selectCount = 0;
+                }
+            })
+            console.log(selectCount)
+
         }
     })
+    $("body").on({
+        mouseup: function () {
+            selectCount = 0;
+        }
+    })
+    console.log(selectCount)
     //#region -- Action of main buttons and type buttons
     mainButtonFunctions();
     //#endregion -- Action of main buttons and type buttons
