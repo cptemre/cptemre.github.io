@@ -4,6 +4,8 @@
     --linearColor2: rgb(199, 236, 228);
     --linearColor3: rgb(0, 188, 212);
     --background: linear-gradient(var(--degree), var(--linearColor1), var(--linearColor2), var(--linearColor3));
+    --typeColor: rgba(56, 128, 56, 0.5);
+    --emptyColor: rgba(199, 56, 21, 0.5);
 }
 
 body {
@@ -36,12 +38,20 @@ body {
     width: 100%;
     height: auto;
     display: grid;
-    grid-template-columns: 0.5fr 0.5fr;
+    grid-template-columns: 1fr 1fr 1fr;
     justify-items: center;
     align-items: center;
     z-index: 2;
 }
-
+#selectMenu {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.151);
+    width: 12%;
+    border: 2px solid aqua;
+}
+.option {
+    background-color: black;
+}
 .mainButtons, .hideQuestionAnswer, .delete {
     display: grid;
     justify-items: center;
@@ -282,11 +292,12 @@ body {
     border-top: 1px solid white;
     border-bottom: 1px solid white;
     cursor: pointer;
-    transition: all 0.3s;
     cursor: pointer;
+    transition: all 0.3s;
 }
 #type{
     cursor: initial;
+    background: var(--typeColor);
 }
 #type::placeholder {
     color: white;
@@ -302,7 +313,7 @@ body {
     height: 3rem;
     width: 8rem;
     border: none;
-    background: rgb(58, 56, 56);
+    background: rgba(146, 31, 31, 0.5);
     color: white;
     font-weight: bolder;
     border-radius: 2rem;

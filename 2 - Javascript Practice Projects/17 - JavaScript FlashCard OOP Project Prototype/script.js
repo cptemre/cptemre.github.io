@@ -241,7 +241,7 @@ $(function () {
                 inputValue = $("#type").val();
                 myObj = [inputValue, questionValue, answerValue];
                 stringfy = JSON.stringify(myObj);
-                
+                $(this).css("background-color", "var(rgba(146, 31, 31, 0.5))");
                 tempObj.push(stringfy);
                 tempObj = $.unique(tempObj.sort());
                 let x = 0;
@@ -393,8 +393,44 @@ $(function () {
             deleteAllTypes()
             showHide();
             hideQuestionAnswer();
+            language()
         });
     }
+    function language() {
+        if ($("#selectMenu").val() == "TR") {
+            $("#addFlashCard").html("Add a Flash Card");
+            $("#selectFlashCard").html("Select a Flash Card");
+            $("#questionHeader").html("Question");
+            $("#answerHeader").html("Answer");
+            $("#type").attr("placeholder", "Input a Type");
+            $("#hide").html("Hide");
+            $("#saveButton").html("Save");
+            $("#delete").html(`Delete Type "${typesHtml}"`);
+            $("#deleteAll").html("Delete All Types");
+            $(".delete").html("Delete");
+            $(".show").html("Show");
+            $(".hide").html("Hide");
+        };
+        if ($("#selectMenu").val() == "TR") {
+            $("#addFlashCard").html("Hafıza Kartı Ekle");
+            $("#selectFlashCard").html("Hafıza Kartı Seç");
+            $("#questionHeader").html("Soru");
+            $("#answerHeader").html("Cevap");
+            $("#type").attr("placeholder", "Bir Konu Girin");
+            $("#hide").html("Gizle");
+            $("#saveButton").html("Kaydet");
+            $("#delete").html(`"${typesHtml}" Konusunu Sil`);
+            $("#deleteAll").html("Tüm Konuları Sil");
+            $(".delete").html("Sil");
+            $(".show").html("Göster");
+            $(".hide").html("Gizle");
+        };
+    }
+    $("#selectMenu").on({
+        mouseup: function () {
+            language();
+        }
+    })
     //#region -- Action of main buttons and type buttons
     mainButtonFunctions();
     //#endregion -- Action of main buttons and type buttons
@@ -408,7 +444,6 @@ $(function () {
     //#region -- Add and Select Flash Card Functions
     $("#addFlashCard").mouseup(function () {
         $("#newCard").css('display', 'grid').hide().slideDown(1000);
-        $("#type").attr("placeholder", "Input a Type").val("");
         $("#type").prop("disabled", false);
         $("#cardTypes").slideUp(1000);
         $(".card0Div").empty();
@@ -443,10 +478,14 @@ $(function () {
 
     //#region -- Type Focus and Out Action
     $("#type").focus(function () {
-        $(this).css("border-color", "violet");
+        $(this).css("border-color", "gray");
+        $(this).css("background-color", "white");
+        $(this).css("color", "black");
     });
     $("#type").focusout(function () {
         $(this).css("border-color", "white");
+        $(this).css("background-color", "var(--typeColor)");
+        $(this).css("color", "white");
     });
     //#endregion -- Type Focus and Out Action
 
@@ -459,14 +498,14 @@ $(function () {
     $("#saveButton").on({
         mousedown: function () {
             $(this).css({
-                "border-color": "violet",
-                "background-color": "rgb(7, 33, 150)",
+                "border-color": "gray",
+                "background-color": "var(--typeColor)",
             });
         },
         mouseup: function () {
             $(this).css({
                 "border-color": "white",
-                "background-color": " rgb(58, 56, 56)",
+                "background-color": "var(--emptyColor)",
             });
             if ($("#questionTextArea").val() != "" && $("#answerTextArea").val() != "" && $("#type").val() != "") {
                 //#region -- Creating "inputValue: questionValue,answerValue"
@@ -524,7 +563,24 @@ $(function () {
                 mainButtonFunctions();
                 typesMouseupFunction();
             } else {
-                alert("Please Fill Question, Answer and Type Areas.")
+                if ($("#type").val().trim().length == 0 || $("#type").val().trim() == "") {
+                    $("#type").css("background-color", "var(--emptyColor)");
+                    setTimeout(() => {
+                        $("#type").css("background-color", "var(--typeColor)");
+                    }, 1000);
+                } 
+                if ($("#questionTextArea").val().trim().length == 0 || $("#questionTextArea").val().trim() == "") {
+                    $("#questionTextArea").css("background-color", "rgba(199, 56, 21, 0.5)");
+                    setTimeout(() => {
+                        $("#questionTextArea").css("background-color", "transparent");
+                    }, 1000);
+                }
+                if ($("#answerTextArea").val().trim().length == 0 || $("#answerTextArea").val().trim() == "") {
+                    $("#answerTextArea").css("background-color", "rgba(199, 56, 21, 0.5)");
+                    setTimeout(() => {
+                        $("#answerTextArea").css("background-color", "transparent");
+                    }, 1000);
+                }
             }
         }
     });
