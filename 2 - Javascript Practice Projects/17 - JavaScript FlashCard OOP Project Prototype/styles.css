@@ -147,7 +147,6 @@ body {
     display: grid;
     grid-template-areas: 
     "hide"
-    "delete"
     ;
     grid-row-gap: 1rem;
 }
@@ -156,6 +155,11 @@ body {
 }
 #delete {
     grid-area: delete;
+    display: none;
+}
+#deleteAll {
+    grid-area: deleteAll;
+    display: none;
 }
 #questionDiv {
     grid-area: questionDiv;

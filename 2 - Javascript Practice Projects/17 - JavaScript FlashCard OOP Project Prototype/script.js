@@ -264,7 +264,9 @@ $(function () {
             mouseup: function () {
                 let y = 0;
                 $(this).parent().parent().slideUp(1000);
-                typesArray= typesArray.filter(function(e) { return e !== typesBlock.html() })
+                typesArray= typesArray.filter(function(e) { return e !== typesBlock.html() });
+                $(".card0Question").css("animation", "cardAnimation00 2s forwards");
+                $(".card0Answer").css("animation", "cardAnimation11 2s forwards");
                 while (y < tempObj.length) {
                     parse = JSON.parse(tempObj[y])
                     if (parse[0] == typesHtml) {
@@ -298,7 +300,7 @@ $(function () {
                         }, 2000);
                         setTimeout(() => {
                             $(`<div id="cardTypes"></div>`).insertBefore("#newCard");
-                            $("#cardTypes").css("display", "grid"); 
+                            $("#cardTypes").css("display", "grid").hide().fadeIn(2000); 
                             let b = 0;
                             let typesHeaders = [];
                             while (b < tempObj.length) {
@@ -348,13 +350,32 @@ $(function () {
             }
         })
     }
+    function deleteAllTypes() {
+        $("#deleteAll").on({
+            mouseup: function () {
+                $(this).parent().parent().slideUp(1000);
+                $("#cardTypes").fadeOut(2000);
+                $(".card0Div").fadeOut(2000);
+                $(".card0Question").css("animation", "cardAnimation00 2s forwards");
+                $(".card0Answer").css("animation", "cardAnimation11 2s forwards");
+                setTimeout(() => {
+                    $("#cardTypes").empty();
+                    $("#cardTypes").fadeIn();
+                    $("#card0Div").empty();
+                }, 2000);
+                tempObj = [];
+                localStorage.clear();
+            }
+        })
+    }
     function typesMouseupFunction() {
         $(".types").mouseup(function () {
             typesHtml = $(this).html();
             typesBlock = $(this);
-            $(".hideDeleteContainer").css("grid-template-areas", "hideButton");
+            $(".hideDeleteContainer").css("grid-template-areas", `"hide""delete""deleteAll"`);
             $("#delete").css("display", "block");
-            $("#delete").html(`Delete: "${typesHtml}" Type`);
+            $("#deleteAll").css("display", "block");
+            $("#delete").html(`Delete Type "${typesHtml}"`);
             $("#newCard").css('display', 'grid').hide().slideDown(1000);
             let typesInner = $(this).html().trim();
             $("#type").val(typesInner);
@@ -369,6 +390,7 @@ $(function () {
             saveButton();
             deleteClass(saveButton());
             deleteID()
+            deleteAllTypes()
             showHide();
             hideQuestionAnswer();
         });
