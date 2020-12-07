@@ -125,7 +125,6 @@ $(function () {
                 $(this).addClass("mouseDown");
                 $(this).removeClass("noneSelected");
                 $(this).removeClass("mouseOver");
-
                 $(this).siblings().addClass("noneSelected");
                 $(this).siblings().removeClass("selected");
             },
@@ -134,7 +133,46 @@ $(function () {
                 $(this).removeClass("mouseDown");
                 $(this).removeClass("mouseOver");
                 $(this).removeClass("noneSelected");
-            }
+            },
+            focus: function () {  
+                $(this).addClass("mouseOver");
+                $(this).removeClass("selected");
+                $(this).removeClass("noneSelected");
+            },
+            focusout: function () {  
+                if ($(this).siblings().hasClass("noneSelected")) {
+                    $(this).removeClass("mouseDown");
+                    $(this).removeClass("mouseOver");
+                    $(this).addClass("selected");
+                } else {
+                    $(this).removeClass("mouseOver");
+                }
+
+                if ($(this).siblings().hasClass("selected")) {
+                    $(this).removeClass("mouseDown");
+                    $(this).removeClass("mouseOver");
+                    $(this).addClass("noneSelected");
+                } else {
+                    $(this).removeClass("mouseOver");
+                }
+            },
+            keydown: function (e) {  
+                if (e.keyCode === 13) {
+                    $(this).addClass("mouseDown");
+                    $(this).removeClass("noneSelected");
+                    $(this).removeClass("mouseOver");
+                    $(this).siblings().addClass("noneSelected");
+                    $(this).siblings().removeClass("selected");
+                }
+            },
+            keyup: function (e) {  
+                if (e.keyCode === 13) {
+                    $(this).addClass("selected");
+                    $(this).removeClass("mouseDown");
+                    $(this).removeClass("mouseOver");
+                    $(this).removeClass("noneSelected");
+                }
+            },
         });
     }
     function showHide() {
@@ -434,7 +472,6 @@ $(function () {
             } else {
                 $(this).css("border-color", "var(--myGreen)");
             }
-            console.log(selectCount)
         },
         mouseleave: function () {
             if (selectCount == 0) {
@@ -449,12 +486,9 @@ $(function () {
             } else {
                 $(this).css("border-color", "var(--myGreen)");
             }
-            console.log(selectCount)
         },
         mousedown: function () {
             $(this).css("border-color", "var(--myRed)");
-            console.log(selectCount)
-
         },
         mouseout: function () {
             $("body").on({
@@ -464,8 +498,6 @@ $(function () {
                     }
                 }
             })
-            console.log(selectCount)
-
         },
         mouseup: function () {
             if (selectCount == 0) {
@@ -475,26 +507,42 @@ $(function () {
                 $(this).css("border-color", "var(--linearColor3)");
                 selectCount = 0;
             }
-            console.log(selectCount)
             language();
         },
+        focus: function () {  
+            if (selectCount == 0) {
+                $(this).css("border-color", "var(--myOrange)");
+            } else {
+                $(this).css("border-color", "var(--myGreen)");
+            }
+        },
         focusout: function () {
+            if (selectCount == 0) {
+                if (!$(this).css("border-color", "var(--myGreen)")) {
+                    $(this).css("border-color", "var(--linearColor3)");
+                } else if ($(this).css("border-color", "var(--linearColor3)")){
+                    $(this).css("border-color", "var(--linearColor3)");
+                }
+                else {
+                    $(this).css("border-color", "var(--linearColor3")
+                }
+            } else {
+                $(this).css("border-color", "var(--myGreen)");
+            }
             $("body").on({
                 mouseup: function () {
                     $("#selectMenu").css("border-color", "var(--linearColor3)");
                     selectCount = 0;
                 }
             })
-            console.log(selectCount)
-
         }
     })
+    
     $("body").on({
         mouseup: function () {
             selectCount = 0;
         }
     })
-    console.log(selectCount)
     //#region -- Action of main buttons and type buttons
     mainButtonFunctions();
     //#endregion -- Action of main buttons and type buttons
@@ -506,18 +554,38 @@ $(function () {
         }
     })
     //#region -- Add and Select Flash Card Functions
-    $("#addFlashCard").mouseup(function () {
+    function addFlashCardFunction() {
         $("#newCard").css('display', 'grid').hide().slideDown(1000);
         $("#type").prop("disabled", false);
         $("#cardTypes").slideUp(1000);
         $(".card0Div").empty();
         $(".hideDeleteContainer").css("grid-template-areas", "hideButton");
         $("#delete").css("display", "none");
+    }
+    $("#addFlashCard").on({
+        mouseup: function () {
+            addFlashCardFunction();
+        },
+        keyup: function (e) {  
+            if (e.keyCode === 13) {
+                addFlashCardFunction()
+            }
+        }
     });
-    $("#selectFlashCard").mouseup(function () {
+    function selectFlashCardFunction() {
         $("#newCard").slideUp(1000);
         $("#cardTypes").css('display', 'grid').hide().slideDown(1000);
         $(".card0Div").empty();
+    }
+    $("#selectFlashCard").on({
+        mouseup: function () {
+            selectFlashCardFunction()
+        },
+        keyup: function (e) {  
+            if (e.keyCode === 13) {
+                selectFlashCardFunction()
+            }
+        }
     });
     //#endregion -- Add and Select Flash Card Functions
 
