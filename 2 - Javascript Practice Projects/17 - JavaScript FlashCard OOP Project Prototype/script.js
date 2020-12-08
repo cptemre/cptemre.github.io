@@ -645,6 +645,7 @@ $(function () {
         $(".card0Div").empty();
         $(".hideDeleteContainer").css("grid-template-areas", "hideButton");
         $("#delete").css("display", "none");
+        $("#deleteAll").css("display", "none");
     }
     $("#addFlashCard").on({
         mouseup: function () {

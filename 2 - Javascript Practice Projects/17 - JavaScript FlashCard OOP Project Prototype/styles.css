@@ -14,9 +14,8 @@
 body {
     padding: 0;
     margin: 0;
-    width: 100vw;
+    width: auto;
     height: auto;
-    overflow-x: hidden;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-areas: 
@@ -43,11 +42,13 @@ body {
     height: auto;
     display: grid;
     grid-template-columns: 1fr 0.5fr 0.5fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "addFlashCard selectMenu switch selectFlashCard";
     justify-items: center;
     align-items: center;
     z-index: 2;
 }
-.mainButtons, .hideQuestionAnswer, .delete, #selectMenu, .types {
+.mainButtons, .hideQuestionAnswer, .delete, #selectMenu, .types, .switch {
     display: grid;
     justify-items: center;
     align-items: center;
@@ -61,14 +62,21 @@ body {
     border-radius: 2rem;
     outline: none;
     cursor: pointer;
-    transition: all 1s;
+    transition: all 0.3s;
+}
+#addFlashCard {
+    grid-area: addFlashCard;
+}
+#selectFlashCard {
+    grid-area: selectFlashCard;
 }
 #selectMenu {
     text-align: center;
     background-color: black;
-    width: 20%;
-    border: 2px solid var(--linearColor3);
+    width: 6rem;
+    border: 3px solid var(--linearColor3);
     transition: all 0.3s;
+    grid-area: selectMenu;
 }
 .option {
     background-color: black;
@@ -77,8 +85,8 @@ body {
 .switch {
     position: relative;
     display: inline-block;
-    width: 60px;
-    height: 34px;
+    width: 6rem;
+    grid-area: switch;
 }
 
   /* Hide default HTML checkbox */
@@ -104,8 +112,8 @@ body {
 .slider:before {
     position: absolute;
     content: "";
-    height: 26px;
-    width: 26px;
+    height: 2.5rem;
+    width: 2.5rem;
     left: 4px;
     bottom: 4px;
     background-color: white;
@@ -122,9 +130,9 @@ body {
 }
 
 #switchInput:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
+    -webkit-transform: translateX(3rem);
+    -ms-transform: translateX(3rem);
+    transform: translateX(3rem);
 }
 
   /* Rounded sliders */
@@ -276,8 +284,8 @@ body {
     ;
 }
 #questionDiv,#answerDiv {
-    width: 80%;
-    height: 35rem;
+    width: 25rem;
+    height: 30rem;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 0.2fr 0.6fr 0.2fr;
@@ -313,8 +321,8 @@ body {
     grid-area: answerTextArea;
 }
 #questionTextArea, #answerTextArea {
-    width: 90%;
-    height: 100%;
+    width: 20rem;
+    height: 15rem;
     text-align: center;
     align-items: center;
     background-color: transparent;
@@ -511,4 +519,102 @@ body {
     align-items: center;
     z-index: -1;
     grid-area: deleteCard;
+}
+@media (max-width: 1295px) {
+    #questionDiv, #answerDiv {
+        border-radius: 2rem;
+        width: 20rem;
+    }
+    #questionDiv::before, #questionDiv::after, #answerDiv::before, #answerDiv::after {
+        border-radius: 2rem;
+    }
+    #questionTextArea, #answerTextArea {
+        width: 20rem;
+        height: 10rem;
+    }
+}
+@media (max-width: 860px) {
+    #questionDiv, #answerDiv {
+        width: 15rem;
+    }
+    #questionTextArea, #answerTextArea {
+        width: 15rem;
+    }
+}
+@media (max-width: 700px) {
+    #questionDiv, #answerDiv {
+        width: 12rem;
+    }
+    #questionTextArea, #answerTextArea {
+        width: 10rem;
+        border-radius: 2rem;
+    }
+    #newCard {
+        grid-template-columns: 1.5fr 1.5fr;
+        grid-template-rows: 1fr 0.2fr;        
+        grid-template-areas: 
+        "questionDiv answerDiv"
+        "hideDeleteContainer hideDeleteContainer"
+        ;
+    }
+    #mainButtons {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas: 
+        "addFlashCard selectFlashCard"
+        "selectMenu switch"
+        ;
+        grid-row-gap: 1rem;
+    }
+}
+
+@media (max-width: 400px) {
+    #newCard {
+        grid-template-columns: 3fr ;
+        grid-template-rows: 1fr 0.2fr 1fr;        
+        grid-template-areas: 
+        "questionDiv"
+        "hideDeleteContainer"
+        "answerDiv"
+        ;
+    }
+    #mainButtons {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr);
+        grid-template-areas: 
+        "addFlashCard"
+        "selectFlashCard"
+        "switch"
+        "selectMenu"
+        ;
+        grid-row-gap: 1rem;
+    }
+}
+@media (max-width: 350px) {
+    #questionDiv, #answerDiv {
+        width: 80%;
+    }
+    #questionTextArea, #answerTextArea {
+        width: 80%;
+    }
+    .mainButtons {
+        width: 6rem;
+    }
+    #type, #saveButton {
+        width: 6rem;
+    }
+}
+@media (max-width: 250px) {
+    #questionDiv, #answerDiv {
+        width: 90%;
+    }
+    #questionTextArea, #answerTextArea {
+        width: 100%;
+    }
+    #questionHeader, #answerHeader {
+        font-size: 1.4rem;
+    }
+    .hideQuestionAnswer{
+        width: 6rem;
+    }
 }
