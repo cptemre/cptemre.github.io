@@ -15,24 +15,33 @@ $(function () {
     console.log(tempObj)
     console.log(localStorage)
     function typesOrder() {
-        if (media700.matches) {
-            
-            $("#cardTypes").css("grid-template-columns", `1fr 1fr`);
-            $(`.types:nth-child(${newCount+1})`).css({
-                "grid-column": "1 / span 1",
-                "grid-row": `${newRowCount+1} / span 1`
+        if ($(window).width() <= 400) {
+            console.log("700 resize")
+            $(".types").css("width", "5rem");
+            $(".types").css("height", "8rem");
+            $(".types").css("font-size", "0.5rem");
+            $("#cardTypes").css("grid-template-columns", "1fr");
+            $(`.types`).css({
+                "grid-column": "initial",
+                "grid-row": `initial`
             });
-            $(`.types:nth-child(${newCount+2})`).css({
-                "grid-column": "2 / span 1",
-                "grid-row": `${newRowCount+1} / span 1`
+        } else if ($(window).width() <= 700) {
+            console.log("700 resize")
+            $("#cardTypes").css("grid-template-columns", "1fr 1fr");
+            $(".types").css("width", "7rem");
+            $(".types").css("height", "7rem");
+            $(".types").css("font-size", "13.3333px");
+            $(`.types`).css({
+                "grid-column": "initial",
+                "grid-row": `initial`
             });
-            if ($(`.types`).length % 2 == 0) {
-                newCount += 2;
-                newRowCount++;
-            }
-        } else {
-            console.log(1900)
-            $("#cardTypes").css("grid-template-columns", `1fr 1fr 1fr`);
+        } else if ($(window).width() > 700) {
+            console.log("no")
+            $(".types").css("width", "12rem");
+            $(".types").css("height", "3rem");
+            $("#cardTypes").css("grid-template-columns", "1fr 1fr 1fr");
+
+            console.log(document.body.clientWidth + ' wide by ' + document.body.clientHeight+' high');
             $(`.types:nth-child(${count+1})`).css({
                 "grid-column": "1 / span 1",
                 "grid-row": `${rowCount+1} / span 1`
@@ -57,34 +66,43 @@ $(function () {
                 count += 5;
                 rowCount += 2;
             }
-        }
+            
+        } 
         resize()
     }
     function resize() {
         count =0
         rowCount = 0
+
         $( window ).resize(function() {
-            
-            if (media700.matches) {
-                $("#cardTypes").css("grid-template-columns", `1fr 1fr`);
+            if ($(window).width() <= 400) {
                 console.log("700 resize")
-                $(`.types:nth-child(${newCount+1})`).css({
-                    "grid-column": "1 / span 1",
-                    "grid-row": `${newRowCount+1} / span 1`
+                $(".types").css("width", "5rem");
+                $(".types").css("height", "8rem");
+                $(".types").css("font-size", "0.5rem");
+                $("#cardTypes").css("grid-template-columns", "1fr");
+                $(`.types`).css({
+                    "grid-column": "initial",
+                    "grid-row": `initial`
                 });
-                $(`.types:nth-child(${newCount+2})`).css({
-                    "grid-column": "2 / span 1",
-                    "grid-row": `${newRowCount+1} / span 1`
+            } 
+            else if ($(window).width() <= 700) {
+                console.log("700 resize")
+                $("#cardTypes").css("grid-template-columns", "1fr 1fr");
+                $(".types").css("width", "7rem");
+                $(".types").css("height", "7rem");
+                $(".types").css("font-size", "13.3333px");
+                $(`.types`).css({
+                    "grid-column": "initial",
+                    "grid-row": `initial`
                 });
-                if ($(`.types`).length % 2 == 0) {
-                    newCount += 2;
-                    newRowCount++;
-                }
-                
-            } else if (!media700.matches) {
+            } else if ($(window).width() > 700) {
                 console.log("no")
-                
-                $("#cardTypes").css("grid-template-columns", `1fr 1fr 1fr`);
+                $(".types").css("width", "12rem");
+                $(".types").css("height", "3rem");
+                $("#cardTypes").css("grid-template-columns", "1fr 1fr 1fr");
+
+                console.log(document.body.clientWidth + ' wide by ' + document.body.clientHeight+' high');
                 $(`.types:nth-child(${count+1})`).css({
                     "grid-column": "1 / span 1",
                     "grid-row": `${rowCount+1} / span 1`
