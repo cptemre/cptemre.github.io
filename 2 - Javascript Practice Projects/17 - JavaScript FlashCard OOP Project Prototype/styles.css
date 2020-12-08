@@ -47,7 +47,7 @@ body {
     align-items: center;
     z-index: 2;
 }
-.mainButtons, .hideQuestionAnswer, .delete, #selectMenu {
+.mainButtons, .hideQuestionAnswer, .delete, #selectMenu, .types {
     display: grid;
     justify-items: center;
     align-items: center;
@@ -135,15 +135,15 @@ body {
 .slider.round:before {
     border-radius: 50%;
 }
-.mainButtons::before, .hideQuestionAnswer::before, .card0Question::before, .card0Answer::before, .delete::before {    
+.mainButtons::before, .hideQuestionAnswer::before, .card0Question::before, .card0Answer::before, .delete::before, .types::before {    
     z-index: -1;
 }
-.mainButtons::after, .hideQuestionAnswer::after, .card0Question::after, .card0Answer::after,.delete::after {
+.mainButtons::after, .hideQuestionAnswer::after, .card0Question::after, .card0Answer::after,.delete::after, .types::after {
     z-index: -1;
     filter: blur(20px);
     transform: scale(1.05);
 }
-.mainButtons::before, .mainButtons::after, .hideQuestionAnswer::before, .hideQuestionAnswer::after, .card0Question::before, .card0Question::after, .card0Answer::before, .card0Answer::after, .delete::before, .delete::after{
+.mainButtons::before, .mainButtons::after, .hideQuestionAnswer::before, .hideQuestionAnswer::after, .card0Question::before, .card0Question::after, .card0Answer::before, .card0Answer::after, .delete::before, .delete::after, .types::before, .types::after{
     content: "";
     position: absolute;
     top: -3px;

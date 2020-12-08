@@ -26,7 +26,7 @@ $(function () {
             typesHeaders = $.unique(typesHeaders.sort());
             console.log(typesHeaders)
             if (typesHeaders[b] !== undefined) {
-                $("#cardTypes").append(`<button class="mainButtons types">${typesHeaders[b]}</button>`);
+                $("#cardTypes").append(`<button class="types">${typesHeaders[b]}</button>`);
             }
             console.log()
             b++;
@@ -116,6 +116,92 @@ $(function () {
                 if ($(this).siblings().hasClass("selected")) {
                     $(this).removeClass("mouseDown");
                     $(this).removeClass("mouseOver");
+                    $(this).addClass("noneSelected");
+                } else {
+                    $(this).removeClass("mouseOver");
+                }
+            },
+            mousedown: function () {
+                $(this).addClass("mouseDown");
+                $(this).removeClass("noneSelected");
+                $(this).removeClass("mouseOver");
+                $(this).siblings().addClass("noneSelected");
+                $(this).siblings().removeClass("selected");
+            },
+            mouseup: function () {
+                $(this).addClass("selected");
+                $(this).removeClass("mouseDown");
+                $(this).removeClass("mouseOver");
+                $(this).removeClass("noneSelected");
+                if ($(this).siblings().hasClass("selected")) {
+                    $(this).siblings().removeClass("selected");
+                }
+                $(".types").removeClass("noneSelected");
+                $(".types").removeClass("selected");
+                $(".types").removeClass("mouseDown");
+                $(".types").removeClass("mouseOver");
+            },
+            focus: function () {  
+                $(this).addClass("mouseOver");
+                $(this).removeClass("selected");
+                $(this).removeClass("noneSelected");
+            },
+            focusout: function () {  
+                if ($(this).siblings().hasClass("noneSelected")) {
+                    $(this).removeClass("mouseDown");
+                    $(this).removeClass("mouseOver");
+                    $(this).addClass("selected");
+                } else {
+                    $(this).removeClass("mouseOver");
+                }
+
+                if ($(this).siblings().hasClass("selected")) {
+                    $(this).removeClass("mouseDown");
+                    $(this).removeClass("mouseOver");
+                    $(this).addClass("noneSelected");
+                } else {
+                    $(this).removeClass("mouseOver");
+                }
+            },
+            keydown: function (e) {  
+                if (e.keyCode === 13) {
+                    $(this).addClass("mouseDown");
+                    $(this).removeClass("noneSelected");
+                    $(this).removeClass("mouseOver");
+                    $(this).siblings().addClass("noneSelected");
+                    $(this).siblings().removeClass("selected");
+                }
+            },
+            keyup: function (e) {  
+                if (e.keyCode === 13) {
+                    $(this).addClass("selected");
+                    $(this).removeClass("mouseDown");
+                    $(this).removeClass("mouseOver");
+                    $(this).removeClass("noneSelected");
+                }
+            },
+        });
+    }
+    function typesButtonFunction() {
+        $(".types").on({
+            mouseenter: function () {
+                $(this).addClass("mouseOver");
+                $(this).removeClass("selected");
+                $(this).removeClass("noneSelected");
+            },
+            mouseleave: function () {
+                if ($(this).siblings().hasClass("noneSelected")) {
+                    $(this).removeClass("mouseDown");
+                    $(this).removeClass("mouseOver");
+                    $(this).addClass("selected");
+                } else {
+                    $(this).removeClass("mouseOver");
+                }
+
+                if ($(this).siblings().hasClass("selected")) {
+                    $(this).removeClass("mouseDown");
+                    $(this).removeClass("mouseOver");
+                    $(this).addClass("noneSelected");
                 } else {
                     $(this).removeClass("mouseOver");
                 }
@@ -279,7 +365,7 @@ $(function () {
                 inputValue = $("#type").val();
                 myObj = [inputValue, questionValue, answerValue];
                 stringfy = JSON.stringify(myObj);
-                $(this).css("background-color", "var(rgba(146, 31, 31, 0.5))");
+                $(this).css("background-color", "var(--emptyColor)");
                 tempObj.push(stringfy);
                 tempObj = $.unique(tempObj.sort());
                 let x = 0;
@@ -347,7 +433,7 @@ $(function () {
                                 typesHeaders = $.unique(typesHeaders.sort());
                                 console.log(typesHeaders)
                                 if (typesHeaders[b] !== undefined) {
-                                    $("#cardTypes").append(`<button class="mainButtons types">${typesHeaders[b]}</button>`);
+                                    $("#cardTypes").append(`<button class="types">${typesHeaders[b]}</button>`);
                                     count = 0;
                                     rowCount = 0;
                                     $(`.types:nth-child(${count+1})`).css({
@@ -376,6 +462,7 @@ $(function () {
                                     }
                                 }
                                 mainButtonFunctions(); 
+                                typesButtonFunction();
                                 typesMouseupFunction();
                                 b++;
                             }
@@ -541,6 +628,7 @@ $(function () {
     })
     //#region -- Action of main buttons and type buttons
     mainButtonFunctions();
+    typesButtonFunction();
     //#endregion -- Action of main buttons and type buttons
 
     hideQuestionAnswer();
@@ -629,6 +717,11 @@ $(function () {
                 "border-color": "gray",
                 "background-color": "var(--typeColor)",
             });
+            $("body").on({
+                mouseup: function () {  
+                    $("#saveButton").css("background-color", "var(--emptyColor)");
+                }
+            })
         },
         mouseup: function () {
             $(this).css({
@@ -647,7 +740,7 @@ $(function () {
                 }
                 i = 0;
                 if (!typesArray.includes(inputValue)) {
-                    $("#cardTypes").append(`<button class="mainButtons types">${inputValue}</button>`);
+                    $("#cardTypes").append(`<button class="types">${inputValue}</button>`);
                 }
                 myObj = [inputValue, questionValue, answerValue];
                 stringfy = JSON.stringify(myObj);
@@ -689,6 +782,7 @@ $(function () {
                 }
 
                 mainButtonFunctions();
+                typesButtonFunction();
                 typesMouseupFunction();
             } else {
                 if ($("#type").val().trim().length == 0 || $("#type").val().trim() == "") {
@@ -711,6 +805,7 @@ $(function () {
                 }
             }
         }
+        
     });
     //#endregion -- Save Button Actions
 
