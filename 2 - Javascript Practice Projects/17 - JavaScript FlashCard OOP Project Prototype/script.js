@@ -1,6 +1,8 @@
 $(function () {
     let count = 0;
     let rowCount = 0;
+    let newRowCount = 0;
+    let newCount = 0;
     let questionValue;
     let answerValue;
     let inputValue;
@@ -8,8 +10,110 @@ $(function () {
     let tempObj = [];
     let typesBlock;
     let selectCount = 0;
+    let media700 = window.matchMedia("(max-width: 700px)");
+    let media1200 = window.matchMedia("(max-width: 1200px)");
     console.log(tempObj)
     console.log(localStorage)
+    function typesOrder() {
+        if (media700.matches) {
+            
+            $("#cardTypes").css("grid-template-columns", `1fr 1fr`);
+            $(`.types:nth-child(${newCount+1})`).css({
+                "grid-column": "1 / span 1",
+                "grid-row": `${newRowCount+1} / span 1`
+            });
+            $(`.types:nth-child(${newCount+2})`).css({
+                "grid-column": "2 / span 1",
+                "grid-row": `${newRowCount+1} / span 1`
+            });
+            if ($(`.types`).length % 2 == 0) {
+                newCount += 2;
+                newRowCount++;
+            }
+        } else {
+            console.log(1900)
+            $("#cardTypes").css("grid-template-columns", `1fr 1fr 1fr`);
+            $(`.types:nth-child(${count+1})`).css({
+                "grid-column": "1 / span 1",
+                "grid-row": `${rowCount+1} / span 1`
+            });
+            $(`.types:nth-child(${count+2})`).css({
+                "grid-column": "2 / span 1",
+                "grid-row": `${rowCount+1} / span 1`
+            });
+            $(`.types:nth-child(${count+3})`).css({
+                "grid-column": "3 / span 1",
+                "grid-row": `${rowCount+1} / span 1`
+            });
+            $(`.types:nth-child(${count+4})`).css({
+                "grid-column": "1 / span 2",
+                "grid-row": `${rowCount+2} / span 1`
+            });
+            $(`.types:nth-child(${count+5})`).css({
+                "grid-column": "2 / span 2",
+                "grid-row": `${rowCount+2} / span 1`
+            });
+            if ($(`.types`).length % 5 == 0) {
+                count += 5;
+                rowCount += 2;
+            }
+        }
+        resize()
+    }
+    function resize() {
+        count =0
+        rowCount = 0
+        $( window ).resize(function() {
+            
+            if (media700.matches) {
+                $("#cardTypes").css("grid-template-columns", `1fr 1fr`);
+                console.log("700 resize")
+                $(`.types:nth-child(${newCount+1})`).css({
+                    "grid-column": "1 / span 1",
+                    "grid-row": `${newRowCount+1} / span 1`
+                });
+                $(`.types:nth-child(${newCount+2})`).css({
+                    "grid-column": "2 / span 1",
+                    "grid-row": `${newRowCount+1} / span 1`
+                });
+                if ($(`.types`).length % 2 == 0) {
+                    newCount += 2;
+                    newRowCount++;
+                }
+                
+            } else if (!media700.matches) {
+                console.log("no")
+                
+                $("#cardTypes").css("grid-template-columns", `1fr 1fr 1fr`);
+                $(`.types:nth-child(${count+1})`).css({
+                    "grid-column": "1 / span 1",
+                    "grid-row": `${rowCount+1} / span 1`
+                });
+                $(`.types:nth-child(${count+2})`).css({
+                    "grid-column": "2 / span 1",
+                    "grid-row": `${rowCount+1} / span 1`
+                });
+                $(`.types:nth-child(${count+3})`).css({
+                    "grid-column": "3 / span 1",
+                    "grid-row": `${rowCount+1} / span 1`
+                });
+                $(`.types:nth-child(${count+4})`).css({
+                    "grid-column": "1 / span 2",
+                    "grid-row": `${rowCount+2} / span 1`
+                });
+                $(`.types:nth-child(${count+5})`).css({
+                    "grid-column": "2 / span 2",
+                    "grid-row": `${rowCount+2} / span 1`
+                });
+                if ($(`.types`).length % 5 == 0) {
+                    count += 5;
+                    rowCount += 2;
+                }
+                
+            } 
+        });
+    }
+    resize()
     if (localStorage.length == 0) {
         tempObj = [];
     } else {
@@ -31,32 +135,7 @@ $(function () {
             console.log()
             b++;
         }
-        count = 0;
-        rowCount = 0;
-        $(`.types:nth-child(${count+1})`).css({
-            "grid-column": "1 / span 1",
-            "grid-row": `${rowCount+1} / span 1`
-        });
-        $(`.types:nth-child(${count+2})`).css({
-            "grid-column": "2 / span 1",
-            "grid-row": `${rowCount+1} / span 1`
-        });
-        $(`.types:nth-child(${count+3})`).css({
-            "grid-column": "3 / span 1",
-            "grid-row": `${rowCount+1} / span 1`
-        });
-        $(`.types:nth-child(${count+4})`).css({
-            "grid-column": "1 / span 2",
-            "grid-row": `${rowCount+2} / span 1`
-        });
-        $(`.types:nth-child(${count+5})`).css({
-            "grid-column": "2 / span 2",
-            "grid-row": `${rowCount+2} / span 1`
-        });
-        if ($(`.types`).length % 5 == 0) {
-            count += 5;
-            rowCount += 2;
-        }
+        typesOrder()
         a = 0;
         b = 0;
     }
@@ -434,32 +513,7 @@ $(function () {
                                 console.log(typesHeaders)
                                 if (typesHeaders[b] !== undefined) {
                                     $("#cardTypes").append(`<button class="types">${typesHeaders[b]}</button>`);
-                                    count = 0;
-                                    rowCount = 0;
-                                    $(`.types:nth-child(${count+1})`).css({
-                                        "grid-column": "1 / span 1",
-                                        "grid-row": `${rowCount+1} / span 1`
-                                    });
-                                    $(`.types:nth-child(${count+2})`).css({
-                                        "grid-column": "2 / span 1",
-                                        "grid-row": `${rowCount+1} / span 1`
-                                    });
-                                    $(`.types:nth-child(${count+3})`).css({
-                                        "grid-column": "3 / span 1",
-                                        "grid-row": `${rowCount+1} / span 1`
-                                    });
-                                    $(`.types:nth-child(${count+4})`).css({
-                                        "grid-column": "1 / span 2",
-                                        "grid-row": `${rowCount+2} / span 1`
-                                    });
-                                    $(`.types:nth-child(${count+5})`).css({
-                                        "grid-column": "2 / span 2",
-                                        "grid-row": `${rowCount+2} / span 1`
-                                    });
-                                    if ($(`.types`).length % 5 == 0) {
-                                        count += 5;
-                                        rowCount += 2;
-                                    }
+                                    typesOrder();
                                 }
                                 mainButtonFunctions(); 
                                 typesButtonFunction();
@@ -661,6 +715,7 @@ $(function () {
         $("#newCard").slideUp(1000);
         $("#cardTypes").css('display', 'grid').hide().slideDown(1000);
         $(".card0Div").empty();
+        typesOrder()
     }
     $("#selectFlashCard").on({
         mouseup: function () {
@@ -755,32 +810,7 @@ $(function () {
                 x = 0
                 console.log(localStorage)
                 //#endregion -- Creating "inputValue: questionValue,answerValue"
-                count = 0;
-                rowCount = 0;
-                $(`.types:nth-child(${count+1})`).css({
-                    "grid-column": "1 / span 1",
-                    "grid-row": `${rowCount+1} / span 1`
-                });
-                $(`.types:nth-child(${count+2})`).css({
-                    "grid-column": "2 / span 1",
-                    "grid-row": `${rowCount+1} / span 1`
-                });
-                $(`.types:nth-child(${count+3})`).css({
-                    "grid-column": "3 / span 1",
-                    "grid-row": `${rowCount+1} / span 1`
-                });
-                $(`.types:nth-child(${count+4})`).css({
-                    "grid-column": "1 / span 2",
-                    "grid-row": `${rowCount+2} / span 1`
-                });
-                $(`.types:nth-child(${count+5})`).css({
-                    "grid-column": "2 / span 2",
-                    "grid-row": `${rowCount+2} / span 1`
-                });
-                if ($(`.types`).length % 5 == 0) {
-                    count += 5;
-                    rowCount += 2;
-                }
+                typesOrder()
 
                 mainButtonFunctions();
                 typesButtonFunction();
