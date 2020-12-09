@@ -26,6 +26,7 @@ body {
     align-items: flex-start;
     background-color: black;
     transition: background-color 0.3s;
+    
 }
 
 #addFlashDiv {
@@ -214,7 +215,6 @@ body {
     align-items: center;
     grid-row-gap: 2rem;
     padding-top: 3rem;
-    grid-column: ;
 }
 
 #newCard {

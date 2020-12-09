@@ -16,43 +16,18 @@ $(function () {
     console.log(localStorage)
     function typesOrder() {
         resize()
-        let n = 0
-        if ($(window).width() <= 200) {
-            $(".types").css("width", "3rem");
-            $(".types").css("height", "3rem");
-            $(".types").css("font-size", "0.5rem");
-            $("#cardTypes").css("grid-template-columns", "1fr");
-            $(`.types`).css({
-                "grid-column": "span",
-                "grid-row": `span`
-            });
-            n = 0
-            while (n < $(".types").length) {
-                $(`.types:nth-child(${n+1})`).css({
-                    "grid-column": "1 / span 1",
-                    "grid-row": `${n+1} / span 1`
-                });
-                n++;
-            }
-        } 
-        else if ($(window).width() <= 400) {
+
+        if ($(window).width() <= 400) {
             console.log("700 resize")
-            $(".types").css("width", "4rem");
-            $(".types").css("height", "4rem");
-            $(".types").css("font-size", "0.5rem");
-            $("#cardTypes").css("grid-template-columns", "1fr");
+            $(".types").css("width", "2rem");
+            $(".types").css("height", "3rem");
+            $(".types").css("font-size", "0.2rem");
+            $("#cardTypes").css("grid-template-columns", "1fr 1fr 1fr");
+            $(".typeInner").css("writing-mode", "vertical-rl");
             $(`.types`).css({
                 "grid-column": "span",
                 "grid-row": `span`
             });
-            n = 0
-            while (n < $(".types").length) {
-                $(`.types:nth-child(${n+1})`).css({
-                    "grid-column": "1 / span 3",
-                    "grid-row": `${n+1} / span 1`
-                });
-                n++;
-            }
         } else if ($(window).width() <= 700) {
             console.log("700 resize")
             $("#cardTypes").css("grid-template-columns", "1fr 1fr 1fr");
@@ -63,7 +38,14 @@ $(function () {
                 "grid-column": "span",
                 "grid-row": `span`
             });
-            n = 0
+        } else if ($(window).width() > 700) {
+            console.log("no")
+            $(".types").css("width", "12rem");
+            $(".types").css("height", "3rem");
+            $("#cardTypes").css("grid-template-columns", "1fr 1fr 1fr");
+        } 
+        console.log(document.body.clientWidth + ' wide by ' + document.body.clientHeight+' high');
+        let n = 0
         rowCount = 0;
         while (n < $(".types").length) {
             $(`.types:nth-child(${n+1})`).css({
@@ -94,58 +76,25 @@ $(function () {
             n++
             rowCount++;
         }
-        } else if ($(window).width() > 700) {
-            console.log("no")
-            $(".types").css("width", "12rem");
-            $(".types").css("height", "3rem");
-            $("#cardTypes").css("grid-template-columns", "1fr 1fr 1fr");
-        } 
-        console.log(document.body.clientWidth + ' wide by ' + document.body.clientHeight+' high');
-        
         
                 
             
     }
     function resize() {
-        let n = 0
+
 
         $( window ).resize(function() {
-            if ($(window).width() <= 200) {
-                $(".types").css("width", "3rem");
-                $(".types").css("height", "3rem");
-                $(".types").css("font-size", "0.5rem");
-                $("#cardTypes").css("grid-template-columns", "1fr");
-                $(`.types`).css({
-                    "grid-column": "span",
-                    "grid-row": `span`
-                });
-                n = 0
-                while (n < $(".types").length) {
-                    $(`.types:nth-child(${n+1})`).css({
-                        "grid-column": "1 / span 1",
-                        "grid-row": `${n+1} / span 1`
-                    });
-                    n++;
-                }
-            } 
-            else if ($(window).width() <= 400) {
+            if ($(window).width() <= 400) {
                 console.log("700 resize")
-                $(".types").css("width", "5rem");
-                $(".types").css("height", "5rem");
+                $(".types").css("width", "2rem");
+                $(".types").css("height", "10rem");
                 $(".types").css("font-size", "0.5rem");
-                $("#cardTypes").css("grid-template-columns", "1fr");
+                $("#cardTypes").css("grid-template-columns", "1fr 1fr 1fr");
+                $(".typeInner").css("writing-mode", "vertical-rl");
                 $(`.types`).css({
                     "grid-column": "span",
                     "grid-row": `span`
                 });
-                n = 0
-                while (n < $(".types").length) {
-                    $(`.types:nth-child(${n+1})`).css({
-                        "grid-column": "1 / span 3",
-                        "grid-row": `${n+1} / span 1`
-                    });
-                    n++;
-                }
             } 
             else if ($(window).width() <= 700) {
                 console.log("700 resize")
@@ -157,37 +106,7 @@ $(function () {
                     "grid-column": "span",
                     "grid-row": `span`
                 });
-                n = 0
-                rowCount = 0;
-                while (n < $(".types").length) {
-                    $(`.types:nth-child(${n+1})`).css({
-                        "grid-column": "1 / span 1",
-                        "grid-row": `${rowCount+1} / span 1`
-                    });
-                    n++
-                    $(`.types:nth-child(${n+1})`).css({
-                        "grid-column": "2 / span 1",
-                        "grid-row": `${rowCount+1} / span 1`
-                    });
-                    n++
-                    $(`.types:nth-child(${n+1})`).css({
-                        "grid-column": "3 / span 1",
-                        "grid-row": `${rowCount+1} / span 1`
-                    });
-                    n++
-                    rowCount++
-                    $(`.types:nth-child(${n+1})`).css({
-                        "grid-column": "1 / span 2",
-                        "grid-row": `${rowCount+1} / span 1`
-                    });
-                    n++
-                    $(`.types:nth-child(${n+1})`).css({
-                        "grid-column": "2 / span 2",
-                        "grid-row": `${rowCount+1} / span 1`
-                    });
-                    n++
-                    rowCount++;
-                }
+                
             } else if ($(window).width() > 700) {
                 console.log("no")
                 $(".types").css("width", "12rem");
@@ -197,37 +116,7 @@ $(function () {
                     "grid-column": "span",
                     "grid-row": `span`
                 });
-                let n = 0
-        rowCount = 0;
-        while (n < $(".types").length) {
-            $(`.types:nth-child(${n+1})`).css({
-                "grid-column": "1 / span 1",
-                "grid-row": `${rowCount+1} / span 1`
-            });
-            n++
-            $(`.types:nth-child(${n+1})`).css({
-                "grid-column": "2 / span 1",
-                "grid-row": `${rowCount+1} / span 1`
-            });
-            n++
-            $(`.types:nth-child(${n+1})`).css({
-                "grid-column": "3 / span 1",
-                "grid-row": `${rowCount+1} / span 1`
-            });
-            n++
-            rowCount++
-            $(`.types:nth-child(${n+1})`).css({
-                "grid-column": "1 / span 2",
-                "grid-row": `${rowCount+1} / span 1`
-            });
-            n++
-            $(`.types:nth-child(${n+1})`).css({
-                "grid-column": "2 / span 2",
-                "grid-row": `${rowCount+1} / span 1`
-            });
-            n++
-            rowCount++;
-        }
+                
             } 
             
 
@@ -237,8 +126,6 @@ $(function () {
     if (localStorage.length == 0) {
         tempObj = [];
     } else {
-        typesOrder()
-        resize()
         let a = 0;
         while (a < localStorage.length) {
             tempObj.push(localStorage.getItem(a));
@@ -252,11 +139,12 @@ $(function () {
             typesHeaders = $.unique(typesHeaders.sort());
             console.log(typesHeaders)
             if (typesHeaders[b] !== undefined) {
-                $("#cardTypes").append(`<button class="types">${typesHeaders[b]}</button>`);
+                $("#cardTypes").append(`<button class="types"><p class="typeInner">${typesHeaders[b]}</p></button>`);
             }
             b++;
         }
-
+        typesOrder()
+        resize()
         a = 0;
         b = 0;
     }
@@ -588,7 +476,7 @@ $(function () {
             mouseup: function () {
                 let y = 0;
                 $(this).parent().parent().slideUp(1000);
-                typesArray= typesArray.filter(function(e) { return e !== typesBlock.html() });
+                typesArray= typesArray.filter(function(e) { return e !== typesBlock.children().html() });
                 $(".card0Question").css("animation", "cardAnimation00 2s forwards");
                 $(".card0Answer").css("animation", "cardAnimation11 2s forwards");
                 while (y < tempObj.length) {
@@ -633,7 +521,7 @@ $(function () {
                                 typesHeaders = $.unique(typesHeaders.sort());
                                 console.log(typesHeaders)
                                 if (typesHeaders[b] !== undefined) {
-                                    $("#cardTypes").append(`<button class="types">${typesHeaders[b]}</button>`);
+                                    $("#cardTypes").append(`<button class="types"><p class="typeInner">${typesHeaders[b]}</p></button>`);
                                     typesOrder();
                                 }
                                 mainButtonFunctions(); 
@@ -677,7 +565,7 @@ $(function () {
             $("#deleteAll").css("display", "block");
             $("#delete").html(`Delete Type "${typesHtml}"`);
             $("#newCard").css('display', 'grid').hide().slideDown(1000);
-            let typesInner = $(this).html().trim();
+            let typesInner = $(this).children().html().trim();
             $("#type").val(typesInner);
             $("#type").prop("disabled", true);
             $("#flashCards, .card0Div").css('display', 'grid').slideDown(1000);
@@ -918,13 +806,13 @@ $(function () {
                 answerValue = $("#answerTextArea").val();
                 inputValue = $("#type").val();
                 while (i < $(".types").length) {
-                    typesArray.push($(".types").eq(i).html());
+                    typesArray.push($(".types").eq(i).children().html());
                     typesArray = $.unique(typesArray.sort());
                     i++;
                 }
                 i = 0;
                 if (!typesArray.includes(inputValue)) {
-                    $("#cardTypes").append(`<button class="types">${inputValue}</button>`);
+                    $("#cardTypes").append(`<button class="types"><p class="typeInner">${inputValue}</p></button>`);
                 }
                 myObj = [inputValue, questionValue, answerValue];
                 stringfy = JSON.stringify(myObj);
