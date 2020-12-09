@@ -99,6 +99,37 @@ $(function () {
             $(".types").css("width", "12rem");
             $(".types").css("height", "3rem");
             $("#cardTypes").css("grid-template-columns", "1fr 1fr 1fr");
+            n = 0
+                rowCount = 0;
+                while (n < $(".types").length) {
+                    $(`.types:nth-child(${n+1})`).css({
+                        "grid-column": "1 / span 1",
+                        "grid-row": `${rowCount+1} / span 1`
+                    });
+                    n++
+                    $(`.types:nth-child(${n+1})`).css({
+                        "grid-column": "2 / span 1",
+                        "grid-row": `${rowCount+1} / span 1`
+                    });
+                    n++
+                    $(`.types:nth-child(${n+1})`).css({
+                        "grid-column": "3 / span 1",
+                        "grid-row": `${rowCount+1} / span 1`
+                    });
+                    n++
+                    rowCount++
+                    $(`.types:nth-child(${n+1})`).css({
+                        "grid-column": "1 / span 2",
+                        "grid-row": `${rowCount+1} / span 1`
+                    });
+                    n++
+                    $(`.types:nth-child(${n+1})`).css({
+                        "grid-column": "2 / span 2",
+                        "grid-row": `${rowCount+1} / span 1`
+                    });
+                    n++
+                    rowCount++;
+                }
         } 
         console.log(document.body.clientWidth + ' wide by ' + document.body.clientHeight+' high');
         
@@ -197,37 +228,37 @@ $(function () {
                     "grid-column": "span",
                     "grid-row": `span`
                 });
-                let n = 0
-        rowCount = 0;
-        while (n < $(".types").length) {
-            $(`.types:nth-child(${n+1})`).css({
-                "grid-column": "1 / span 1",
-                "grid-row": `${rowCount+1} / span 1`
-            });
-            n++
-            $(`.types:nth-child(${n+1})`).css({
-                "grid-column": "2 / span 1",
-                "grid-row": `${rowCount+1} / span 1`
-            });
-            n++
-            $(`.types:nth-child(${n+1})`).css({
-                "grid-column": "3 / span 1",
-                "grid-row": `${rowCount+1} / span 1`
-            });
-            n++
-            rowCount++
-            $(`.types:nth-child(${n+1})`).css({
-                "grid-column": "1 / span 2",
-                "grid-row": `${rowCount+1} / span 1`
-            });
-            n++
-            $(`.types:nth-child(${n+1})`).css({
-                "grid-column": "2 / span 2",
-                "grid-row": `${rowCount+1} / span 1`
-            });
-            n++
-            rowCount++;
-        }
+                n = 0
+                rowCount = 0;
+                while (n < $(".types").length) {
+                    $(`.types:nth-child(${n+1})`).css({
+                        "grid-column": "1 / span 1",
+                        "grid-row": `${rowCount+1} / span 1`
+                    });
+                    n++
+                    $(`.types:nth-child(${n+1})`).css({
+                        "grid-column": "2 / span 1",
+                        "grid-row": `${rowCount+1} / span 1`
+                    });
+                    n++
+                    $(`.types:nth-child(${n+1})`).css({
+                        "grid-column": "3 / span 1",
+                        "grid-row": `${rowCount+1} / span 1`
+                    });
+                    n++
+                    rowCount++
+                    $(`.types:nth-child(${n+1})`).css({
+                        "grid-column": "1 / span 2",
+                        "grid-row": `${rowCount+1} / span 1`
+                    });
+                    n++
+                    $(`.types:nth-child(${n+1})`).css({
+                        "grid-column": "2 / span 2",
+                        "grid-row": `${rowCount+1} / span 1`
+                    });
+                    n++
+                    rowCount++;
+                }
             } 
             
 
