@@ -21,6 +21,7 @@ body {
     grid-template-areas: 
     "addFlashDiv"
     ;
+    overflow-x: hidden;
     justify-items: flex-start;
     align-items: flex-start;
     background-color: black;
@@ -213,6 +214,7 @@ body {
     align-items: center;
     grid-row-gap: 2rem;
     padding-top: 3rem;
+    grid-column: ;
 }
 
 #newCard {

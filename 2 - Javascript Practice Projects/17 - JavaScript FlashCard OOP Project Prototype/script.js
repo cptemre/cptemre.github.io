@@ -1,6 +1,5 @@
 $(function () {
     let count = 0;
-    let rowCount = 0;
     let newRowCount = 0;
     let newCount = 0;
     let questionValue;
@@ -15,95 +14,36 @@ $(function () {
     console.log(tempObj)
     console.log(localStorage)
     function typesOrder() {
+        resize()
+        let rowCount = 0;
         if ($(window).width() <= 400) {
             console.log("700 resize")
-            $(".types").css("width", "5rem");
-            $(".types").css("height", "8rem");
+            $(".types").css("width", "3rem");
+            $(".types").css("height", "3rem");
             $(".types").css("font-size", "0.5rem");
-            $("#cardTypes").css("grid-template-columns", "1fr");
+            $("#cardTypes").css("grid-template-columns", "1fr 1fr 1fr");
             $(`.types`).css({
-                "grid-column": "initial",
-                "grid-row": `initial`
+                "grid-column": "span",
+                "grid-row": `span`
             });
         } else if ($(window).width() <= 700) {
             console.log("700 resize")
-            $("#cardTypes").css("grid-template-columns", "1fr 1fr");
-            $(".types").css("width", "7rem");
-            $(".types").css("height", "7rem");
+            $("#cardTypes").css("grid-template-columns", "1fr 1fr 1fr");
+            $(".types").css("width", "6rem");
+            $(".types").css("height", "6rem");
             $(".types").css("font-size", "13.3333px");
             $(`.types`).css({
-                "grid-column": "initial",
-                "grid-row": `initial`
+                "grid-column": "span",
+                "grid-row": `span`
             });
         } else if ($(window).width() > 700) {
             console.log("no")
             $(".types").css("width", "12rem");
             $(".types").css("height", "3rem");
             $("#cardTypes").css("grid-template-columns", "1fr 1fr 1fr");
-
-            console.log(document.body.clientWidth + ' wide by ' + document.body.clientHeight+' high');
-            $(`.types:nth-child(${count+1})`).css({
-                "grid-column": "1 / span 1",
-                "grid-row": `${rowCount+1} / span 1`
-            });
-            $(`.types:nth-child(${count+2})`).css({
-                "grid-column": "2 / span 1",
-                "grid-row": `${rowCount+1} / span 1`
-            });
-            $(`.types:nth-child(${count+3})`).css({
-                "grid-column": "3 / span 1",
-                "grid-row": `${rowCount+1} / span 1`
-            });
-            $(`.types:nth-child(${count+4})`).css({
-                "grid-column": "1 / span 2",
-                "grid-row": `${rowCount+2} / span 1`
-            });
-            $(`.types:nth-child(${count+5})`).css({
-                "grid-column": "2 / span 2",
-                "grid-row": `${rowCount+2} / span 1`
-            });
-            if ($(`.types`).length % 5 == 0) {
-                count += 5;
-                rowCount += 2;
-            }
-            
         } 
-        resize()
-    }
-    function resize() {
-        count =0
-        rowCount = 0
-
-        $( window ).resize(function() {
-            if ($(window).width() <= 400) {
-                console.log("700 resize")
-                $(".types").css("width", "5rem");
-                $(".types").css("height", "8rem");
-                $(".types").css("font-size", "0.5rem");
-                $("#cardTypes").css("grid-template-columns", "1fr");
-                $(`.types`).css({
-                    "grid-column": "initial",
-                    "grid-row": `initial`
-                });
-            } 
-            else if ($(window).width() <= 700) {
-                console.log("700 resize")
-                $("#cardTypes").css("grid-template-columns", "1fr 1fr");
-                $(".types").css("width", "7rem");
-                $(".types").css("height", "7rem");
-                $(".types").css("font-size", "13.3333px");
-                $(`.types`).css({
-                    "grid-column": "initial",
-                    "grid-row": `initial`
-                });
-            } else if ($(window).width() > 700) {
-                console.log("no")
-                $(".types").css("width", "12rem");
-                $(".types").css("height", "3rem");
-                $("#cardTypes").css("grid-template-columns", "1fr 1fr 1fr");
-
-                console.log(document.body.clientWidth + ' wide by ' + document.body.clientHeight+' high');
-                $(`.types:nth-child(${count+1})`).css({
+        console.log(document.body.clientWidth + ' wide by ' + document.body.clientHeight+' high');
+            $(`.types:nth-child(${count+1})`).css({
                     "grid-column": "1 / span 1",
                     "grid-row": `${rowCount+1} / span 1`
                 });
@@ -123,12 +63,77 @@ $(function () {
                     "grid-column": "2 / span 2",
                     "grid-row": `${rowCount+2} / span 1`
                 });
-                if ($(`.types`).length % 5 == 0) {
-                    count += 5;
-                    rowCount += 2;
-                }
+                
+            if ($(`.types`).length <= 5) {
+                
+            } else if ($(`.types`).length > 5 && $(`.types`).length <= 10) {
+                rowCount += 2;
+                $(`.types:nth-child(n+6)`).css({
+                    "grid-column": "1 / span 1",
+                    "grid-row": `${rowCount+1} / span 1`
+                });
+                $(`.types:nth-child(n+7)`).css({
+                    "grid-column": "2 / span 1",
+                    "grid-row": `${rowCount+1} / span 1`
+                });
+                $(`.types:nth-child(n+8)`).css({
+                    "grid-column": "3 / span 1",
+                    "grid-row": `${rowCount+1} / span 1`
+                });
+                $(`.types:nth-child(n+9)`).css({
+                    "grid-column": "1 / span 2",
+                    "grid-row": `${rowCount+2} / span 1`
+                });
+                $(`.types:nth-child(n+10)`).css({
+                    "grid-column": "2 / span 2",
+                    "grid-row": `${rowCount+2} / span 1`
+                });
+            }
+            console.log(rowCount)
+            if ($(`.types`).length == 10) {
+                $("#saveButton").css("display", "none")
+            } 
+    }
+    function resize() {
+        let rowCount = 0;
+
+
+        $( window ).resize(function() {
+            if ($(window).width() <= 400) {
+                console.log("700 resize")
+                $(".types").css("width", "3rem");
+                $(".types").css("height", "3rem");
+                $(".types").css("font-size", "0.5rem");
+                $("#cardTypes").css("grid-template-columns", "1fr 1fr 1fr");
+                $(`.types`).css({
+                    "grid-column": "span",
+                    "grid-row": `span`
+                });
+            } 
+            else if ($(window).width() <= 700) {
+                console.log("700 resize")
+                $("#cardTypes").css("grid-template-columns", "1fr 1fr 1fr");
+                $(".types").css("width", "5rem");
+                $(".types").css("height", "5rem");
+                $(".types").css("font-size", "13.3333px");
+                $(`.types`).css({
+                    "grid-column": "span",
+                    "grid-row": `span`
+                });
+                
+            } else if ($(window).width() > 700) {
+                console.log("no")
+                $(".types").css("width", "12rem");
+                $(".types").css("height", "3rem");
+                $("#cardTypes").css("grid-template-columns", "1fr 1fr 1fr");
+                $(`.types`).css({
+                    "grid-column": "span",
+                    "grid-row": `span`
+                });
                 
             } 
+            
+
         });
     }
     resize()
@@ -475,6 +480,7 @@ $(function () {
                 console.log(localStorage)
                 $(".card0Div").empty();
                 questionAnswerInner();
+                typesOrder()
                 i = 0;
                 showHide();
                 deleteClass();
@@ -722,6 +728,7 @@ $(function () {
         $("#saveButton").on({
             mouseup: function () {  
                 $(".card0Div").css("display", "none");
+                typesOrder()
             }
         })
     }
