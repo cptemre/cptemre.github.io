@@ -416,7 +416,7 @@ body {
     display: grid;
     justify-items: center;
     align-items: center;
-    grid-template-columns: 0.4fr 0.2fr 0.4fr;
+    grid-template-columns: 1.5fr 0.75fr 1.5fr;
     width: 100%;
     height: auto;
     grid-template-areas: 
@@ -533,6 +533,15 @@ body {
         height: 10rem;
     }
 }
+@media (max-width: 990px) {
+    .card0Question, .card0Answer {
+        height: 15rem;
+        width: 15rem;
+    }
+    .show, .hide {
+        width: 6rem;
+    }
+}
 @media (max-width: 860px) {
     #questionDiv, #answerDiv {
         width: 15rem;
@@ -544,6 +553,7 @@ body {
 @media (max-width: 700px) {
     #questionDiv, #answerDiv {
         width: 12rem;
+        transform: s;
     }
     #questionTextArea, #answerTextArea {
         width: 10rem;
@@ -566,6 +576,17 @@ body {
         ;
         grid-row-gap: 1rem;
     }
+    .mainCardContainer {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1ft;
+        grid-template-areas: 
+        "card0Question"
+        "deleteCard"
+        "card0Answer"
+        ;
+        grid-row-gap: 1rem;
+    }
+
 }
 
 @media (max-width: 400px) {
@@ -616,5 +637,12 @@ body {
     }
     .hideQuestionAnswer{
         width: 6rem;
+    }
+    .card0Question, .card0Answer {
+        height: 10rem;
+        width: 10rem;
+    }
+    .show, .hide {
+        width: 3rem;
     }
 }

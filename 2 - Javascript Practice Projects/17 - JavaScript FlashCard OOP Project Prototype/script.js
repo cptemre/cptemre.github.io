@@ -154,6 +154,7 @@ $(function () {
             b++;
         }
         typesOrder()
+        resize()
         a = 0;
         b = 0;
     }
@@ -718,6 +719,11 @@ $(function () {
         $(".hideDeleteContainer").css("grid-template-areas", "hideButton");
         $("#delete").css("display", "none");
         $("#deleteAll").css("display", "none");
+        $("#saveButton").on({
+            mouseup: function () {  
+                $(".card0Div").css("display", "none");
+            }
+        })
     }
     $("#addFlashCard").on({
         mouseup: function () {
@@ -734,6 +740,7 @@ $(function () {
         $("#cardTypes").css('display', 'grid').hide().slideDown(1000);
         $(".card0Div").empty();
         typesOrder()
+
     }
     $("#selectFlashCard").on({
         mouseup: function () {
@@ -802,6 +809,7 @@ $(function () {
                 "border-color": "white",
                 "background-color": "var(--emptyColor)",
             });
+            $(".card0Div").empty();
             if ($("#questionTextArea").val() != "" && $("#answerTextArea").val() != "" && $("#type").val() != "") {
                 //#region -- Creating "inputValue: questionValue,answerValue"
                 questionValue = $("#questionTextArea").val();
