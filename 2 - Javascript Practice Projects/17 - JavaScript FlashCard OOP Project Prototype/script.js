@@ -327,13 +327,24 @@ $(function () {
         </div>
     </div>
 </div>`;
-    mainButtonFunctions()
     function mainButtonFunctions() {
         $(".mainButtons").on({
             mouseenter: function () {
                 $(this).addClass("mouseOver");
                 $(this).removeClass("selected");
                 $(this).removeClass("noneSelected");
+                $(this).on({
+                    mouseleave: function () {
+                        if (!$(this).siblings().hasClass("noneSelected") && !$(this).siblings().hasClass("selected") ) {
+                            $(this).removeClass("mouseDown");
+                            console.log("focus out")
+                        };
+                        if ($(this).siblings().hasClass("noneSelected") && $(this).hasClass("mouseDown") ) {
+                            $(this).removeClass("noneSelected");
+                            console.log("focus out 222")
+                        }
+                    }
+                })
             },
             mouseleave: function () {
                 if ($(this).siblings().hasClass("noneSelected")) {
@@ -351,31 +362,45 @@ $(function () {
                 } else {
                     $(this).removeClass("mouseOver");
                 }
+                
             },
             mousedown: function () {
                 $(this).addClass("mouseDown");
                 $(this).removeClass("noneSelected");
                 $(this).removeClass("mouseOver");
-                $(this).siblings().addClass("noneSelected");
-                $(this).siblings().removeClass("selected");
+                $(this).addClass("mouseDown");
             },
             mouseup: function () {
                 $(this).addClass("selected");
                 $(this).removeClass("mouseDown");
                 $(this).removeClass("mouseOver");
                 $(this).removeClass("noneSelected");
-                if ($(this).siblings().hasClass("selected")) {
-                    $(this).siblings().removeClass("selected");
-                }
+                $(this).siblings().addClass("noneSelected");
+                $(this).siblings().removeClass("selected");
+
                 $(".types").removeClass("noneSelected");
                 $(".types").removeClass("selected");
                 $(".types").removeClass("mouseDown");
                 $(".types").removeClass("mouseOver");
+                
             },
             focus: function () {  
                 $(this).addClass("mouseOver");
                 $(this).removeClass("selected");
                 $(this).removeClass("noneSelected");
+                $(this).on({
+                    mouseleave: function () {
+                        if (!$(this).siblings().hasClass("noneSelected") && !$(this).siblings().hasClass("selected") ) {
+                            $(this).removeClass("mouseDown");
+                            console.log("focus out")
+                        };
+                        if ($(this).siblings().hasClass("selected")) {
+                            $(this).removeClass("selected");
+                            $(this).addClass("noneSelected");
+                            console.log("focus out 222")
+                        }
+                    }
+                })
             },
             focusout: function () {  
                 if ($(this).siblings().hasClass("noneSelected")) {
@@ -393,6 +418,7 @@ $(function () {
                 } else {
                     $(this).removeClass("mouseOver");
                 }
+                
             },
             keydown: function (e) {  
                 if (e.keyCode === 13) {
@@ -413,12 +439,26 @@ $(function () {
             },
         });
     }
+    mainButtonFunctions()
+
     function typesButtonFunction() {
         $(".types").on({
             mouseenter: function () {
                 $(this).addClass("mouseOver");
                 $(this).removeClass("selected");
                 $(this).removeClass("noneSelected");
+                $(this).on({
+                    mouseleave: function () {
+                        if (!$(this).siblings().hasClass("noneSelected") && !$(this).siblings().hasClass("selected") ) {
+                            $(this).removeClass("mouseDown");
+                            console.log("focus out")
+                        };
+                        if ($(this).siblings().hasClass("noneSelected") && $(this).hasClass("mouseDown") ) {
+                            $(this).removeClass("noneSelected");
+                            console.log("focus out 222")
+                        }
+                    }
+                })
             },
             mouseleave: function () {
                 if ($(this).siblings().hasClass("noneSelected")) {
