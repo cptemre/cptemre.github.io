@@ -693,6 +693,7 @@ $(function () {
                     $("#cardTypes").empty();
                     $("#cardTypes").fadeIn();
                     $("#card0Div").empty();
+                    $(".card0Div").css("display", "none");
                 }, 2000);
                 tempObj = [];
                 localStorage.clear();
@@ -813,9 +814,20 @@ $(function () {
     })
     function themeSwitch() {
         if (switchCounter % 2 == 0) {
-            $("body").css("background-color", "rgb(158, 155, 155)")
+            $("body").css("background-color", "white");
+            $(".mainButtons, #selectMenu, .option, #questionDiv, #answerDiv, .hideQuestionAnswer, .types, .card0Question, .card0Answer").css({
+                "background-color": "var(--myWhite)",
+                "color": "black"
+            });
+            
+            $(".slider").attr("id", "sliderBlack");
         } else {
-            $("body").css("background-color", "black")
+            $("body").css("background-color", "black");
+            $(".mainButtons, #selectMenu, .option, #questionDiv, #answerDiv, .hideQuestionAnswer, .types, .card0Question, .card0Answer").css({
+                "background-color": "var(--myBlack)",
+                "color": "white"
+            }); 
+            $(".slider").attr("id", "");
         }
         console.log(switchCounter)
     }
@@ -909,7 +921,7 @@ $(function () {
     //#region -- Type Focus and Out Action
     $("#type").focus(function () {
         $(this).css("border-color", "gray");
-        $(this).css("background-color", "white");
+        $(this).css("background-color", "gray");
         $(this).css("color", "black");
     });
     $("#type").focusout(function () {
