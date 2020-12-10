@@ -748,32 +748,7 @@ $(function () {
             }
         });
     }
-    function saveButton() {
-        $("#saveButton").on({
-            mouseup: function () {
-                questionValue = $("#questionTextArea").val();
-                answerValue = $("#answerTextArea").val();
-                inputValue = $("#type").val();
-                myObj = [inputValue, questionValue, answerValue];
-                stringfy = JSON.stringify(myObj);
-                $(this).css("background-color", "var(--emptyColor)");
-                tempObj.push(stringfy);
-                tempObj = $.unique(tempObj.sort());
-                let x = 0;
-                while (x < tempObj.length) {
-                    localStorage.setItem(x, tempObj[x])
-                    x++;
-                }
-                x = 0
-                console.log(localStorage)
-                $(".card0Div").empty();
-                questionAnswerInner();
-                i = 0;
-                showHide();
-                deleteClass();
-            }
-        })
-    }
+    
     function deleteID() {
         $("#delete").on({
             mouseup: function () {
@@ -961,8 +936,8 @@ $(function () {
             i = 0;
             $(".card0Question").css("animation", "cardAnimation0 2s forwards");
             $(".card0Answer").css("animation", "cardAnimation1 2s forwards");
-            saveButton();
-            deleteClass(saveButton());
+            saving();
+            deleteClass(saving());
             deleteID()
             deleteAllTypes()
             showHide();
@@ -988,8 +963,8 @@ $(function () {
                 i = 0;
                 $(".card0Question").css("animation", "cardAnimation0 2s forwards");
                 $(".card0Answer").css("animation", "cardAnimation1 2s forwards");
-                saveButton();
-                deleteClass(saveButton());
+                saving();
+                deleteClass(saving());
                 deleteID()
                 deleteAllTypes()
                 showHide();
@@ -1171,8 +1146,8 @@ $(function () {
             mouseup: function () {  
                 $(".card0Div").css("display", "none");
             }
-        });
-        $("#questionTextArea, #answerTextArea, #type").val("");
+        })
+        $("#type").val("");
     }
     $("#addFlashCard").on({
         mouseup: function () {
@@ -1189,7 +1164,7 @@ $(function () {
         $("#cardTypes").css('display', 'grid').hide().slideDown(1000);
         $(".card0Div").empty();
         typesOrder()
-        $("#questionTextArea, #answerTextArea").val("");
+        $("#questionTextArea, #answerTextArea")
     }
     $("#selectFlashCard").on({
         mouseup: function () {
@@ -1361,6 +1336,26 @@ $(function () {
             });
             $(".card0Div").empty();
             saving()
+            questionValue = $("#questionTextArea").val();
+                answerValue = $("#answerTextArea").val();
+                inputValue = $("#type").val();
+                myObj = [inputValue, questionValue, answerValue];
+                stringfy = JSON.stringify(myObj);
+                $(this).css("background-color", "var(--emptyColor)");
+                tempObj.push(stringfy);
+                tempObj = $.unique(tempObj.sort());
+                let x = 0;
+                while (x < tempObj.length) {
+                    localStorage.setItem(x, tempObj[x])
+                    x++;
+                }
+                x = 0
+                console.log(localStorage)
+                $(".card0Div").empty();
+                questionAnswerInner();
+                i = 0;
+                showHide();
+                deleteClass();
         }
         
     });
