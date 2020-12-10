@@ -446,41 +446,31 @@ $(function () {
             mouseenter: function () {
                 $(this).addClass("mouseOver");
                 $(this).removeClass("selected");
-                $(this).removeClass("noneSelected");
-                $(this).on({
-                    mouseleave: function () {
-                        if (!$(this).siblings().hasClass("noneSelected") && !$(this).siblings().hasClass("selected") ) {
-                            $(this).removeClass("mouseDown");
-                            console.log("focus out")
-                        };
-                        if ($(this).siblings().hasClass("noneSelected") && $(this).hasClass("mouseDown") ) {
-                            $(this).removeClass("noneSelected");
-                            console.log("focus out 222")
-                        }
-                    }
-                })
+                
             },
             mouseleave: function () {
                 if ($(this).siblings().hasClass("noneSelected")) {
                     $(this).removeClass("mouseDown");
                     $(this).removeClass("mouseOver");
-                    $(this).addClass("selected");
                 } else {
                     $(this).removeClass("mouseOver");
                 }
-
+            
                 if ($(this).siblings().hasClass("selected")) {
                     $(this).removeClass("mouseDown");
                     $(this).removeClass("mouseOver");
-                    $(this).addClass("noneSelected");
                 } else {
                     $(this).removeClass("mouseOver");
                 }
+                if ($(this).hasClass("noneSelected")) {
+                    $(this).addClass("noneSelected");
+                } 
             },
             mousedown: function () {
                 $(this).addClass("mouseDown");
                 $(this).removeClass("noneSelected");
                 $(this).removeClass("mouseOver");
+                $(this).addClass("selected");
                 $(this).siblings().addClass("noneSelected");
                 $(this).siblings().removeClass("selected");
             },
@@ -494,6 +484,7 @@ $(function () {
                 $(this).addClass("mouseOver");
                 $(this).removeClass("selected");
                 $(this).removeClass("noneSelected");
+                
             },
             focusout: function () {  
                 if ($(this).siblings().hasClass("noneSelected")) {
@@ -503,7 +494,7 @@ $(function () {
                 } else {
                     $(this).removeClass("mouseOver");
                 }
-
+            
                 if ($(this).siblings().hasClass("selected")) {
                     $(this).removeClass("mouseDown");
                     $(this).removeClass("mouseOver");
@@ -531,89 +522,105 @@ $(function () {
             }
         });
     }
+
     function showHide() {
-        
         $(".show").on({
             focus: function () {
-                $(this).css("border-color", "gray");
-                $(this).css("background-color", "green");
-                $(this).css("color", "black");
+                $(this).css({
+                    "border-color": "green",
+                    "background-color": "green",
+                    "color": "black"
+                });
             },
             focusout: function () {
-                $(this).css("border-color", "white");
-                $(this).css("background-color", "var(--typeColor)");
-                $(this).css("color", "white");
+                $(this).css({
+                    "border-color": "white",
+                    "background-color": "var(--typeColor)",
+                    "color": "white"
+                });
             },
             mouseenter: function () {
-                $(this).css("border-color", "gray");
-                $(this).css("background-color", "green");
-                $(this).css("color", "black");
+                $(this).css({
+                    "border-color": "green",
+                    "background-color": "green",
+                    "color": "black"
+                });
             },
             mouseleave: function () {
-                $(this).css("border-color", "white");
-                $(this).css("background-color", "var(--typeColor)");
-                $(this).css("color", "white");
+                $(this).css({
+                    "border-color": "white",
+                    "background-color": "var(--typeColor)",
+                    "color": "white"
+                });
             },
             mousedown: function () {
-                $(this).css({
-                    "font-size": "1rem",
-                });
+                $(this).css("font-size", "1rem");
                 $("body").on({
                     mouseup: function () {  
                         $(".show").css("font-size", `13.3333px`);
                     }
-                })
+                });
             },
             mouseup: function () {
                 $(this).parent().siblings().fadeIn(500);
-                $(this).css("background-color", `rgba(56, 128, 56, 0.5)`);
-                $(this).css("font-size", `13.3333px`);
                 $(this).siblings().css("background-color", `rgb(58, 56, 56)`);
-                $(this).css("color", "white");
+                $(this).css({
+                    "background-color": "rgba(56, 128, 56, 0.5)",
+                    "color": "white",
+                    "font-size": "13.3333px"
+                });
             },
             keydown: function (e) {  
                 if (e.keyCode === 13) {
                     $(this).css({
                         "font-size": "1rem",
+                        "color": "black"
                     });
-                    $(this).css("color", "black");
                 }
             },
             keyup: function (e) {  
                 if (e.keyCode === 13) {
                     $(this).parent().siblings().fadeIn(500);
-                    $(this).css("background-color", `rgba(56, 128, 56, 0.5)`);
-                    $(this).css("font-size", `13.3333px`);
-                    $(this).css("color", "white");
                     $(this).siblings().css("background-color", `rgb(58, 56, 56)`);
+                    $(this).css({
+                        "background-color": "rgba(56, 128, 56, 0.5)",
+                        "font-size": "13.3333px",
+                        "color": "white"
+                    });
                 }
             }
         });
         $(".hide").on({
             mouseenter: function () {  
-                $(this).css("background-color", "red");
-                $(this).css("color", "black");
-                $(this).css("border-color", "red");
+                $(this).css({
+                    "border-color": "red",
+                    "background-color": "red",
+                    "color": "black"
+                });
             },
             mouseleave: function () {  
-                $(this).css("background-color", "var(--saveButtonRed)");
-                $(this).css("color", "white");
-                $(this).css("border-color", "white");
+                $(this).css({
+                    "border-color": "white",
+                    "background-color": "var(--saveButtonRed)",
+                    "color": "white"
+                });
             },
             focus: function () {  
-                $(this).css("background-color", "red");
-                $(this).css("color", "black");
-                $(this).css("border-color", "red");
+                $(this).css({
+                    "border-color": "red",
+                    "background-color": "red",
+                    "color": "black"
+                });
             },
             focusout: function () {  
-                $(this).css("background-color", "var(--saveButtonRed)");
-                $(this).css("color", "white");
-                $(this).css("border-color", "white");
+                $(this).css({
+                    "border-color": "white",
+                    "background-color": "var(--saveButtonRed)",
+                    "color": "white"
+                });
             },
             mousedown: function () {
-                $(this).css({
-                    "font-size": "1rem",
-                });
+                $(this).css("font-size", "1rem");
                 $("body").on({
                     mouseup: function () {  
                         $(".hide").css("font-size", `13.3333px`);
@@ -622,26 +629,30 @@ $(function () {
             },
             mouseup: function () {
                 $(this).parent().siblings().fadeOut(500);
-                $(this).css("background-color", `rgba(146, 31, 31, 0.5)`);
-                $(this).css("font-size", `13.3333px`);
-                $(this).css("color", "white");
                 $(this).siblings().css("background-color", `rgb(58, 56, 56)`);
+                $(this).css({
+                    "background-color": "rgba(146, 31, 31, 0.5)",
+                    "color": "white",
+                    "font-size": "13.3333px"
+                });
             },
             keydown: function (e) {  
                 if (e.keyCode === 13) {
                     $(this).css({
                         "font-size": "1rem",
+                        "color": "black"
                     });
-                    $(this).css("color", "black");
                 }
             },
             keyup: function (e) {  
                 if (e.keyCode === 13) {
                     $(this).parent().siblings().fadeOut(500);
-                    $(this).css("background-color", `rgba(146, 31, 31, 0.5)`);
-                    $(this).css("font-size", `13.3333px`);
-                    $(this).css("color", "white");
                     $(this).siblings().css("background-color", `rgb(58, 56, 56)`);
+                    $(this).css({
+                        "background-color": "rgba(146, 31, 31, 0.5)",
+                        "color": "white",
+                        "font-size": "13.3333px"
+                    });
                 }
             }
         });
