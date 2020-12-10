@@ -11,6 +11,8 @@
     --myGreen: rgb(95, 177, 95);
     --myWhite: rgba(255, 255, 255, 0.8);
     --myBlack: rgba(0, 0, 0, 0.8);
+    --saveButtonRed: rgba(146, 31, 31, 0.5);
+    --myGray: rgb(65, 65, 65, 0.8);
 }
 
 body {
@@ -81,6 +83,10 @@ body {
     border: 3px solid var(--linearColor3);
     transition: all 0.3s;
     grid-area: selectMenu;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    padding-left: 2.2rem;
 }
 .option {
     background-color: var(--myBlack);
@@ -108,7 +114,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgb(65, 65, 65, 0.8);
+    background-color: var(--myGray);
     -webkit-transition: .3s;
     transition: .3s;
 }
@@ -125,7 +131,8 @@ body {
     transition: .3s;
 }
 #sliderBlack:before {
-    background-color: rgb(65, 65, 65, 0.8);
+    background-color: var(--myGray);
+    transition: 0.3s;
 }
 #switchInput:checked + .slider {
     background-color: var(--myWhite);
@@ -396,7 +403,7 @@ body {
     height: 3rem;
     width: 8rem;
     border: none;
-    background: rgba(146, 31, 31, 0.5);
+    background: var(--saveButtonRed);
     color: white;
     font-weight: bolder;
     border-radius: 2rem;
@@ -615,11 +622,6 @@ body {
         "selectMenu"
         ;
         grid-row-gap: 1rem;
-    }
-    #selectMenu {
-        appearance: none;
-        -moz-appearance: none;
-        -webkit-appearance: none;
     }
 }
 @media (max-width: 350px) {

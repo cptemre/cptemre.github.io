@@ -327,7 +327,7 @@ $(function () {
         </div>
     </div>
 </div>`;
-
+    mainButtonFunctions()
     function mainButtonFunctions() {
         $(".mainButtons").on({
             mouseenter: function () {
@@ -488,22 +488,121 @@ $(function () {
                     $(this).removeClass("mouseOver");
                     $(this).removeClass("noneSelected");
                 }
-            },
+            }
         });
     }
     function showHide() {
+        
         $(".show").on({
+            focus: function () {
+                $(this).css("border-color", "gray");
+                $(this).css("background-color", "green");
+                $(this).css("color", "black");
+            },
+            focusout: function () {
+                $(this).css("border-color", "white");
+                $(this).css("background-color", "var(--typeColor)");
+                $(this).css("color", "white");
+            },
+            mouseenter: function () {
+                $(this).css("border-color", "gray");
+                $(this).css("background-color", "green");
+                $(this).css("color", "black");
+            },
+            mouseleave: function () {
+                $(this).css("border-color", "white");
+                $(this).css("background-color", "var(--typeColor)");
+                $(this).css("color", "white");
+            },
+            mousedown: function () {
+                $(this).css({
+                    "font-size": "1rem",
+                });
+                $("body").on({
+                    mouseup: function () {  
+                        $(".show").css("font-size", `13.3333px`);
+                    }
+                })
+            },
             mouseup: function () {
                 $(this).parent().siblings().fadeIn(500);
                 $(this).css("background-color", `rgba(56, 128, 56, 0.5)`);
+                $(this).css("font-size", `13.3333px`);
                 $(this).siblings().css("background-color", `rgb(58, 56, 56)`);
+                $(this).css("color", "white");
+            },
+            keydown: function (e) {  
+                if (e.keyCode === 13) {
+                    $(this).css({
+                        "font-size": "1rem",
+                    });
+                    $(this).css("color", "black");
+                }
+            },
+            keyup: function (e) {  
+                if (e.keyCode === 13) {
+                    $(this).parent().siblings().fadeIn(500);
+                    $(this).css("background-color", `rgba(56, 128, 56, 0.5)`);
+                    $(this).css("font-size", `13.3333px`);
+                    $(this).css("color", "white");
+                    $(this).siblings().css("background-color", `rgb(58, 56, 56)`);
+                }
             }
         });
         $(".hide").on({
+            mouseenter: function () {  
+                $(this).css("background-color", "red");
+                $(this).css("color", "black");
+                $(this).css("border-color", "red");
+            },
+            mouseleave: function () {  
+                $(this).css("background-color", "var(--saveButtonRed)");
+                $(this).css("color", "white");
+                $(this).css("border-color", "white");
+            },
+            focus: function () {  
+                $(this).css("background-color", "red");
+                $(this).css("color", "black");
+                $(this).css("border-color", "red");
+            },
+            focusout: function () {  
+                $(this).css("background-color", "var(--saveButtonRed)");
+                $(this).css("color", "white");
+                $(this).css("border-color", "white");
+            },
+            mousedown: function () {
+                $(this).css({
+                    "font-size": "1rem",
+                });
+                $("body").on({
+                    mouseup: function () {  
+                        $(".hide").css("font-size", `13.3333px`);
+                    }
+                })
+            },
             mouseup: function () {
                 $(this).parent().siblings().fadeOut(500);
                 $(this).css("background-color", `rgba(146, 31, 31, 0.5)`);
+                $(this).css("font-size", `13.3333px`);
+                $(this).css("color", "white");
                 $(this).siblings().css("background-color", `rgb(58, 56, 56)`);
+            },
+            keydown: function (e) {  
+                if (e.keyCode === 13) {
+                    $(this).css({
+                        "font-size": "1rem",
+                    });
+                    $(this).css("color", "black");
+                }
+            },
+            keyup: function (e) {  
+                if (e.keyCode === 13) {
+                    $(this).parent().siblings().fadeOut(500);
+                    $(this).css("background-color", `rgba(146, 31, 31, 0.5)`);
+                    $(this).css("font-size", `13.3333px`);
+                    $(this).css("color", "white");
+                    $(this).siblings().css("background-color", `rgb(58, 56, 56)`);
+                }
             }
         });
     }
@@ -511,9 +610,15 @@ $(function () {
         $(".hideQuestionAnswer").on({
             mouseenter: function () {
                 $(this).addClass("hideQuestionAnswerMouseEnter");
-    
             },
             mouseleave: function () {
+                $(this).addClass("hideQuestionAnswer");
+                $(this).removeClass("hideQuestionAnswerMouseEnter");
+            },
+            focus: function () {  
+                $(this).addClass("hideQuestionAnswerMouseEnter");
+            },
+            focusout: function () {
                 $(this).addClass("hideQuestionAnswer");
                 $(this).removeClass("hideQuestionAnswerMouseEnter");
             },
@@ -525,6 +630,19 @@ $(function () {
                 $(this).removeClass("hideQuestionAnswerMouseDown");
                 $("#addFlashCard").removeClass("selected");
                 $("#selectFlashCard").removeClass("noneSelected");
+            },
+            keydown: function (e) {  
+                if (e.keyCode === 13) {
+                    $(this).removeClass("hideQuestionAnswerMouseEnter");
+                    $(this).addClass("hideQuestionAnswerMouseDown");
+                }
+            },
+            keyup: function (e) {  
+                if (e.keyCode === 13) {
+                    $(this).removeClass("hideQuestionAnswerMouseDown");
+                    $("#addFlashCard").removeClass("selected");
+                    $("#selectFlashCard").removeClass("noneSelected");
+                }
             }
         });
     }
@@ -585,6 +703,48 @@ $(function () {
                     $(this).parent().parent().nextAll().css("animation", "mainCardContainerAnimation00 0s forwards");
                     $(this).parent().parent().empty();
                 }, 1000);
+            },
+            keyup: function (e) {
+                if (e.keyCode === 13) {
+                    let questionInner = $(this).parent().siblings(".card0Question").children(".questionInner").html();
+                    let answerInner = $(this).parent().siblings(".card0Answer").children(".answerInner").html();
+                    let inputValue = $("#type").val();
+                    myObj = [inputValue, questionInner, answerInner];
+                    stringfy = JSON.stringify(myObj);
+                    tempObj = tempObj.filter(e => e !== stringfy);
+                    let x = 0;
+                    if (tempObj.length == 0) {
+                        localStorage.clear();
+                    } else if (localStorage.length >= tempObj.length) {
+                        localStorage.clear();
+                        myObj = [inputValue, questionInner, answerInner];
+                        console.log(myObj)
+                        stringfy = JSON.stringify(myObj);
+                        tempObj = tempObj.filter(e => e !== stringfy);
+                        console.log(tempObj)
+                        console.log(localStorage)
+                        while (x < tempObj.length) {
+                        localStorage.setItem(x, tempObj[x])
+                        x++;
+                        }
+                    } else {
+                        while (x < tempObj.length) {
+                        localStorage.setItem(x, tempObj[x])
+                        x++;
+                        }
+                    }
+                    x = 0
+                    console.log(tempObj)
+                    console.log(localStorage)
+                    $(this).parent().siblings(".card0Question").css("animation", "cardAnimation00 2s  forwards").fadeOut(1000);
+                    $(this).parent().siblings(".card0Answer").css("animation", "cardAnimation11 2s forwards").fadeOut(1000);
+                    $(this).parent().fadeOut(1000);
+                    $(this).parent().parent().nextAll().css("animation", "mainCardContainerAnimation0 2s forwards");
+                    setTimeout(() => {
+                        $(this).parent().parent().nextAll().css("animation", "mainCardContainerAnimation00 0s forwards");
+                        $(this).parent().parent().empty();
+                    }, 1000);
+                }
             }
         });
     }
@@ -678,6 +838,71 @@ $(function () {
                     y++;
                 }
                 y = 0;
+            },
+            keyup: function (e) {
+                if (e.keyCode === 13) {
+                    let y = 0;
+                    $(this).parent().parent().slideUp(1000);
+                    typesArray= typesArray.filter(function(e) { return e !== typesBlock.html() });
+                    $(".card0Question").css("animation", "cardAnimation00 2s forwards");
+                    $(".card0Answer").css("animation", "cardAnimation11 2s forwards");
+                    while (y < tempObj.length) {
+                        parse = JSON.parse(tempObj[y])
+                        if (parse[0] == typesHtml) {
+                            stringify = JSON.stringify(parse);
+                            tempObj = tempObj.filter(e => e !== stringify);
+                            console.log(tempObj)
+                            let x = 0;
+                            if (tempObj.length == 0) {
+                                localStorage.clear();
+                            } else if (localStorage.length >= tempObj.length) {
+                                localStorage.clear();
+                                while (x < tempObj.length) {
+                                    localStorage.setItem(x, tempObj[x])
+                                    x++;
+                                }
+                            } else {
+                                while (x < tempObj.length) {
+                                    localStorage.setItem(x, tempObj[x])
+                                    x++;
+                                }
+                            }
+                            x = 0
+                            console.log(tempObj)
+                            console.log(localStorage)
+                            $(".card0Div").fadeOut(2000);
+                            $(this).parent().parent().siblings("#cardTypes").fadeOut(2000);
+                            console.log(typesArray)
+                            setTimeout(() => {
+                                $(".card0Div").empty();
+                                $(this).parent().parent().siblings("#cardTypes").remove();
+                            }, 2000);
+                            setTimeout(() => {
+                                $(`<div id="cardTypes"></div>`).insertBefore("#newCard");
+                                $("#cardTypes").css("display", "grid").hide().fadeIn(2000); 
+                                let b = 0;
+                                let typesHeaders = [];
+                                while (b < tempObj.length) {
+                                    let parse = JSON.parse(tempObj[b])
+                                    typesHeaders.push(parse[0]);
+                                    typesHeaders = $.unique(typesHeaders.sort());
+                                    console.log(typesHeaders)
+                                    if (typesHeaders[b] !== undefined) {
+                                        $("#cardTypes").append(`<button class="types">${typesHeaders[b]}</button>`);
+                                        typesOrder();
+                                    }
+                                    mainButtonFunctions(); 
+                                    typesButtonFunction();
+                                    typesMouseupFunction();
+                                    b++;
+                                }
+                                
+                            }, 2001);
+                        }
+                        y++;
+                    }
+                    y = 0;
+                }
             }
         })
     }
@@ -697,6 +922,23 @@ $(function () {
                 }, 2000);
                 tempObj = [];
                 localStorage.clear();
+            },
+            keyup: function (e) {
+                if (e.keyCode === 13) {
+                    $(this).parent().parent().slideUp(1000);
+                    $("#cardTypes").fadeOut(2000);
+                    $(".card0Div").fadeOut(2000);
+                    $(".card0Question").css("animation", "cardAnimation00 2s forwards");
+                    $(".card0Answer").css("animation", "cardAnimation11 2s forwards");
+                    setTimeout(() => {
+                        $("#cardTypes").empty();
+                        $("#cardTypes").fadeIn();
+                        $("#card0Div").empty();
+                        $(".card0Div").css("display", "none");
+                    }, 2000);
+                    tempObj = [];
+                    localStorage.clear();
+                }
             }
         })
     }
@@ -726,6 +968,34 @@ $(function () {
             showHide();
             hideQuestionAnswer();
             language()
+        });
+        $(".types").keyup(function (e) { 
+            if (e.keyCode === 13) {
+                typesHtml = $(this).html();
+                typesBlock = $(this);
+                $(".hideDeleteContainer").css("grid-template-areas", `"hide""delete""deleteAll"`);
+                $("#delete").css("display", "block");
+                $("#deleteAll").css("display", "block");
+                $("#delete").html(`Delete Type "${typesHtml}"`);
+                $("#newCard").css('display', 'grid').hide().slideDown(1000);
+                let typesInner = $(this).html().trim();
+                $("#type").val(typesInner);
+                $("#type").prop("disabled", true);
+                $("#flashCards, .card0Div").css('display', 'grid').slideDown(1000);
+                parse = JSON.parse(tempObj[i])
+                $(".card0Div").empty();
+                questionAnswerInner();
+                i = 0;
+                $(".card0Question").css("animation", "cardAnimation0 2s forwards");
+                $(".card0Answer").css("animation", "cardAnimation1 2s forwards");
+                saveButton();
+                deleteClass(saveButton());
+                deleteID()
+                deleteAllTypes()
+                showHide();
+                hideQuestionAnswer();
+                language()
+                }
         });
     }
     function language() {
@@ -819,7 +1089,7 @@ $(function () {
                 "background-color": "var(--myWhite)",
                 "color": "black"
             });
-            
+            $("#switchInput").attr("checked", true);
             $(".slider").attr("id", "sliderBlack");
         } else {
             $("body").css("background-color", "black");
@@ -828,14 +1098,39 @@ $(function () {
                 "color": "white"
             }); 
             $(".slider").attr("id", "");
+            $("#switchInput").attr("checked", false);
         }
         console.log(switchCounter)
     }
     let switchCounter = 0;
     $(".switch").on({
+        mouseenter: function () {  
+            $(".slider").css("background-color", "var(--myWhite");
+            $(".slider").attr("id", "sliderBlack");
+        },
+        mouseleave: function () {  
+            $(".slider").css("background-color", "var(--myGray");
+            $(".slider").attr("id", "");
+        },
         mouseup: function () {
             themeSwitch();
             switchCounter++;
+        }
+    })
+    $("input:checkbox").on({
+        focus: function () {  
+            $(".slider").css("background-color", "var(--myWhite");
+            $(".slider").attr("id", "sliderBlack");
+        },
+        focusout: function () {  
+            $(".slider").css("background-color", "var(--myGray)");
+            $(".slider").attr("id", "");
+        },
+        keyup: function (e) {  
+            if (e.keyCode === 13) {
+                themeSwitch();
+                switchCounter++;
+            }
         }
     })
     $("body").on({
@@ -853,6 +1148,11 @@ $(function () {
     $("#hide").on({
         mouseup: function () {
             $(this).parent().parent().slideUp(1000);
+        },
+        keyup: function (e) {  
+            if (e.keyCode === 13) {
+                $(this).parent().parent().slideUp(1000);
+            }
         }
     })
     //#region -- Add and Select Flash Card Functions
@@ -900,34 +1200,66 @@ $(function () {
     //#endregion -- Add and Select Flash Card Functions
 
     //#region -- Text Area Focus and Focus Out Action
-    $("#questionTextArea").on({
+    $("#questionTextArea, #answerTextArea").on({
         focus: function () {
             $(this).css("border-color", "rgb(97, 14, 14)");
         },
         focusout: function () {
             $(this).css("border-color", "gray");
         },
-    });
-    $("#answerTextArea").on({
-        focus: function () {
-            $(this).css("border-color", "rgb(97, 14, 14)");
+        keydown: function (e) {  
+            if (e.keyCode === 13) {
+                $("#saveButton").css("font-size", "1rem")
+            }
         },
-        focusout: function () {
-            $(this).css("border-color", "gray");
-        },
+        keyup: function (e) {  
+            if (e.keyCode === 13) {
+                $(this).val($(this).val().replace( /\r?\n/gi, '')); //replace newline
+                saving();
+                $("#saveButton").css({
+                    "font-size": "13.3333px"
+                });
+                $(".card0Div").empty();
+            }
+        }
     });
     //#endregion -- Text Area Focus and Focus Out Action
 
     //#region -- Type Focus and Out Action
     $("#type").focus(function () {
         $(this).css("border-color", "gray");
-        $(this).css("background-color", "gray");
+        $(this).css("background-color", "green");
         $(this).css("color", "black");
     });
     $("#type").focusout(function () {
         $(this).css("border-color", "white");
         $(this).css("background-color", "var(--typeColor)");
         $(this).css("color", "white");
+    });
+    $("#type").mouseenter(function () {
+        $(this).css("border-color", "gray");
+        $(this).css("background-color", "green");
+        $(this).css("color", "black");
+    });
+    $("#type").mouseleave(function () {
+        $(this).css("border-color", "white");
+        $(this).css("background-color", "var(--typeColor)");
+        $(this).css("color", "white");
+    });
+    $("#type").keydown(function (e) {
+        if (e.keyCode === 13) {
+            $("#saveButton").css("font-size", "1rem")
+        }
+    });
+    $("#type").keyup(function (e) {
+        if (e.keyCode === 13) {
+            $(this).val($(this).val().replace( /\r?\n/gi, '')); //replace newline
+            saving();
+            $("#saveButton").css({
+                "font-size": "13.3333px"
+            });
+            $(".card0Div").empty();
+        }
     });
     //#endregion -- Type Focus and Out Action
 
@@ -937,77 +1269,96 @@ $(function () {
 
     //#region -- Save Button Actions
     let myObj = []; //all input types will go inside this array. "inputValue: questionValue,answerValue". This is the format of array.
+    function saving() {
+        if ($("#questionTextArea").val() != "" && $("#answerTextArea").val() != "" && $("#type").val() != "") {
+            //#region -- Creating "inputValue: questionValue,answerValue"
+            questionValue = $("#questionTextArea").val().trim();
+            answerValue = $("#answerTextArea").val().trim();
+            inputValue = $("#type").val().trim();
+            while (i < $(".types").length) {
+                typesArray.push($(".types").eq(i).html());
+                typesArray = $.unique(typesArray.sort());
+                i++;
+            }
+            i = 0;
+            if (!typesArray.includes(inputValue)) {
+                $("#cardTypes").append(`<button class="types">${inputValue}</button>`);
+            }
+            myObj = [inputValue, questionValue, answerValue];
+            stringfy = JSON.stringify(myObj);
+            tempObj.push(stringfy);
+            tempObj = $.unique(tempObj.sort());
+            let x = 0;
+            while (x < tempObj.length) {
+                localStorage.setItem(x, tempObj[x])
+                x++;
+            }
+            x = 0
+            console.log(localStorage)
+            //#endregion -- Creating "inputValue: questionValue,answerValue"
+            mainButtonFunctions();
+            typesButtonFunction();
+            typesMouseupFunction();
+        } else {
+            if ($("#type").val().trim().length == 0 || $("#type").val().trim() == "") {
+                $("#type").css("background-color", "var(--emptyColor)");
+                setTimeout(() => {
+                    $("#type").css("background-color", "var(--typeColor)");
+                }, 1000);
+            } 
+            if ($("#questionTextArea").val().trim().length == 0 || $("#questionTextArea").val().trim() == "") {
+                $("#questionTextArea").css("background-color", "rgba(199, 56, 21, 0.5)");
+                setTimeout(() => {
+                    $("#questionTextArea").css("background-color", "transparent");
+                }, 1000);
+            }
+            if ($("#answerTextArea").val().trim().length == 0 || $("#answerTextArea").val().trim() == "") {
+                $("#answerTextArea").css("background-color", "rgba(199, 56, 21, 0.5)");
+                setTimeout(() => {
+                    $("#answerTextArea").css("background-color", "transparent");
+                }, 1000);
+            }
+        }
+    }
     $("#saveButton").on({
+        mouseenter: function () {  
+            $("#saveButton").css("background-color", "red");
+            $(this).css("color", "black");
+            $(this).css("border-color", "red");
+        },
+        mouseleave: function () {  
+            $("#saveButton").css("background-color", "var(--saveButtonRed)");
+            $(this).css("color", "white");
+            $(this).css("border-color", "white");
+        },
+        focus: function () {  
+            $("#saveButton").css("background-color", "red");
+            $(this).css("color", "black");
+            $(this).css("border-color", "red");
+        },
+        focusout: function () {  
+            $("#saveButton").css("background-color", "var(--saveButtonRed)");
+            $(this).css("color", "white");
+            $(this).css("border-color", "white");
+        },
         mousedown: function () {
             $(this).css({
-                "border-color": "gray",
-                "background-color": "var(--typeColor)",
+                "font-size": "1rem"
             });
             $("body").on({
                 mouseup: function () {  
-                    $("#saveButton").css("background-color", "var(--emptyColor)");
+                    $("#saveButton").css("font-size", "13.3333px");
                 }
             })
         },
         mouseup: function () {
             $(this).css({
-                "border-color": "white",
-                "background-color": "var(--emptyColor)",
+                "font-size": "13.3333px"
             });
             $(".card0Div").empty();
-            if ($("#questionTextArea").val() != "" && $("#answerTextArea").val() != "" && $("#type").val() != "") {
-                //#region -- Creating "inputValue: questionValue,answerValue"
-                questionValue = $("#questionTextArea").val();
-                answerValue = $("#answerTextArea").val();
-                inputValue = $("#type").val();
-                while (i < $(".types").length) {
-                    typesArray.push($(".types").eq(i).html());
-                    typesArray = $.unique(typesArray.sort());
-                    i++;
-                }
-                i = 0;
-                if (!typesArray.includes(inputValue)) {
-                    $("#cardTypes").append(`<button class="types">${inputValue}</button>`);
-                }
-                myObj = [inputValue, questionValue, answerValue];
-                stringfy = JSON.stringify(myObj);
-                tempObj.push(stringfy);
-                tempObj = $.unique(tempObj.sort());
-                let x = 0;
-                while (x < tempObj.length) {
-                    localStorage.setItem(x, tempObj[x])
-                    x++;
-                }
-                x = 0
-                console.log(localStorage)
-                //#endregion -- Creating "inputValue: questionValue,answerValue"
-
-                mainButtonFunctions();
-                typesButtonFunction();
-                typesMouseupFunction();
-            } else {
-                if ($("#type").val().trim().length == 0 || $("#type").val().trim() == "") {
-                    $("#type").css("background-color", "var(--emptyColor)");
-                    setTimeout(() => {
-                        $("#type").css("background-color", "var(--typeColor)");
-                    }, 1000);
-                } 
-                if ($("#questionTextArea").val().trim().length == 0 || $("#questionTextArea").val().trim() == "") {
-                    $("#questionTextArea").css("background-color", "rgba(199, 56, 21, 0.5)");
-                    setTimeout(() => {
-                        $("#questionTextArea").css("background-color", "transparent");
-                    }, 1000);
-                }
-                if ($("#answerTextArea").val().trim().length == 0 || $("#answerTextArea").val().trim() == "") {
-                    $("#answerTextArea").css("background-color", "rgba(199, 56, 21, 0.5)");
-                    setTimeout(() => {
-                        $("#answerTextArea").css("background-color", "transparent");
-                    }, 1000);
-                }
-            }
+            saving()
         }
         
     });
     //#endregion -- Save Button Actions
-
 });
