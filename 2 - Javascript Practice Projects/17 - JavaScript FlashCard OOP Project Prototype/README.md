@@ -1,4 +1,4 @@
-# JAVASCRIPT FLASHCARD PROJECT
+# REMEMBER ME - JAVASCRIPT FLASHCARD PROJECT
 
 ## WHAT IS THIS PROJECT? 
 
@@ -103,3 +103,9 @@ When you click one type button it will show the card saving area with extra butt
 I mainly used Edge to create this project. Still I checked Opera and Chrome for apperance and I did not see any mistake from the original.
 
 Program is optimized for smaller screen so It can be used on phones and tablets.
+
+## CONTACT
+
+[E-Mail](mailto:kunduraci2@gmail.com)
+[Facebook](https://www.facebook.com/cptemre95/)
+[Instagram](https://www.instagram.com/cptemre95/?hl=tr)
