@@ -225,7 +225,7 @@ body {
     justify-items: center;
     align-items: center;
     grid-row-gap: 2rem;
-    padding-top: 3rem;
+    margin: 4rem 0rem;
 }
 
 #newCard {

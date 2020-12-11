@@ -926,9 +926,6 @@ $(function () {
                 }, 2000);
                 tempObj = [];
                 localStorage.clear();
-                console.log(tempObj)
-                console.log(localStorage)
-
             },
             keyup: function (e) {
                 if (e.keyCode === 13) {
@@ -946,13 +943,64 @@ $(function () {
                     }, 2000);
                     tempObj = [];
                     localStorage.clear();
-                    console.log(tempObj)
-                    console.log(localStorage)
-
                 }
             }
         })
     }
+    function themeSwitch() {
+        if (switchCounter % 2 == 0) {
+            $("body").css("background-color", "white");
+            $(".mainButtons, #selectMenu, .option, #questionDiv, #answerDiv, .hideQuestionAnswer, .types, .card0Question, .card0Answer").css({
+                "background-color": "var(--myWhite)",
+                "color": "black"
+            });
+            $("#switchInput").attr("checked", false);
+            $(".slider").attr("id", "sliderBlack");
+        } else {
+            $("body").css("background-color", "black");
+            $(".mainButtons, #selectMenu, .option, #questionDiv, #answerDiv, .hideQuestionAnswer, .types, .card0Question, .card0Answer").css({
+                "background-color": "var(--myBlack)",
+                "color": "white"
+            }); 
+            $(".slider").attr("id", "");
+            $("#switchInput").attr("checked", true);
+        }
+    }
+    $(".switch").on({
+        mouseenter: function () {  
+            $(".slider").css("background-color", "var(--myWhite");
+            $(".slider").attr("id", "sliderBlack");
+        },
+        mouseleave: function () {  
+            $(".slider").css("background-color", "var(--myGray");
+            $(".slider").attr("id", "");
+        },
+        mouseup: function () {
+            themeSwitch();
+            switchCounter++;
+        }
+    })
+    $("input:checkbox").on({
+        focus: function () {  
+            $(".slider").css("background-color", "var(--myWhite");
+            $(".slider").attr("id", "sliderBlack");
+        },
+        focusout: function () {  
+            $(".slider").css("background-color", "var(--myGray)");
+            $(".slider").attr("id", "");
+        },
+        keyup: function (e) {  
+            if (e.keyCode === 13) {
+                themeSwitch();
+                switchCounter++;
+            }
+            if (switchCounter % 2 == 0) {
+                $("#switchInput").attr("checked", false);
+            } else {
+                $("#switchInput").attr("checked", true);
+            }
+        }
+    })
     function typesMouseupFunction() {
         $(".types").mouseup(function () {
             typesHtml = $(this).html();
@@ -966,6 +1014,7 @@ $(function () {
             $("#type").val(typesInner);
             $("#type").prop("disabled", true);
             $("#flashCards, .card0Div").css('display', 'grid').slideDown(1000);
+            
             parse = JSON.parse(tempObj[i])
             $(".card0Div").empty();
             questionAnswerInner();
@@ -979,6 +1028,17 @@ $(function () {
             showHide();
             hideQuestionAnswer();
             language()
+            if (switchCounter % 2 == 1) {
+                $(".card0Question, .card0Answer, .hideQuestionAnswer").css({
+                    "background-color": "var(--myWhite)",
+                    "color": "black"
+                });
+            } else {
+                $(".card0Question, .card0Answer, .hideQuestionAnswer").css({
+                    "background-color": "var(--myBlack)",
+                    "color": "white"
+                }); 
+            }
         });
         $(".types").keyup(function (e) { 
             if (e.keyCode === 13) {
@@ -1107,61 +1167,6 @@ $(function () {
             $(this).css("border-color", "var(--linearColor3")
         }
     })    
-
-    function themeSwitch() {
-        if (switchCounter % 2 == 0) {
-            $("body").css("background-color", "white");
-            $(".mainButtons, #selectMenu, .option, #questionDiv, #answerDiv, .hideQuestionAnswer, .types, .card0Question, .card0Answer").css({
-                "background-color": "var(--myWhite)",
-                "color": "black"
-            });
-            $("#switchInput").attr("checked", false);
-            $(".slider").attr("id", "sliderBlack");
-        } else {
-            $("body").css("background-color", "black");
-            $(".mainButtons, #selectMenu, .option, #questionDiv, #answerDiv, .hideQuestionAnswer, .types, .card0Question, .card0Answer").css({
-                "background-color": "var(--myBlack)",
-                "color": "white"
-            }); 
-            $(".slider").attr("id", "");
-            $("#switchInput").attr("checked", true);
-        }
-    }
-    $(".switch").on({
-        mouseenter: function () {  
-            $(".slider").css("background-color", "var(--myWhite");
-            $(".slider").attr("id", "sliderBlack");
-        },
-        mouseleave: function () {  
-            $(".slider").css("background-color", "var(--myGray");
-            $(".slider").attr("id", "");
-        },
-        mouseup: function () {
-            themeSwitch();
-            switchCounter++;
-        }
-    })
-    $("input:checkbox").on({
-        focus: function () {  
-            $(".slider").css("background-color", "var(--myWhite");
-            $(".slider").attr("id", "sliderBlack");
-        },
-        focusout: function () {  
-            $(".slider").css("background-color", "var(--myGray)");
-            $(".slider").attr("id", "");
-        },
-        keyup: function (e) {  
-            if (e.keyCode === 13) {
-                themeSwitch();
-                switchCounter++;
-            }
-            if (switchCounter % 2 == 0) {
-                $("#switchInput").attr("checked", false);
-            } else {
-                $("#switchInput").attr("checked", true);
-            }
-        }
-    })
     $("body").on({
         mouseup: function () {
             selectCount = 0;
@@ -1173,9 +1178,11 @@ $(function () {
             }
         },
         keyup: function (e) {  
-            $("#saveButton").css("font-size", "13.3333px");
-            $(".card0Div").empty();
-            saving()
+            if (e.keyCode === 13) {
+                $("#saveButton").css("font-size", "13.3333px");
+                $(".card0Div").empty();
+                questionAnswerInner()
+            }
         }
     });
     $("#hide").on({
@@ -1218,6 +1225,17 @@ $(function () {
         $(".card0Div").empty();
         typesOrder()
         $("#questionTextArea, #answerTextArea").val("");
+        if (switchCounter % 2 == 1) {
+            $(".types").css({
+                "background-color": "var(--myWhite)",
+                "color": "black"
+            });
+        } else {
+            $(".mainButtons, #selectMenu, .option, #questionDiv, #answerDiv, .hideQuestionAnswer, .types, .card0Question, .card0Answer").css({
+                "background-color": "var(--myBlack)",
+                "color": "white"
+            }); 
+        }
     }
     $("#selectFlashCard").on({
         mouseup: function () {
