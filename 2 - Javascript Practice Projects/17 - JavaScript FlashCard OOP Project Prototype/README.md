@@ -20,42 +20,45 @@
 
 ### First Look
 
-- When the page is loaded you will see 4 simple elements on the screen.
-    1. Add a Flash Card
-    2. Language Option
-    3. Switch Button
-    4. Select a Flash Card
+When the page is loaded you will see 4 simple elements on the screen.
 
 1. Add a Flash Card
-    - If you are using the program first time, this is the button to start working with your cards. On click or with tab + enter key combo you can open this section. You can also use tab key to change focus between elements, this is legit for all the program.
-    - After an animation you will see 3 new elements.
-        1. Question
-        2. Hide
-        3. Answer
-    1. Question
-        - Question area includes one header, one text area and one input area.
-        - Inner area of the element is for writing your question.
-        - Input a type area is to determine where this card should be included or to create a new card type for it.
-    2. Hide
-        - Starts a slide up animation for the "Add a Flash Card" elements.
-    3. Answer
-        - Answer area includes one header, one text area and one save button.
-        - Inner area of the element is for writing your answer.
-        - Save button area is to add your card to the desired type with a question and answer.
-        - You can use enter key for your saving.
-        - If one or more of text areas and type are empty, your card will not be saved.
-        
+
+If you are using the program first time, this is the button to start working with your cards. On click or with tab + enter key combo you can open this section. You can also use tab key to change focus between elements, this is legit for all the program.
+
+After an animation you will see 3 new elements.
+
+1. Question
+
+    - Question area includes one header, one text area and one input area.
+    - Inner area of the element is for writing your question.
+    - Input a type area is to determine where this card should be included or to create a new card type for it.
+
+2. Hide
+
+    - Starts a slide up animation for the "Add a Flash Card" elements.
+
+3. Answer
+    
+    - Answer area includes one header, one text area and one save button.
+    - Inner area of the element is for writing your answer.
+    - Save button area is to add your card to the desired type with a question and answer.
+    - You can use enter key for your saving.
+    - If one or more of text areas and type are empty, your card will not be saved.
+
 2. Language Option
+
     - On the first page load you will see "EN" word beside of "Add a Flash Card".
     - "EN" stands for English and the default options is in English.
     - Currently there are four options to select a language.
-        1. English - EN
-        2. German - GR
-        3. Polish - PL
-        4. Turkish - TR
+        - English - EN
+        - German - GR
+        - Polish - PL
+        - Turkish - TR
     - When one of those will be selected the language of the page will change to it.
-    
+
 3. Switch Button
+
     - On the first page load you will see a switch button with a ball in it between "EN" and "Select a Flash Card".
     - This button is to change the theme of the website.
     - Default option to use the page is in dark mode with a black background.
@@ -63,33 +66,38 @@
     - Bright mode uses a white background on the page.
 
 4. Select a Flash Card
-    - This button will not do anything if you are using the page first time.
-    - If you already saved a card when you click on this button, it will slide up the card saving area if it is already open and show up the type or types you saved your card or cards.
-    - When you click one type button it will show the card saving area with extra buttons in it and below of it, the cards you saved will be visible.
-        1. Card Saving Area
-        2. Cards
-    1. Card Saving Area
-        - As explained under "Add a Flash Card", card saving area will keep the elements it has before and will have two extra buttons and with one change.
-        - The only change from the original area is input type area. It is now can not be changed and has the text of the type's name.
-        - You can save a card to a type while using the "Select a Flash Card" button also.
+    
+This button will not do anything if you are using the page first time.
 
-        #### Extra Buttons
+If you already saved a card when you click on this button, it will slide up the card saving area if it is already open and show up the type or types you saved your card or cards.
 
-        1. Delete Type
-            - The first extra button is under the "Hide" button. Inner text of it will have the "Delete Type 'The Type You Clicked'".
-            - When this button is clicked it will delete all the cards under this type and delete the type's button also with an animation.
-            - Card saving are will be closed also.
-        2. Delete All Types
-            - When this is clicked it will work similar like the button "Delete Type".
-            - The only difference is this time all the cards and types will be deleted.
+When you click one type button it will show the card saving area with extra buttons in it and below of it, the cards you saved will be visible.
+        
+1. Card Saving Area
 
-    2. Cards
-        - When cards are loaded after a type is selected it will show the inner text of the question and hide answer to not ruin your experience.
-        - You can change show and hide as you desire after load.
-        - Delete button for cards is to delete question and answer from that type.
-        - When deleted an animation will be seen.
+    - As explained under "Add a Flash Card", card saving area will keep the elements it has before and will have two extra buttons and with one change.
+    - The only change from the original area is input type area. It is now can not be changed and has the text of the type's name.
+    - You can save a card to a type while using the "Select a Flash Card" button also.
+
+    #### Extra Buttons
+
+    1. Delete Type
+        - The first extra button is under the "Hide" button. Inner text of it will have the "Delete Type 'The Type You Clicked'".
+        - When this button is clicked it will delete all the cards under this type and delete the type's button also with an animation.
+        - Card saving are will be closed also.
+    2. Delete All Types
+        - When this is clicked it will work similar like the button "Delete Type".
+        - The only difference is this time all the cards and types will be deleted.
+
+2. Cards              
+
+    - When cards are loaded after a type is selected it will show the inner text of the question and hide answer to not ruin your experience.
+    - You can change show and hide as you desire after load.
+    - Delete button for cards is to delete question and answer from that type.
+    - When deleted an animation will be seen.  
 
 ## WHICH BROWSER AND SCREEN SIZE ARE OPTIMIZED?
 
-- I mainly used Edge to create this project. Still I checked Opera and Chrome for apperance and I did not see any mistake from the original.
-- Program is optimized for smaller screen so It can be used on phones and tablets.
+I mainly used Edge to create this project. Still I checked Opera and Chrome for apperance and I did not see any mistake from the original.
+
+Program is optimized for smaller screen so It can be used on phones and tablets.
