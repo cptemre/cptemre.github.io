@@ -106,6 +106,6 @@ Program is optimized for smaller screen so It can be used on phones and tablets.
 
 ## CONTACT
 
-[E-Mail](mailto:kunduraci2@gmail.com)
-[Facebook](https://www.facebook.com/cptemre95/)
+[E-Mail](mailto:kunduraci2@gmail.com)<br/><br/>
+[Facebook](https://www.facebook.com/cptemre95/)<br/><br/>
 [Instagram](https://www.instagram.com/cptemre95/?hl=tr)
