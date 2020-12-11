@@ -388,6 +388,7 @@ body {
 #type{
     cursor: initial;
     background: var(--typeColor);
+    font-size: 0.6rem;
 }
 #type::placeholder {
     color: white;

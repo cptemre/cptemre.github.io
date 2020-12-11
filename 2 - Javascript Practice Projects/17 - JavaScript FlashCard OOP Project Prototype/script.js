@@ -1,19 +1,47 @@
 $(function () {
-    let count = 0;
     let rowCount = 0;
-    let newRowCount = 0;
-    let newCount = 0;
     let questionValue;
     let answerValue;
     let inputValue;
-    let typeVal = [];
     let tempObj = [];
     let typesBlock;
     let selectCount = 0;
-    let media700 = window.matchMedia("(max-width: 700px)");
-    let media1200 = window.matchMedia("(max-width: 1200px)");
-    console.log(tempObj)
-    console.log(localStorage)
+    let stringfy;
+    let parse;
+    let i = 0;
+    let typesArray = [];
+    var typesHtml;
+    let switchCounter = 0;
+    let myObj = [];
+    let card0DivInner = `<div class="mainCardContainer">
+    <div class="card0Question">
+        <p class="questionInner">My Question</p>
+        <div class="showHideDiv">
+            <button class="show">
+                Show
+            </button>
+            <button class="hide">
+                Hide
+            </button>
+        </div>
+    </div>
+    <div class="deleteCard">
+        <button class="hideQuestionAnswer delete">
+            Delete
+        </button>
+    </div>
+    <div class="card0Answer">
+        <p class="answerInner">My answer</p>
+        <div class="showHideDiv">
+            <button class="show">
+                Show
+            </button>
+            <button class="hide">
+                Hide
+            </button>
+        </div>
+    </div>
+</div>`;
     function typesOrder() {
         resize()
         let n = 0
@@ -36,7 +64,6 @@ $(function () {
             }
         } 
         else if ($(window).width() <= 400) {
-            console.log("700 resize")
             $(".types").css("width", "4rem");
             $(".types").css("height", "4rem");
             $(".types").css("font-size", "0.5rem");
@@ -54,7 +81,6 @@ $(function () {
                 n++;
             }
         } else if ($(window).width() <= 700) {
-            console.log("700 resize")
             $("#cardTypes").css("grid-template-columns", "1fr 1fr 1fr");
             $(".types").css("width", "6rem");
             $(".types").css("height", "6rem");
@@ -95,7 +121,6 @@ $(function () {
             rowCount++;
         }
         } else if ($(window).width() > 700) {
-            console.log("no")
             $(".types").css("width", "12rem");
             $(".types").css("height", "3rem");
             $("#cardTypes").css("grid-template-columns", "1fr 1fr 1fr");
@@ -132,14 +157,9 @@ $(function () {
                 }
         } 
         console.log(document.body.clientWidth + ' wide by ' + document.body.clientHeight+' high');
-        
-        
-                
-            
     }
     function resize() {
         let n = 0
-
         $( window ).resize(function() {
             if ($(window).width() <= 200) {
                 $(".types").css("width", "3rem");
@@ -160,7 +180,6 @@ $(function () {
                 }
             } 
             else if ($(window).width() <= 400) {
-                console.log("700 resize")
                 $(".types").css("width", "5rem");
                 $(".types").css("height", "5rem");
                 $(".types").css("font-size", "0.5rem");
@@ -179,7 +198,6 @@ $(function () {
                 }
             } 
             else if ($(window).width() <= 700) {
-                console.log("700 resize")
                 $("#cardTypes").css("grid-template-columns", "1fr 1fr 1fr");
                 $(".types").css("width", "5rem");
                 $(".types").css("height", "5rem");
@@ -220,7 +238,6 @@ $(function () {
                     rowCount++;
                 }
             } else if ($(window).width() > 700) {
-                console.log("no")
                 $(".types").css("width", "12rem");
                 $(".types").css("height", "3rem");
                 $("#cardTypes").css("grid-template-columns", "1fr 1fr 1fr");
@@ -264,7 +281,6 @@ $(function () {
 
         });
     }
-    resize()
     if (localStorage.length == 0) {
         tempObj = [];
     } else {
@@ -281,52 +297,14 @@ $(function () {
             let parse = JSON.parse(tempObj[b])
             typesHeaders.push(parse[0]);
             typesHeaders = $.unique(typesHeaders.sort());
-            console.log(typesHeaders)
             if (typesHeaders[b] !== undefined) {
                 $("#cardTypes").append(`<button class="types">${typesHeaders[b]}</button>`);
             }
             b++;
         }
-
         a = 0;
         b = 0;
     }
-    console.log(tempObj)
-    console.log(localStorage)
-    let stringfy;
-    let parse;
-    let i = 0;
-    let typesArray = [];
-    var typesHtml;
-    let card0DivInner = `<div class="mainCardContainer">
-    <div class="card0Question">
-        <p class="questionInner">My Question</p>
-        <div class="showHideDiv">
-            <button class="show">
-                Show
-            </button>
-            <button class="hide">
-                Hide
-            </button>
-        </div>
-    </div>
-    <div class="deleteCard">
-        <button class="hideQuestionAnswer delete">
-            Delete
-        </button>
-    </div>
-    <div class="card0Answer">
-        <p class="answerInner">My answer</p>
-        <div class="showHideDiv">
-            <button class="show">
-                Show
-            </button>
-            <button class="hide">
-                Hide
-            </button>
-        </div>
-    </div>
-</div>`;
     function mainButtonFunctions() {
         $(".mainButtons").on({
             mouseenter: function () {
@@ -337,11 +315,9 @@ $(function () {
                     mouseleave: function () {
                         if (!$(this).siblings().hasClass("noneSelected") && !$(this).siblings().hasClass("selected") ) {
                             $(this).removeClass("mouseDown");
-                            console.log("focus out")
                         };
                         if ($(this).siblings().hasClass("noneSelected") && $(this).hasClass("mouseDown") ) {
                             $(this).removeClass("noneSelected");
-                            console.log("focus out 222")
                         }
                     }
                 })
@@ -392,12 +368,10 @@ $(function () {
                     mouseleave: function () {
                         if (!$(this).siblings().hasClass("noneSelected") && !$(this).siblings().hasClass("selected") ) {
                             $(this).removeClass("mouseDown");
-                            console.log("focus out")
                         };
                         if ($(this).siblings().hasClass("selected")) {
                             $(this).removeClass("selected");
                             $(this).addClass("noneSelected");
-                            console.log("focus out 222")
                         }
                     }
                 })
@@ -439,8 +413,6 @@ $(function () {
             },
         });
     }
-    mainButtonFunctions()
-
     function typesButtonFunction() {
         $(".types").on({
             mouseenter: function () {
@@ -522,7 +494,6 @@ $(function () {
             }
         });
     }
-
     function showHide() {
         $(".show").on({
             focus: function () {
@@ -728,11 +699,8 @@ $(function () {
                 } else if (localStorage.length >= tempObj.length) {
                     localStorage.clear();
                     myObj = [inputValue, questionInner, answerInner];
-                    console.log(myObj)
                     stringfy = JSON.stringify(myObj);
                     tempObj = tempObj.filter(e => e !== stringfy);
-                    console.log(tempObj)
-                    console.log(localStorage)
                     while (x < tempObj.length) {
                     localStorage.setItem(x, tempObj[x])
                     x++;
@@ -744,15 +712,13 @@ $(function () {
                     }
                 }
                 x = 0
-                console.log(tempObj)
-                console.log(localStorage)
                 $(this).parent().siblings(".card0Question").css("animation", "cardAnimation00 2s  forwards").fadeOut(1000);
                 $(this).parent().siblings(".card0Answer").css("animation", "cardAnimation11 2s forwards").fadeOut(1000);
                 $(this).parent().fadeOut(1000);
                 $(this).parent().parent().nextAll().css("animation", "mainCardContainerAnimation0 2s forwards");
                 setTimeout(() => {
                     $(this).parent().parent().nextAll().css("animation", "mainCardContainerAnimation00 0s forwards");
-                    $(this).parent().parent().empty();
+                    $(this).parent().parent().remove();
                 }, 1000);
             },
             keyup: function (e) {
@@ -769,11 +735,8 @@ $(function () {
                     } else if (localStorage.length >= tempObj.length) {
                         localStorage.clear();
                         myObj = [inputValue, questionInner, answerInner];
-                        console.log(myObj)
                         stringfy = JSON.stringify(myObj);
                         tempObj = tempObj.filter(e => e !== stringfy);
-                        console.log(tempObj)
-                        console.log(localStorage)
                         while (x < tempObj.length) {
                         localStorage.setItem(x, tempObj[x])
                         x++;
@@ -785,8 +748,6 @@ $(function () {
                         }
                     }
                     x = 0
-                    console.log(tempObj)
-                    console.log(localStorage)
                     $(this).parent().siblings(".card0Question").css("animation", "cardAnimation00 2s  forwards").fadeOut(1000);
                     $(this).parent().siblings(".card0Answer").css("animation", "cardAnimation11 2s forwards").fadeOut(1000);
                     $(this).parent().fadeOut(1000);
@@ -817,7 +778,6 @@ $(function () {
                         x++;
                     }
                     x = 0
-                    console.log(localStorage)
                     $(".card0Div").empty();
                     questionAnswerInner();
                     i = 0;
@@ -840,7 +800,6 @@ $(function () {
                     if (parse[0] == typesHtml) {
                         stringify = JSON.stringify(parse);
                         tempObj = tempObj.filter(e => e !== stringify);
-                        console.log(tempObj)
                         let x = 0;
                         if (tempObj.length == 0) {
                             localStorage.clear();
@@ -857,11 +816,8 @@ $(function () {
                             }
                         }
                         x = 0
-                        console.log(tempObj)
-                        console.log(localStorage)
                         $(".card0Div").fadeOut(2000);
                         $(this).parent().parent().siblings("#cardTypes").fadeOut(2000);
-                        console.log(typesArray)
                         setTimeout(() => {
                             $(".card0Div").empty();
                             $(this).parent().parent().siblings("#cardTypes").remove();
@@ -875,7 +831,6 @@ $(function () {
                                 let parse = JSON.parse(tempObj[b])
                                 typesHeaders.push(parse[0]);
                                 typesHeaders = $.unique(typesHeaders.sort());
-                                console.log(typesHeaders)
                                 if (typesHeaders[b] !== undefined) {
                                     $("#cardTypes").append(`<button class="types">${typesHeaders[b]}</button>`);
                                     typesOrder();
@@ -885,7 +840,6 @@ $(function () {
                                 typesMouseupFunction();
                                 b++;
                             }
-                            
                         }, 2001);
                     }
                     y++;
@@ -904,7 +858,6 @@ $(function () {
                         if (parse[0] == typesHtml) {
                             stringify = JSON.stringify(parse);
                             tempObj = tempObj.filter(e => e !== stringify);
-                            console.log(tempObj)
                             let x = 0;
                             if (tempObj.length == 0) {
                                 localStorage.clear();
@@ -921,11 +874,8 @@ $(function () {
                                 }
                             }
                             x = 0
-                            console.log(tempObj)
-                            console.log(localStorage)
                             $(".card0Div").fadeOut(2000);
                             $(this).parent().parent().siblings("#cardTypes").fadeOut(2000);
-                            console.log(typesArray)
                             setTimeout(() => {
                                 $(".card0Div").empty();
                                 $(this).parent().parent().siblings("#cardTypes").remove();
@@ -939,7 +889,6 @@ $(function () {
                                     let parse = JSON.parse(tempObj[b])
                                     typesHeaders.push(parse[0]);
                                     typesHeaders = $.unique(typesHeaders.sort());
-                                    console.log(typesHeaders)
                                     if (typesHeaders[b] !== undefined) {
                                         $("#cardTypes").append(`<button class="types">${typesHeaders[b]}</button>`);
                                         typesOrder();
@@ -1066,19 +1015,19 @@ $(function () {
             $(".show").html("Show");
             $(".hide").html("Hide");
         };
-        if ($("#selectMenu").val() == "TR") {
-            $("#addFlashCard").html("Hafıza Kartı Ekle");
-            $("#selectFlashCard").html("Hafıza Kartı Seç");
-            $("#questionHeader").html("Soru");
-            $("#answerHeader").html("Cevap");
-            $("#type").attr("placeholder", "Bir Konu Girin");
-            $("#hide").html("Gizle");
-            $("#saveButton").html("Kaydet");
-            $("#delete").html(`"${typesHtml}" Konusunu Sil`);
-            $("#deleteAll").html("Tüm Konuları Sil");
-            $(".delete").html("Sil");
-            $(".show").html("Göster");
-            $(".hide").html("Gizle");
+        if ($("#selectMenu").val() == "GR") {
+            $("#addFlashCard").html("Flash-Karte hinzufügen");
+            $("#selectFlashCard").html("Flash-Karte auswählen");
+            $("#questionHeader").html("Frage");
+            $("#answerHeader").html("Antworten");
+            $("#type").attr("placeholder", "Geben Sie einen Typ ein");
+            $("#hide").html("Ausblenden");
+            $("#saveButton").html("Sparen");
+            $("#delete").html(`Typ "${typesHtml}" löschen`);
+            $("#deleteAll").html("Alle Typen löschen");
+            $(".delete").html("Löschen");
+            $(".show").html("Show");
+            $(".hide").html("Ausblenden");
         };
         if ($("#selectMenu").val() == "PL") {
             $("#addFlashCard").html("Dodaj Fiszkę");
@@ -1093,6 +1042,20 @@ $(function () {
             $(".delete").html("Usuń");
             $(".show").html("Pokaż");
             $(".hide").html("Ukryj");
+        };
+        if ($("#selectMenu").val() == "TR") {
+            $("#addFlashCard").html("Hafıza Kartı Ekle");
+            $("#selectFlashCard").html("Hafıza Kartı Seç");
+            $("#questionHeader").html("Soru");
+            $("#answerHeader").html("Cevap");
+            $("#type").attr("placeholder", "Bir Konu Girin");
+            $("#hide").html("Gizle");
+            $("#saveButton").html("Kaydet");
+            $("#delete").html(`"${typesHtml}" Konusunu Sil`);
+            $("#deleteAll").html("Tüm Konuları Sil");
+            $(".delete").html("Sil");
+            $(".show").html("Göster");
+            $(".hide").html("Gizle");
         };
     }
     $("#selectMenu").on({
@@ -1134,7 +1097,8 @@ $(function () {
         focusout: function () {
             $(this).css("border-color", "var(--linearColor3")
         }
-    })
+    })    
+
     function themeSwitch() {
         if (switchCounter % 2 == 0) {
             $("body").css("background-color", "white");
@@ -1142,7 +1106,7 @@ $(function () {
                 "background-color": "var(--myWhite)",
                 "color": "black"
             });
-            $("#switchInput").attr("checked", true);
+            $("#switchInput").attr("checked", false);
             $(".slider").attr("id", "sliderBlack");
         } else {
             $("body").css("background-color", "black");
@@ -1151,11 +1115,9 @@ $(function () {
                 "color": "white"
             }); 
             $(".slider").attr("id", "");
-            $("#switchInput").attr("checked", false);
+            $("#switchInput").attr("checked", true);
         }
-        console.log(switchCounter)
     }
-    let switchCounter = 0;
     $(".switch").on({
         mouseenter: function () {  
             $(".slider").css("background-color", "var(--myWhite");
@@ -1184,20 +1146,29 @@ $(function () {
                 themeSwitch();
                 switchCounter++;
             }
+            if (switchCounter % 2 == 0) {
+                $("#switchInput").attr("checked", false);
+            } else {
+                $("#switchInput").attr("checked", true);
+            }
         }
     })
     $("body").on({
         mouseup: function () {
             selectCount = 0;
             $(this).css("border-color", "var(--linearColor3")
+        },
+        keydown: function (e) {  
+            if (e.keyCode === 13) {
+                $("#saveButton").css("font-size", "1rem");
+            }
+        },
+        keyup: function (e) {  
+            $("#saveButton").css("font-size", "13.3333px");
+            $(".card0Div").empty();
+            saving()
         }
-    })
-    //#region -- Action of main buttons and type buttons
-    mainButtonFunctions();
-    typesButtonFunction();
-    //#endregion -- Action of main buttons and type buttons
-
-    hideQuestionAnswer();
+    });
     $("#hide").on({
         mouseup: function () {
             $(this).parent().parent().slideUp(1000);
@@ -1207,8 +1178,7 @@ $(function () {
                 $(this).parent().parent().slideUp(1000);
             }
         }
-    })
-    //#region -- Add and Select Flash Card Functions
+    });
     function addFlashCardFunction() {
         $("#newCard").css('display', 'grid').hide().slideDown(1000);
         $("#type").prop("disabled", false);
@@ -1250,9 +1220,6 @@ $(function () {
             }
         }
     });
-    //#endregion -- Add and Select Flash Card Functions
-
-    //#region -- Text Area Focus and Focus Out Action
     $("#questionTextArea, #answerTextArea").on({
         focus: function () {
             $(this).css("border-color", "rgb(97, 14, 14)");
@@ -1276,52 +1243,49 @@ $(function () {
             }
         }
     });
-    //#endregion -- Text Area Focus and Focus Out Action
-
-    //#region -- Type Focus and Out Action
-    $("#type").focus(function () {
-        $(this).css("border-color", "gray");
-        $(this).css("background-color", "green");
-        $(this).css("color", "black");
-    });
-    $("#type").focusout(function () {
-        $(this).css("border-color", "white");
-        $(this).css("background-color", "var(--typeColor)");
-        $(this).css("color", "white");
-    });
-    $("#type").mouseenter(function () {
-        $(this).css("border-color", "gray");
-        $(this).css("background-color", "green");
-        $(this).css("color", "black");
-    });
-    $("#type").mouseleave(function () {
-        $(this).css("border-color", "white");
-        $(this).css("background-color", "var(--typeColor)");
-        $(this).css("color", "white");
-    });
-    $("#type").keydown(function (e) {
-        if (e.keyCode === 13) {
-            $("#saveButton").css("font-size", "1rem")
-        }
-    });
-    $("#type").keyup(function (e) {
-        if (e.keyCode === 13) {
-            $(this).val($(this).val().replace( /\r?\n/gi, '')); //replace newline
-            saving();
-            $("#saveButton").css({
-                "font-size": "13.3333px"
+    $("#type").on({
+        focus: function () {
+            $(this).css({
+                "border-color": "green",
+                "background-color": "green",
+                "color": "black"
             });
-            $(".card0Div").empty();
+        },
+        focusout: function () {
+            $(this).css({
+                "border-color": "white",
+                "background-color": "var(--typeColor)",
+                "color": "white"
+            });
+        },
+        mouseenter: function () {
+            $(this).css({
+                "border-color": "green",
+                "background-color": "green",
+                "color": "black"
+            });
+        },
+        mouseleave: function () {  
+            $(this).css({
+                "border-color": "white",
+                "background-color": "var(--typeColor)",
+                "color": "white"
+            });
+        },
+        keydown: function (e) {  
+            if (e.keyCode === 13) {
+                $("#saveButton").css("font-size", "1rem")
+            }
+        },
+        keyup: function (e) {  
+            if (e.keyCode === 13) {
+                $(this).val($(this).val().replace( /\r?\n/gi, '')); //replace newline
+                saving();
+                $("#saveButton").css("font-size", "13.3333px");
+                $(".card0Div").empty();
+            }            
         }
     });
-    //#endregion -- Type Focus and Out Action
-
-    //#region -- Types Action for Input Value
-    typesMouseupFunction();
-    //#endregion -- Types Action for Input Value
-
-    //#region -- Save Button Actions
-    let myObj = []; //all input types will go inside this array. "inputValue: questionValue,answerValue". This is the format of array.
     function saving() {
         if ($("#questionTextArea").val().trim() != "" && $("#answerTextArea").val().trim() != "" && $("#type").val().trim() != "") {
             //#region -- Creating "inputValue: questionValue,answerValue"
@@ -1347,7 +1311,6 @@ $(function () {
                 x++;
             }
             x = 0
-            console.log(localStorage)
             //#endregion -- Creating "inputValue: questionValue,answerValue"
             mainButtonFunctions();
             typesButtonFunction();
@@ -1376,28 +1339,34 @@ $(function () {
     $("#saveButton").on({
         mouseenter: function () {  
             $("#saveButton").css("background-color", "red");
-            $(this).css("color", "black");
-            $(this).css("border-color", "red");
+            $(this).css({
+                "color": "black",
+                "border-color": "red"
+            });
         },
         mouseleave: function () {  
             $("#saveButton").css("background-color", "var(--saveButtonRed)");
-            $(this).css("color", "white");
-            $(this).css("border-color", "white");
+            $(this).css({
+                "color": "white",
+                "border-color": "white"
+            });
         },
         focus: function () {  
             $("#saveButton").css("background-color", "red");
-            $(this).css("color", "black");
-            $(this).css("border-color", "red");
+            $(this).css({
+                "color": "black",
+                "border-color": "red"
+            });
         },
         focusout: function () {  
             $("#saveButton").css("background-color", "var(--saveButtonRed)");
-            $(this).css("color", "white");
-            $(this).css("border-color", "white");
+            $(this).css({
+                "color": "white",
+                "border-color": "white"
+            });
         },
         mousedown: function () {
-            $(this).css({
-                "font-size": "1rem"
-            });
+            $(this).css("font-size", "1rem");
             $("body").on({
                 mouseup: function () {  
                     $("#saveButton").css("font-size", "13.3333px");
@@ -1405,13 +1374,25 @@ $(function () {
             })
         },
         mouseup: function () {
-            $(this).css({
-                "font-size": "13.3333px"
-            });
+            $(this).css("font-size", "13.3333px");
+            $(".card0Div").empty();
+            saving()
+        },
+        keydown: function (e) {  
+            if (e.keyCode === 13) {
+                $(this).css("font-size", "1rem");
+            }
+        },
+        keyup: function (e) {  
+            $(this).css("font-size", "13.3333px");
             $(".card0Div").empty();
             saving()
         }
-        
     });
-    //#endregion -- Save Button Actions
+
+    resize()
+    mainButtonFunctions();
+    typesButtonFunction();
+    hideQuestionAnswer();
+    typesMouseupFunction();
 });
