@@ -99,7 +99,7 @@ When you click one type button it will show the card saving area with extra butt
     - Delete button for cards is to delete question and answer from that type.
     - When deleted an animation will be seen.  
 
-## WHICH BROWSER AND SCREEN SIZE ARE OPTIMIZED?
+## WHICH BROWSERs AND SCREEN SIZEs ARE OPTIMIZED?
 
 I mainly used Edge to create this project. Still I checked Opera and Chrome for apperance and I did not see any mistake from the original.
 
