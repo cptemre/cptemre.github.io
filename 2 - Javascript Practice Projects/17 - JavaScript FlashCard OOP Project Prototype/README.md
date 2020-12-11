@@ -18,11 +18,9 @@
 
 ## HOW TO USE?
 
-### First Look
+- When the page is loaded you will see 4 simple elements on the screen.
 
-When the page is loaded you will see 4 simple elements on the screen.
-
-1. Add a Flash Card
+### Add a Flash Card
 
 If you are using the program first time, this is the button to start working with your cards. On click or with tab + enter key combo you can open this section. You can also use tab key to change focus between elements, this is legit for all the program.
 
@@ -46,7 +44,7 @@ After an animation you will see 3 new elements.
     - You can use enter key for your saving.
     - If one or more of text areas and type are empty, your card will not be saved.
 
-2. Language Option
+### Language Option
 
     - On the first page load you will see "EN" word beside of "Add a Flash Card".
     - "EN" stands for English and the default options is in English.
@@ -57,7 +55,7 @@ After an animation you will see 3 new elements.
         - Turkish - TR
     - When one of those will be selected the language of the page will change to it.
 
-3. Switch Button
+### Switch Button
 
     - On the first page load you will see a switch button with a ball in it between "EN" and "Select a Flash Card".
     - This button is to change the theme of the website.
@@ -65,7 +63,7 @@ After an animation you will see 3 new elements.
     - When clicked or focus + enter the button, it will move to the other side of its location and theme will be changed to bright mode.
     - Bright mode uses a white background on the page.
 
-4. Select a Flash Card
+### Select a Flash Card
     
 This button will not do anything if you are using the page first time.
 
