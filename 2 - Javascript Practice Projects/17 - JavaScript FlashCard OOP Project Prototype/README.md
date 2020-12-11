@@ -27,13 +27,11 @@ If you are using the program first time, this is the button to start working wit
 After an animation you will see 3 new elements.
 
 1. Question
-
     - Question area includes one header, one text area and one input area.
     - Inner area of the element is for writing your question.
     - Input a type area is to determine where this card should be included or to create a new card type for it.
 
 2. Hide
-
     - Starts a slide up animation for the "Add a Flash Card" elements.
 
 3. Answer
@@ -46,22 +44,29 @@ After an animation you will see 3 new elements.
 
 ### Language Option
 
-    - On the first page load you will see "EN" word beside of "Add a Flash Card".
-    - "EN" stands for English and the default options is in English.
-    - Currently there are four options to select a language.
-        - English - EN
-        - German - GR
-        - Polish - PL
-        - Turkish - TR
-    - When one of those will be selected the language of the page will change to it.
+On the first page load you will see "EN" word beside of "Add a Flash Card".
+
+"EN" stands for English and the default options is in English.
+
+Currently there are four options to select a language.
+- English - EN
+- German - GR
+- Polish - PL
+- Turkish - TR
+
+When one of those will be selected the language of the page will change to it.
 
 ### Switch Button
 
-    - On the first page load you will see a switch button with a ball in it between "EN" and "Select a Flash Card".
-    - This button is to change the theme of the website.
-    - Default option to use the page is in dark mode with a black background.
-    - When clicked or focus + enter the button, it will move to the other side of its location and theme will be changed to bright mode.
-    - Bright mode uses a white background on the page.
+On the first page load you will see a switch button with a ball in it between "EN" and "Select a Flash Card".
+
+This button is to change the theme of the website.
+
+Default option to use the page is in dark mode with a black background.
+
+When clicked or focus + enter the button, it will move to the other side of its location and theme will be changed to bright mode.
+
+Bright mode uses a white background on the page.
 
 ### Select a Flash Card
     
