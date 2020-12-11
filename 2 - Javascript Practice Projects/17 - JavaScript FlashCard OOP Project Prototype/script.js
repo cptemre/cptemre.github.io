@@ -1002,8 +1002,8 @@ $(function () {
     }
     function language() {
         if ($("#selectMenu").val() == "EN") {
-            $("#addFlashCard").html("Add a Flash Card");
-            $("#selectFlashCard").html("Select a Flash Card");
+            $("#addFlashCard").html("Add a Flashcard");
+            $("#selectFlashCard").html("Select a Flashcard");
             $("#questionHeader").html("Question");
             $("#answerHeader").html("Answer");
             $("#type").attr("placeholder", "Input a Type");

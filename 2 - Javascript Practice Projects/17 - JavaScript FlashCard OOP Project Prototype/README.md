@@ -6,7 +6,7 @@
 
 - Idea is not unique but the code and styling are absolutely unique.
 
-- You can create flash cards, most likely for learning a language, with under different types and keep them in your local browser. When you come back to website your data will be saved and be functional.
+- You can create flashcards, most likely for learning a language, with under different types and keep them in your local browser. When you come back to website your data will be saved and be functional.
 
 ## WHO IS THE CREATER?
 
@@ -14,13 +14,13 @@
 
 ## WHO CAN USE THE PROJECT?
 
-- If you have willings to use a flash card program to teach yourself somethings from your computer, you are the correct person to use this program.
+- If you have willings to use a flashcard program to teach yourself somethings on your computer, you are the correct person to use this program.
 
 ## HOW TO USE?
 
 - When the page is loaded you will see 4 simple elements on the screen.
 
-### Add a Flash Card
+### Add a Flashcard
 
 If you are using the program first time, this is the button to start working with your cards. On click or with tab + enter key combo you can open this section. You can also use tab key to change focus between elements, this is legit for all the program.
 
@@ -32,10 +32,9 @@ After an animation you will see 3 new elements.
     - Input a type area is to determine where this card should be included or to create a new card type for it.
 
 2. Hide
-    - Starts a slide up animation for the "Add a Flash Card" elements.
+    - Starts a slide up animation for the "Add a Flashcard" elements.
 
 3. Answer
-    
     - Answer area includes one header, one text area and one save button.
     - Inner area of the element is for writing your answer.
     - Save button area is to add your card to the desired type with a question and answer.
@@ -44,7 +43,7 @@ After an animation you will see 3 new elements.
 
 ### Language Option
 
-On the first page load you will see "EN" word beside of "Add a Flash Card".
+On the first page load you will see "EN" word beside of "Add a Flashcard".
 
 "EN" stands for English and the default options is in English.
 
@@ -68,7 +67,7 @@ When clicked or focus + enter the button, it will move to the other side of its 
 
 Bright mode uses a white background on the page.
 
-### Select a Flash Card
+### Select a Flashcard
     
 This button will not do anything if you are using the page first time.
 
@@ -78,9 +77,9 @@ When you click one type button it will show the card saving area with extra butt
         
 1. Card Saving Area
 
-    - As explained under "Add a Flash Card", card saving area will keep the elements it has before and will have two extra buttons and with one change.
+    - As explained under "Add a Flashcard", card saving area will keep the elements it has before and will have two extra buttons and with one change.
     - The only change from the original area is input type area. It is now can not be changed and has the text of the type's name.
-    - You can save a card to a type while using the "Select a Flash Card" button also.
+    - You can save a card to a type while using the "Select a Flashcard" button also.
 
     #### Extra Buttons
 
