@@ -840,6 +840,7 @@ $(function () {
                                 typesMouseupFunction();
                                 b++;
                             }
+                            location.reload();
                         }, 2001);
                     }
                     y++;
@@ -898,7 +899,7 @@ $(function () {
                                     typesMouseupFunction();
                                     b++;
                                 }
-                                
+                                location.reload();
                             }, 2001);
                         }
                         y++;
@@ -921,9 +922,13 @@ $(function () {
                     $("#cardTypes").css("display", "none");
                     $("#card0Div").empty();
                     $(".card0Div").css("display", "none");
+                    location.reload();
                 }, 2000);
                 tempObj = [];
                 localStorage.clear();
+                console.log(tempObj)
+                console.log(localStorage)
+
             },
             keyup: function (e) {
                 if (e.keyCode === 13) {
@@ -937,9 +942,13 @@ $(function () {
                         $("#cardTypes").css("display", "none");
                         $("#card0Div").empty();
                         $(".card0Div").css("display", "none");
+                        location.reload();
                     }, 2000);
                     tempObj = [];
                     localStorage.clear();
+                    console.log(tempObj)
+                    console.log(localStorage)
+
                 }
             }
         })
@@ -1015,7 +1024,7 @@ $(function () {
             $(".show").html("Show");
             $(".hide").html("Hide");
         };
-        if ($("#selectMenu").val() == "GR") {
+        if ($("#selectMenu").val() == "DE") {
             $("#addFlashCard").html("Flash-Karte hinzufügen");
             $("#selectFlashCard").html("Flash-Karte auswählen");
             $("#questionHeader").html("Frage");

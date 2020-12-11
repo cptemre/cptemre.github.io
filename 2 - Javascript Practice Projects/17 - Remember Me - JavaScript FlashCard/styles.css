@@ -241,6 +241,7 @@ body {
     padding-top: 3rem;
     border: none;
     outline: none;
+    grid-row-gap: 0rem;
 }
 .hideDeleteContainer {
     grid-area: hideDeleteContainer;
@@ -580,6 +581,7 @@ body {
         "questionDiv answerDiv"
         "hideDeleteContainer hideDeleteContainer"
         ;
+        grid-row-gap: 2rem;
     }
     #mainButtons {
         grid-template-columns: 1fr 1fr;

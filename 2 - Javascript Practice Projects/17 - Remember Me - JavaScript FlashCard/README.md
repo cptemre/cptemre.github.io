@@ -8,11 +8,7 @@
 
 - You can create flashcards, most likely for learning a language, with under different types and keep them in your local browser. When you come back to website your data will be saved and be functional.
 
-## WHO IS THE CREATER?
-
-- The only writer of the code is me, Emre Kunduracı, and own all the rights of the project.
-
-## WHO CAN USE THE PROJECT?
+## WHO SHOULD USE THE PROJECT?
 
 - If you have willings to use a flashcard program to teach yourself somethings on your computer, you are the correct person to use this program.
 
@@ -49,7 +45,7 @@ On the first page load you will see "EN" word beside of "Add a Flashcard".
 
 Currently there are four options to select a language.
 - English - EN
-- German - GR
+- German - DE
 - Polish - PL
 - Turkish - TR
 
@@ -103,6 +99,10 @@ When you click one type button it will show the card saving area with extra butt
 I mainly used Edge to create this project. Still I checked Opera and Chrome for apperance and I did not see any mistake from the original.
 
 Program is optimized for smaller screen so It can be used on phones and tablets.
+
+## WHO IS THE CREATER?
+
+- The only writer of the code is me, Emre Kunduracı, and own all the rights of the project.
 
 ## CONTACT
 
